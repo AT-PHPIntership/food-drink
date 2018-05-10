@@ -16,11 +16,11 @@ dependencies:
   cache_directories:
     - ~/.composer/cache
   pre:
-    # - echo "memory_limit = 512M" > /opt/circleci/php/$(phpenv global)/etc/conf.d/memory.ini
-  post:
     - sudo ln -s /opt/circleci/.phpenv/shims/php /usr/local/bin/php
     - sudo cp /opt/circleci/.phpenv/shims/php /usr/bin/php
     - cp .env.dusk.testing .env
+    # - echo "memory_limit = 512M" > /opt/circleci/php/$(phpenv global)/etc/conf.d/memory.ini
+  post:
     - "sudo php artisan serve --host=myapp.dev --port=8080 > server.log 2>&1":
         background: true
     - "sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080"
@@ -36,7 +36,6 @@ test:
   pre:
     - npm install bower
     - bower install
-    - cp .env.example .env
     - php artisan key:generate
     - touch storage/logs/laravel.log
     - sudo chmod -R 777 storage
