@@ -2,7 +2,8 @@
 <ruleset name="Asiantech PHP Coding Standard">
     <!-- Default directory to check if there are no directories argurment  -->
     <file>app</file>
-    <file>resources</file>
+    <file>resources/views</file>
+    <file>resources/lang</file>
 
     <!-- Add PSR1 standard -->
     <rule ref="PSR1"></rule>
