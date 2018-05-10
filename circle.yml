@@ -1,0 +1,53 @@
+machine:
+  hosts:
+    myapp.dev: 127.0.0.1
+  php:
+    version: 7.1.4
+  services:
+    - mysql
+  post:
+    - chromedriver:
+        background: true
+  node:
+    version: 6.0
+  pre:
+    - sudo apt-get install circleci-php-7.1.4
+dependencies:
+  cache_directories:
+    - ~/.composer/cache
+  pre:
+    # - echo "memory_limit = 512M" > /opt/circleci/php/$(phpenv global)/etc/conf.d/memory.ini
+  post:
+    - sudo ln -s /opt/circleci/.phpenv/shims/php /usr/local/bin/php
+    - sudo cp /opt/circleci/.phpenv/shims/php /usr/bin/php
+    - cp .env.dusk.testing .env
+    - "sudo php artisan serve --host=myapp.dev --port=8080 > server.log 2>&1":
+        background: true
+    - "sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080"
+    - "sudo iptables -t nat -I OUTPUT -p tcp -d 127.0.0.1 --dport 80 -j REDIRECT --to-ports 8080"
+    - "sudo chmod -R 777 storage"
+general:
+  artifacts:
+    - "tests/Browser/screenshots"
+    - "tests/Browser/console"
+    - "server.log"
+    - "storage/logs/laravel.log"
+test:
+  pre:
+    - npm install bower
+    - bower install
+    - cp .env.example .env
+    - php artisan key:generate
+    - touch storage/logs/laravel.log
+    - sudo chmod -R 777 storage
+  override:
+    # phpcs circleci status
+    - ./vendor/bin/phpcs -n --standard=phpcs.xml
+    # phpmd
+    - ./vendor/bin/phpmd app text phpmd.xml
+    # phpunit
+    - ./vendor/bin/phpunit --configuration phpunit.circleci.xml
+    # laravel dusk
+    - php artisan dusk
+    # Copy screenshots
+    # - cp -R tests/Browser/screenshots $CIRCLE_ARTIFACTS/screenshots
