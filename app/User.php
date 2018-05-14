@@ -15,8 +15,40 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
     ];
+
+    /**
+     * User Belong To UserInfo
+     *
+     * @return mixed
+     */
+    public function userInfo()
+    {
+        return $this->belongsTo('App\UserInfo');
+    }
+
+    /**
+     * User Has Many Posts
+     *
+     * @return mixed
+     */
+    public function posts()
+    {
+        return $this->hasMany('App\Post');
+    }
+
+    /**
+     * User Has Many Orders
+     *
+     * @return mixed
+     */
+    public function orders()
+    {
+        return $this->hasMany('App\Order');
+    }
 
     /**
      * The attributes that should be hidden for arrays.
