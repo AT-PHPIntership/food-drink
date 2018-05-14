@@ -16,11 +16,11 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->float('price', 8, 2);
+            $table->decimal('price', 8, 2);
             $table->integer('quantily');
             $table->unsignedInteger('category_id');
             $table->string('preview');
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->float('avg_rate', 8, 2)->nullable();
             $table->integer('sum_rate')->nullable();
             $table->integer('total_rate')->nullable();

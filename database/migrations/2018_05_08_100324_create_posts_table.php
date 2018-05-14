@@ -23,7 +23,7 @@ class CreatePostsTable extends Migration
             $table->foreign('product_id')
                     ->references('id')->on('products')
                     ->onDelete('cascade');
-            $table->string('content');
+            $table->text('content');
             $table->float('rate');
             $table->tinyInteger('type');
             $table->timestamps();

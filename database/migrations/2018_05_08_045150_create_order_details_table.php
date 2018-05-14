@@ -18,7 +18,7 @@ class CreateOrderDetailsTable extends Migration
             $table->unsignedInteger('order_id');
             $table->unsignedInteger('product_id');
             $table->integer('quantity');
-            $table->float('price', 8, 2);	
+            $table->decimal('price', 8, 2);	
             $table->string('preview');
             $table->string('address');
             $table->string('name_product');
