@@ -33,7 +33,7 @@ class Product extends Model
      *
      * @return mixed
      */
-    public function image()
+    public function images()
     {
         return $this->hasMany('App\Image');
     }
@@ -53,7 +53,7 @@ class Product extends Model
      *
      * @return mixed
      */
-    public function post()
+    public function posts()
     {
         return $this->hasMany('App\Post');
     }

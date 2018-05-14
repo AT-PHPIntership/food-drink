@@ -35,7 +35,7 @@ class User extends Authenticatable
      *
      * @return mixed
      */
-    public function post()
+    public function posts()
     {
         return $this->hasMany('App\Post');
     }
@@ -45,7 +45,7 @@ class User extends Authenticatable
      *
      * @return mixed
      */
-    public function order()
+    public function orders()
     {
         return $this->hasMany('App\Order');
     }

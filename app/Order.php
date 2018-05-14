@@ -27,7 +27,7 @@ class Order extends Model
      *
      * @return mixed
      */
-    public function orderDetail()
+    public function orderDetails()
     {
         return $this->hasMany('App\OrderDetail');
     }
