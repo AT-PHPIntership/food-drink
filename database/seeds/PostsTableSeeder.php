@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use App\Post;
 use App\User;
 use App\Product;
+
 class PostsTableSeeder extends Seeder
 {
     /**

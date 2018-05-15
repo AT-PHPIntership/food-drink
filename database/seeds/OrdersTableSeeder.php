@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Order;
 use App\User;
+
 class OrdersTableSeeder extends Seeder
 {
     /**

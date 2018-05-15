@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Image;
 use App\Product;
+
 class ImagesTableSeeder extends Seeder
 {
     /**

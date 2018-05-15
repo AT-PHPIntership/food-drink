@@ -36,5 +36,8 @@ class OrderDetailsTableSeeder extends Seeder
                 'updated_at' => $faker->dateTime,
             ]);
         }
+
+        // disable foreign key constraints
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }
