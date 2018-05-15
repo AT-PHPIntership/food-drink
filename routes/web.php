@@ -17,6 +17,9 @@ Route::get('/', function () {
 Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
     Route::get('',[
         'uses'=>'HomeController@index',
-        'as'=>'admin.home.index'
+        'as'=>'admin'
+    ]);
+    Route::resource('user', 'UsersController')->only([
+        'index'
     ]);
 });
