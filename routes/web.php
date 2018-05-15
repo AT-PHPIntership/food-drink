@@ -11,9 +11,9 @@
 |
 */
 
-Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
+Route::group(['namespace'=>'Admin','prefix'=>'admin'], function () {
     Route::get('',[
-        'uses'=>'IndexsController@index',
+        'uses'=>'HomeController@index',
         'as'=>'admin.home.index'
     ]);
 });
