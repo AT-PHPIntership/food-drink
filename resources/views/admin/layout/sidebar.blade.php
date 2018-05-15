@@ -5,37 +5,37 @@
     <!-- /.search form -->
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
-      <li class="active treeview menu-open">
-        <a href="#">
+      <li>
+        <a href="{{route('admin')}}">
           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
         </a>
       </li>
-      <li class="treeview">
-        <a href="#">
+      <li>
+        <a href="{{route('admin.user')}}">
           <i class="fa fa-table"></i> <span>Manage Users</span>
         </a>
       </li>
-      <li class="treeview">
+      <li>
         <a href="#">
           <i class="fa fa-table"></i> <span>Manage Categories</span>
         </a>
       </li>
-      <li class="treeview">
+      <li>
         <a href="#">
           <i class="fa fa-table"></i> <span>Manage Images</span>
         </a>
       </li>
-      <li class="treeview">
+      <li>
         <a href="#">
           <i class="fa fa-table"></i> <span>Manage Products</span>
         </a>
       </li>
-      <li class="treeview">
+      <li>
         <a href="#">
           <i class="fa fa-table"></i> <span>Manage Posts</span>
         </a>
       </li>
-      <li class="treeview">
+      <li>
         <a href="#">
           <i class="fa fa-edit"></i> <span>Manage Orders</span>
         </a>
