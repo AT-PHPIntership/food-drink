@@ -11,7 +11,7 @@
         </a>
       </li>
       <li>
-        <a href="{{route('admin.user')}}">
+        <a href="{{route('user.index')}}">
           <i class="fa fa-table"></i> <span>Manage Users</span>
         </a>
       </li>

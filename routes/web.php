@@ -19,11 +19,7 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
         'uses'=>'HomeController@index',
         'as'=>'admin'
     ]);
-    Route::group(['prefix'=>'user'],function () {
-        route::get('',[
-            'uses'=>'UsersController@index',
-            'as'=>'admin.user'
-        ]);
-    });
-
+    Route::resource('user', 'UsersController')->only([
+        'index'
+    ]);
 });
