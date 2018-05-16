@@ -26,7 +26,6 @@
             <form method="POST" action="" enctype="multipart/form-data">
             @csrf
             @foreach($result as $k => $item)
-            {{dd($item)}}
               <div class="box-body">
                 <div class="form-group">
                   <label for="exampleInputName">{{__('user.admin.edit.name')}}</label>
@@ -42,14 +41,15 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputRole">{{__('user.admin.edit.address')}}</label>
-                  <input type="text" class="form-control" name="address" value="{{$item->address}}">
+                  <input type="text" class="form-control" name="address" value="{{$item->userInfo->address}}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputRole">{{__('user.admin.edit.phone')}}</label>
-                  <input type="text" class="form-control" name="phone" value="Phone">
+                  <input type="text" class="form-control" name="phone" value="{{$item->userInfo->phone}}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputFile">{{__('user.admin.edit.avatar')}}</label>
+                  <img src="{{$item->userInfo->avatar_url}}" alt="{{$item->userInfo->phone}}">
                   <input type="file">
                 </div>               
               </div>
