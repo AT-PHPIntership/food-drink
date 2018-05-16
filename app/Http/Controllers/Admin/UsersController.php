@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
-use App\UserInfo;
 
 class UsersController extends Controller
 {
@@ -22,13 +21,13 @@ class UsersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id user's id
+     * @param int $user user's id
      *
      * @return \Illuminate\Http\Response
     */
-    public function edit($id)
+    public function edit(User $user)
     {
-        echo($id);
+        $user = $user;
         return view('admin.user.edit');
     }
 }

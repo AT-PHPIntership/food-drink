@@ -1,9 +1,9 @@
 @extends('admin.layout.master')
-@section('title', __('user.admin.manage') )
+@section('title', __('admin.manage') )
 @section('content')
   <div class="content-wrapper">
     <section class="content-header">
-      <h1>{{__('user.admin.dashboard')}}</h1>
+      <h1>{{__('admin.dashboard')}}</h1>
     </section>
     <section class="content">
       <div class="row">

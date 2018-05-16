@@ -7,37 +7,37 @@
     <ul class="sidebar-menu" data-widget="tree">
       <li>
         <a href="{{route('admin')}}">
-          <i class="fa fa-dashboard"></i> <span>{{__('user.admin.dashboard')}}</span>
+          <i class="fa fa-dashboard"></i> <span>{{__('admin.dashboard')}}</span>
         </a>
       </li>
       <li>
         <a href="{{route('user.index')}}">
-          <i class="fa fa-table"></i> <span>{{__('user.admin.manage_user')}}</span>
+          <i class="fa fa-table"></i> <span>{{__('admin.manage_user')}}</span>
         </a>
       </li>
       <li>
         <a href="#">
-          <i class="fa fa-table"></i> <span>{{__('user.admin.manage_category')}}</span>
+          <i class="fa fa-table"></i> <span>{{__('admin.manage_category')}}</span>
         </a>
       </li>
       <li>
         <a href="#">
-          <i class="fa fa-table"></i> <span>{{__('user.admin.manage_image')}}</span>
+          <i class="fa fa-table"></i> <span>{{__('admin.manage_image')}}</span>
         </a>
       </li>
       <li>
         <a href="#">
-          <i class="fa fa-table"></i> <span>{{__('user.admin.manage_product')}}</span>
+          <i class="fa fa-table"></i> <span>{{__('admin.manage_product')}}</span>
         </a>
       </li>
       <li>
         <a href="#">
-          <i class="fa fa-table"></i> <span>{{__('user.admin.manage_post')}}</span>
+          <i class="fa fa-table"></i> <span>{{__('admin.manage_post')}}</span>
         </a>
       </li>
       <li>
         <a href="#">
-          <i class="fa fa-edit"></i> <span>{{__('user.admin.manage_order')}}</span>
+          <i class="fa fa-edit"></i> <span>{{__('admin.manage_order')}}</span>
         </a>
       </li>
     </ul>

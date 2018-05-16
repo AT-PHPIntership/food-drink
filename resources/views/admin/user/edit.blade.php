@@ -9,9 +9,9 @@
         <small>{{__('user.admin.edit.user')}}</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> {{__('user.admin.dashboard')}}</a></li>
-        <li><a href="#">{{__('user.admin.manage_user')}}</a></li>
-        <li class="active"> Edit User</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> {{__('admin.dashboard')}}</a></li>
+        <li><a href="#">{{__('admin.manage_user')}}</a></li>
+        <li class="active">{{__('user.admin.edit.title')}}</li>
       </ol>
     </section>
     <!-- Main content -->
@@ -23,8 +23,8 @@
           <div class="box box-primary">
             <!-- /.box-header -->
             <!-- form start -->
-            <form method="POST" action="">
-            {{csrf_field()}}
+            <form method="POST" action="" enctype="multipart/form-data">
+            @csrf
               <div class="box-body">
                 <div class="form-group">
                   <label for="exampleInputName">{{__('user.admin.edit.name')}}</label>
