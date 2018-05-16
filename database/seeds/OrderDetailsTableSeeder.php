@@ -31,7 +31,7 @@ class OrderDetailsTableSeeder extends Seeder
                 'preview' => $faker->randomElement(Product::pluck('preview')->toArray()),
                 'address' => $faker->address,
                 'name_product' => $faker->randomElement(Product::pluck('name')->toArray()),
-                'image' => 'public/storage/images/products/default-product.jpg',
+                'image' => 'default-product.jpg',
                 'created_at' => $faker->dateTime,
                 'updated_at' => $faker->dateTime,
             ]);

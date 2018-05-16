@@ -23,7 +23,7 @@ class ImagesTableSeeder extends Seeder
         // And now let's generate a few dozen users for our app:
         for ($i = 0; $i < 20; $i++) {
             Image::create([
-                'image' => 'public/storage/images/products/default-product.jpg',
+                'image' => 'default-product.jpg',
                 'product_id' => $faker->randomElement(Product::pluck('id')->toArray()),
             ]);
         }

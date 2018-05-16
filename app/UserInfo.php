@@ -22,4 +22,14 @@ class UserInfo extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    /**
+    * Get the user's avatar.
+    *
+    * @return string
+    */
+    public function getAvatarUrlAttribute()
+    {
+        return asset(config('define.images_path_users') . $this->avatar);
+    }
 }

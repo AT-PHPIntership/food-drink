@@ -49,7 +49,7 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputFile">{{__('user.admin.edit.avatar')}}</label>
-                  <img src="{{$item->userInfo->avatar_url}}" alt="{{$item->userInfo->phone}}">
+                  <img src="{{$item->userInfo->avatar_url}}" alt="{{$item->userInfo->phone}}" class="avatar-edit">
                   <input type="file">
                 </div>               
               </div>

@@ -16,8 +16,8 @@
         </a>
       </li>
       <li>
-        <a href="#">
-          <i class="fa fa-table"></i> <span>{{__('admin.manage_category')}}</span>
+        <a href="{{route('user.create')}}">
+          <i class="fa fa-table"></i> <span>{{__('admin.create_user')}}</span>
         </a>
       </li>
       <li>
