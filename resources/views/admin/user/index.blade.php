@@ -44,12 +44,12 @@
                 </tr>
                 @foreach($users as $user)
                 <tr>
-                  <td>{{$user->id}}</td>
-                  <td>{{$user->name}}</td>
-                  <td>{{$user->email}}</td>
-                  <td>{{$user->userInfo->address}}</td>
-                  <td>{{$user->userInfo->phone}}</td>
-                  <td><img src="/images/users/{{$user->userInfo->avatar}}" alt="{{$user->userInfo->avatar}}" class="avatar"></td>
+                  <td>{{ $user->id }}</td>
+                  <td>{{ $user->name }}</td>
+                  <td>{{ $user->email }}</td>
+                  <td>{{ $user->userInfo->address }}</td>
+                  <td>{{ $user->userInfo->phone }}</td>
+                  <td><img src="{{ asset('images/users/'.$user->userInfo->avatar) }}" alt="{{ $user->userInfo->avatar }}" class="avatar"></td>
                   <td>
                     <a href=""><i class="fa fa-edit"></i></a> |
                     <a href=""><i class="fa fa-trash"></i></a>
@@ -57,7 +57,7 @@
                 </tr>
                 @endforeach
               </table>
-              {{$users->links()}}
+              {{ $users->links() }}
             </div>
             <!-- /.box-body -->
           </div>
