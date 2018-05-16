@@ -18,4 +18,17 @@ class UsersController extends Controller
         $users = User::with('userInfo')->paginate(10);
         return view('admin.user.index', compact('users'));
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param User $user User object
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function edit(User $user)
+    {
+        $user = $user;
+        return view('admin.user.edit');
+    }
 }
