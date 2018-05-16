@@ -16,7 +16,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('admin.user.index');
+        $users = User::with('userInfo')->paginate(config('define.number_pages'));
+        return view('admin.user.index', compact('users'));
     }
     /**
      * Show the form for creating a new data.
