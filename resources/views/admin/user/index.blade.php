@@ -42,43 +42,22 @@
                   <th>Avatar</th>
                   <th>Action</th>
                 </tr>
+                @foreach($users as $user)
                 <tr>
-                  <td>183</td>
-                  <td>John Doe</td>
-                  <td>11-7-2014</td>
-                  <td>John Doe</td>
-                  <td>11-7-2014</td>
-                  <td>Bacon</td>
+                  <td>{{$user->id}}</td>
+                  <td>{{$user->name}}</td>
+                  <td>{{$user->email}}</td>
+                  <td>{{$user->userInfo->address}}</td>
+                  <td>{{$user->userInfo->phone}}</td>
+                  <td><img src="/images/users/{{$user->userInfo->avatar}}" alt="{{$user->userInfo->avatar}}" class="avatar"></td>
                   <td>
                     <a href=""><i class="fa fa-edit"></i></a> |
                     <a href=""><i class="fa fa-trash"></i></a>
                   </td>
                 </tr>
-                <tr>
-                  <td>183</td>
-                  <td>John Doe</td>
-                  <td>11-7-2014</td>
-                  <td>John Doe</td>
-                  <td>11-7-2014</td>
-                  <td>Bacon</td>
-                  <td>
-                    <a href=""><i class="fa fa-edit"></i></a> |
-                    <a href=""><i class="fa fa-trash"></i></a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>183</td>
-                  <td>John Doe</td>
-                  <td>11-7-2014</td>
-                  <td>John Doe</td>
-                  <td>11-7-2014</td>
-                  <td>Bacon</td>
-                  <td>
-                    <a href=""><i class="fa fa-edit"></i></a> |
-                    <a href=""><i class="fa fa-trash"></i></a>
-                  </td>
-                </tr>
+                @endforeach
               </table>
+              {{$users->links()}}
             </div>
             <!-- /.box-body -->
           </div>
