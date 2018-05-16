@@ -21,7 +21,7 @@ class UsersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $user user's id
+     * @param User $user User object
      *
      * @return \Illuminate\Http\Response
     */
