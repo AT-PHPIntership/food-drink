@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Http\Requests\StoreUsers;
 
 class UsersController extends Controller
 {
@@ -33,13 +34,8 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUsers $request)
     {
-        $request->validate([
-            'name'=>'bail|required',
-            'email'=>'bail|required|unique:users|email',
-            'password'=>'bail|required|min:9'
-        ]);
         User::create([
             'name'=>$request->name,
             'email'=>$request->email,
