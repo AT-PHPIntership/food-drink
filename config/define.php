@@ -1,4 +1,4 @@
 <?php
-    return [
-        'number_pages' => 10,
-    ];
+return [
+    'number_pages' => 10,
+];

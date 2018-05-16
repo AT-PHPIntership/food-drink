@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\UserInfo;
 
 class User extends Authenticatable
 {
@@ -27,7 +28,7 @@ class User extends Authenticatable
      */
     public function userInfo()
     {
-        return $this->hasOne('App\UserInfo', 'user_id', 'id');
+        return $this->hasOne(UserInfo::class);
     }
 
     /**
