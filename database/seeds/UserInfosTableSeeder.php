@@ -29,7 +29,7 @@ class UserInfosTableSeeder extends Seeder
                 'user_id' => $idUsers[$i],
                 'address' => $faker->address,
                 'phone' => $faker->phoneNumber,
-                'avatar' => 'public/storage/images/users/default-user-avatar.png',
+                'avatar' => 'default-user-avatar.png',
             ]);
         }
 
