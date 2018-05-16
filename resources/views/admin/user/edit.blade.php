@@ -25,14 +25,16 @@
             <!-- form start -->
             <form method="POST" action="" enctype="multipart/form-data">
             @csrf
+            @foreach($result as $k => $item)
+            {{dd($item)}}
               <div class="box-body">
                 <div class="form-group">
                   <label for="exampleInputName">{{__('user.admin.edit.name')}}</label>
-                  <input type="text" class="form-control" name="name" value="Enter name">
+                  <input type="text" class="form-control" name="name" value="{{$item->name}}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail">{{__('user.admin.edit.email')}}</label>
-                  <input type="email" class="form-control" name="email" value="Enter name">
+                  <input type="email" class="form-control" name="email" value="{{$item->email}}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword">{{__('user.admin.edit.password')}}</label>
@@ -40,7 +42,7 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputRole">{{__('user.admin.edit.address')}}</label>
-                  <input type="text" class="form-control" name="address" value="Address">
+                  <input type="text" class="form-control" name="address" value="{{$item->address}}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputRole">{{__('user.admin.edit.phone')}}</label>
@@ -51,6 +53,7 @@
                   <input type="file">
                 </div>               
               </div>
+            @endforeach
               <div class="box-footer">
                 <button type="submit" class="btn btn-primary" name="submit">{{__('user.admin.edit.submit')}}</button>
               </div>
