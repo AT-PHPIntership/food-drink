@@ -43,4 +43,17 @@ class UsersController extends Controller
         ]);
         return redirect()->route('user.index');
     }
+    
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param User $user User object
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function edit(User $user)
+    {
+        $user = $user;
+        return view('admin.user.edit');
+    }
 }

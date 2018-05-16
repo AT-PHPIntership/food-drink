@@ -1,16 +1,17 @@
 @extends('admin.layout.master')
+@section('title', __('user.admin.create.title'))
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Create Form
-        <small>User</small>
+        {{__('user.admin.create.form_title')}}
+        <small>{{__('user.admin.create.user')}}</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Create</a></li>
-        <li><a href="#">Forms</a></li>
-        <li class="active">Users</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i>{{__('user.admin.create.create')}}</a></li>
+        <li><a href="#">{{__('user.admin.create.form')}}</a></li>
+        <li class="active">{{__('user.admin.create.user')}}</li>
       </ol>
     </section>
     <!-- Main content -->
