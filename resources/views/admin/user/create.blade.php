@@ -29,20 +29,16 @@
             {{csrf_field()}}
               <div class="box-body">
                 <div class="form-group">
-                  <label for="exampleInputName">Name</label>
-                  <input type="text" class="form-control" id="exampleInputName" name="name" placeholder="Enter name">
+                  <label for="InputName">Name</label>
+                  <input type="text" class="form-control" id="InputName" name="name" placeholder="Enter name">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputEmail">Email</label>
-                  <input type="email" class="form-control" id="exampleInputEmail" name="email" placeholder="Enter name">
+                  <label for="InputEmail">Email</label>
+                  <input type="text" class="form-control" id="InputEmail" name="email" placeholder="Enter name">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword" name="password" placeholder="Password">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputRole">Role</label>
-                  <input type="text" class="form-control" id="exampleInputRole" name="role" placeholder="Role">
+                  <label for="InputPassword">Password</label>
+                  <input type="password" class="form-control" id="InputPassword" name="password" placeholder="Password">
                 </div>
                 <!-- <div class="form-group">
                   <label for="exampleInputFile">File input</label>

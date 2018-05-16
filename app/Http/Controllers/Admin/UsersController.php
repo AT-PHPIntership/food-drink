@@ -35,17 +35,15 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate(request(), [
+        $request->validate([
             'name'=>'bail|required',
-            'email'=>'bail|required|unique:users',
-            'password'=>'bail|required',
-            'role'=>'bail|required'
+            'email'=>'bail|required|unique:users|email',
+            'password'=>'bail|required|min:9'
         ]);
         User::create([
-            'name'=>trim($request->name),
-            'email'=>trim($request->email),
-            'password'=>bcrypt(trim($request->password)),
-            'role'=>trim($request->role)
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'password'=>bcrypt($request->password),
         ]);
         return redirect()->route('user.index');
     }
