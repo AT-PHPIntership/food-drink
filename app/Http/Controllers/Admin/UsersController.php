@@ -57,4 +57,22 @@ class UsersController extends Controller
         $user = $user;
         return view('admin.user.edit');
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param int $id id of user
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function destroy($id)
+    {
+        //find user with @param $id
+        $user = User::find($id);
+
+        //delete user just find
+        $user->delete();
+
+        return redirect()->route('user.index')->with('status', 'Successfully deleted the user!');
+    }
 }

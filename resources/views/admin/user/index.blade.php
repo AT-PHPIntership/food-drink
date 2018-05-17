@@ -13,6 +13,11 @@
 
     <!-- Main content -->
     <section class="content">
+      @if (session('status'))
+          <div class="alert alert-success">
+              {{ session('status') }}
+          </div>
+      @endif
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
@@ -52,7 +57,11 @@
                   <td><img src="{{ asset('images/users/'.$user->userInfo->avatar) }}" alt="{{ $user->userInfo->avatar }}" class="avatar"></td>
                   <td>
                     <a href=""><i class="fa fa-edit"></i></a> |
-                    <a href=""><i class="fa fa-trash"></i></a>
+                    <form method="POST" action="/admin/user/{{ $user->id }}">
+                      @csrf
+                      {{ method_field('DELETE') }}
+                      <button type="submit" class="btn"><i class="fa fa-trash"></i></button>
+                    </form>
                   </td>
                 </tr>
                 @endforeach
