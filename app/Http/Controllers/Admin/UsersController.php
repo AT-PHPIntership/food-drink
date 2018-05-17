@@ -44,12 +44,11 @@ class UsersController extends Controller
             'password'=>bcrypt($request->password)
         ];
         Mail::send('email.content', $data, function ($message) use ($data) {
-            $message->from('phongtom1811@gmail.com');
             $message->to($data['email']);
             $message->subject('You Create User Success');
         });
         if (User::create($data)) {
-            $request->session()->flash('msg', 'Thêm thành công');
+            $request->session()->flash('msg',__('user.admin.index.create_success'));
             return redirect()->route('user.index');
         }
     }

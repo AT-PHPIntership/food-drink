@@ -2,7 +2,8 @@
     return [
         'admin' => [
             'index' => [
-                'title' => 'Show List User'
+                'title' => 'Show List User',
+                'create_success' => 'Create Success'
             ],
             'edit' => [
                 'title' => 'Edit User',
