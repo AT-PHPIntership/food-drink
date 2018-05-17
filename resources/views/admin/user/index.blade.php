@@ -5,6 +5,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>List Users</h1>
+      @if(Session::has('msg'))
+        <div class="nNote nInformation hideit">
+          <p><strong>Thông báo: </strong> {{Session::get('msg')}}</p>
+        </div>
+      @endif
       <ol class="breadcrumb">
         <li><a href="{{route('admin')}}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">User</li>

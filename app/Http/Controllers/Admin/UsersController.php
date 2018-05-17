@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Http\Requests\StoreUsers;
+use Illuminate\Support\Facades\Mail;
 
 class UsersController extends Controller
 {
@@ -37,12 +38,20 @@ class UsersController extends Controller
      */
     public function store(StoreUsers $request)
     {
-        User::create([
+        $data = [
             'name'=>$request->name,
             'email'=>$request->email,
-            'password'=>bcrypt($request->password),
-        ]);
-        return redirect()->route('user.index');
+            'password'=>bcrypt($request->password)
+        ];
+        Mail::send('email.content', $data, function ($message) use ($data) {
+            $message->from('phongtom1811@gmail.com');
+            $message->to($data['email']);
+            $message->subject('You Create User Success');
+        });
+        if (User::create($data)) {
+            $request->session()->flash('msg', 'Thêm thành công');
+            return redirect()->route('user.index');
+        }
     }
     
     /**
