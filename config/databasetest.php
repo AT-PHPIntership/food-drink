@@ -1,5 +1,6 @@
 <?php
 return [
-     'NUMBER_RECORD_CREATE' => 20,
-     'RECORD_LIMIT' => 15,
+     'NUMBER_RECORD_CREATE' => 31,
+     'RECORD_LIMIT' => 11,
+     'LAST_RECORD' => 2,
 ];
