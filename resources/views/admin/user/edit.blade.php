@@ -32,11 +32,15 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail">{{__('user.admin.edit.email')}}</label>
-                  <input type="email" class="form-control" disabled name="email" placeholder="{{$user->email}}">
+                  <input type="email" class="form-control" name="email" value="{{$user->email}}">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword">{{__('user.admin.edit.password')}}</label>
+                  <input type="password" class="form-control" name="password">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputRole">{{__('user.admin.edit.address')}}</label>
-                  <input type="text" class="form-control" name="address" placeholder="{{$user->userInfo->address}}">
+                  <input type="text" class="form-control" name="address" value="{{$user->userInfo->address}}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputRole">{{__('user.admin.edit.phone')}}</label>
@@ -44,7 +48,7 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputFile">{{__('user.admin.edit.avatar')}}</label>
-                  <img src="{{$user->userInfo->avatar_url}}" alt="{{$user->userInfo->phone}}" class="avatar-edit">
+                  <img src="{{$user->userInfo->avatar_url}}" alt="{{$user->name}}" class="avatar-edit">
                   <input type="file">
                 </div>               
               </div>
