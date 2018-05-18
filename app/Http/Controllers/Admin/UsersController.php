@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Http\Requests\StoreUsers;
+use App\Http\Requests\UpdateUsersRequest;
 
 class UsersController extends Controller
 {
@@ -54,7 +55,29 @@ class UsersController extends Controller
     */
     public function edit(User $user)
     {
-        $result = User::with('userInfo')->findOrFail($user)->first();
-        return view('admin.user.edit')->with('result', $result);
+        $user->load('userInfo');
+        return view('admin.user.edit')->with('user', $user);
+    }
+
+     /**
+    * Update the specified resource in storage.
+    *
+    * @param \Illuminate\Http\Request $request request
+    * @param user                     $user    object
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function update(UpdateUsersRequest $request, $user)
+    {
+        // $data = $request->only([
+        //     'phone',
+        //     'address',
+        //     'avatar'
+        // ]);
+
+        // User::create($request->name);
+        // UserInfo::create($data);
+        // return redirect()->route('user.index');
+        return view('admin.user.update');
     }
 }
