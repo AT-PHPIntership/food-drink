@@ -25,7 +25,9 @@ class UpdateUsersRequest extends FormRequest
     {
         return [
             'name'=>'required|string|max:50',
-            'phone'=>'numeric|phone'
+            'address'=>'string|max:255',
+            'phone'=>'string|min:9|max:50',
+            'avatar'=>'image|mimes:png,jpg,jpeg',
         ];
     }
 }
