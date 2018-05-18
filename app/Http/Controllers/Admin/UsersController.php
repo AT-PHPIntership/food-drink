@@ -55,8 +55,8 @@ class UsersController extends Controller
     */
     public function edit(User $user)
     {
-        $user = $user;
-        return view('admin.user.edit');
+        $user->load('userInfo');
+        return view('admin.user.edit')->with('user', $user);
     }
 
     /**

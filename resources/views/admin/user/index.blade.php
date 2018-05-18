@@ -6,7 +6,7 @@
     <section class="content-header">
       <h1>List Users</h1>
       <ol class="breadcrumb">
-        <li><a href="{{route('admin')}}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{{route('admin')}}"><i class="fa fa-dashboard"></i> {{__('admin.dashboard')}}</a></li>
         <li class="active">User</li>
       </ol>
     </section>
@@ -61,7 +61,7 @@
                   </td>
                   @else
                   <td>
-                    <a href=""><i class="fa fa-edit"></i></a> |
+                    <a href="{{route('user.edit', $user->id)}}"><i class="fa fa-edit"></i></a> |
                     <form method="POST" action="{!! route('user.destroy', ['user' => $user->id]) !!}" class="form-trash">
                       @csrf
                       {{ method_field('DELETE') }}

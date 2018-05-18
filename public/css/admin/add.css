@@ -6,8 +6,11 @@
   color: #fff;
   font-size: 14px;
   font-weight: bold;
+}  
+.avatar-edit {
+  width: 100px;
 }
-.avatar {
+.avatar{
   width: 30px;
 }
 .but-trash {
