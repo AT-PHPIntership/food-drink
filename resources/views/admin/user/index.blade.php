@@ -6,7 +6,7 @@
     <section class="content-header">
       <h1>List Users</h1>
       <ol class="breadcrumb">
-        <li><a href="{{route('admin')}}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{{route('admin')}}"><i class="fa fa-dashboard"></i> {{__('admin.dashboard')}}</a></li>
         <li class="active">User</li>
       </ol>
     </section>
@@ -51,7 +51,7 @@
                   <td>{{ $user->userInfo->phone }}</td>
                   <td><img src="{{ asset('images/users/'.$user->userInfo->avatar) }}" alt="{{ $user->userInfo->avatar }}" class="avatar"></td>
                   <td>
-                    <a href=""><i class="fa fa-edit"></i></a> |
+                    <a href="{{route('user.edit', $user->id)}}"><i class="fa fa-edit"></i></a> |
                     <a href=""><i class="fa fa-trash"></i></a>
                   </td>
                 </tr>
