@@ -28,11 +28,11 @@
               <div class="box-body">
                 <div class="form-group">
                   <label for="exampleInputName">{{__('user.admin.edit.name')}}</label>
-                  <input type="text" class="form-control" name="name" value="{{$result->name}}">
+                  <input type="text" class="form-control" name="name" value="{{$user->name}}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail">{{__('user.admin.edit.email')}}</label>
-                  <input type="email" class="form-control" name="email" value="{{$result->email}}">
+                  <input type="email" class="form-control" name="email" value="{{$user->email}}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword">{{__('user.admin.edit.password')}}</label>
@@ -40,15 +40,15 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputRole">{{__('user.admin.edit.address')}}</label>
-                  <input type="text" class="form-control" name="address" value="{{$result->userInfo->address}}">
+                  <input type="text" class="form-control" name="address" value="{{$user->userInfo->address}}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputRole">{{__('user.admin.edit.phone')}}</label>
-                  <input type="text" class="form-control" name="phone" value="{{$result->userInfo->phone}}">
+                  <input type="text" class="form-control" name="phone" value="{{$user->userInfo->phone}}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputFile">{{__('user.admin.edit.avatar')}}</label>
-                  <img src="{{$result->userInfo->avatar_url}}" alt="{{$result->userInfo->phone}}" class="avatar-edit">
+                  <img src="{{$user->userInfo->avatar_url}}" alt="{{$user->name}}" class="avatar-edit">
                   <input type="file">
                 </div>               
               </div>

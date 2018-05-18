@@ -54,7 +54,7 @@ class UsersController extends Controller
     */
     public function edit(User $user)
     {
-        User::with('userInfo')->findOrFail($user);
-        return view('admin.user.edit')->with('result', $user);
+        $user->load('userInfo');
+        return view('admin.user.edit')->with('user', $user);
     }
 }
