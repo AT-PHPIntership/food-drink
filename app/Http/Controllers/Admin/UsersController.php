@@ -12,12 +12,14 @@ class UsersController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param \Illuminate\Http\Request $request request
+     *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
-        $name_user = $request->input('name_user_search');
-        $users = User::with('userInfo')->where('name', 'LIKE', '%' . $name_user . '%')->paginate(config('define.number_pages'));
+        $nameUser = $request->input('name_user_search');
+        $users = User::with('userInfo')->where('name', 'LIKE', '%' . $nameUser . '%')->paginate(config('define.number_pages'));
         return view('admin.user.index', compact('users'));
     }
     /**
