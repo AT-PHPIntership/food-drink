@@ -19,7 +19,5 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
         'uses'=>'HomeController@index',
         'as'=>'admin'
     ]);
-    Route::resource('user', 'UsersController')->only([
-        'index','create','store','edit', 'destroy'
-    ]);
+    Route::resource('user', 'UsersController');
 });

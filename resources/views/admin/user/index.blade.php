@@ -55,6 +55,11 @@
                   <td>{{ $user->userInfo->address }}</td>
                   <td>{{ $user->userInfo->phone }}</td>
                   <td><img src="{{ asset('images/users/'.$user->userInfo->avatar) }}" alt="{{ $user->userInfo->avatar }}" class="avatar"></td>
+                  @if($user->id ==1)
+                  <td>
+                  <a href=""><i class="fa fa-edit"></i></a>
+                  </td>
+                  @else
                   <td>
                     <a href=""><i class="fa fa-edit"></i></a> |
                     <form method="POST" action="{!! route('user.destroy', ['user' => $user->id]) !!}" class="form-trash">
@@ -63,6 +68,7 @@
                       <button type="submit" class="but-trash"><i class="fa fa-trash"></i></button>
                     </form>
                   </td>
+                  @endif
                 </tr>
                 @endforeach
               </table>
