@@ -23,7 +23,9 @@
           <div class="box box-primary">
             <!-- /.box-header -->
             <!-- form start -->
-            <form method="POST" action="{{route('user.update', $user->id)}}" enctype="multipart/form-data">
+            <form method="POST" action="{{route('user.update', ['user' => $user->id])}}" enctype="multipart/form-data">
+            <!-- {{method_field('PUT')}} -->
+            @method('PUT')
             @csrf
               <div class="box-body">
                 <div class="form-group">
@@ -32,11 +34,7 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail">{{__('user.admin.edit.email')}}</label>
-                  <input type="email" class="form-control" name="email" value="{{$user->email}}">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword">{{__('user.admin.edit.password')}}</label>
-                  <input type="password" class="form-control" name="password">
+                  <input type="email" class="form-control" disabled name="email" value="{{$user->email}}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputRole">{{__('user.admin.edit.address')}}</label>
@@ -49,7 +47,7 @@
                 <div class="form-group">
                   <label for="exampleInputFile">{{__('user.admin.edit.avatar')}}</label>
                   <img src="{{$user->userInfo->avatar_url}}" alt="{{$user->name}}" class="avatar-edit">
-                  <input type="file">
+                  <input type="file" name="avatar">
                 </div>               
               </div>
               <div class="box-footer">

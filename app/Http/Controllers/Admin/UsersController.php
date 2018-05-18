@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Http\Requests\StoreUsers;
 use App\Http\Requests\UpdateUsersRequest;
+use App\UserInfo;
+use Session;
 
 class UsersController extends Controller
 {
@@ -63,21 +65,31 @@ class UsersController extends Controller
     * Update the specified resource in storage.
     *
     * @param \Illuminate\Http\Request $request request
-    * @param user                     $user    object
+    * @param User                     $user    object
     *
     * @return \Illuminate\Http\Response
     */
-    public function update(UpdateUsersRequest $request, $user)
+    public function update(UpdateUsersRequest $request, User $user)
     {
-        // $data = $request->only([
-        //     'phone',
-        //     'address',
-        //     'avatar'
-        // ]);
-
-        // User::create($request->name);
-        // UserInfo::create($data);
-        // return redirect()->route('user.index');
-        return view('admin.user.update');
+        $user->load('userInfo');
+        $userId = $user->userInfo->id;
+        $user = User::find($user->id)->update($request->only(['name']));
+        if ($request->hasFile('avatar')) {
+            $image = $request->file('avatar');
+            $nameNew = time().'.'.$image->getClientOriginalExtension();
+            $image->move(public_path(config('define.images_path_users')), $nameNew);
+            UserInfo::find($userId)->update([
+                'address' => $request->address,
+                'phone' => $request->phone,
+                'avatar' => $nameNew
+            ]);
+        } else {
+            UserInfo::find($userId)->update([
+                'address' => $request->address,
+                'phone' => $request->phone,
+            ]);
+        }
+        Session::flash('message', trans('message.user.update'));
+        return redirect()->route('user.index');
     }
 }
