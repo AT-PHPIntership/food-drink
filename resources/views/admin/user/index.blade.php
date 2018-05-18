@@ -57,10 +57,10 @@
                   <td><img src="{{ asset('images/users/'.$user->userInfo->avatar) }}" alt="{{ $user->userInfo->avatar }}" class="avatar"></td>
                   <td>
                     <a href=""><i class="fa fa-edit"></i></a> |
-                    <form method="POST" action="/admin/user/{{ $user->id }}">
+                    <form method="POST" action="{!! route('user.destroy', ['user' => $user->id]) !!}" class="form-trash">
                       @csrf
                       {{ method_field('DELETE') }}
-                      <button type="submit" class="btn"><i class="fa fa-trash"></i></button>
+                      <button type="submit" class="but-trash"><i class="fa fa-trash"></i></button>
                     </form>
                   </td>
                 </tr>

@@ -7,6 +7,18 @@
   font-size: 14px;
   font-weight: bold;
 }
-.avatar{
+.avatar {
   width: 30px;
+}
+.but-trash {
+  background:none!important;
+  color:inherit;
+  border:none; 
+  padding:0!important;
+  font: inherit;
+  cursor: pointer;
+  color: #3c8dbc;
+}
+.form-trash {
+  display: inline;
 }
