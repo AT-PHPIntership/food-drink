@@ -13,7 +13,6 @@
 
     <!-- Main content -->
     <section class="content">
-      @include('flash::message')
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
@@ -50,7 +49,7 @@
                   <td>{{ $user->userInfo->address }}</td>
                   <td>{{ $user->userInfo->phone }}</td>
                   <td><img src="{{ asset('images/users/'.$user->userInfo->avatar) }}" alt="{{ $user->userInfo->avatar }}" class="avatar"></td>
-                  @if($user->id == config('define.role_admin'))
+                  @if($user->id == App\User::ROOT_ADMIN)
                   <td>
                   <a href=""><i class="fa fa-edit"></i></a>
                   </td>

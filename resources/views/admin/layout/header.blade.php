@@ -77,4 +77,5 @@
         </div>
 
       </nav>
+      @include('flash::message')
     </header>
