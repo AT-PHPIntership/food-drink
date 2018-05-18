@@ -9,8 +9,8 @@
         <small>{{__('user.admin.edit.user')}}</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> {{__('admin.dashboard')}}</a></li>
-        <li><a href="#">{{__('admin.manage_user')}}</a></li>
+        <li><a href="{{route('admin')}}"><i class="fa fa-dashboard"></i> {{__('admin.dashboard')}}</a></li>
+        <li><a href="{{route('user.index')}}">{{__('admin.manage_user')}}</a></li>
         <li class="active">{{__('user.admin.edit.title')}}</li>
       </ol>
     </section>
@@ -25,15 +25,14 @@
             <!-- form start -->
             <form method="POST" action="" enctype="multipart/form-data">
             @csrf
-            @foreach($result as $k => $item)
               <div class="box-body">
                 <div class="form-group">
                   <label for="exampleInputName">{{__('user.admin.edit.name')}}</label>
-                  <input type="text" class="form-control" name="name" value="{{$item->name}}">
+                  <input type="text" class="form-control" name="name" value="{{$result->name}}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail">{{__('user.admin.edit.email')}}</label>
-                  <input type="email" class="form-control" name="email" value="{{$item->email}}">
+                  <input type="email" class="form-control" name="email" value="{{$result->email}}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword">{{__('user.admin.edit.password')}}</label>
@@ -41,19 +40,18 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputRole">{{__('user.admin.edit.address')}}</label>
-                  <input type="text" class="form-control" name="address" value="{{$item->userInfo->address}}">
+                  <input type="text" class="form-control" name="address" value="{{$result->userInfo->address}}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputRole">{{__('user.admin.edit.phone')}}</label>
-                  <input type="text" class="form-control" name="phone" value="{{$item->userInfo->phone}}">
+                  <input type="text" class="form-control" name="phone" value="{{$result->userInfo->phone}}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputFile">{{__('user.admin.edit.avatar')}}</label>
-                  <img src="{{$item->userInfo->avatar_url}}" alt="{{$item->userInfo->phone}}" class="avatar-edit">
+                  <img src="{{$result->userInfo->avatar_url}}" alt="{{$result->userInfo->phone}}" class="avatar-edit">
                   <input type="file">
                 </div>               
               </div>
-            @endforeach
               <div class="box-footer">
                 <button type="submit" class="btn btn-primary" name="submit">{{__('user.admin.edit.submit')}}</button>
               </div>
