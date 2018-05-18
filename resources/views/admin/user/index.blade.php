@@ -13,18 +13,13 @@
 
     <!-- Main content -->
     <section class="content">
-      @if (session('status'))
-          <div class="alert alert-success">
-              {{ session('status') }}
-          </div>
-      @endif
+      @include('flash::message')
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Show list users</h3>
               <a href="" class="add-users">New user</a>
-
               <div class="box-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
                   <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
@@ -55,7 +50,7 @@
                   <td>{{ $user->userInfo->address }}</td>
                   <td>{{ $user->userInfo->phone }}</td>
                   <td><img src="{{ asset('images/users/'.$user->userInfo->avatar) }}" alt="{{ $user->userInfo->avatar }}" class="avatar"></td>
-                  @if($user->id ==1)
+                  @if($user->id == config('define.role_admin'))
                   <td>
                   <a href=""><i class="fa fa-edit"></i></a>
                   </td>

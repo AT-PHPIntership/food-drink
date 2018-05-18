@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Http\Requests\StoreUsers;
-use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -69,6 +68,7 @@ class UsersController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('user.index')->with('status', 'Successfully deleted the user!');
+        flash('Successfully deleted the user!')->success();
+        return redirect()->route('user.index');
     }
 }
