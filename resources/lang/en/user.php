@@ -26,6 +26,7 @@
             ],
             'message' => [
                 'success' => 'Successfully deleted the user!',
+                'cancel' => 'can not delete admin',
             ],
         ]
     ];

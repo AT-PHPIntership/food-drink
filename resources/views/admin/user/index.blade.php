@@ -49,13 +49,11 @@
                   <td>{{ $user->userInfo->address }}</td>
                   <td>{{ $user->userInfo->phone }}</td>
                   <td><img src="{{ asset('images/users/'.$user->userInfo->avatar) }}" alt="{{ $user->userInfo->avatar }}" class="avatar"></td>
-                  @if($user->id == App\User::ROOT_ADMIN)
                   <td>
-                  <a href=""><i class="fa fa-edit"></i></a>
+                    <a href=""><i class="fa fa-edit"></i></a>  |
                   </td>
-                  @else
+                  @if($user->id !== App\User::ROOT_ADMIN)
                   <td>
-                    <a href="{{route('user.edit', $user->id)}}"><i class="fa fa-edit"></i></a> |
                     <form method="POST" action="{!! route('user.destroy', ['user' => $user->id]) !!}" class="form-trash">
                       @csrf
                       {{ method_field('DELETE') }}
