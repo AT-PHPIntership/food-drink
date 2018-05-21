@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Http\Requests\StoreUsers;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\SendEmail;
+use App\Jobs\SendEmailJob;
 
 class UsersController extends Controller
 {
@@ -38,17 +40,15 @@ class UsersController extends Controller
      */
     public function store(StoreUsers $request)
     {
-        $data = [
+        $data = User::create([
             'name'=>$request->name,
             'email'=>$request->email,
             'password'=>bcrypt($request->password)
-        ];
-        Mail::send('email.content', $data, function ($message) use ($data) {
-            $message->to($data['email']);
-            $message->subject('You Create User Success');
-        });
-        if (User::create($data)) {
-            $request->session()->flash('msg',__('user.admin.index.create_success'));
+        ]);
+        $job = (new SendEmailJob($data))->delay(now()->addSeconds(10));
+                dispatch($job);
+        if ($data) {
+            $request->session()->flash('msg', __('user.admin.index.create_success'));
             return redirect()->route('user.index');
         }
     }
