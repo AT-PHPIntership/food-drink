@@ -59,7 +59,7 @@
                     <form method="POST" action="{!! route('user.destroy', ['user' => $user->id]) !!}" class="form-trash">
                       @csrf
                       {{ method_field('DELETE') }}
-                      <button type="submit" class="but-trash" onclick="return confirm('Are you sure?')"><i class="fa fa-trash"></i></button>
+                      <button type="submit" class="but-trash"><i class="fa fa-trash"></i></button>
                     </form>
                   </td>
                   @endif

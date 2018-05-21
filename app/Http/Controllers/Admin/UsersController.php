@@ -68,7 +68,7 @@ class UsersController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        flash('Successfully deleted the user!')->success();
+        flash(trans('user.admin.message.success'))->success();
         return redirect()->route('user.index');
     }
 }
