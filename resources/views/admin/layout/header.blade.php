@@ -21,6 +21,8 @@
   <link rel="stylesheet" href="/bower_components/admin-lte/dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="{{ asset('css/admin/add.css') }}">
 
+  <!-- laracasts/flash style -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -75,4 +77,5 @@
         </div>
 
       </nav>
+      @include('flash::message')
     </header>
