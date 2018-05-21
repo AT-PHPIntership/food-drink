@@ -20,6 +20,6 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
         'as'=>'admin'
     ]);
     Route::resource('user', 'UsersController')->only([
-        'index','create','store','edit'
+        'index','create','store', 'edit'
     ]);
 });
