@@ -71,25 +71,26 @@ class UsersController extends Controller
     */
     public function update(UpdateUsersRequest $request, User $user)
     {
-        $user->load('userInfo');
-        $userId = $user->userInfo->id;
-        $user = User::find($user->id)->update($request->only(['name']));
+        // \DB::connection()->enableQueryLog();
+        $user->update($request->only(['name']));
         if ($request->hasFile('avatar')) {
             $image = $request->file('avatar');
             $nameNew = time().'.'.$image->getClientOriginalExtension();
             $image->move(public_path(config('define.images_path_users')), $nameNew);
-            UserInfo::find($userId)->update([
+            UserInfo::where('user_id', $user->id)->update([
                 'address' => $request->address,
                 'phone' => $request->phone,
                 'avatar' => $nameNew
             ]);
         } else {
-            UserInfo::find($userId)->update([
+            UserInfo::where('user_id', $user->id)->update([
                 'address' => $request->address,
                 'phone' => $request->phone,
             ]);
         }
         Session::flash('message', trans('message.user.update'));
         return redirect()->route('user.index');
+        // $queries = \DB::getQueryLog();
+        // return dd($queries);
     }
 }
