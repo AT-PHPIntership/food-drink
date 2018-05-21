@@ -71,11 +71,10 @@ class UsersController extends Controller
     */
     public function update(UpdateUsersRequest $request, User $user)
     {
-        // \DB::connection()->enableQueryLog();
         $user->update($request->only(['name']));
         if ($request->hasFile('avatar')) {
             $image = $request->file('avatar');
-            $nameNew = time().'.'.$image->getClientOriginalExtension();
+            $nameNew = time().'_'.md5(rand(0, 99999)).'.'.$image->getClientOriginalExtension();
             $image->move(public_path(config('define.images_path_users')), $nameNew);
             UserInfo::where('user_id', $user->id)->update([
                 'address' => $request->address,
@@ -90,7 +89,5 @@ class UsersController extends Controller
         }
         Session::flash('message', trans('message.user.update'));
         return redirect()->route('user.index');
-        // $queries = \DB::getQueryLog();
-        // return dd($queries);
     }
 }
