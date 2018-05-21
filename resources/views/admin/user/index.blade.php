@@ -16,6 +16,7 @@
       </ol>
     </section>
 
+    @include('admin.layout.message');
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -24,7 +25,6 @@
             <div class="box-header">
               <h3 class="box-title">Show list users</h3>
               <a href="" class="add-users">New user</a>
-
               <div class="box-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
                   <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
@@ -56,9 +56,17 @@
                   <td>{{ $user->userInfo->phone }}</td>
                   <td><img src="{{ asset('images/users/'.$user->userInfo->avatar) }}" alt="{{ $user->userInfo->avatar }}" class="avatar"></td>
                   <td>
-                    <a href="{{route('user.edit', $user->id)}}"><i class="fa fa-edit"></i></a> |
-                    <a href=""><i class="fa fa-trash"></i></a>
+                    <a href=""><i class="fa fa-edit"></i></a>  |
                   </td>
+                  @if($user->id !== App\User::ROOT_ADMIN)
+                  <td>
+                    <form method="POST" action="{!! route('user.destroy', ['user' => $user->id]) !!}" class="form-trash">
+                      @csrf
+                      {{ method_field('DELETE') }}
+                      <button type="submit" class="but-trash"><i class="fa fa-trash"></i></button>
+                    </form>
+                  </td>
+                  @endif
                 </tr>
                 @endforeach
               </table>

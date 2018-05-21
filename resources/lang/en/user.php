@@ -24,6 +24,10 @@
                 'user' => 'User',
                 'create' => 'Create',
                 'form' => 'Form'
-            ]
+            ],
+            'message' => [
+                'success' => 'Successfully deleted the user!',
+                'cancel' => 'can not delete admin',
+            ],
         ]
     ];
