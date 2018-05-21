@@ -5,11 +5,17 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\UserInfo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, SoftDeletes;
 
+    /**
+     * Value of root admin
+     */
+    const ROOT_ADMIN = 1;
+    
     /**
      * The attributes that are mass assignable.
      *
@@ -19,6 +25,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'deleted_at',
     ];
 
     /**

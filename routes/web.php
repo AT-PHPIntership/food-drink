@@ -19,7 +19,5 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
         'uses'=>'HomeController@index',
         'as'=>'admin'
     ]);
-    Route::resource('user', 'UsersController')->except([
-        'show'
-    ]);
+    Route::resource('user', 'UsersController');
 });

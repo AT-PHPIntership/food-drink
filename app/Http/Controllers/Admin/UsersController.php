@@ -61,7 +61,7 @@ class UsersController extends Controller
         return view('admin.user.edit')->with('user', $user);
     }
 
-     /**
+    /**
     * Update the specified resource in storage.
     *
     * @param \Illuminate\Http\Request $request request
@@ -88,6 +88,24 @@ class UsersController extends Controller
             ]);
         }
         Session::flash('message', trans('message.user.update'));
+        return redirect()->route('user.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param User $user User object
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function destroy(User $user)
+    {
+        if ($user->id == User::ROOT_ADMIN) {
+            flash(trans('user.admin.message.cancel'))->error();
+            return redirect()->route('user.index');
+        }
+        $user->delete();
+        flash(trans('user.admin.message.success'))->success();
         return redirect()->route('user.index');
     }
 }
