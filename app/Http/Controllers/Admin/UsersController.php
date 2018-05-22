@@ -22,7 +22,7 @@ class UsersController extends Controller
     public function index(Request $request)
     {
         $nameUser = $request->input('name_user_search');
-        $users = User::with('userInfo')->where('name', 'LIKE', '%' . $nameUser . '%')->paginate(config('define.number_pages'));
+        $users = User::search($nameUser)->with('userInfo')->paginate(config('define.number_pages'));
         return view('admin.user.index', compact('users'));
     }
     /**
