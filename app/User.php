@@ -6,10 +6,16 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\UserInfo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\SearchTrait;
 
 class User extends Authenticatable
 {
-    use Notifiable, SoftDeletes;
+    use Notifiable, SoftDeletes, SearchTrait;
+
+    protected $search = [
+        'name',
+        'email'
+    ];
 
     /**
      * Value of root admin
