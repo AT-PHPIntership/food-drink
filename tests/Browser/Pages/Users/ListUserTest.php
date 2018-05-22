@@ -8,6 +8,23 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class ListUserTest extends DuskTestCase
 {
+    use DatabaseMigrations;
+    const NUMBER_RECORD_CREATE = 31;
+    const RECORD_LIMIT = 11;
+    const LAST_RECORD = 2;
+
+    /**
+    * Override function setUp() for make user login
+    *
+    * @return void
+    */
+    public function setUp()
+    {
+        parent::setUp();
+        
+        factory('App\User', self::NUMBER_RECORD_CREATE)->create();
+        factory('App\UserInfo', self::NUMBER_RECORD_CREATE)->create();
+    }
     /**
      * A Dusk test Route show list user.
      *
@@ -17,8 +34,6 @@ class ListUserTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/admin/user')
-                    ->assertPathIs('/admin/user')
-                    ->pause(5000)
                     ->assertSee('List Users');
         });
     }
@@ -32,7 +47,7 @@ class ListUserTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->visit('/admin/user');
             $elements = $browser->elements('.table tr');
-            $this->assertCount(config('databasetest.RECORD_LIMIT'), $elements);
+            $this->assertCount(self::RECORD_LIMIT, $elements);
         });
     }
     /**
@@ -45,7 +60,7 @@ class ListUserTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->visit('/admin/user?page=4');
             $elements = $browser->elements('.table tr');
-            $this->assertCount(config('databasetest.LAST_RECORD'), $elements);
+            $this->assertCount(self::LAST_RECORD, $elements);
         });
     }
     /**
