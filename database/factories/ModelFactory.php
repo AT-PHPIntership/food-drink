@@ -94,5 +94,6 @@ $factory->defineAs(App\User::class, 'admin', function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => bcrypt(config('auth.defaults.passwords')), // secret
         'role' => 1,
+        'deleted_at' => null,
     ];
- });
+});

@@ -60,19 +60,19 @@ class EditUserTest extends DuskTestCase
      *
      * @return void
      */
-     public function testValidationUpdateUser()
-     {
-        $user = User::find(self::NUMBER_RECORD_FIND);
-        $this->browse(function (Browser $browser) use ($user) {
-            $browser->visit('/admin/user/'.$user->id.'/edit')
-                    ->type('name', '')
-                    ->type('phone', '(873) 396-4030(873) 396-4030(873) 396-4030(873) 396-4030(873) 396-4030(873) 396-4030')
-                    ->type('address', '4361 Jayce Summit Apt. 286North Mariobury')
-                    ->press('submit')
-                    ->assertPathIs('/admin/user/'.$user->id.'/edit')
-                    ->assertSee('The name field is required.')
-                    ->assertSee('The phone may not be greater than 50 characters.');
-        });
-     }
+    public function testValidationUpdateUser()
+    {
+    $user = User::find(self::NUMBER_RECORD_FIND);
+    $this->browse(function (Browser $browser) use ($user) {
+        $browser->visit('/admin/user/'.$user->id.'/edit')
+                ->type('name', '')
+                ->type('phone', '(873) 396-4030(873) 396-4030(873) 396-4030(873) 396-4030(873) 396-4030(873) 396-4030')
+                ->type('address', '4361 Jayce Summit Apt. 286North Mariobury')
+                ->press('submit')
+                ->assertPathIs('/admin/user/'.$user->id.'/edit')
+                ->assertSee('The name field is required.')
+                ->assertSee('The phone may not be greater than 50 characters.');
+    });
+    }
  
 }
