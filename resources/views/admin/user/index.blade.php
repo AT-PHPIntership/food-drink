@@ -22,7 +22,7 @@
               <a href="" class="add-users">New user</a>
               <div class="box-tools">
                 <form class="input-group input-group-sm" style="width: 150px;" action="{!! route('user.index') !!}" method="GET">
-                  <input type="text" name="name_user_search" class="form-control pull-right" placeholder="Search">
+                  <input type="text" name="user_name" class="form-control pull-right" placeholder="Search">
                   <div class="input-group-btn">
                   <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
                   </div>

@@ -6,9 +6,13 @@ use Illuminate\Support\Facades\Schema;
 trait SearchTrait
 {
     /**
-     * @param \Illuminate\Database\Eloquent\Builder|static $query
-     * @param string $keyword
-     * @param boolean $matchAllFields
+     * Search with a input
+     *
+     * @param \Illuminate\Database\Eloquent\Builder|static $query          Query Search
+     * @param string                                       $keyword        Value Search
+     * @param boolean                                      $matchAllFields The Inputs By Boolean
+     *
+     * @return mixed
      */
     public static function scopeSearch($query, $keyword, $matchAllFields = false)
     {
