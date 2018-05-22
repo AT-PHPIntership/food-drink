@@ -28,7 +28,7 @@ class EditUserTest extends DuskTestCase
      */
     public function testEditUser()
     {
-        $user = User::find(self::NUMBER_RECORD_FIND);
+        $user = User::first();
         $userInfo = $user->load('userInfo');
         $this->browse(function (Browser $browser) use ($user, $userInfo) {
             $browser->visit('admin/user/'.$user->id.'/edit')
@@ -45,13 +45,14 @@ class EditUserTest extends DuskTestCase
     */
     public function testEditUserSuccess()
     {
-        $user = User::find(self::NUMBER_RECORD_FIND);
+        $user = User::first();
         $this->browse(function (Browser $browser) use ($user) {
             $browser->visit('/admin/user/'.$user->id.'/edit')
                     ->type('name', 'test name')
                     ->press('submit')
                     ->assertPathIs('/admin/user')
-                    ->assertSee('Successfully Updated User');
+                    ->assertSee('Successfully Updated User')
+                    ->assertSee('test name');
         });
     }
 
@@ -62,7 +63,7 @@ class EditUserTest extends DuskTestCase
      */
     public function testValidationUpdateUser()
     {
-    $user = User::find(self::NUMBER_RECORD_FIND);
+    $user = User::first();
     $this->browse(function (Browser $browser) use ($user) {
         $browser->visit('/admin/user/'.$user->id.'/edit')
                 ->type('name', '')
