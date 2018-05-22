@@ -29,9 +29,10 @@ class EditUserTest extends DuskTestCase
     public function testEditUser()
     {
         $user = User::find(self::NUMBER_RECORD_FIND);
-        $this->browse(function (Browser $browser) use ($user) {
+        $userInfo = $user->load('userInfo');
+        $this->browse(function (Browser $browser) use ($user, $userInfo) {
             $browser->visit('admin/user/'.$user->id.'/edit')
-                    ->assertSee('Edit Form');
+                    ->assertSee('Edit Form', $user->name, $userInfo->userInfo->phone, $userInfo->userInfo->address);
         });
     }
 
@@ -47,11 +48,10 @@ class EditUserTest extends DuskTestCase
         $user = User::find(self::NUMBER_RECORD_FIND);
         $this->browse(function (Browser $browser) use ($user) {
             $browser->visit('/admin/user/'.$user->id.'/edit')
-                    ->resize(900,1000)
-                    ->type('name', $user->name)
+                    ->type('name', 'test name')
                     ->press('submit')
-                    ->assertSee('Successfully Updated User')
-                    ->assertPathIs('/admin/user');
+                    ->assertPathIs('/admin/user')
+                    ->assertSee('Successfully Updated User');
         });
     }
 
@@ -72,7 +72,44 @@ class EditUserTest extends DuskTestCase
                 ->assertPathIs('/admin/user/'.$user->id.'/edit')
                 ->assertSee('The name field is required.')
                 ->assertSee('The phone may not be greater than 50 characters.');
-    });
+        });
     }
- 
+
+    /**
+    * Test 404 Page Not found when click edit user.
+    *
+    * @return void
+    */
+    public function test404PageForClickEdit()
+    {
+        $user = User::find(self::NUMBER_RECORD_FIND);
+        $this->browse(function (Browser $browser) use ($user) {
+            $browser->visit('/admin/user')
+                    ->assertSee('List Users');
+            $user->delete();
+            $browser->press('tbody tr:nth-child(6) td:nth-child(7) a');
+            $browser->assertSee('Can not find user with corresponding id.');
+        });
+    }
+
+    /**
+    * Test 404 Page Not found when click submit edit user.
+    *
+    * @return void
+    */
+    public function test404PageForClickSubmit()
+    {
+        $user = User::find(self::NUMBER_RECORD_FIND);
+        $this->browse(function (Browser $browser) use ($user) {
+            $browser->visit('/admin/user')
+                    ->assertSee('List User')
+                    ->press('tbody tr:nth-child(6) td:nth-child(7) a')
+                    ->assertPathIs('/admin/user/'.$user->id.'/edit')
+                    ->assertSee('Edit Form User')
+                    ->type('name','aaaaa');
+            $user->delete();
+            $browser->press('submit')
+                    ->assertSee('Can not find user with corresponding id.');
+        });
+    }
 }
