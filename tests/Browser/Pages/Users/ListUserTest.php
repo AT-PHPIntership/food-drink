@@ -12,6 +12,7 @@ class ListUserTest extends DuskTestCase
     const NUMBER_RECORD_CREATE = 31;
     const RECORD_LIMIT = 11;
     const LAST_RECORD = 2;
+    const NUMBER_RECORD_LAST = 31;
 
     /**
     * Override function setUp() for make user login
@@ -72,7 +73,7 @@ class ListUserTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/admin/user?page=4')
-                ->assertSee('31');
+                ->assertSee(self::LAST_RECORD);
         });
     }
 }
