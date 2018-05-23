@@ -97,3 +97,10 @@ $factory->defineAs(App\User::class, 'admin', function (Faker $faker) {
         'deleted_at' => null,
     ];
 });
+$factory->defineAs(App\Category::class, 'parent', function (Faker $faker) {
+    // And now let's generate a few dozen users for our app:
+        return([
+            'name' => $faker->name,
+            'parent_id' => 0,
+        ]);
+});
