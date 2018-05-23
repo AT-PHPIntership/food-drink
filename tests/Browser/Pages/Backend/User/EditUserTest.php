@@ -51,7 +51,7 @@ class EditUserTest extends DuskTestCase
                     ->type('name', 'test name')
                     ->press('submit')
                     ->assertPathIs('/admin/user')
-                    ->assertSee('Successfully Updated User');
+                    ->assertSee('Successfully updated the user');
             $this->assertDatabaseHas('users', ['name' => 'test name']);
         });
     }
