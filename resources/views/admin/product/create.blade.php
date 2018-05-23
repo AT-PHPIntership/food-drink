@@ -27,23 +27,23 @@
             <!-- /.box-header -->
             <!-- form start -->
             <form method="POST" action="" enctype="multipart/form-data">
-            {{csrf_field()}}
+            @csrf
               <div class="box-body">
                 <div class="form-group">
-                  <label for="InputName">Name</label>
-                  <input type="text" class="form-control" id="InputName" name="name" placeholder="Enter name">
+                  <label for="InputName">{{__('product.admin.create.name')}}</label>
+                  <input type="text" class="form-control" id="InputName" name="name" placeholder="{{__('product.admin.create.enter_name')}}">
                 </div>
                 <div class="form-group">
-                  <label for="InputEmail">Price</label>
-                  <input type="text" class="form-control" id="InputEmail" name="price" placeholder="Enter price">
+                  <label for="InputEmail">{{__('product.admin.create.price')}}</label>
+                  <input type="text" class="form-control" id="InputEmail" name="price" placeholder="{{__('product.admin.create.enter_price')}}">
                 </div>
                 <div class="form-group">
-                  <label for="InputQuantity">Quantity</label>
-                  <input type="text" class="form-control" id="InputPassword" name="quantity" placeholder="Enter quantity">
+                  <label for="InputQuantity">{{__('product.admin.create.quantity')}}</label>
+                  <input type="text" class="form-control" id="InputPassword" name="quantity" placeholder="{{__('product.admin.create.enter_quantity')}}">
 								</div>
 								<div class="form-group">
-                  <label>Category</label>
-                  <select class="form-control">
+                  <label>{{__('product.admin.create.category')}}</label>
+                  <select class="form-control" name="category">
                     <option>option 1</option>
                     <option>option 2</option>
                     <option>option 3</option>
@@ -52,20 +52,20 @@
                   </select>
                 </div>
                 <div class="form-group">
-                  <label>Preview</label>
-                  <textarea class="form-control" rows="3" placeholder="Enter preview"></textarea>
+                  <label>{{__('product.admin.create.preview')}}</label>
+                  <textarea class="form-control" name="preview" rows="3" placeholder="{{__('product.admin.create.preview')}}"></textarea>
 								</div>
 								<div class="form-group">
-                  <label>Description</label>
-                  <textarea class="form-control" rows="3" placeholder="Enter description"></textarea>
+                  <label>{{__('product.admin.create.description')}}</label>
+                  <textarea class="form-control" name="description" rows="3" placeholder="{{__('product.admin.create.description')}}"></textarea>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputFile">Image</label>
-                  <input type="file" id="exampleInputFile" multiple>
+                  <label for="exampleInputFile">{{__('product.admin.create.image')}}</label>
+                  <input type="file" id="exampleInputFile" multiple name="image">
                 </div>               
               </div>
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                <button type="submit" class="btn btn-primary" name="submit">{{__('product.admin.create.submit')}}</button>
               </div>
             </form>
           </div>
