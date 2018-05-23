@@ -19,7 +19,11 @@ class ProductsController extends Controller
     public function index(Request $request)
     {
         $productName = $request->product_name;
-        $product = Product::search($productName)->with('Category')->paginate(config('define.number_page_products'));
+        if ($productName == null) {
+            $product = Product::with('Category')->paginate(config('define.number_page_products'));
+        } else {
+            $product = Product::search($productName)->with('Category')->paginate(config('define.number_page_products'));
+        }
         return view('admin.product.index', compact('product'));
     }
 
