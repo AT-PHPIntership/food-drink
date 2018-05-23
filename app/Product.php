@@ -3,9 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\SearchTrait;
 
 class Product extends Model
 {
+    use SearchTrait;
+    
+    protected $search = [
+        'name',
+    ];
+
     protected $fillable=[
         'name',
         'category_id',
