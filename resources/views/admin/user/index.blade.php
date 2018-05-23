@@ -50,7 +50,7 @@
                   <td>{{ $user->userInfo->phone }}</td>
                   <td><img src="{{ asset('images/users/'.$user->userInfo->avatar) }}" alt="{{ $user->userInfo->avatar }}" class="avatar"></td>
                   <td>
-                    <a href=""><i class="fa fa-edit"></i></a>  |
+                    <a href="{{route('user.edit', $user->id)}}"><i class="fa fa-edit"></i></a>  |
                   </td>
                   @if($user->id !== App\User::ROOT_ADMIN)
                   <td>
