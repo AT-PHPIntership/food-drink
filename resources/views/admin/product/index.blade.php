@@ -4,10 +4,10 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>{{@trans('product.admin.index.list_product')}}</h1>
+      <h1>{{__('product.admin.index.list_product')}}</h1>
       <ol class="breadcrumb">
         <li><a href="{{route('admin')}}"><i class="fa fa-dashboard"></i> {{__('admin.dashboard')}}</a></li>
-        <li class="active">{{@trans('product.admin.index.product')}}</li>
+        <li class="active">{{__('product.admin.index.product')}}</li>
       </ol>
     </section>
 
@@ -22,7 +22,7 @@
               <a href="" class="add-users">{{__('product.admin.index.new_product')}}</a>
               <div class="box-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control pull-right" placeholder="{{@trans('product.admin.index.search')}}">
+                  <input type="text" name="table_search" class="form-control pull-right" placeholder="{{__('product.admin.index.search')}}">
 
                   <div class="input-group-btn">
                     <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
@@ -34,14 +34,14 @@
             <div class="box-body table-responsive no-padding">
               <table class="table table-hover">
                 <tr>
-                  <th>{{@trans('product.admin.index.id')}}</th>
-                  <th>{{@trans('product.admin.index.name')}}</th>
-                  <th>{{@trans('product.admin.index.price')}}</th>
-                  <th>{{@trans('product.admin.index.image')}}</th>
-                  <th>{{@trans('product.admin.index.quantity')}}</th>
-                  <th>{{@trans('product.admin.index.category')}}</th>
-                  <th>{{@trans('product.admin.index.rate_avg')}}</th>
-                  <th>{{@trans('product.admin.index.action')}}</th>
+                  <th>{{__('product.admin.index.id')}}</th>
+                  <th>{{__('product.admin.index.name')}}</th>
+                  <th>{{__('product.admin.index.price')}}</th>
+                  <th>{{__('product.admin.index.image')}}</th>
+                  <th>{{__('product.admin.index.quantity')}}</th>
+                  <th>{{__('product.admin.index.category')}}</th>
+                  <th>{{__('product.admin.index.rate_avg')}}</th>
+                  <th>{{__('product.admin.index.action')}}</th>
                 </tr>
                 <tr>
                   <td>183</td>

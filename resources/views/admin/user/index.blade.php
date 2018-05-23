@@ -4,10 +4,10 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>{{@trans('user.admin.index.list_user')}}</h1>
+      <h1>{{__('user.admin.index.list_user')}}</h1>
       <ol class="breadcrumb">
         <li><a href="{{route('admin')}}"><i class="fa fa-dashboard"></i> {{__('admin.dashboard')}}</a></li>
-        <li class="active">{{@trans('user.admin.index.user')}}</li>
+        <li class="active">{{__('user.admin.index.user')}}</li>
       </ol>
     </section>
 
@@ -22,7 +22,7 @@
               <a href="" class="add-users">{{__('user.admin.index.new_user')}}</a>
               <div class="box-tools">
                 <form class="input-group input-group-sm" style="width: 150px;" action="{!! route('user.index') !!}" method="GET">
-                  <input type="text" name="user_name" class="form-control pull-right" placeholder="{{@trans('user.admin.index.search')}}">
+                  <input type="text" name="user_name" class="form-control pull-right" placeholder="{{__('user.admin.index.search')}}">
                   <div class="input-group-btn">
                   <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
                   </div>
@@ -33,12 +33,12 @@
             <div class="box-body table-responsive no-padding">
               <table class="table table-hover">
                 <tr>
-                  <th>{{@trans('user.admin.index.id')}}</th>
-                  <th>{{@trans('user.admin.index.name')}}</th>
-                  <th>{{@trans('user.admin.index.email')}}</th>
-                  <th>{{@trans('user.admin.index.address')}}</th>
-                  <th>{{@trans('user.admin.index.phone')}}</th>
-                  <th>{{@trans('user.admin.index.avatar')}}</th>
+                  <th>{{__('user.admin.index.id')}}</th>
+                  <th>{{__('user.admin.index.name')}}</th>
+                  <th>{{__('user.admin.index.email')}}</th>
+                  <th>{{__('user.admin.index.address')}}</th>
+                  <th>{{__('user.admin.index.phone')}}</th>
+                  <th>{{__('user.admin.index.avatar')}}</th>
                   <th>Action</th>
                 </tr>
                 @foreach($users as $user)

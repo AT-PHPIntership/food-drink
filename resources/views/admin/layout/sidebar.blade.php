@@ -12,7 +12,7 @@
       </li>
       <li>
         <a href="{{route('user.index')}}">
-          <i class="fa fa-table"></i> <span>{{__('admin.manage_user')}}</span>
+          <i class="fa fa-users"></i> <span>{{__('admin.manage_user')}}</span>
         </a>
       </li>
       <li>
@@ -22,7 +22,7 @@
       </li>
       <li>
         <a href="{{route('product.index')}}">
-          <i class="fa fa-table"></i> <span>{{__('admin.manage_product')}}</span>
+          <i class="fa fa-product-hunt"></i> <span>{{__('admin.manage_product')}}</span>
         </a>
       </li>
       <li>
