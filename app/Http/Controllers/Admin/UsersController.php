@@ -96,7 +96,7 @@ class UsersController extends Controller
                 'phone' => $request->phone,
             ]);
         }
-        Session::flash('message', trans('message.user.update'));
+        flash(trans('user.admin.message.success_update'))->success();
         return redirect()->route('user.index');
     }
 
