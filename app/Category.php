@@ -16,11 +16,7 @@ class Category extends Model
         'name',
         'parent_id',
     ];
-
-    protected $with = [
-        'subCategory',
-        'parentCategories',
-    ];
+    
     /**
      * Category has Many  products
      *
