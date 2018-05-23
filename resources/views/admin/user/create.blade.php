@@ -30,27 +30,27 @@
             {{csrf_field()}}
               <div class="box-body">
                 <div class="form-group">
-                  <label for="InputName">Name</label>
+                  <label for="InputName">{{__('user.admin.create.name')}}</label>
                   <input type="text" class="form-control" id="InputName" name="name" placeholder="Enter name">
                 </div>
                 <div class="form-group">
-                  <label for="InputEmail">Email</label>
+                  <label for="InputEmail">{{__('user.admin.create.email')}}</label>
                   <input type="text" class="form-control" id="InputEmail" name="email" placeholder="Enter name">
                 </div>
                 <div class="form-group">
-                  <label for="InputPassword">Password</label>
+                  <label for="InputPassword">{{__('user.admin.create.password')}}</label>
                   <input type="password" class="form-control" id="InputPassword" name="password" placeholder="Password">
                 </div>
                 <div class="form-group">
-                  <label for="InputAddress">Address</label>
+                  <label for="InputAddress">{{__('user.admin.create.address')}}</label>
                   <input type="text" class="form-control" id="InputAddress" name="address" placeholder="Enter address">
                 </div>
                 <div class="form-group">
-                  <label for="InputPhone">Phone</label>
+                  <label for="InputPhone">{{__('user.admin.create.phone')}}</label>
                   <input type="text" class="form-control" id="InputPhone" name="phone" placeholder="Enter phone">
                 </div>
                 <div class="form-group">
-                  <label for="InputAvatar">Avatar</label>
+                  <label for="InputAvatar">{{__('user.admin.create.avatar')}}</label>
                   <input type="file" class="form-control" id="InputAvatar" name="avatar" placeholder="Enter Avatar">
                 </div>
                 <!-- <div class="form-group">name
@@ -61,7 +61,7 @@
                 </div> -->               
               </div>
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                <button type="submit" class="btn btn-primary" name="submit">{{__('user.admin.create.submit')}}</button>
                 @if(count($errors))
                   <div class="form-group">
                     <div class="alert alert-danger">
