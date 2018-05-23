@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Http\Requests\StoreUsers;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendEmail;
+use App\Jobs\SendEmailJob;
 use App\Http\Requests\UpdateUsersRequest;
 use App\UserInfo;
 use Session;
@@ -43,11 +46,14 @@ class UsersController extends Controller
      */
     public function store(StoreUsers $request)
     {
-        User::create([
+        $data = User::create([
             'name'=>$request->name,
             'email'=>$request->email,
-            'password'=>bcrypt($request->password),
+            'password'=>bcrypt($request->password)
         ]);
+        $job = (new SendEmailJob($data))->delay(now()->addSeconds(10));
+                dispatch($job);
+        flash(trans('user.admin.message.success_create'))->success();
         return redirect()->route('user.index');
     }
     
@@ -90,7 +96,7 @@ class UsersController extends Controller
                 'phone' => $request->phone,
             ]);
         }
-        Session::flash('message', trans('message.user.update'));
+        flash(trans('user.admin.message.success_update'))->success();
         return redirect()->route('user.index');
     }
 

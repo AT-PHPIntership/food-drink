@@ -10,8 +10,6 @@
         <li class="active">User</li>
       </ol>
     </section>
-
-    @include('admin.layout.message');
     <!-- Main content -->
     <section class="content">
       <div class="row">
