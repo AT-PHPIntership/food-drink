@@ -26,7 +26,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form method="POST" action="{{route('user.store')}}">
+            <form method="POST" action="{{route('user.store')}}" enctype="multipart/form-data">
             {{csrf_field()}}
               <div class="box-body">
                 <div class="form-group">
@@ -41,7 +41,19 @@
                   <label for="InputPassword">Password</label>
                   <input type="password" class="form-control" id="InputPassword" name="password" placeholder="Password">
                 </div>
-                <!-- <div class="form-group">
+                <div class="form-group">
+                  <label for="InputAddress">Address</label>
+                  <input type="text" class="form-control" id="InputAddress" name="address" placeholder="Enter address">
+                </div>
+                <div class="form-group">
+                  <label for="InputPhone">Phone</label>
+                  <input type="text" class="form-control" id="InputPhone" name="phone" placeholder="Enter phone">
+                </div>
+                <div class="form-group">
+                  <label for="InputAvatar">Avatar</label>
+                  <input type="file" class="form-control" id="InputAvatar" name="avatar" placeholder="Enter Avatar">
+                </div>
+                <!-- <div class="form-group">name
                   <label for="exampleInputFile">File input</label>
                   <input type="file" id="exampleInputFile">
 

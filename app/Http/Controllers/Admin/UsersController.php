@@ -51,6 +51,23 @@ class UsersController extends Controller
             'email'=>$request->email,
             'password'=>bcrypt($request->password)
         ]);
+        if ($request->hasFile('avatar')) {
+            $image = $request->file('avatar');
+            $newName = time().'_'.md5(rand(0, 99999)).'.'.$image->getClientOriginalExtension();
+            $image->move(public_path(config('define.images_path_users')), $newName);
+            $data1 = UserInfo::create([
+                    'user_id' =>$data->id,
+                    'address' => $request->address,
+                    'phone' => $request->phone,
+                    'avatar' => $newName
+                ]);
+        } else {
+            $data1 = UserInfo::create([
+                'user_id' => $data->id,
+                'address' => $request->address,
+                'phone' => $request->phone
+            ]);
+        }
         $job = (new SendEmailJob($data))->delay(now()->addSeconds(10));
                 dispatch($job);
         flash(trans('user.admin.message.success_create'))->success();
