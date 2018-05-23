@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-@section('title', __('user.admin.index.title') )
+@section('title', __('product.admin.index.title') )
 @section('content')
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
