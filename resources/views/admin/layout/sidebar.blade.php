@@ -16,17 +16,12 @@
         </a>
       </li>
       <li>
-        <a href="{{route('user.create')}}">
+        <a href="">
           <i class="fa fa-table"></i> <span>{{__('admin.create_user')}}</span>
         </a>
       </li>
       <li>
-        <a href="#">
-          <i class="fa fa-table"></i> <span>{{__('admin.manage_image')}}</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
+        <a href="{{route('product.index')}}">
           <i class="fa fa-table"></i> <span>{{__('admin.manage_product')}}</span>
         </a>
       </li>

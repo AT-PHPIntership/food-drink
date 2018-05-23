@@ -4,10 +4,10 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>List Users</h1>
+      <h1>{{@trans('user.admin.index.list_user')}}</h1>
       <ol class="breadcrumb">
         <li><a href="{{route('admin')}}"><i class="fa fa-dashboard"></i> {{__('admin.dashboard')}}</a></li>
-        <li class="active">User</li>
+        <li class="active">{{@trans('user.admin.index.user')}}</li>
       </ol>
     </section>
 
@@ -18,11 +18,11 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Show list users</h3>
-              <a href="" class="add-users">New user</a>
+              <h3 class="box-title">{{__('user.admin.index.show_user')}}</h3>
+              <a href="" class="add-users">{{__('user.admin.index.new_user')}}</a>
               <div class="box-tools">
                 <form class="input-group input-group-sm" style="width: 150px;" action="{!! route('user.index') !!}" method="GET">
-                  <input type="text" name="user_name" class="form-control pull-right" placeholder="Search">
+                  <input type="text" name="user_name" class="form-control pull-right" placeholder="{{@trans('user.admin.index.search')}}">
                   <div class="input-group-btn">
                   <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
                   </div>
@@ -33,12 +33,12 @@
             <div class="box-body table-responsive no-padding">
               <table class="table table-hover">
                 <tr>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Address</th>
-                  <th>Phone</th>
-                  <th>Avatar</th>
+                  <th>{{@trans('user.admin.index.id')}}</th>
+                  <th>{{@trans('user.admin.index.name')}}</th>
+                  <th>{{@trans('user.admin.index.email')}}</th>
+                  <th>{{@trans('user.admin.index.address')}}</th>
+                  <th>{{@trans('user.admin.index.phone')}}</th>
+                  <th>{{@trans('user.admin.index.avatar')}}</th>
                   <th>Action</th>
                 </tr>
                 @foreach($users as $user)
@@ -51,9 +51,7 @@
                   <td><img src="{{ asset('images/users/'.$user->userInfo->avatar) }}" alt="{{ $user->userInfo->avatar }}" class="avatar"></td>
                   <td>
                     <a href="{{route('user.edit', $user->id)}}"><i class="fa fa-edit"></i></a>  |
-                  </td>
-                  @if($user->id !== App\User::ROOT_ADMIN)
-                  <td>
+                    @if($user->id !== App\User::ROOT_ADMIN)
                     <form method="POST" action="{!! route('user.destroy', ['user' => $user->id]) !!}" class="form-trash">
                       @csrf
                       {{ method_field('DELETE') }}
