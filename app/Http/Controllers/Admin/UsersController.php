@@ -18,11 +18,14 @@ class UsersController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param \Illuminate\Http\Request $request request
+     *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::with('userInfo')->paginate(config('define.number_pages'));
+        $userName = $request->user_name;
+        $users = User::search($userName)->with('userInfo')->paginate(config('define.number_pages'));
         return view('admin.user.index', compact('users'));
     }
     /**
