@@ -53,7 +53,7 @@ class UsersController extends Controller
         ]);
         $job = (new SendEmailJob($data))->delay(now()->addSeconds(10));
                 dispatch($job);
-        Session::flash('message', trans('message.user.create'));
+        flash(trans('user.admin.message.success_create'))->success();
         return redirect()->route('user.index');
     }
     
