@@ -2,7 +2,8 @@
     return [
         'admin' => [
             'index' => [
-                'title' => 'Show List User'
+                'title' => 'Show List User',
+                'create_success' => 'Create Success'
             ],
             'edit' => [
                 'title' => 'Edit User',
@@ -26,6 +27,8 @@
             ],
             'message' => [
                 'success' => 'Successfully deleted the user!',
+                'success_create' => 'Successfully created the user!',
+                'success_update' => 'Successfully updated the user!',
                 'cancel' => 'can not delete admin',
             ],
         ]
