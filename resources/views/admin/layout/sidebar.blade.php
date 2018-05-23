@@ -11,13 +11,13 @@
         </a>
       </li>
       <li>
-        <a href="{{route('user.index')}}">
-          <i class="fa fa-users"></i> <span>{{__('admin.manage_user')}}</span>
+        <a href="{{ route('user.index') }}">
+          <i class="fa fa-table"></i> <span>{{__('admin.manage_user')}}</span>
         </a>
       </li>
       <li>
-        <a href="">
-          <i class="fa fa-table"></i> <span>{{__('admin.create_user')}}</span>
+        <a href="{{ route('category.index') }}">
+          <i class="fa fa-table"></i> <span>{{__('admin.manage_category')}}</span>
         </a>
       </li>
       <li>

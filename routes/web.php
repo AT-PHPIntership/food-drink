@@ -23,4 +23,5 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
     Route::resource('product', 'ProductsController')->only([
         'index'
     ]);
+    Route::resource('category', 'CategoriesController');
 });
