@@ -21,13 +21,8 @@
         </a>
       </li>
       <li>
-        <a href="#">
-          <i class="fa fa-table"></i> <span>{{__('admin.manage_image')}}</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="fa fa-table"></i> <span>{{__('admin.manage_product')}}</span>
+        <a href="{{route('product.index')}}">
+          <i class="fa fa-product-hunt"></i> <span>{{__('admin.manage_product')}}</span>
         </a>
       </li>
       <li>
