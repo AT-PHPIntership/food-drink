@@ -22,4 +22,14 @@ class ProductsController extends Controller
         $product = Product::search($productName)->with('Category')->paginate(config('define.number_page_products'));
         return view('admin.product.index', compact('product'));
     }
+
+    /**
+     * Show the form for creating a new data.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('admin.product.create');
+    }
 }
