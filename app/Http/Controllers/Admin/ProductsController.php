@@ -16,4 +16,14 @@ class ProductsController extends Controller
     {
         return view('admin.product.index');
     }
+
+    /**
+     * Show the form for creating a new data.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('admin.product.create');
+    }
 }

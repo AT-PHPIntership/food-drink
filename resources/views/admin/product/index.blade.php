@@ -19,7 +19,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">{{__('product.admin.index.show_product')}}</h3>
-              <a href="" class="add-users">{{__('product.admin.index.new_product')}}</a>
+              <a href="{{route('product.create')}}" class="add-users">{{__('product.admin.index.new_product')}}</a>
               <div class="box-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
                   <input type="text" name="table_search" class="form-control pull-right" placeholder="{{__('product.admin.index.search')}}">
