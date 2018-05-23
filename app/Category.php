@@ -26,4 +26,24 @@ class Category extends Model
     {
         return $this->hasMany('App\Product');
     }
+
+    /**
+     * Sub Category beLongto  Parent Category
+     *
+     * @return mixed
+     */
+    public function subCategory()
+    {
+        return $this->belongsTo(self::class, 'parent_id', 'id');
+    }
+
+    /**
+     * Parent Category beLongto  Sub Category
+     *
+     * @return mixed
+     */
+    public function parentCategories()
+    {
+        return $this->hasMany(self::class, 'id', 'parent_id');
+    }
 }
