@@ -96,4 +96,4 @@ $factory->defineAs(App\User::class, 'admin', function (Faker $faker) {
         'role' => 1,
         'deleted_at' => null,
     ];
- });
+});
