@@ -25,7 +25,7 @@ class ProductsTableSeeder extends Seeder
             Product::create([
                 'name' => $faker->name,
                 'price' => $faker->numberBetween($min = 10, $max = 200),
-                'quantily' =>$faker->numberBetween($min = 0, $max = 15),
+                'quantity' =>$faker->numberBetween($min = 0, $max = 15),
                 'category_id' => $faker->randomElement(Category::pluck('id')->toArray()),
                 'preview' => $faker->text,
                 'description' => $faker->text,
