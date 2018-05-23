@@ -1,0 +1,29 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+class ProductsController extends Controller
+{
+    /**
+    * Display a listing of the resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function index()
+    {
+        return view('admin.product.index');
+    }
+
+    /**
+     * Show the form for creating a new data.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('admin.product.create');
+    }
+}
