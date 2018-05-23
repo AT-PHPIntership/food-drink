@@ -1,6 +1,7 @@
 <?php
     return [
         'user' => [
-            'update' => 'Successfully Updated User'
+            'update' => 'Successfully Updated User',
+            'create' => 'Successfully Created User'
         ],
     ];
