@@ -20,5 +20,8 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
         'as'=>'admin'
     ]);
     Route::resource('user', 'UsersController');
+    Route::resource('product', 'ProductsController')->only([
+        'create'
+    ]);
     Route::resource('category', 'CategoriesController');
 });
