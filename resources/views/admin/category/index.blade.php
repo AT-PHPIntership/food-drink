@@ -37,15 +37,25 @@
                   <th>{{__('category.admin.index.parent')}}</th>
                   <th>{{__('category.admin.index.action')}}</th>
                 </tr>
+                @foreach($categories as $category)
                 <tr>
-                  <td>1</td>
-                  <td></td>
-                  <td><img src="{{ asset('images/users/default-user-avatar.png') }}" alt="" class="avatar"></td>
+                  <td>{{ $category->id }}</td>
+                  <td><a href="">{{ $category->name }}</a></td> 
                   <td>
-                    <a href=""><i class="fa fa-edit"></i></a> |
-                    <a href=""><i class="fa fa-trash"></i></a>
+                  @foreach($category->parentCategories as $parentCategory)
+                    {{ $parentCategory->name }}
+                  @endforeach
+                  </td>
+                  <td>
+                    <a href=""><i class="fa fa-edit"></i></a>  |
+                    <form method="POST" action="" class="form-trash">
+                      @csrf
+                      {{ method_field('DELETE') }}
+                      <button type="submit" class="but-trash"><i class="fa fa-trash"></i></button>
+                    </form>
                   </td>
                 </tr>
+                @endforeach
               </table>
             </div>
             <!-- /.box-body -->
