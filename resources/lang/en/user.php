@@ -42,7 +42,13 @@
                 'address' => 'Address',
                 'phone' => 'Phone',
                 'avatar' => 'Avatar',
-                'submit' => 'Submit'
+                'submit' => 'Submit',
+                'enter_name' => 'Enter Name',
+                'enter_email' => 'Enter Email',
+                'enter_password' => 'Enter Password',
+                'enter_address' => 'Enter Address',
+                'enter_phone' => 'Enter Phone',
+                'enter_avatar' => 'Enter Avatar'
             ],
             'message' => [
                 'success' => 'Successfully deleted the user!',

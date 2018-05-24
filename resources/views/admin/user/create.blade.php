@@ -31,27 +31,27 @@
               <div class="box-body">
                 <div class="form-group">
                   <label for="InputName">{{__('user.admin.create.name')}}</label>
-                  <input type="text" class="form-control" id="InputName" name="name" placeholder="Enter name">
+                  <input type="text" class="form-control" id="InputName" name="name" placeholder="{{__('user.admin.create.enter_name')}}">
                 </div>
                 <div class="form-group">
                   <label for="InputEmail">{{__('user.admin.create.email')}}</label>
-                  <input type="text" class="form-control" id="InputEmail" name="email" placeholder="Enter name">
+                  <input type="text" class="form-control" id="InputEmail" name="email" placeholder="{{__('user.admin.create.enter_email')}}">
                 </div>
                 <div class="form-group">
                   <label for="InputPassword">{{__('user.admin.create.password')}}</label>
-                  <input type="password" class="form-control" id="InputPassword" name="password" placeholder="Password">
+                  <input type="password" class="form-control" id="InputPassword" name="password" placeholder="{{__('user.admin.create.enter_password')}}">
                 </div>
                 <div class="form-group">
                   <label for="InputAddress">{{__('user.admin.create.address')}}</label>
-                  <input type="text" class="form-control" id="InputAddress" name="address" placeholder="Enter address">
+                  <input type="text" class="form-control" id="InputAddress" name="address" placeholder="{{__('user.admin.create.enter_address')}}">
                 </div>
                 <div class="form-group">
                   <label for="InputPhone">{{__('user.admin.create.phone')}}</label>
-                  <input type="text" class="form-control" id="InputPhone" name="phone" placeholder="Enter phone">
+                  <input type="text" class="form-control" id="InputPhone" name="phone" placeholder="{{__('user.admin.create.enter_phone')}}">
                 </div>
                 <div class="form-group">
                   <label for="InputAvatar">{{__('user.admin.create.avatar')}}</label>
-                  <input type="file" class="form-control" id="InputAvatar" name="avatar" placeholder="Enter Avatar">
+                  <input type="file" class="form-control" id="InputAvatar" name="avatar" placeholder="{{__('user.admin.create.enter_avatar')}}">
                 </div>
                 <!-- <div class="form-group">name
                   <label for="exampleInputFile">File input</label>
