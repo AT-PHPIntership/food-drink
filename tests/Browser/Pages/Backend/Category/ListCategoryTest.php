@@ -14,7 +14,7 @@ class ListCategoryTest extends DuskTestCase
     const RECORD_LIMIT = 11;
     const NUMBER_LAST_RECORD = 3;
     const NUMBER_SEARCH_RECORD = 1;
-    const NAME_SEARCH = 'thaitran';
+    const NAME_SEARCH = 'FOOD';
     const NUMBER_RECORD_AFTER_SEARCH =3;
 
     /**
@@ -77,7 +77,7 @@ class ListCategoryTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/admin/category')
-                ->type('category_name', 'quangson')
+                ->type('category_name', 'Beer')
                 ->click('.search-category')
                 ->assertSee('List Category');
             $elements = $browser->elements('.table tbody tr');
