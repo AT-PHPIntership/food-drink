@@ -13,14 +13,14 @@
   <!-- Ionicons -->
   <link rel="stylesheet" href="/bower_components/Ionicons/css/ionicons.min.css">
   <!-- jvectormap -->
-  <link rel="stylesheet" href="/bower_components/jvectormap/jquery-jvectormap.css">
+  <link rel="stylesheet" href="/bower_components/jvectormap/jquery-jvectormap.css" type="text/javascript">
   <!-- Theme style -->
   <link rel="stylesheet" href="/bower_components/admin-lte/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="/bower_components/admin-lte/dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="{{ asset('css/admin/add.css') }}">
-
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <!-- laracasts/flash style -->
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

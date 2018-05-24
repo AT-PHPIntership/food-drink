@@ -29,5 +29,9 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
             'uses' => 'PostsController@index',
             'as' => 'admin.post.index'
         ]);
+        Route::POST('active',[
+            'uses'=>'PostsController@active',
+            'as' => 'admin.post.active'
+        ]);
     });
 });
