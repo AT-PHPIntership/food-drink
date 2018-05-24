@@ -16,7 +16,6 @@ class Category extends Model
         'name',
         'parent_id',
     ];
-
     /**
      * Category has Many  products
      *
