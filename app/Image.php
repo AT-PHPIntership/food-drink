@@ -20,4 +20,14 @@ class Image extends Model
     {
         return $this->belongsTo('App\Product');
     }
+
+    /**
+    * Get the product's image.
+    *
+    * @return string
+    */
+    public function getImageUrlAttribute()
+    {
+        return asset(config('define.images_path_products') . $this->image);
+    }
 }

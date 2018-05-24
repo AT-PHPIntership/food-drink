@@ -46,7 +46,7 @@
                 @foreach($product as $item)
                 <tr>
                   <td>{{ $item->id }}</td>
-                  <td>{{ $item->name }}</td>
+                  <td><a href="{{route('product.show', ['product' => $item->id])}}">{{ $item->name }}</a></td>
                   <td>{{ $item->price }} &dollar;</td>
                   <td><img src="{{asset('images/products/default-product.jpg')}}" alt="" class="avatar"></td>
                   <td>{{ $item->quantity }}</td>
@@ -54,7 +54,8 @@
                   <td>{{ $item->avg_rate }}</td>
                   <td>
                     <a href=""><i class="fa fa-edit"></i></a> |
-                    <a href=""><i class="fa fa-trash"></i></a>
+                    <a href=""><i class="fa fa-trash"></i></a> |
+                    <a href="{{route('product.show', ['product' => $item->id])}}"><i class="fa fa-wrench"></i></a>
                   </td>
                 </tr>
                 @endforeach

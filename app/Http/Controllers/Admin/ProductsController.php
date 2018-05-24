@@ -19,11 +19,25 @@ class ProductsController extends Controller
     {
         $productName = $request->product_name;
         if ($productName == null) {
-            $product = Product::with('Category')->paginate(config('define.number_page_products'));
+            $product = Product::with('category', 'images')->paginate(config('define.number_page_products'));
         } else {
             $product = Product::search($productName)->with('Category')->paginate(config('define.number_page_products'));
         }
         return view('admin.product.index', compact('product'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Product $product Product object
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function show(Product $product)
+    {
+        $product->load('category', 'images');
+        // dd($product);
+        return view('admin.product.show', compact('product'));
     }
 
     /**
