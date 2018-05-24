@@ -26,7 +26,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form method="POST" action="" enctype="multipart/form-data">
+            <form method="POST" action="{{route('product.store')}}" enctype="multipart/form-data">
             @csrf
               <div class="box-body">
                 <div class="form-group">
@@ -43,12 +43,10 @@
 								</div>
 								<div class="form-group">
                   <label>{{__('product.admin.create.category')}}</label>
-                  <select class="form-control" name="category">
-                    <option>option 1</option>
-                    <option>option 2</option>
-                    <option>option 3</option>
-                    <option>option 4</option>
-                    <option>option 5</option>
+                  <select class="form-control" name="category_id">
+                  @foreach ( $category as $item )
+                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                  @endforeach
                   </select>
                 </div>
                 <div class="form-group">
@@ -66,6 +64,7 @@
               </div>
               <div class="box-footer">
                 <button type="submit" class="btn btn-primary" name="submit">{{__('product.admin.create.submit')}}</button>
+                @include('admin.errors.error_validation');
               </div>
             </form>
           </div>

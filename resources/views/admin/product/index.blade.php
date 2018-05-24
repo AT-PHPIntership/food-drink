@@ -48,9 +48,13 @@
                   <td>{{ $item->id }}</td>
                   <td>{{ $item->name }}</td>
                   <td>{{ $item->price }} &dollar;</td>
-                  <td><img src="{{asset('images/products/default-product.jpg')}}" alt="" class="avatar"></td>
+                  @foreach($item->images as $itemImage)
+                    @if ($loop->first)
+                      <td><img src="{{$itemImage->image_url}}" alt="" class="avatar"></td>
+                    @endif    
+                  @endforeach
                   <td>{{ $item->quantity }}</td>
-                  <td>{{ $item->Category->name }}</td>
+                  <td>{{ $item->category->name }}</td>
                   <td>{{ $item->avg_rate }}</td>
                   <td>
                     <a href=""><i class="fa fa-edit"></i></a> |
