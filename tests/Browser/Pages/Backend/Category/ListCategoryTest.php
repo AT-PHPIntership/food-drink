@@ -14,6 +14,8 @@ class ListCategoryTest extends DuskTestCase
     const RECORD_LIMIT = 11;
     const NUMBER_LAST_RECORD = 3;
     const NUMBER_SEARCH_RECORD = 1;
+    const NAME_SEARCH = 'thaitran';
+    const NUMBER_RECORD_AFTER_SEARCH =3;
 
     /**
     * Override function setUp() for make user login
@@ -23,7 +25,9 @@ class ListCategoryTest extends DuskTestCase
     public function setUp()
     {
         parent::setUp();
-        factory('App\Category', 'parent', self::NUMBER_RECORD_PARENT)->create();
+        factory('App\Category', 'parent', self::NUMBER_RECORD_PARENT)->create([
+            'name' => self::NAME_SEARCH,
+        ]);
         factory('App\Category', self::NUMBER_RECORD_CREATE)->create();
     }
     /**
@@ -64,11 +68,11 @@ class ListCategoryTest extends DuskTestCase
             $this->assertCount(self::NUMBER_LAST_RECORD, $elements);
         });
     }
-     /**
+    /**
      * Test show result of search with data input
      *
      * @return void
-     */
+    */
     public function testSearchCategory()
     {
         $this->browse(function (Browser $browser) {
@@ -78,6 +82,22 @@ class ListCategoryTest extends DuskTestCase
                 ->assertSee('List Category');
             $elements = $browser->elements('.table tbody tr');
             $this->assertCount(self::NUMBER_SEARCH_RECORD, $elements);
+        });
+    }
+    /**
+     * Test show result of search with data input
+     *
+     * @return void
+    */
+    public function testSearchName()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/admin/category')
+                ->type('category_name', self::NAME_SEARCH)
+                ->click('.search-category')
+                ->assertSee('List Category');
+            $elements = $browser->elements('.table tbody tr');
+            $this->assertCount(self::NUMBER_RECORD_AFTER_SEARCH, $elements);
         });
     }
 }

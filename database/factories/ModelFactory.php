@@ -10,6 +10,7 @@ use Faker\Generator as Faker;
 | model instances for testing / seeding your application's database.
 |
 */
+
 $factory->define(App\Category::class, function (Faker $faker) {
         return([
             'name' => $faker->name,
