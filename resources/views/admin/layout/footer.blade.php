@@ -30,5 +30,7 @@
 <script src="/bower_components/admin-lte/dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/bower_components/admin-lte/dist/js/demo.js"></script>
+<!-- ajax for category -->
+<script src="/js/category-ajax.js"></script> 
 </body>
 </html>

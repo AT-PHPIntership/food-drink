@@ -24,13 +24,12 @@ class CategoriesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request request
-     * 
+     * @param \Illuminate\Http\Request $request request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        dd(1234);
         $create = Category::create($request->all());
         return response()->json($create);
     }

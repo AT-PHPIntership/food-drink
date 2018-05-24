@@ -13,7 +13,7 @@
     @include('admin.layout.message');
 
 	  <!-- Create Item Modal -->
-		<div class="modal fade" id="create-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal fade" id="create-category" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		  <div class="modal-dialog" role="document">
 		    <div class="modal-content">
 		      <div class="modal-header">
@@ -21,10 +21,10 @@
 		        <h4 class="modal-title" id="myModalLabel">Create Category</h4>
 		      </div>
 		      <div class="modal-body">
-		      		<form data-toggle="validator" action="{{ route('category.store') }}" method="POST">
+		      		<form data-toggle="validator" action="{!! route('category.store') !!}" method="POST">
 		      			<div class="form-group">
 							<label class="control-label" for="title">Name:</label>
-							<input type="text" name="title" class="form-control" data-error="Please enter title." required />
+							<input type="text" name="category" class="form-control" data-error="Please enter title." required />
 							<div class="help-block with-errors"></div>
 						</div>
 						<div class="form-group">
@@ -36,7 +36,7 @@
               </select>
 						</div>
 						<div class="form-group">
-							<button type="submit" class="btn crud-submit btn-success">Submit</button>
+							<button type="submit" class="btn create-submit btn-success">Submit</button>
 						</div>
 		      		</form>
 		      </div>
@@ -50,7 +50,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">{{__('category.admin.index.list_category')}}</h3>
-              <a href="" class="add-users" data-toggle="modal" data-target="#create-item" >{{__('category.admin.index.new_category')}}</a>
+              <a href="" class="add-users" data-toggle="modal" data-target="#create-category" >{{__('category.admin.index.new_category')}}</a>
               <div class="box-tools">
                 <form class="input-group input-group-sm" style="width: 150px;" action="{!! route('category.index') !!}" method="GET">
                   <input type="text" name="category_name" class="form-control pull-right" placeholder="Search">
@@ -89,6 +89,7 @@
                 </tr>
                 @endforeach
               </table>
+              {{ $categories->links() }}
             </div>
             <!-- /.box-body -->
           </div>
