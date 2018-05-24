@@ -13,6 +13,7 @@ class ListCategoryTest extends DuskTestCase
     const NUMBER_RECORD_CREATE = 20;
     const RECORD_LIMIT = 11;
     const NUMBER_LAST_RECORD = 3;
+    const NUMBER_SEARCH_RECORD = 1;
 
     /**
     * Override function setUp() for make user login
@@ -61,6 +62,22 @@ class ListCategoryTest extends DuskTestCase
             $browser->visit('/admin/category?page=3');
             $elements = $browser->elements('.table tr');
             $this->assertCount(self::NUMBER_LAST_RECORD, $elements);
+        });
+    }
+     /**
+     * Test show result of search with data input
+     *
+     * @return void
+     */
+    public function testSearchCategory()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/admin/category')
+                ->type('category_name', 'quangson')
+                ->click('.search-category')
+                ->assertSee('List Category');
+            $elements = $browser->elements('.table tbody tr');
+            $this->assertCount(self::NUMBER_SEARCH_RECORD, $elements);
         });
     }
 }

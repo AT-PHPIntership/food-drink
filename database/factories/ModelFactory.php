@@ -11,7 +11,6 @@ use Faker\Generator as Faker;
 |
 */
 $factory->define(App\Category::class, function (Faker $faker) {
-    // And now let's generate a few dozen users for our app:
         return([
             'name' => $faker->name,
             'parent_id' => App\Category::all()->random()->id,
@@ -98,7 +97,6 @@ $factory->defineAs(App\User::class, 'admin', function (Faker $faker) {
     ];
 });
 $factory->defineAs(App\Category::class, 'parent', function (Faker $faker) {
-    // And now let's generate a few dozen users for our app:
         return([
             'name' => $faker->name,
             'parent_id' => 0,

@@ -23,7 +23,7 @@
                 <form class="input-group input-group-sm" style="width: 150px;" action="{!! route('category.index') !!}" method="GET">
                   <input type="text" name="category_name" class="form-control pull-right" placeholder="Search">
                   <div class="input-group-btn">
-                  <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                  <button type="submit" class="btn btn-default search-category"><i class="fa fa-search"></i></button>
                   </div>
                 </form>
               </div>
