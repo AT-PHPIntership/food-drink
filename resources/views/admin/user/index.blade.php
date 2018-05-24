@@ -17,7 +17,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">{{__('user.admin.index.show_user')}}</h3>
-              <a href="" class="add-users">{{__('user.admin.index.new_user')}}</a>
+              <a href="{{route('user.create')}}" class="add-users">{{__('user.admin.index.new_user')}}</a>
               <div class="box-tools">
                 <form class="input-group input-group-sm" style="width: 150px;" action="{!! route('user.index') !!}" method="GET">
                   <input type="text" name="user_name" class="form-control pull-right" placeholder="{{__('user.admin.index.search')}}">

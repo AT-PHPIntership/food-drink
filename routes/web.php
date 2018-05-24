@@ -27,4 +27,10 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
         'index',
     ]);
     Route::get('category/search', 'CategoriesController@search')->name('category.search');
+    Route::group(['prefix'=>'post'],function (){
+        Route::get('',[
+            'uses' => 'PostsController@index',
+            'as' => 'admin.post.index'
+        ]);
+    });
 });
