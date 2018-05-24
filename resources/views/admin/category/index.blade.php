@@ -11,6 +11,38 @@
       </ol>
     </section>
     @include('admin.layout.message');
+
+	  <!-- Create Item Modal -->
+		<div class="modal fade" id="create-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Create Category</h4>
+		      </div>
+		      <div class="modal-body">
+		      		<form data-toggle="validator" action="{{ route('category.store') }}" method="POST">
+		      			<div class="form-group">
+							<label class="control-label" for="title">Name:</label>
+							<input type="text" name="title" class="form-control" data-error="Please enter title." required />
+							<div class="help-block with-errors"></div>
+						</div>
+						<div class="form-group">
+							<label class="control-label" for="title">Parent:</label>
+              <select class="form-control" name="category">
+                 @foreach ( $categories as $category )
+                  <option value="{{ $category->id }}" name="parent" class="form-control" data-error="Please enter parent.">{{ $category->name }}</option>
+                 @endforeach
+              </select>
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn crud-submit btn-success">Submit</button>
+						</div>
+		      		</form>
+		      </div>
+		    </div>
+		  </div>
+		</div>
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -18,7 +50,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">{{__('category.admin.index.list_category')}}</h3>
-              <a href="" class="add-users">{{__('category.admin.index.new_category')}}</a>
+              <a href="" class="add-users" data-toggle="modal" data-target="#create-item" >{{__('category.admin.index.new_category')}}</a>
               <div class="box-tools">
                 <form class="input-group input-group-sm" style="width: 150px;" action="{!! route('category.index') !!}" method="GET">
                   <input type="text" name="category_name" class="form-control pull-right" placeholder="Search">
