@@ -35,7 +35,7 @@ class ShowProductTest extends DuskTestCase
      *
      * @return void
      */
-    public function testExample()
+    public function testRoute()
     {
         $product = Product::first();
         $this->browse(function (Browser $browser) use($product) {
