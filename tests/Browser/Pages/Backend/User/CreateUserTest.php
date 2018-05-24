@@ -42,7 +42,6 @@ class CreateUserTest extends DuskTestCase
                 ->type('email', '')
                 ->type('password', '');
             $browser->press('Submit')
-                ->pause(1000)
                 ->assertSee('The name field is required.')
                 ->assertSee('The email field is required.')
                 ->assertSee('The password field is required.');
@@ -60,11 +59,20 @@ class CreateUserTest extends DuskTestCase
             $browser->visit('/admin/user/create')
             ->type('name','Big')
             ->type('email','big@gmail.com')
-            ->type('password','123123123');
+            ->type('password','123123123')
+            ->type('address','132 nhs')
+            ->type('phone','0913');
             $browser->press('Submit')
             ->assertPathIs('/admin/user')
             ->assertSee('Successfully created the user!');
-            $this->assertDatabaseHas('users', ['name' => 'Big']);
-            });
+            $this->assertDatabaseHas('users', [
+                'name' => 'Big',
+                'email' => 'big@gmail.com',
+                ]);
+            $this->assertDatabaseHas('user_infos',[
+                'address' => '132 nhs',
+                'phone' => '0913'
+            ]);
+        });
     }
 }
