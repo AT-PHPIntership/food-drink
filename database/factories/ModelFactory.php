@@ -61,8 +61,8 @@ $factory->define(App\Product::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'price' => $faker->numberBetween(10, 200),
-        'quantily' =>$faker->numberBetween(0, 15),
-        'category_id' => $faker->randomElement(Category::pluck('id')->toArray()),
+        'quantity' =>$faker->numberBetween(0, 15),
+        'category_id' => $faker->randomElement(App\Category::pluck('id')->toArray()),
         'preview' => $faker->text,
         'description' => $faker->text,
         'avg_rate' => $faker->randomFloat(1, 1, 5),

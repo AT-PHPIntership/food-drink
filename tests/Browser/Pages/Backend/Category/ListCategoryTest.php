@@ -15,6 +15,7 @@ class ListCategoryTest extends DuskTestCase
     const NUMBER_LAST_RECORD = 3;
     const NUMBER_SEARCH_RECORD = 1;
     const NAME_SEARCH = 'FOOD';
+    const NAME_SEARCH_NAME = '   FOOD   ';
     const NUMBER_RECORD_AFTER_SEARCH =3;
 
     /**
@@ -98,6 +99,39 @@ class ListCategoryTest extends DuskTestCase
                 ->assertSee('List Category');
             $elements = $browser->elements('.table tbody tr');
             $this->assertCount(self::NUMBER_RECORD_AFTER_SEARCH, $elements);
+        });
+    }
+     /**
+     * Test show result of search with data space
+     *
+     * @return void
+    */
+    public function testSearchSpace()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/admin/category')
+                ->type('category_name', ' ')
+                ->click('.search-category')
+                ->assertSee('List Category');
+            $elements = $browser->elements('.table tbody tr');
+            $this->assertCount(self::NUMBER_SEARCH_RECORD, $elements);
+        });
+    }
+
+     /**
+     * Test show result of search with data space name
+     *
+     * @return void
+    */
+    public function testSpaceName()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/admin/category')
+                ->type('category_name', self::NAME_SEARCH_NAME)
+                ->click('.search-category')
+                ->assertSee('List Category');
+            $elements = $browser->elements('.table tbody tr');
+            $this->assertCount(self::NUMBER_SEARCH_RECORD, $elements);
         });
     }
 }
