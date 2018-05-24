@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-@section('title', __('user.admin.index.title') )
+@section('title', __('product.admin.index.title') )
 @section('content')
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -21,12 +21,12 @@
               <h3 class="box-title">{{__('product.admin.index.show_product')}}</h3>
               <a href="{{route('product.create')}}" class="add-users">{{__('product.admin.index.new_product')}}</a>
               <div class="box-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control pull-right" placeholder="{{__('product.admin.index.search')}}">
-
+                <form class="input-group input-group-sm" style="width: 150px;" action="{!! route('product.index') !!}" method="GET">
+                  <input type="text" name="product_name" class="form-control pull-right" placeholder="{{__('product.admin.index.search')}}">
                   <div class="input-group-btn">
-                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                  <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
                   </div>
+                </form>
                 </div>
               </div>
             </div>
@@ -43,46 +43,24 @@
                   <th>{{__('product.admin.index.rate_avg')}}</th>
                   <th>{{__('product.admin.index.action')}}</th>
                 </tr>
+                @foreach($product as $item)
                 <tr>
-                  <td>183</td>
-                  <td>John Doe</td>
-                  <td>11-7-2014</td>
+                  <td>{{ $item->id }}</td>
+                  <td>{{ $item->name }}</td>
+                  <td>{{ $item->price }} &dollar;</td>
                   <td><img src="{{asset('images/products/default-product.jpg')}}" alt="" class="avatar"></td>
-                  <td>John Doe</td>
-                  <td>Bacon</td>
-                  <td>11-7-2014</td>
+                  <td>{{ $item->quantity }}</td>
+                  <td>{{ $item->Category->name }}</td>
+                  <td>{{ $item->avg_rate }}</td>
                   <td>
                     <a href=""><i class="fa fa-edit"></i></a> |
                     <a href=""><i class="fa fa-trash"></i></a>
                   </td>
                 </tr>
-                <tr>
-                  <td>183</td>
-                  <td>John Doe</td>
-                  <td>11-7-2014</td>
-                  <td><img src="{{asset('images/products/default-product.jpg')}}" alt="" class="avatar"></td>
-                  <td>John Doe</td>
-                  <td>Bacon</td>
-                  <td>11-7-2014</td>
-                  <td>
-                    <a href=""><i class="fa fa-edit"></i></a> |
-                    <a href=""><i class="fa fa-trash"></i></a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>183</td>
-                  <td>John Doe</td>
-                  <td>11-7-2014</td>
-                  <td><img src="{{asset('images/products/default-product.jpg')}}" alt="" class="avatar"></td>
-                  <td>John Doe</td>
-                  <td>Bacon</td>
-                  <td>11-7-2014</td>
-                  <td>
-                    <a href=""><i class="fa fa-edit"></i></a> |
-                    <a href=""><i class="fa fa-trash"></i></a>
-                  </td>
+                @endforeach
                 </tr>
               </table>
+              {{ $product->links() }}
             </div>
             <!-- /.box-body -->
           </div>
