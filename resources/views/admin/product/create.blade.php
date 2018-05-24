@@ -59,12 +59,12 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputFile">{{__('product.admin.create.image')}}</label>
-                  <input type="file" id="exampleInputFile" multiple name="image">
+                  <input type="file" id="exampleInputFile" multiple name="images[]">
                 </div>               
               </div>
               <div class="box-footer">
                 <button type="submit" class="btn btn-primary" name="submit">{{__('product.admin.create.submit')}}</button>
-                @include('admin.errors.error_validation');
+                @include('admin.errors.error_validation')
               </div>
             </form>
           </div>

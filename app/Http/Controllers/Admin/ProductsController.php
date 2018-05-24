@@ -48,28 +48,21 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateProductRequest  $request)
+    public function store(Request  $request)
     {
         DB::transaction(function () use ($request) {
-            // $data = $request->all();
             $product = Product::create($request->except(['image']));
-            if ($request->hasFile('image')) {
-                    // $image =$request->file('image');
-                foreach ($request->file('image') as $image) {
+            if ($request->hasFile('images')) {
+                foreach ($request->file('images') as $image) {
                     $nameNew = time().'_'.md5(rand(0, 99999)).'.'.$image->getClientOriginalExtension();
                     $image->move(public_path(config('define.images_path_products')), $nameNew);
-                    // Image::create([
-                    //     'product_id' => $product->id,
-                    //     'image' => $nameNew
-                    // ]);
-                    Image::where('product_id', $product->id)->create([
+                    Image::create([
                         'product_id' => $product->id,
                         'image' => $nameNew
                     ]);
                 }
             }
         });
-        
         flash(trans('message.product.create'))->success();
         return redirect()->route('product.index');
     }
