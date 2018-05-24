@@ -48,7 +48,7 @@
                   <td>{{ $item->id }}</td>
                   <td>{{ $item->name }}</td>
                   <td>{{ $item->price }} &dollar;</td>
-                  @foreach($item->images as $itemImage)
+                  @foreach ($item->images as $itemImage)
                     @if ($loop->first)
                       <td><img src="{{$itemImage->image_url}}" alt="{{ $item->name }}" class="avatar"></td>
                     @endif    

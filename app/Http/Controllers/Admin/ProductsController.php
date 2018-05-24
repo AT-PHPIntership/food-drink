@@ -8,7 +8,6 @@ use App\Http\Requests\CreateProductRequest;
 use App\Product;
 use App\Category;
 use App\Image;
-use DB;
 
 class ProductsController extends Controller
 {
@@ -27,7 +26,7 @@ class ProductsController extends Controller
         } else {
             $product = Product::search($productName)->with('category', 'images')->paginate(config('define.number_page_products'));
         }
-        return view('admin.product.index', compact('product'));
+        return view('admin.product.index', compact('product', 'product2'));
     }
 
     /**
@@ -48,21 +47,19 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request  $request)
+    public function store(CreateProductRequest  $request)
     {
-        DB::transaction(function () use ($request) {
-            $product = Product::create($request->except(['image']));
-            if ($request->hasFile('images')) {
-                foreach ($request->file('images') as $image) {
-                    $nameNew = time().'_'.md5(rand(0, 99999)).'.'.$image->getClientOriginalExtension();
-                    $image->move(public_path(config('define.images_path_products')), $nameNew);
-                    Image::create([
-                        'product_id' => $product->id,
-                        'image' => $nameNew
-                    ]);
-                }
+        $product = Product::create($request->all());
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $nameNew = time().'_'.md5(rand(0, 99999)).'.'.$image->getClientOriginalExtension();
+                $image->move(public_path(config('define.images_path_products')), $nameNew);
+                Image::create([
+                    'product_id' => $product->id,
+                    'image' => $nameNew
+                ]);
             }
-        });
+        }
         flash(trans('message.product.create'))->success();
         return redirect()->route('product.index');
     }
