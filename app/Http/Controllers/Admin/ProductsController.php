@@ -23,11 +23,11 @@ class ProductsController extends Controller
     public function index(Request $request)
     {
         $productName = $request->product_name;
-        if ($productName == null) {
-            $product = Product::with('category', 'images')->paginate(config('define.number_page_products'));
-        } else {
-            $product = Product::search($productName)->with('category', 'images')->paginate(config('define.number_page_products'));
+        $product = Product::with('category', 'images');
+        if ($productName) {
+            $product = Product::search($productName);
         }
+        $product = $product->paginate(config('define.number_page_products'));
         return view('admin.product.index', compact('product'));
     }
 
@@ -38,7 +38,6 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        // $categories = Category::all();
         return view('admin.product.create');
     }
 
@@ -51,22 +50,23 @@ class ProductsController extends Controller
      */
     public function store(CreateProductRequest  $request)
     {
+        DB::beginTransaction();
         try {
-            DB::transaction(function () use ($request) {
-                $product = Product::create($request->all());
-                if ($request->hasFile('images')) {
-                    foreach ($request->file('images') as $image) {
-                        $nameNew = time().'_'.md5(rand(0, 99999)).'.'.$image->getClientOriginalExtension();
-                        $image->move(public_path(config('define.images_path_products')), $nameNew);
-                        Image::create([
-                            'product_id' => $product->id,
-                            'image' => $nameNew
-                        ]);
-                    }
+            $product = Product::create($request->all());
+            if ($request->hasFile('images')) {
+                foreach ($request->file('images') as $image) {
+                    $nameNew = time().'_'.md5(rand(0, 99999)).'.'.$image->getClientOriginalExtension();
+                    $image->move(public_path(config('define.images_path_products')), $nameNew);
+                    Image::create([
+                        'product_id' => $product->id,
+                        'image' => $nameNew
+                    ]);
                 }
-            });
-        } catch (ModelNotFoundException $e) {
+            }
+            DB::commit();
+        } catch (Exception $e) {
             flash(trans('message.product.fail_create'))->success();
+            DB::rollBack();
         }
         flash(trans('message.product.success_create'))->success();
         return redirect()->route('product.index');
