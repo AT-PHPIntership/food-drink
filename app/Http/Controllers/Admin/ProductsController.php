@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Product;
 use App\Category;
 use App\Image;
+use DB;
 
 class ProductsController extends Controller
 {
@@ -37,8 +38,8 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        $category = Category::all();
-        return view('admin.product.create', compact('category'));
+        // $categories = Category::all();
+        return view('admin.product.create');
     }
 
     /**
@@ -50,16 +51,22 @@ class ProductsController extends Controller
      */
     public function store(CreateProductRequest  $request)
     {
-        $product = Product::create($request->all());
-        if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $image) {
-                $nameNew = time().'_'.md5(rand(0, 99999)).'.'.$image->getClientOriginalExtension();
-                $image->move(public_path(config('define.images_path_products')), $nameNew);
-                Image::create([
-                    'product_id' => $product->id,
-                    'image' => $nameNew
-                ]);
-            }
+        try {
+            DB::transaction(function () use ($request) {
+                $product = Product::create($request->all());
+                if ($request->hasFile('images')) {
+                    foreach ($request->file('images') as $image) {
+                        $nameNew = time().'_'.md5(rand(0, 99999)).'.'.$image->getClientOriginalExtension();
+                        $image->move(public_path(config('define.images_path_products')), $nameNew);
+                        Image::create([
+                            'product_id' => $product->id,
+                            'image' => $nameNew
+                        ]);
+                    }
+                }
+            });
+        } catch (ModelNotFoundException $e) {
+            flash(trans('message.product.fail_create'))->success();
         }
         flash(trans('message.product.success_create'))->success();
         return redirect()->route('product.index');
