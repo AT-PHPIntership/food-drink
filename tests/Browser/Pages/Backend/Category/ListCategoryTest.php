@@ -16,7 +16,7 @@ class ListCategoryTest extends DuskTestCase
     const NUMBER_SEARCH_RECORD = 1;
     const NAME_SEARCH = 'FOOD';
     const NAME_SEARCH_NAME = '   FOOD   ';
-    const NUMBER_RECORD_AFTER_SEARCH =3;
+    const NUMBER_RECORD_AFTER_SEARCH = 3;
 
     /**
     * Override function setUp() for make user login
@@ -114,7 +114,7 @@ class ListCategoryTest extends DuskTestCase
                 ->click('.search-category')
                 ->assertSee('List Category');
             $elements = $browser->elements('.table tbody tr');
-            $this->assertCount(self::NUMBER_SEARCH_RECORD, $elements);
+            $this->assertCount(self::RECORD_LIMIT, $elements);
         });
     }
 
@@ -131,7 +131,7 @@ class ListCategoryTest extends DuskTestCase
                 ->click('.search-category')
                 ->assertSee('List Category');
             $elements = $browser->elements('.table tbody tr');
-            $this->assertCount(self::NUMBER_SEARCH_RECORD, $elements);
+            $this->assertCount(self::NUMBER_RECORD_AFTER_SEARCH, $elements);
         });
     }
 }
