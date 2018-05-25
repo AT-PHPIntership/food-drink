@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Product;
 
 class ProductsController extends Controller
@@ -34,5 +35,23 @@ class ProductsController extends Controller
     public function create()
     {
         return view('admin.product.create');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param product $product product object
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function destroy(Product $product)
+    {
+        try {
+            $product->delete();
+            flash(trans('message.product.success_delete'))->success();
+        } catch (ModelNotFoundException $e) {
+            flash(trans('message.product.fail_delete'))->success();
+        }
+        return redirect()->route('product.index');
     }
 }
