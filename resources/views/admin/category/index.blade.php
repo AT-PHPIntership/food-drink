@@ -24,22 +24,22 @@
 		      		<form data-toggle="validator" action="{!! route('category.store') !!}" method="POST">
 		      			<div class="form-group">
 							<label class="control-label" for="title">Name:</label>
-							<input type="text" name="category" class="form-control" data-error="Please enter title." required />
-							<div class="help-block with-errors"></div>
+							<input type="text" name="category" class="form-control" data-error="Please enter title." />
+							<div class="bg-danger" id="errors-input-name"></div>
 						</div>
 						<div class="form-group">
 							<label class="control-label" for="title">Parent:</label>
               <select class="form-control" name="category">
-                 @foreach ( $categories as $category )
-                  <option value="{{ $category->id }}" name="parent" class="form-control" data-error="Please enter parent.">{{ $category->name }}</option>
+                 @foreach ( $nameCategories as $Category )
+                  <option value="{{ $Category->id }}" name="parent_id" class="form-control" data-error="Please enter parent.">{{ $Category->name }}</option>
                  @endforeach
               </select>
 						</div>
 						<div class="form-group">
 							<button type="submit" class="btn create-submit btn-success">Submit</button>
-						</div>
-		      		</form>
-		      </div>
+            </div>           
+		      	</form>
+          </div>
 		    </div>
 		  </div>
 		</div>
@@ -69,6 +69,7 @@
                   <th>{{__('category.admin.index.parent')}}</th>
                   <th>{{__('category.admin.index.action')}}</th>
                 </tr>
+                <tbody>
                 @foreach($categories as $category)
                 <tr>
                   <td>{{ $category->id }}</td>
@@ -88,6 +89,7 @@
                   </td>
                 </tr>
                 @endforeach
+                <tbody>
               </table>
               {{ $categories->links() }}
             </div>

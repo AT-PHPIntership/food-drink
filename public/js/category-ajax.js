@@ -1,8 +1,9 @@
+/* Create new Item */
 $(".create-submit").click(function(e){
     e.preventDefault();
     var form_action = $("#create-category").find("form").attr("action");
     var name = $("#create-category").find("input[name='category']").val();
-    var parent_id = $("#create-category").find("option[name='parent']").val();
+    var parent_id = $("#create-category").find(":selected").val();
     $.ajax({
         headers: {
             'X-CSRF-TOKEN': $('#csrf-token').attr('content')
@@ -12,6 +13,10 @@ $(".create-submit").click(function(e){
         url: form_action,
         data:{'name':name, 'parent_id':parent_id}
     }).done(function(data){
-        getPageData();
+        $(".modal").modal('hide');
+        location.reload();
+    }).fail(function (data) {
+       var json_data = JSON.parse(data.responseText);
+       $('#errors-input-name').text(json_data['errors'].name);
     });
 });
