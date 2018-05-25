@@ -25,3 +25,6 @@
 .form-trash {
   display: inline;
 }
+.label-inline {
+  display: inherit;
+}
