@@ -7,7 +7,7 @@
       <h1>{{__('product.admin.index.list_product')}}</h1>
       <ol class="breadcrumb">
         <li><a href="{{route('admin')}}"><i class="fa fa-dashboard"></i> {{__('admin.dashboard')}}</a></li>
-        <li class="active">{{__('product.admin.index.product')}}</li>
+        <li class="active">{{__('admin.manage_product')}}</li>
       </ol>
     </section>
 
@@ -48,9 +48,9 @@
                   <td>{{ $item->id }}</td>
                   <td><a href="{{route('product.show', ['product' => $item->id])}}">{{ $item->name }}</a></td>
                   <td>{{ $item->price }} &dollar;</td>
-                  <td><img src="{{asset('images/products/default-product.jpg')}}" alt="" class="avatar"></td>
+                  <td><img src="{{ asset('images/products/'.$item->images->first()['image']) }}" alt="{{ $item->name }}" class="avatar"/></td>
                   <td>{{ $item->quantity }}</td>
-                  <td>{{ $item->Category->name }}</td>
+                  <td>{{ $item->category->name }}</td>
                   <td>{{ $item->avg_rate }}</td>
                   <td>
                     <a href=""><i class="fa fa-edit"></i></a> |
