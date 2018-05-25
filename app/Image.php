@@ -24,7 +24,7 @@ class Image extends Model
     {
         return $this->belongsTo('App\Product');
     }
-
+    
     /**
     * Get the product's image.
     *
