@@ -18,7 +18,8 @@
                 'action' => 'Action'
             ],
             'create' => [
-                'form_title' => 'Create Product',
+                'title' => 'Create Product',
+                'form_title' => 'Create Form',
                 'product' => 'Product',
                 'create' => 'Create',
                 'manage_product' => 'Manage Products',
