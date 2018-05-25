@@ -25,10 +25,23 @@ class ProductsController extends Controller
         $productName = $request->product_name;
         $product = Product::with('category', 'images');
         if ($productName) {
-            $product = Product::search($productName);
+            $product = $product->search($productName);
         }
         $product = $product->paginate(config('define.number_page_products'));
         return view('admin.product.index', compact('product'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Product $product Product object
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function show(Product $product)
+    {
+        $product->load('category', 'images');
+        return view('admin.product.show', compact('product'));
     }
 
     /**

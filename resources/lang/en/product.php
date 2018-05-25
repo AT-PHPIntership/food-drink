@@ -36,5 +36,12 @@
                 'enter_preview' => 'Enter preview',
                 'enter_description' => 'Enter description',
             ],
+            'show' => [
+                'title' => 'Show detail product',
+                'form_title' => 'Show detail',
+                'product' => 'Product',
+                'back' => 'Back',
+                'edit_product' => 'Edit Product'
+            ]
         ]
     ];

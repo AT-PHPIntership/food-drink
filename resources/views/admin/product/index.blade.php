@@ -7,7 +7,7 @@
       <h1>{{__('product.admin.index.list_product')}}</h1>
       <ol class="breadcrumb">
         <li><a href="{{route('admin')}}"><i class="fa fa-dashboard"></i> {{__('admin.dashboard')}}</a></li>
-        <li class="active">{{__('product.admin.index.product')}}</li>
+        <li class="active">{{__('admin.manage_product')}}</li>
       </ol>
     </section>
 
@@ -46,7 +46,7 @@
                 @foreach($product as $item)
                 <tr>
                   <td>{{ $item->id }}</td>
-                  <td>{{ $item->name }}</td>
+                  <td><a href="{{route('product.show', ['product' => $item->id])}}">{{ $item->name }}</a></td>
                   <td>{{ $item->price }} &dollar;</td>
                   <td><img src="{{ asset('images/products/'.$item->images->first()['image']) }}" alt="{{ $item->name }}" class="avatar"/></td>
                   <td>{{ $item->quantity }}</td>
@@ -54,6 +54,7 @@
                   <td>{{ $item->avg_rate }}</td>
                   <td>
                     <a href=""><i class="fa fa-edit"></i></a> |
+                    <a href="{{route('product.show', ['product' => $item->id])}}"><i class="fa fa-wrench"></i></a> |
                     <form method="POST" action="{{route('product.destroy', ['product' => $item->id])}}" class="form-trash" onsubmit="return confirmDelete()">
                       @csrf
                       {{ method_field('DELETE') }}
