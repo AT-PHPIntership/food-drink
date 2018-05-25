@@ -24,7 +24,6 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
     Route::resource('category', 'CategoriesController')->only([
         'index',
     ]);
-    Route::get('category/search', 'CategoriesController@search')->name('category.search');
     Route::group(['prefix'=>'post'],function (){
         Route::get('',[
             'uses' => 'PostsController@index',
