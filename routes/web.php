@@ -20,9 +20,7 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
         'as'=>'admin'
     ]);
     Route::resource('user', 'UsersController');
-    Route::resource('product', 'ProductsController')->only([
-        'index', 'create', 'store'
-    ]);
+    Route::resource('product', 'ProductsController');
     Route::resource('category', 'CategoriesController');
     Route::group(['prefix'=>'post'],function (){
         Route::get('',[

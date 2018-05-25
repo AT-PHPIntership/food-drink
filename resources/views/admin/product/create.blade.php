@@ -35,11 +35,11 @@
                 </div>
                 <div class="form-group">
                   <label for="InputEmail">{{__('product.admin.create.price')}}</label>
-                  <input type="text" class="form-control" id="InputEmail" name="price" placeholder="{{__('product.admin.create.enter_price')}}">
+                  <input type="number" class="form-control" id="InputEmail" name="price" placeholder="{{__('product.admin.create.enter_price')}}">
                 </div>
                 <div class="form-group">
                   <label for="InputQuantity">{{__('product.admin.create.quantity')}}</label>
-                  <input type="text" class="form-control" id="InputPassword" name="quantity" placeholder="{{__('product.admin.create.enter_quantity')}}">
+                  <input type="number" class="form-control" id="InputPassword" name="quantity" placeholder="{{__('product.admin.create.enter_quantity')}}">
 								</div>
 								<div class="form-group">
                   <label>{{__('product.admin.create.category')}}</label>

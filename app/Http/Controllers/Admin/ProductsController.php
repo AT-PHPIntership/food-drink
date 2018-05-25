@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateProductRequest;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Product;
 use App\Category;
 use App\Image;
@@ -26,7 +27,7 @@ class ProductsController extends Controller
         } else {
             $product = Product::search($productName)->with('category', 'images')->paginate(config('define.number_page_products'));
         }
-        return view('admin.product.index', compact('product', 'product2'));
+        return view('admin.product.index', compact('product'));
     }
 
     /**
@@ -60,7 +61,25 @@ class ProductsController extends Controller
                 ]);
             }
         }
-        flash(trans('message.product.create'))->success();
+        flash(trans('message.product.success_create'))->success();
+        return redirect()->route('product.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param product $product product object
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function destroy(Product $product)
+    {
+        try {
+            $product->delete();
+            flash(trans('message.product.success_delete'))->success();
+        } catch (ModelNotFoundException $e) {
+            flash(trans('message.product.fail_delete'))->success();
+        }
         return redirect()->route('product.index');
     }
 }
