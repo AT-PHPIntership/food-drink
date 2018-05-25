@@ -31,6 +31,7 @@ class ListCategoryTest extends DuskTestCase
         ]);
         factory('App\Category', self::NUMBER_RECORD_CREATE)->create();
     }
+
     /**
      * A Dusk test Route show list user.
      *
@@ -43,6 +44,7 @@ class ListCategoryTest extends DuskTestCase
                     ->assertSee('List Category');
         });
     }
+
     /**
      * A Dusk test Route show list user.
      *
@@ -56,6 +58,7 @@ class ListCategoryTest extends DuskTestCase
             $this->assertCount(self::RECORD_LIMIT, $elements);
         });
     }
+
     /**
      * A Dusk test numberRecord show list user.
      *
@@ -69,12 +72,13 @@ class ListCategoryTest extends DuskTestCase
             $this->assertCount(self::NUMBER_LAST_RECORD, $elements);
         });
     }
+
     /**
      * Test show result of search with data input
      *
      * @return void
     */
-    public function testSearchCategory()
+    public function testNameNotExist()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/admin/category')
@@ -85,6 +89,7 @@ class ListCategoryTest extends DuskTestCase
             $this->assertCount(self::NUMBER_SEARCH_RECORD, $elements);
         });
     }
+
     /**
      * Test show result of search with data input
      *
@@ -101,6 +106,7 @@ class ListCategoryTest extends DuskTestCase
             $this->assertCount(self::NUMBER_RECORD_AFTER_SEARCH, $elements);
         });
     }
+
      /**
      * Test show result of search with data space
      *
@@ -123,7 +129,7 @@ class ListCategoryTest extends DuskTestCase
      *
      * @return void
     */
-    public function testSpaceName()
+    public function testNamesWithSpaces()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/admin/category')
