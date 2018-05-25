@@ -9,8 +9,8 @@
         <small>{{__('product.admin.show.product')}}</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i>{{__('admin.dashboard')}}</a></li>
-        <li><a href="#">{{__('admin.manage_product')}}</a></li>
+        <li><a href="{{route('admin')}}"><i class="fa fa-dashboard"></i>{{__('admin.dashboard')}}</a></li>
+        <li><a href="{{route('product.index')}}">{{__('admin.manage_product')}}</a></li>
         <li class="active">{{__('product.admin.show.form_title')}}</li>
       </ol>
     </section>

@@ -50,7 +50,7 @@
                   <td>
                     <a href="{{route('user.edit', $user->id)}}"><i class="fa fa-edit"></i></a>  |
                     @if($user->id !== App\User::ROOT_ADMIN)
-                    <form method="POST" action="{!! route('user.destroy', ['user' => $user->id]) !!}" class="form-trash">
+                    <form method="POST" action="{!! route('user.destroy', ['user' => $user->id]) !!}" class="form-trash" onsubmit="return confirmDelete()">
                       @csrf
                       {{ method_field('DELETE') }}
                       <button type="submit" class="but-trash"><i class="fa fa-trash"></i></button>

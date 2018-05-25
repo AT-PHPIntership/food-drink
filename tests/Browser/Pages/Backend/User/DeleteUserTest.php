@@ -50,6 +50,8 @@ class DeleteUserTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->visit('/admin/user')
                     ->click('td button.but-trash')
+                    ->assertDialogOpened('Are you sure you want to delete?')
+                    ->acceptDialog()
                     ->assertSee('Successfully deleted the user!');
         });
     }
@@ -63,7 +65,8 @@ class DeleteUserTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/admin/user')
-                    ->click('td button.but-trash');
+                    ->click('td button.but-trash')
+                    ->acceptDialog();
             $browser->visit('/admin/user?page=4')
                     ->assertSee(self::LAST_RECORD_AFTER_DELETE);
         });
