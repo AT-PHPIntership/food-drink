@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+  @extends('admin.layout.master')
 @section('title', __('post.index.title') )
 @section('content')
 <div class="content-wrapper">
@@ -39,21 +39,21 @@
                   <th>{{__('post.index.status')}}</th>
                   <th>{{__('post.index.action')}}</th>
                 </tr>
-                @foreach($getPosts as $getPost )
+                @foreach($posts as $post )
                 <tr>
-                  <td>{{$getPost->id}}</td>
-                  <td>{{$getPost->user_id}}</td>
-                  <td>{{$getPost->product_id}}</td>
-                  <td>{{$getPost->content}}</td>
-                  <td>{{$getPost->rate}}</td>
-                  <td>{{$getPost->type}}</td>
+                  <td>{{$post->id}}</td>
+                  <td>{{$post->user_id}}</td>
+                  <td>{{$post->product_id}}</td>
+                  <td>{{$post->content}}</td>
+                  <td>{{$post->rate}}</td>
+                  <td>{{$post->type}}</td>
                   <td>
-                  @if($getPost->status==1)
-                  <a href=""   id="{{$getPost->id}}">
+                  @if($post->status == App\Post::ENABLE)
+                  <a href=""   id="{{$post->id}}">
                   <img src="/images/posts/icons/accept.png" alt="" />
                   </a>
-                  @elseif($getPost->status==0)
-                  <a href=""   id="{{$getPost->id}}">
+                  @elseif($post->status== App\Post::DISABLE)
+                  <a href=""   id="{{$post->id}}">
                   <img src="/images/posts/icons/exclamation.png" alt="" />
                   </a>
                   @endif
@@ -70,7 +70,7 @@
             <!-- /.box-body -->
           </div>
           <div class="text-center">
-            {{ $getPosts->links() }}
+            {{ $posts->links() }}
           </div>
           <!-- /.box -->
         </div>
