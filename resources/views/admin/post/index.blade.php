@@ -86,8 +86,9 @@
           $.ajax({
             url: '{{route("admin.post.active")}}',
             type: 'POST',
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             dataType: 'json',
-            data: {_token:'{{csrf_token()}}',idPost: idPost},
+            data: {idPost: idPost},
           })
           .done(function(data) {
             console.log(data);
