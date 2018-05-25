@@ -20,7 +20,7 @@
               <h3 class="box-title">{{__('category.admin.index.list_category')}}</h3>
               <a href="" class="add-users">{{__('category.admin.index.new_category')}}</a>
               <div class="box-tools">
-                <form class="input-group input-group-sm" style="width: 150px;" action="{!! route('category.search') !!}" method="GET">
+                <form class="input-group input-group-sm" style="width: 150px;" action="{!! route('category.index') !!}" method="GET">
                   <input type="text" name="category_name" class="form-control pull-right" placeholder="Search">
                   <div class="input-group-btn">
                   <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
