@@ -28,22 +28,11 @@ class PostsController extends Controller
      */
     public function active(Request $request)
     {
-        $idPost = Post::findOrFail($request->idPost);
-        $data['getPost'] = DB::table('posts')
-                ->where('id', $idPost->id)
-                ->update(['status' => !$idPost->status]);        
-        // ($idPost->status == Post::DISABLE) ?
-        //     ($data['getPost'] = DB::table('posts')
-        //         ->where('id', $idPost->id)
-        //         ->update(['status' => 1])) : 
-        //         ($data['getPost'] = DB::table('posts')
-        //         ->where('id', $idPost->id)
-        //         ->update(['status' => 0]))
-        //         ;
-        $data['getPost'] = DB::table('posts')->where('id', $idPost->id)->first();
+        $post = Post::findOrFail($request->idPost);
+        $post->update(['status' => !$post->status]);
         return response()->json([
             "status" => true,
-            "html" => view("admin.post._ajaximg", $data)->render(),
+            "html" => view("admin.post._ajaximg", ['post'=>$post])->render(),
         ]);
     }
 }

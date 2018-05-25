@@ -21,7 +21,9 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
     ]);
     Route::resource('user', 'UsersController');
     Route::resource('product', 'ProductsController');
-    Route::resource('category', 'CategoriesController');
+    Route::resource('category', 'CategoriesController')->only([
+        'index',
+    ]);
     Route::group(['prefix'=>'post'],function (){
         Route::get('',[
             'uses' => 'PostsController@index',
