@@ -11,11 +11,11 @@ class ComposerServiceProvider extends ServiceProvider
      * Bootstrap services.
      *
      * @return void
-     */
+    */
     public function boot()
     {
         View::composer(
-            ['admin.product.create'], 
+            ['admin.product.create'],
             'App\Http\ViewComposers\CategoryComposer'
         );
     }
@@ -24,7 +24,7 @@ class ComposerServiceProvider extends ServiceProvider
      * Register services.
      *
      * @return void
-     */
+    */
     public function register()
     {
         //
