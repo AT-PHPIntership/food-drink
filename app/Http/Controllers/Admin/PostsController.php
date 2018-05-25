@@ -16,8 +16,10 @@ class PostsController extends Controller
     */
     public function index()
     {
-        $data['getPosts'] = Post::all();
-        return view('admin.post.index', $data);
+        $getPosts = DB::table('posts')
+        ->select('id','user_id','product_id','content','rate','type','status')
+        ->paginate(5);
+        return view('admin.post.index', ['getPosts'=>$getPosts]);
     }
     /**
      * Store a newly created resource in storage.

@@ -19,7 +19,7 @@
               <h3 class="box-title">{{__('post.index.show_list_review')}}</h3>
               <div class="box-tools">
                 <form class="input-group input-group-sm" style="width: 150px;" action="" method="GET">
-                  <input type="text" name="user_name" class="form-control pull-right" placeholder="{{__('user.admin.index.search')}}">
+                  <input type="text" name="search" class="form-control pull-right" placeholder="{{__('user.admin.index.search')}}">
                   <div class="input-group-btn">
                   <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
                   </div>
@@ -68,6 +68,9 @@
               </table>
             </div>
             <!-- /.box-body -->
+          </div>
+          <div class="text-center">
+            {{ $getPosts->links() }}
           </div>
           <!-- /.box -->
         </div>
