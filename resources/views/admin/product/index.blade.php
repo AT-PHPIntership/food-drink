@@ -54,7 +54,11 @@
                   <td>{{ $item->avg_rate }}</td>
                   <td>
                     <a href=""><i class="fa fa-edit"></i></a> |
-                    <a href=""><i class="fa fa-trash"></i></a>
+                    <form method="POST" action="{{route('product.destroy', ['product' => $item->id])}}" class="form-trash" onsubmit="return confirmDelete()">
+                      @csrf
+                      {{ method_field('DELETE') }}
+                      <button type="submit" class="but-trash"><i class="fa fa-trash"></i></button>
+                    </form>
                   </td>
                 </tr>
                 @endforeach
