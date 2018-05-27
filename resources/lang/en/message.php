@@ -7,7 +7,7 @@
         'product' => [
             'success_create' => 'Successfully Created Product!',
             'fail_create' => 'Faily Created Product!',
-            'success_delete' => 'Successfully deleted the product!',
+            'success_delete' => 'Successfully Deleted Product!',
             'fail_delete' => 'Faily Deleted Product!',
         ],
     ];
