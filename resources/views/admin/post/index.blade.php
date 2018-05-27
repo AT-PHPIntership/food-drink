@@ -28,7 +28,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">
-              <table class="table table-hover">
+              <table class="table table-hover" id="table-show-post">
                 <tr>
                   <th>{{__('post.index.review_id')}}</th>
                   <th>{{__('post.index.user_id')}}</th>
@@ -50,11 +50,11 @@
                   <td>
                   @if($post->status == App\Post::ENABLE)
                   <a href=""   id="{{$post->id}}">
-                  <img src="/images/posts/icons/accept.png" alt="" />
+                  <img src="{{asset('images/posts/icons/accept.png')}}" alt="" />
                   </a>
                   @elseif($post->status== App\Post::DISABLE)
                   <a href=""   id="{{$post->id}}">
-                  <img src="/images/posts/icons/exclamation.png" alt="" />
+                  <img src="{{asset('images/posts/icons/exclamation.png')}}" alt="" />
                   </a>
                   @endif
                   </td>
@@ -86,7 +86,7 @@
         var idPost = $(this).attr('id');
         var this_button = $(this);
         console.log(this_button);
-          $.ajax({
+          $.ajaxSetup({
             url: '{{route("admin.post.active")}}',
             type: 'POST',
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
