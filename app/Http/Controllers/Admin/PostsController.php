@@ -18,7 +18,7 @@ class PostsController extends Controller
     {
         $posts = DB::table('posts')
         ->select('id', 'user_id', 'product_id', 'content', 'rate', 'type', 'status')
-        ->paginate(5);
+        ->paginate(Post::PAGINATE);
         return view('admin.post.index', ['posts'=>$posts]);
     }
     /**
