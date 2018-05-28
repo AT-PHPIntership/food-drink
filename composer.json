@@ -10,7 +10,8 @@
         "fideloper/proxy": "^4.0",
         "laracasts/flash": "^3.0",
         "laravel/framework": "5.6.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "mariuzzo/laravel-js-localization": "^1.4"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "@stable",

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Product;
 use App\Category;
@@ -78,10 +79,56 @@ class ProductsController extends Controller
             }
             DB::commit();
         } catch (Exception $e) {
-            flash(trans('message.product.fail_create'))->success();
+            flash(trans('message.product.fail_create'))->error();
             DB::rollBack();
         }
         flash(trans('message.product.success_create'))->success();
+        return redirect()->route('product.index');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param Product $product product object
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function edit(Product $product)
+    {
+        $product->load('images');
+        return view('admin.product.edit', compact('product'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request request
+     * @param Product                  $product product object
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(UpdateProductRequest $request, Product $product)
+    {
+        DB::beginTransaction();
+        try {
+            $product->update($request->all());
+            if ($request->hasFile('images')) {
+                foreach (request()->file('images') as $image) {
+                    $nameNew = time().'_'.md5(rand(0, 99999)).'.'.$image->getClientOriginalExtension();
+                    $image->move(public_path(config('define.images_path_products')), $nameNew);
+                    Image::create([
+                        'product_id' => $product->id,
+                        'image' => $nameNew
+                    ]);
+                }
+            }
+            $product->update($request->all());
+            DB::commit();
+        } catch (Exception $e) {
+            flash(trans('message.product.fail_update'))->error();
+            DB::rollBack();
+        }
+        flash(trans('message.product.success_update'))->success();
         return redirect()->route('product.index');
     }
 
@@ -98,7 +145,7 @@ class ProductsController extends Controller
             $product->delete();
             flash(trans('message.product.success_delete'))->success();
         } catch (ModelNotFoundException $e) {
-            flash(trans('message.product.fail_delete'))->success();
+            flash(trans('message.product.fail_delete'))->error();
         }
         return redirect()->route('product.index');
     }
