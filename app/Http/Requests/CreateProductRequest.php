@@ -27,7 +27,7 @@ class CreateProductRequest extends FormRequest
             'name'=>'required|string|max:50',
             'price' => 'required|regex:/^\d{1,13}(\.\d{1,3})?$/',
             'quantity' => 'required|integer|min:0',
-            'category_id' => 'required|integer|exists:categories, id',
+            'category_id' => 'required|integer|exists:categories,id',
             'preview' => 'required|string|max:255',
             'description' => 'string',
             'images' => 'required',
