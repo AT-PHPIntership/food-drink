@@ -40,24 +40,27 @@
                   <th>{{__('post.index.action')}}</th>
                 </tr>
                 @foreach($posts as $post)
-                <tr>
-                  <td>{{$post->id}}</td>
-                  <td>{{$post->user_id}}</td>
-                  <td>{{$post->product_id}}</td>
-                  <td>{{$post->content}}</td>
-                  <td>{{$post->rate}}</td>
-                  <td>{{$post->type}}</td>
-                  <td>{{$post->status}}</td>
-                  <td>
-                  <form>
-                    <button type="submit" class="btn btn-danger">
-                      <i class="fa fa-trash-alt"></i>
-                    </button>
-                  </form>
-                  </td>
-                </tr>
+                  <tr>
+                    <td>{{ $post->id }}</td>
+                    <td>{{ $post->user_id }}</td>
+                    <td>{{ $post->product_id }}</td>
+                    <td>{{ $post->content }}</td>
+                    <td>{{ $post->rate }}</td>
+                    <td>{{ $post->type }}</td>
+                    <td>{{ $post->status }}</td>
+                    <td>
+                      <form>
+                        <button type="submit" class="btn btn-danger">
+                          <i class="fa fa-trash"></i>
+                        </button>
+                      </form>
+                      </td>
+                  </tr>
                 @endforeach
               </table>
+              <div class="text-center">
+                {{ $posts->links() }}
+              </div>
             </div>
             <!-- /.box-body -->
           </div>

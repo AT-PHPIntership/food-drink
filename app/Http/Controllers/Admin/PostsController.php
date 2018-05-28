@@ -15,7 +15,7 @@ class PostsController extends Controller
     */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::paginate(Post::PAGINATE);
         return view('admin.post.index', ['posts'=>$posts]);
     }
 }
