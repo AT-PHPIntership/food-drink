@@ -19,12 +19,11 @@ class CategoriesController extends Controller
     public function index(Request $request)
     {
         $categories = Category::with('parentCategories');
-        $nameCategories = Category::all();
         if ($request->category_name) {
             $categories = $categories->search($request->category_name);
         }
         $categories = $categories->paginate(config('define.number_pages'));
-        return view('admin.category.index', compact('categories', 'nameCategories'));
+        return view('admin.category.index', compact('categories'));
     }
     /**
      * Store a newly created resource in storage.
@@ -36,6 +35,7 @@ class CategoriesController extends Controller
     public function store(CategoryRequests $request)
     {
         $create = Category::create($request->all());
+        flash(trans('message.category.success_create'))->success();
         return response()->json($create);
     }
 }

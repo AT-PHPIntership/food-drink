@@ -21,24 +21,25 @@
 		        <h4 class="modal-title" id="myModalLabel">Create Category</h4>
 		      </div>
 		      <div class="modal-body">
-		      		<form data-toggle="validator" action="{!! route('category.store') !!}" method="POST">
-		      			<div class="form-group">
-							<label class="control-label" for="title">Name:</label>
-							<input type="text" name="category" class="form-control" data-error="Please enter title." />
-							<div class="bg-danger" id="errors-input-name"></div>
-						</div>
-						<div class="form-group">
-							<label class="control-label" for="title">Parent:</label>
-              <select class="form-control" name="category">
-                 @foreach ( $nameCategories as $Category )
-                  <option value="{{ $Category->id }}" name="parent_id" class="form-control" data-error="Please enter parent.">{{ $Category->name }}</option>
-                 @endforeach
-              </select>
-						</div>
-						<div class="form-group">
-							<button type="submit" class="btn create-submit btn-success">Submit</button>
+            <form data-toggle="validator" action="{!! route('category.store') !!}" method="POST">
+              <div class="form-group">
+                <label class="control-label" for="title">Name:</label>
+                <input type="text" name="category" class="form-control" data-error="Please enter title." />
+              <div class="bg-danger" id="errors-input-name"></div>
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="title">Parent:</label>
+            <select class="form-control" name="category">
+            <option value="0" name="parent_id" class="form-control" data-error="Please enter parent."></option>
+                @foreach ( $nameCategories as $category )
+                <option value="{{ $category->id }}" name="parent_id" class="form-control" data-error="Please enter parent.">{{ $category->name }}</option>
+                @endforeach
+            </select>
+					</div>
+            <div class="form-group">
+             <button type="submit" class="btn create-submit btn-success">Submit</button>
             </div>           
-		      	</form>
+            </form>     
           </div>
 		    </div>
 		  </div>

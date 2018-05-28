@@ -33,5 +33,6 @@
 <script src="/bower_components/admin-lte/dist/js/demo.js"></script>
 <!-- ajax for category -->
 <script src="/js/category-ajax.js"></script> 
+<script src="/js/messages.js"></script>
 </body>
 </html>

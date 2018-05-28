@@ -10,4 +10,7 @@
             'success_delete' => 'Successfully deleted the product!',
             'fail_delete' => 'Faily Deleted Product!',
         ],
+        'category' => [
+            'success_create' => 'Successfully Created Categroy',
+        ],
     ];
