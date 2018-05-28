@@ -3,11 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\SearchTrait;
 
 class Product extends Model
 {
-    use SearchTrait;
+    use SearchTrait, SoftDeletes;
     
     protected $search = [
         'name',
@@ -23,6 +24,7 @@ class Product extends Model
         'avg_rate',
         'sum_rate',
         'total_rate',
+        'deleted_at'
     ];
 
     /**

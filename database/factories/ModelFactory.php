@@ -10,8 +10,8 @@ use Faker\Generator as Faker;
 | model instances for testing / seeding your application's database.
 |
 */
+
 $factory->define(App\Category::class, function (Faker $faker) {
-    // And now let's generate a few dozen users for our app:
         return([
             'name' => $faker->name,
             'parent_id' => App\Category::all()->random()->id,
@@ -61,8 +61,8 @@ $factory->define(App\Product::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'price' => $faker->numberBetween(10, 200),
-        'quantily' =>$faker->numberBetween(0, 15),
-        'category_id' => $faker->randomElement(Category::pluck('id')->toArray()),
+        'quantity' =>$faker->numberBetween(0, 15),
+        'category_id' => $faker->randomElement(App\Category::pluck('id')->toArray()),
         'preview' => $faker->text,
         'description' => $faker->text,
         'avg_rate' => $faker->randomFloat(1, 1, 5),
@@ -96,4 +96,10 @@ $factory->defineAs(App\User::class, 'admin', function (Faker $faker) {
         'role' => 1,
         'deleted_at' => null,
     ];
+});
+$factory->defineAs(App\Category::class, 'parent', function (Faker $faker) {
+        return([
+            'name' => $faker->name,
+            'parent_id' => 0,
+        ]);
 });

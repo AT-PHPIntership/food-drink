@@ -55,14 +55,14 @@ class UsersController extends Controller
             $image = $request->file('avatar');
             $newName = time().'_'.md5(rand(0, 99999)).'.'.$image->getClientOriginalExtension();
             $image->move(public_path(config('define.images_path_users')), $newName);
-            $data1 = UserInfo::create([
+            UserInfo::create([
                     'user_id' =>$data->id,
                     'address' => $request->address,
                     'phone' => $request->phone,
                     'avatar' => $newName
                 ]);
         } else {
-            $data1 = UserInfo::create([
+            UserInfo::create([
                 'user_id' => $data->id,
                 'address' => $request->address,
                 'phone' => $request->phone
