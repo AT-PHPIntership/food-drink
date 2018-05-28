@@ -45,31 +45,11 @@ class DeleteProductTest extends DuskTestCase
     }
 
     /**
-     * A Dusk test record.
+     * A Dusk test delete product not exist.
      *
      * @return void
     */
-    public function testRecord()
-    {
-        $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/product');
-            $elements = $browser->elements('.table tbody tr');
-            $this->assertCount(9, $elements);
-            $browser->click('tbody tr:nth-child(6) td:nth-child(8) .but-trash')
-                    ->assertDialogOpened('Are you sure you want to delete?')
-                    ->acceptDialog()
-                    ->assertSee('Successfully Deleted Product!');
-            $elements = $browser->elements('.table tbody tr');
-            $this->assertCount(8, $elements);
-        });
-    }
-
-    /**
-     * A Dusk test delete fail.
-     *
-     * @return void
-    */
-    public function testWithDeleteMethod() {
+    public function testDeleteProductNotExist() {
         $this->browse(function (Browser $browser) {
             $browser->visit('/admin/product');
             DB::table('products')->delete(2);
