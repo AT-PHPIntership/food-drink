@@ -12,12 +12,12 @@
       </li>
       <li>
         <a href="{{ route('user.index') }}">
-          <i class="fa fa-table"></i> <span>{{__('admin.manage_user')}}</span>
+          <i class="fa fa-users"></i> <span>{{__('admin.manage_user')}}</span>
         </a>
       </li>
       <li>
         <a href="{{ route('category.index') }}">
-          <i class="fa fa-table"></i> <span>{{__('admin.manage_category')}}</span>
+          <i class="fa fa-th-list"></i> <span>{{__('admin.manage_category')}}</span>
         </a>
       </li>
       <li>
@@ -27,12 +27,12 @@
       </li>
       <li>
         <a href="#">
-          <i class="fa fa-table"></i> <span>{{__('admin.manage_post')}}</span>
+          <i class="fa fa-clipboard"></i> <span>{{__('admin.manage_post')}}</span>
         </a>
       </li>
       <li>
-        <a href="#">
-          <i class="fa fa-edit"></i> <span>{{__('admin.manage_order')}}</span>
+        <a href="{{route('order.index')}}">
+          <i class="fa fa-cart-arrow-down"></i> <span>{{__('admin.manage_order')}}</span>
         </a>
       </li>
     </ul>
