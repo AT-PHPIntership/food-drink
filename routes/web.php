@@ -30,4 +30,10 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
             'as' => 'admin.post.index'
         ]);
     });
+    Route::resource('image', 'ImagesController')->only([
+        'destroy'
+    ]);
+    Route::resource('order', 'OrdersController')->only([
+        'index'
+    ]);;
 });
