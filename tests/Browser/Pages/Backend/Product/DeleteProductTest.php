@@ -36,11 +36,11 @@ class DeleteProductTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/admin/product');
-            $browser->click('tbody tr:nth-child(3) td:nth-child(8) .but-trash')
+            $browser->click('tbody tr:nth-child(4) td:nth-child(8) .but-trash')
                     ->assertDialogOpened('Are you sure you want to delete?')
                     ->acceptDialog()
                     ->assertSee('Successfully Deleted Product!');
-            $this->assertDatabaseMissing('products', ['id' => 2, 'deleted_at' =>  null]);
+            $this->assertDatabaseMissing('products', ['id' => 3, 'deleted_at' =>  null]);
         });
     }
 
