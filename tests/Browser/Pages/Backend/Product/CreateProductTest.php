@@ -38,27 +38,40 @@ class CreateProductTest extends DuskTestCase
     }
 
     /**
-     * Test Validation Create Product.
+     * List case for Test validate for input Create Product
+     *
+     * @return array
+     */
+    public function listCaseValidation()
+    {
+        return [
+            ['name', '', 'The name field is required.'],
+            ['price', '', 'The price field is required.'],
+            ['quantity', '', 'The quantity field is required.'],
+            ['preview', '', 'The preview field is required.'],
+            ['description', '', 'The description must be a string.'],
+            ['images', '', 'The images field is required.'],
+        ];
+    }
+
+    /**
+     * Dusk test validate for input
+     *
+     * @param string $name name of field
+     * @param string $content content
+     * @param string $message message show when validate
+     *
+     * @dataProvider listCaseValidation
      *
      * @return void
      */
-    public function testValidationCreateProduct()
+    public function testValidateForInput($name, $content, $message)
     {
-        $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/product/create')
-                    ->type('name', '')
-                    ->type('price', '2.05')
-                    ->type('quantity', '')
-                    ->select('category_id', '2')
-                    ->type('preview', '')
-                    ->type('description', 'aaa')
-                    ->type('images[]', '')
+        $this->browse(function (Browser $browser) use ($name, $content, $message) {
+            $browser->visit('admin/product/create')
                     ->press('submit')
-                    ->assertSee('The name field is required.')
-                    ->assertSee('The quantity field is required.')
-                    ->assertSee('The preview field is required.')
-                    ->assertSee('The images field is required.');
-            });
+                    ->assertSee($message);
+        });
     }
 
     /**
@@ -79,7 +92,8 @@ class CreateProductTest extends DuskTestCase
                     ->attach('images[]', 'public/images/products/default-product.jpg')
                     ->press('submit')
                     ->pause(1000)
-                    ->assertSee('Successfully Created Product!');
+                    ->assertSee('Successfully Created Product!')
+                    ->assertPathIs('/admin/product');
             });
             $this->assertDatabaseHas('products', [
                 'name' => 'test name',
