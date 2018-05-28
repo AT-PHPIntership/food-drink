@@ -12,6 +12,7 @@ class Post extends Model
         'content',
         'rate',
         'type',
+        'status'
     ];
 
     /**

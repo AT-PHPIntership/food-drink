@@ -44,6 +44,7 @@ $factory->define(App\Post::class, function (Faker $faker) {
         'content' => $faker->text,
         'rate' => $faker->numberBetween(0, 5),
         'type' => random_int(1, 2),
+        'status' => 0,
         'created_at' => $faker->dateTime,
         'updated_at' => $faker->dateTime,
     ];
