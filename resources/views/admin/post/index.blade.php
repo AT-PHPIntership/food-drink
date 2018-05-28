@@ -59,10 +59,12 @@
                   @endif
                   </td>
                   <td>
-                  <a href="" title="Remove" class="tipS">
-                  <img src="/images/posts/icons/remove.png" alt="" />
-                  </a>
+                  <form method="post" action="{{route('admin.post.delete',$post->id)}}">
+                  @csrf
+                  @method('DELETE')
+                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash-alt"></i></button>
                   </td>
+                  </form>
                 </tr>
                 @endforeach
               </table>
@@ -80,26 +82,6 @@
   </div>
 @endsection
 @section('jquery')
-<script>
-      $(document).on('click','table tr td a',function (event) {
-        event.preventDefault();
-        var idPost = $(this).attr('id');
-        var this_button = $(this);
-        console.log(this_button);
-          $.ajaxSetup({
-            url: '{{route("admin.post.active")}}',
-            type: 'POST',
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            dataType: 'json',
-            data: {idPost: idPost},
-          })
-          .done(function(data) {
-            console.log(data);
-            if(data.status == true) {
-              this_button.replaceWith(data.html);
-            }
-          })
-        
-      })
-    </script>
+<script src="{{asset('js/post/active.js')}}"> 
+</script>
 @endsection

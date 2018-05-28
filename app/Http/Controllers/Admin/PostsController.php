@@ -37,4 +37,17 @@ class PostsController extends Controller
             "html" => view("admin.post._ajaximg", ['post'=>$post])->render(),
         ]);
     }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param int $post post
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Post $post)
+    {
+        $post->delete();
+        flash(trans('user.admin.message.success_delete'))->success();
+        return redirect()->route('admin.post.index');
+    }
 }

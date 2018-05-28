@@ -33,5 +33,9 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
             'uses'=>'PostsController@active',
             'as' => 'admin.post.active'
         ]);
+        Route::delete('{post}',[
+            'uses' => 'PostsController@destroy',
+            'as' => 'admin.post.delete'
+        ]);
     });
 });
