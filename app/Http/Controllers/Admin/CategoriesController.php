@@ -45,9 +45,13 @@ class CategoriesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(CategoryRequests $request)
-    {    
-        $category = Category::create($request->all());
-        flash(trans('category.admin.message.success_create'))->success();
+    {
+        try {
+            Category::create($request->all());
+            flash(trans('category.admin.message.success_create'))->success();
+        } catch (Exception $e) {
+            flash($e->getMessage())->success();
+        }
         return redirect()->route('category.index');
     }
 }
