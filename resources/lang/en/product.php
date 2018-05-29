@@ -18,7 +18,8 @@
                 'action' => 'Action'
             ],
             'create' => [
-                'form_title' => 'Create Product',
+                'title' => 'Create Product',
+                'form_title' => 'Create Form',
                 'product' => 'Product',
                 'create' => 'Create',
                 'manage_product' => 'Manage Products',
@@ -58,7 +59,8 @@
                 'description' => 'Description',
                 'image' => 'Image',
                 'submit' => 'Submit',
-                'delete_confirm' => 'Do you want to delete this Image?'
+                'delete_confirm' => 'Do you want to delete this Image?',
+                'canot_delete_image' => 'Cannot delete the last image!!!'
             ],
         ]
     ];

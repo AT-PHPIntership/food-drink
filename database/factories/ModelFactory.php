@@ -17,7 +17,7 @@ $factory->define(App\Category::class, function (Faker $faker) {
             'parent_id' => App\Category::all()->random()->id,
         ]);
 });
-$factory->define(App\Images::class, function (Faker $faker) {
+$factory->define(App\Image::class, function (Faker $faker) {
     return([
         'image' => config('image.images_product'),
         'product_id' => $faker->randomElement(App\Product::pluck('id')->toArray()),
@@ -98,8 +98,8 @@ $factory->defineAs(App\User::class, 'admin', function (Faker $faker) {
     ];
 });
 $factory->defineAs(App\Category::class, 'parent', function (Faker $faker) {
-        return([
-            'name' => $faker->name,
-            'parent_id' => 0,
-        ]);
+    return([
+        'name' => $faker->name,
+        'parent_id' => 0,
+    ]);
 });

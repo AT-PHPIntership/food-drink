@@ -33,4 +33,7 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
     Route::resource('order', 'OrdersController')->only([
         'index',
     ]);
+    Route::resource('image', 'ImagesController')->only([
+        'destroy',
+    ]);
 });
