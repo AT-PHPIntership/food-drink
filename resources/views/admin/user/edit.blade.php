@@ -52,7 +52,7 @@
               </div>
               <div class="box-footer">
                 <button type="submit" class="btn btn-primary" name="submit">{{__('user.admin.edit.submit')}}</button>
-                @include('admin.errors.error_validation');
+                @include('admin.errors.error_validation')
               </div>
             </form>
           </div>
