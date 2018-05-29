@@ -18,6 +18,10 @@ class ComposerServiceProvider extends ServiceProvider
             ['admin.product.create', 'admin.product.edit'],
             'App\Http\ViewComposers\CategoryComposer'
         );
+        View::composer(
+            ['admin.category.index'],
+            'App\Http\ViewComposers\NameCategoryComposer'
+        );
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Category;
+use App\Http\Requests\CategoryRequests;
 
 class CategoriesController extends Controller
 {
@@ -23,5 +24,22 @@ class CategoriesController extends Controller
         }
         $categories = $categories->paginate(config('define.number_pages'));
         return view('admin.category.index', compact('categories'));
+    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store(CategoryRequests $request)
+    {
+        try {
+            $category = Category::create($request->all());
+            flash(trans('message.category.success_create'))->success();
+            return response()->json($category);
+        } catch (\Exception $e) {
+            flash($e->getMessage())->error();
+        }
     }
 }
