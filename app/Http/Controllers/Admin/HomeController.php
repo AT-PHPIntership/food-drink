@@ -18,10 +18,10 @@ class HomeController extends Controller
     public function index()
     {
         $totalProduct = Product::count();
-        $totalOrder = Order::where('status', 2)->count();
-        $totalRevenue = Order::where('status', 2)->sum('total');
+        $totalOrder = Order::where('status', Order::ACCEPTED)->count();
+        $totalRevenue = Order::where('status', Order::ACCEPTED)->sum('total');
         $totalProductOrderd = OrderDetail::whereHas('order', function ($query) {
-            $query->where('status', '=', 2);
+            $query->where('status', '=', Order::ACCEPTED);
         })->sum('quantity');
         return view('admin.home.index', compact('totalProduct', 'totalOrder', 'totalRevenue', 'totalProductOrderd'));
     }
