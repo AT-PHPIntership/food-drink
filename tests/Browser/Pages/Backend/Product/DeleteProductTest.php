@@ -59,4 +59,20 @@ class DeleteProductTest extends DuskTestCase
                     ->assertSee('Can not find user with corresponding id.');
         });
     }
+
+    /**
+     * A Dusk test delete cancel.
+     *
+     * @return void
+    */
+    public function testDeleteCancelConfirm()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/admin/product');
+            $browser->click('tbody tr:nth-child(4) td:nth-child(8) .but-trash')
+                    ->assertDialogOpened('Are you sure you want to delete?')
+                    ->dismissDialog();
+            $this->assertDatabaseHas('products', ['id' => 3, 'deleted_at' =>  null]);
+        });
+    }
 }
