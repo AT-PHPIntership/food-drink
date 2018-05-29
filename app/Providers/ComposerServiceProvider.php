@@ -15,7 +15,7 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer(
-            ['admin.product.create'],
+            ['admin.product.create', 'admin.product.edit'],
             'App\Http\ViewComposers\CategoryComposer'
         );
     }

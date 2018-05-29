@@ -58,56 +58,56 @@
               <div class="table-responsive">
                 <table class="table no-margin">
                   <thead>
-                  <tr>
-                    <th>{{__('home.order_id')}}</th>
-                    <th>{{__('home.email')}}</th>
-                    <th>{{__('home.status')}}</th>
-                    <th>{{__('home.time')}}</th>
-                  </tr>
+                    <tr>
+                      <th>{{__('home.order_id')}}</th>
+                      <th>{{__('home.email')}}</th>
+                      <th>{{__('home.status')}}</th>
+                      <th>{{__('home.time')}}</th>
+                    </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">12</a></td>
-                    <td>sam@gmail.com</td>
-                    <td><span class="label label-warning">Pending</span></td>
-                    <td>17/05/2018</td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">12</a></td>
-                    <td>sam@gmail.com</td>
-                    <td><span class="label label-warning">Pending</span></td>
-                    <td>17/05/2018</td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">12</a></td>
-                    <td>sam@gmail.com</td>
-                    <td><span class="label label-warning">Pending</span></td>
-                    <td>17/05/2018</td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">12</a></td>
-                    <td>sam@gmail.com</td>
-                    <td><span class="label label-warning">Pending</span></td>
-                    <td>17/05/2018</td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">12</a></td>
-                    <td>sam@gmail.com</td>
-                    <td><span class="label label-warning">Pending</span></td>
-                    <td>17/05/2018</td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">12</a></td>
-                    <td>sam@gmail.com</td>
-                    <td><span class="label label-warning">Pending</span></td>
-                    <td>17/05/2018</td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">12</a></td>
-                    <td>sam@gmail.com</td>
-                    <td><span class="label label-warning">Pending</span></td>
-                    <td>17/05/2018</td>
-                  </tr>
+                    <tr>
+                      <td><a href="pages/examples/invoice.html">12</a></td>
+                      <td>sam@gmail.com</td>
+                      <td><span class="label label-warning">Pending</span></td>
+                      <td>17/05/2018</td>
+                    </tr>
+                    <tr>
+                      <td><a href="pages/examples/invoice.html">12</a></td>
+                      <td>sam@gmail.com</td>
+                      <td><span class="label label-warning">Pending</span></td>
+                      <td>17/05/2018</td>
+                    </tr>
+                    <tr>
+                      <td><a href="pages/examples/invoice.html">12</a></td>
+                      <td>sam@gmail.com</td>
+                      <td><span class="label label-warning">Pending</span></td>
+                      <td>17/05/2018</td>
+                    </tr>
+                    <tr>
+                      <td><a href="pages/examples/invoice.html">12</a></td>
+                      <td>sam@gmail.com</td>
+                      <td><span class="label label-warning">Pending</span></td>
+                      <td>17/05/2018</td>
+                    </tr>
+                    <tr>
+                      <td><a href="pages/examples/invoice.html">12</a></td>
+                      <td>sam@gmail.com</td>
+                      <td><span class="label label-warning">Pending</span></td>
+                      <td>17/05/2018</td>
+                    </tr>
+                    <tr>
+                      <td><a href="pages/examples/invoice.html">12</a></td>
+                      <td>sam@gmail.com</td>
+                      <td><span class="label label-warning">Pending</span></td>
+                      <td>17/05/2018</td>
+                    </tr>
+                    <tr>
+                      <td><a href="pages/examples/invoice.html">12</a></td>
+                      <td>sam@gmail.com</td>
+                      <td><span class="label label-warning">Pending</span></td>
+                      <td>17/05/2018</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
