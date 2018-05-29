@@ -22,7 +22,7 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
     Route::resource('user', 'UsersController');
     Route::resource('product', 'ProductsController');
     Route::resource('category', 'CategoriesController')->only([
-        'index',
+        'index', 'create'
     ]);
     Route::group(['prefix'=>'post'],function (){
         Route::get('',[
