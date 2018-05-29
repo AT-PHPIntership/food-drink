@@ -41,9 +41,9 @@
                 <div class="form-group">
                     <label>{{__('category.admin.create.parent')}}</label>
                     <select class="form-control" name="parent_id">
-                        <option value="0" name="parent_id" class="form-control"></option>
+                        <option value="0"  class="form-control"></option>
                         @foreach ( $nameCategories as $category )
-                            <option value="{{ $category->id }}" name="parent_id" class="form-control">{{ $category->name }}</option>
+                            <option value="{{ $category->id }}" class="form-control">{{ $category->name }}</option>
                         @endforeach
                     </select>
                     @if($errors->first('parent_id')) 
