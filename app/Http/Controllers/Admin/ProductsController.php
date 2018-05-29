@@ -86,6 +86,19 @@ class ProductsController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param Product $product product object
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function edit(Product $product)
+    {
+        $product->load('images');
+        return view('admin.product.edit', compact('product'));
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param product $product product object

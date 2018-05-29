@@ -44,7 +44,7 @@
 								<div class="form-group">
                   <label>{{__('product.admin.create.category')}}</label>
                   <select class="form-control" name="category_id">
-                  @include('admin.product.category')
+                    @include('admin.product.createCategory')
                   </select>
                 </div>
                 <div class="form-group">
