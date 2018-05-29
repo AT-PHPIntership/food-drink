@@ -78,11 +78,24 @@ class ProductsController extends Controller
             }
             DB::commit();
         } catch (Exception $e) {
-            flash(trans('message.product.fail_create'))->success();
+            flash(trans('message.product.fail_create'))->error();
             DB::rollBack();
         }
         flash(trans('message.product.success_create'))->success();
         return redirect()->route('product.index');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param Product $product product object
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function edit(Product $product)
+    {
+        $product->load('images');
+        return view('admin.product.edit', compact('product'));
     }
 
     /**

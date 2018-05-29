@@ -24,4 +24,15 @@ class CategoriesController extends Controller
         $categories = $categories->paginate(config('define.number_pages'));
         return view('admin.category.index', compact('categories'));
     }
+
+     /**
+     * Show the form for creating a new data.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $nameCategories = Category::get(['id', 'name']);
+        return view('admin.category.create', compact('nameCategories'));
+    }
 }

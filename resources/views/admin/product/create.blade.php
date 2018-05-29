@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-@section('title', __('product.admin.create.form_title'))
+@section('title', __('product.admin.create.title'))
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -44,7 +44,7 @@
 								<div class="form-group">
                   <label>{{__('product.admin.create.category')}}</label>
                   <select class="form-control" name="category_id">
-                  @include('admin.product.category')
+                    @include('admin.product.createCategory')
                   </select>
                 </div>
                 <div class="form-group">
