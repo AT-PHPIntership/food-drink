@@ -26,7 +26,7 @@ class CategoriesController extends Controller
         return view('admin.category.index', compact('categories'));
     }
 
-     /**
+    /**
      * Show the form for creating a new data.
      *
      * @return \Illuminate\Http\Response
@@ -50,7 +50,7 @@ class CategoriesController extends Controller
             Category::create($request->all());
             flash(trans('category.admin.message.success_create'))->success();
         } catch (Exception $e) {
-            flash($e->getMessage())->success();
+            flash(trans('category.admin.message.fail_create'))->error();
         }
         return redirect()->route('category.index');
     }

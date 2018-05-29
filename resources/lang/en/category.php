@@ -24,7 +24,8 @@
                 'submit' => 'SubMit'
             ],
             'message' => [
-                'success_create' => 'Successfully Created Category!'
+                'success_create' => 'Successfully Created Category!',
+                'fail_create' => 'Faily Created Product!',
             ],
         ],
     ];

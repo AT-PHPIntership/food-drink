@@ -32,16 +32,10 @@
                 <div class="form-group">
                   <label>{{__('category.admin.create.name')}}</label>
                   <input type="text" class="form-control" name="name" placeholder="{{__('category.admin.create.name')}}">
-                  @if(count($errors))
-                    <div class="form-group">
-                    <div class="alert alert-danger">
-                        <ul>
-                        @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                        </ul>
-                    </div>
-                    </div>
+                  @if($errors->first('name')) 
+                    <span class="help-block">
+                      <strong class="text-danger">{{ $errors->first('name') }}</strong>
+                    </span>
                   @endif
                 </div>
                 <div class="form-group">
@@ -52,6 +46,11 @@
                             <option value="{{ $category->id }}" name="parent_id" class="form-control">{{ $category->name }}</option>
                         @endforeach
                     </select>
+                    @if($errors->first('parent_id')) 
+                        <span class="help-block">
+                        <strong class="text-danger">{{ $errors->first('parent_id') }}</strong>
+                        </span>
+                    @endif
                 </div>            
               </div>
               <div class="box-footer">
