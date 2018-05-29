@@ -78,7 +78,7 @@ class ProductsController extends Controller
             }
             DB::commit();
         } catch (Exception $e) {
-            flash(trans('message.product.fail_create'))->success();
+            flash(trans('message.product.fail_create'))->error();
             DB::rollBack();
         }
         flash(trans('message.product.success_create'))->success();
