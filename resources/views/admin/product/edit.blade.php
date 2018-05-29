@@ -27,20 +27,20 @@
             <!-- /.box-header -->
             <!-- form start -->
             <form method="POST" action="{{route('product.update', ['product' => $product])}}" enctype="multipart/form-data">
-            @method('PUT')
-            @csrf
+              @method('PUT')
+              @csrf
               <div class="box-body">
                 <div class="form-group">
                   <label>{{__('product.admin.edit.name')}}</label>
-                  <input type="text" class="form-control" name="name" value="{{$product->name}}">
+                  <input type="text" class="form-control" name="name" value="{{ old('name', $product->name) }}">
                 </div>
                 <div class="form-group">
                   <label>{{__('product.admin.edit.price')}}</label>
-                  <input type="number" step="any" class="form-control" name="price" value="{{$product->price}}">
+                  <input type="number" step="any" class="form-control" name="price" value="{{ old('price', $product->price) }}">
                 </div>
                 <div class="form-group">
                   <label>{{__('product.admin.edit.quantity')}}</label>
-                  <input type="number" class="form-control" name="quantity" value="{{$product->quantity}}">
+                  <input type="number" class="form-control" name="quantity" value="{{ old('quantity', $product->quantity) }}">
                 </div>
                 <div class="form-group">
                   <label>{{__('product.admin.edit.category')}}</label>
@@ -50,11 +50,11 @@
                 </div>
                 <div class="form-group">
                   <label>{{__('product.admin.edit.preview')}}</label>
-                  <textarea class="form-control" name="preview" rows="3">{{$product->preview}}</textarea>
+                  <textarea class="form-control" name="preview" rows="3">{{ old('preview', $product->preview) }}</textarea>
                 </div>
                 <div class="form-group">
                   <label>{{__('product.admin.edit.description')}}</label>
-                  <textarea class="form-control" name="description" rows="3">{{$product->description}}</textarea>
+                  <textarea class="form-control" name="description" rows="3">{{ old('description', $product->description) }}</textarea>
                 </div>
                 <div class="form-group">
                   <label>{{__('product.admin.edit.image')}}</label>
