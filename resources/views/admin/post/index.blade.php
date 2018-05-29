@@ -30,7 +30,7 @@
             <div class="box-body table-responsive no-padding">
               <table class="table table-hover">
                 <tr>
-                  <th>{{__('post.index.review_id')}}</th>
+                  <th>{{__('post.index.post_id')}}</th>
                   <th>{{__('post.index.product_id')}}</th>
                   <th>{{__('post.index.product_name')}}</th>
                   <th>{{__('post.index.review')}}</th>
@@ -39,17 +39,28 @@
                   <th>{{__('post.index.status')}}</th>
                   <th>{{__('post.index.action')}}</th>
                 </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
+                @foreach($posts as $post)
+                  <tr>
+                    <td>{{ $post->id }}</td>
+                    <td>{{ $post->user_id }}</td>
+                    <td>{{ $post->product_id }}</td>
+                    <td>{{ $post->content }}</td>
+                    <td>{{ $post->rate }}</td>
+                    <td>{{ $post->type }}</td>
+                    <td>{{ $post->status }}</td>
+                    <td>
+                      <form>
+                        <button type="submit" class="btn btn-danger">
+                          <i class="fa fa-trash"></i>
+                        </button>
+                      </form>
+                      </td>
+                  </tr>
+                @endforeach
               </table>
+              <div class="text-center">
+                {{ $posts->links() }}
+              </div>
             </div>
             <!-- /.box-body -->
           </div>

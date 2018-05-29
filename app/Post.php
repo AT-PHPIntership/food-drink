@@ -6,12 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    const PAGINATE = 10;
     protected $fillable = [
         'product_id',
         'user_id',
         'content',
         'rate',
         'type',
+        'status',
     ];
 
     /**
