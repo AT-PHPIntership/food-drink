@@ -49,7 +49,9 @@
                     <td>{{ $post->type }}</td>
                     <td>{{ $post->status }}</td>
                     <td>
-                      <form>
+                      <form method="post" action="{{ route('admin.post.delete', $post->id) }}">
+                        @csrf
+                        @method('DELETE')
                         <button type="submit" class="btn btn-danger">
                           <i class="fa fa-trash"></i>
                         </button>

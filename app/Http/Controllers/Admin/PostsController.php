@@ -18,4 +18,22 @@ class PostsController extends Controller
         $posts = Post::paginate(Post::PAGINATE);
         return view('admin.post.index', ['posts'=>$posts]);
     }
+    
+    /**
+     * Delete a post
+     *
+     * @param Post $post post
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Post $post)
+    {
+        try {
+            $post->delete();
+            flash(trans('message.post.success_delete'))->success();
+        } catch (Exception $e) {
+            flash(trans('message.post.fail_delete'))->error();
+        }
+        return redirect()->route('admin.post.index');
+    }
 }

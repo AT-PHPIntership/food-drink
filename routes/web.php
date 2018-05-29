@@ -29,6 +29,10 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
             'uses' => 'PostsController@index',
             'as' => 'admin.post.index'
         ]);
+        Route::delete('{post}',[
+            'uses' => 'PostsController@destroy',
+            'as' => 'admin.post.delete'
+        ]);
     });
     Route::resource('order', 'OrdersController')->only([
         'index',
