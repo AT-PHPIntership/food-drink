@@ -12,6 +12,16 @@
                 'name' => 'Name',
                 'parent' => 'Parent',
                 'action' => 'Action',
-            ]
-        ]
+            ],
+            'create' => [
+                'title' => 'Create Category',
+                'form_title' => 'Create Form',
+                'category' => 'Category',
+                'manage_category' => 'Manage Categories',
+                'create' => 'Create',
+                'name' => 'Name Category',
+                'parent' => 'Name Parent',
+                'submit' => 'SubMit'
+            ],
+        ],
     ];
