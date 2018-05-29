@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-@section('title', __('product.admin.create.form_title'))
+@section('title', __('product.admin.create.title'))
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
