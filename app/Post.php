@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    const PAGINATE = 5;
+    const PAGINATE = 5, ENABLE = 1, DISABLE = 0;
     protected $fillable = [
         'product_id',
         'user_id',

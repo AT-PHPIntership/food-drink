@@ -18,4 +18,19 @@ class PostsController extends Controller
         $posts = Post::paginate(Post::PAGINATE);
         return view('admin.post.index', ['posts'=>$posts]);
     }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function active(Request $request)
+    {
+        $post = Post::findOrFail($request->id);
+        $post->update(['status' => !$post->status]);
+        return response()->json([
+            "post" => $post->status
+        ]);
+    }
 }

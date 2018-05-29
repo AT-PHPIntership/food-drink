@@ -47,7 +47,17 @@
                   <td>{{ $post->content }}</td>
                   <td>{{ $post->rate }}</td>
                   <td>{{ $post->type }}</td>
-                  <td>{{ $post->status }}</td>
+                  <td>
+                  @if($post->status == App\Post::ENABLE)
+                  <a href="{{route('admin.post.active',['id'=> $post->id])}}" id="{{$post->id}}">
+                  <img src="{{asset('images/posts/icons/accept.png')}}" alt="" />
+                  </a>
+                  @elseif($post->status== App\Post::DISABLE)
+                  <a href="{{route('admin.post.active',['id'=> $post->id])}}" id="{{$post->id}}">
+                  <img src="{{asset('images/posts/icons/exclamation.png')}}" alt="" />
+                  </a>
+                  @endif
+                  </td>
                   <td>
                   <form>
                     <button type="submit" class="btn btn-danger">
@@ -70,4 +80,25 @@
     </section>
     <!-- /.content -->
   </div>
+  <script>
+  $(document).on('click','table tr td a',function (event) {
+        event.preventDefault();
+        var url = $(this).attr('href');
+        var this_button = $(this);
+          $.ajax({
+            url: url,
+            type: 'PUT', 
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            dataType: 'json',
+          })
+          .done(function(data) {
+            if(data.post == {{App\Post::ENABLE}}) {
+              this_button.find('img').attr('src','/images/posts/icons/accept.png');
+            }
+            else{
+              this_button.find('img').attr('src','/images/posts/icons/exclamation.png');
+            }
+          })     
+      })
+      </script>
 @endsection
