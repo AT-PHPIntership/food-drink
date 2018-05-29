@@ -30,4 +30,7 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
             'as' => 'admin.post.index'
         ]);
     });
+    Route::resource('order', 'OrdersController')->only([
+        'index',
+    ]);
 });
