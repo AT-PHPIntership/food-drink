@@ -6,8 +6,6 @@ use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use App\Category;
-use App\Image;
-use App\Product;
 
 class CreateProductTest extends DuskTestCase
 {
@@ -24,8 +22,6 @@ class CreateProductTest extends DuskTestCase
         parent::setUp();
         factory(Category::class, 'parent', self::NUMBER_RECORD_CREATE)->create();
         factory(Category::class, self::NUMBER_RECORD_CREATE)->create();
-        factory(Product::class, self::NUMBER_RECORD_CREATE)->create();
-        factory(Image::class, self::NUMBER_RECORD_CREATE)->create();
     }
 
     /**
@@ -107,8 +103,8 @@ class CreateProductTest extends DuskTestCase
                 'description' => 'aaa',
                 ]);
             $this->assertDatabaseHas('images', [
-                'id' => '6',
-                'product_id' => '6',
+                'id' => '1',
+                'product_id' => '1',
                 ]);
     }
 }
