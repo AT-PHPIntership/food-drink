@@ -26,16 +26,27 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form method="POST" action="">
+            <form method="POST" action="{{ route('category.store') }}">
             @csrf
               <div class="box-body">
                 <div class="form-group">
                   <label>{{__('category.admin.create.name')}}</label>
                   <input type="text" class="form-control" name="name" placeholder="{{__('category.admin.create.name')}}">
+                  @if(count($errors))
+                    <div class="form-group">
+                    <div class="alert alert-danger">
+                        <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                        </ul>
+                    </div>
+                    </div>
+                  @endif
                 </div>
                 <div class="form-group">
                     <label>{{__('category.admin.create.parent')}}</label>
-                    <select class="form-control" name="category">
+                    <select class="form-control" name="parent_id">
                         <option value="0" name="parent_id" class="form-control"></option>
                         @foreach ( $nameCategories as $category )
                             <option value="{{ $category->id }}" name="parent_id" class="form-control">{{ $category->name }}</option>
