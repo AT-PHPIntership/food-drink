@@ -24,6 +24,7 @@ class ImagesController extends Controller
                 return response(trans('product.admin.edit.canot_delete_image'), 400);
             }
             $image->delete();
+            unlink("images/products/".$image->image);
             return response()->json($image);
         } catch (Exception $e) {
             return response()->setStatusCode(400);
