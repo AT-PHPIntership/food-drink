@@ -18,7 +18,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-            <h4 class="modal-title" id="myModalLabel">{{__('admin.create_category')}}</h4>
+            <h4 class="modal-title" >{{__('admin.create_category')}}</h4>
           </div>
           <div class="modal-body">
             <form data-toggle="validator" action="{!! route('category.store') !!}" method="POST">
@@ -32,7 +32,7 @@
                 <select class="form-control" name="category">
                   <option value="0" name="parent_id" class="form-control" data-error="Please enter parent."></option>
                   @foreach ( $nameCategories as $category )
-                  <option value="{{ $category->id }}" name="parent_id" class="form-control" data-error="Please enter parent.">{{ $category->name }}</option>
+                    <option value="{{ $category->id }}" name="parent_id" class="form-control" data-error="Please enter parent.">{{ $category->name }}</option>
                   @endforeach
                 </select>
               </div>

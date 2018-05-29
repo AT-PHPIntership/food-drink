@@ -15,7 +15,7 @@ class NameCategoryComposer
     */
     public function compose(View $view)
     {
-        $nameCategories = Category::all();
+        $nameCategories = Category::get(['id','name']);
         $view->with('nameCategories', $nameCategories);
     }
 }
