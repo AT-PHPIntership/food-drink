@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
+    const ACCEPTED = 2;
     protected $fillable=[
         'user_id',
         'total',
