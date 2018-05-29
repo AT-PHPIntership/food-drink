@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+  @extends('admin.layout.master')
 @section('title', __('post.index.title') )
 @section('content')
 <div class="content-wrapper">
@@ -19,7 +19,7 @@
               <h3 class="box-title">{{__('post.index.show_list_review')}}</h3>
               <div class="box-tools">
                 <form class="input-group input-group-sm" style="width: 150px;" action="" method="GET">
-                  <input type="text" name="user_name" class="form-control pull-right" placeholder="{{__('user.admin.index.search')}}">
+                  <input type="text" name="search" class="form-control pull-right" placeholder="{{__('user.admin.index.search')}}">
                   <div class="input-group-btn">
                   <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
                   </div>
@@ -28,30 +28,51 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">
-              <table class="table table-hover">
+              <table class="table table-hover" id="table-show-post">
                 <tr>
                   <th>{{__('post.index.review_id')}}</th>
-                  <th>{{__('post.index.product_id')}}</th>
-                  <th>{{__('post.index.product_name')}}</th>
-                  <th>{{__('post.index.review')}}</th>
-                  <th>{{__('post.index.rate')}}</th>
                   <th>{{__('post.index.user_id')}}</th>
+                  <th>{{__('post.index.product_id')}}</th>
+                  <th>{{__('post.index.content')}}</th>
+                  <th>{{__('post.index.rate')}}</th>
+                  <th>{{__('post.index.type')}}</th>
                   <th>{{__('post.index.status')}}</th>
                   <th>{{__('post.index.action')}}</th>
                 </tr>
+                @foreach($posts as $post )
                 <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{$post->id}}</td>
+                  <td>{{$post->user_id}}</td>
+                  <td>{{$post->product_id}}</td>
+                  <td>{{$post->content}}</td>
+                  <td>{{$post->rate}}</td>
+                  <td>{{$post->type}}</td>
+                  <td>
+                  @if($post->status == App\Post::ENABLE)
+                  <a href=""   id="{{$post->id}}">
+                  <img src="{{asset('images/posts/icons/accept.png')}}" alt="" />
+                  </a>
+                  @elseif($post->status== App\Post::DISABLE)
+                  <a href=""   id="{{$post->id}}">
+                  <img src="{{asset('images/posts/icons/exclamation.png')}}" alt="" />
+                  </a>
+                  @endif
+                  </td>
+                  <td>
+                  <form method="post" action="{{route('admin.post.delete',$post->id)}}">
+                  @csrf
+                  @method('DELETE')
+                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash-alt"></i></button>
+                  </td>
+                  </form>
                 </tr>
+                @endforeach
               </table>
             </div>
             <!-- /.box-body -->
+          </div>
+          <div class="text-center">
+            {{ $posts->links() }}
           </div>
           <!-- /.box -->
         </div>
@@ -59,4 +80,8 @@
     </section>
     <!-- /.content -->
   </div>
+@endsection
+@section('jquery')
+<script src="{{asset('js/post/active.js')}}"> 
+</script>
 @endsection

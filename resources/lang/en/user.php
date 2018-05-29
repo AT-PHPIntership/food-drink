@@ -54,6 +54,7 @@
                 'success' => 'Successfully deleted the user!',
                 'success_create' => 'Successfully created the user!',
                 'success_update' => 'Successfully updated the user!',
+                'success_delete' => 'Successfully deleted the post',
                 'cancel' => 'can not delete admin',
             ],
         ]
