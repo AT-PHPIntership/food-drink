@@ -29,6 +29,7 @@ class PostsTableSeeder extends Seeder
                 'content' => $faker->text,
                 'rate' => $faker->numberBetween($min = 0, $max = 5),
                 'type' => random_int(1, 2),
+                'status' => 0,
                 'created_at' => $faker->dateTime,
                 'updated_at' => $faker->dateTime,
             ]);
