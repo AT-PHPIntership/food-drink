@@ -34,8 +34,12 @@ class CategoriesController extends Controller
      */
     public function store(CategoryRequests $request)
     {
-        $create = Category::create($request->all());
-        flash(trans('message.category.success_create'))->success();
-        return response()->json($create);
+        try {
+            $category = Category::create($request->all());
+            flash(trans('message.category.success_create'))->success();
+            return response()->json($category);
+        } catch (\Exception $e) {
+            flash($e->getMessage())->error();
+        }
     }
 }

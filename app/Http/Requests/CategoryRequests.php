@@ -23,7 +23,7 @@ class CategoryRequests extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|unique:categories'
+            'name'=>'required|unique:categories|max:25|min:2'
         ];
     }
 }

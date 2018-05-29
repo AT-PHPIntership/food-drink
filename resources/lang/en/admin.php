@@ -11,5 +11,7 @@
         'manage_image' => 'Manage Images',
         'manage_product' => 'Manage Products',
         'manage_post' => 'Manage Posts',
-        'manage_order' => 'Manage Orders'
+        'manage_order' => 'Manage Orders',
+        'create_category' => 'Create Category',
+        'button_submit' => 'Submit',
     ];

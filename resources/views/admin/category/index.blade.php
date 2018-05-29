@@ -10,40 +10,40 @@
         <li class="active">{{__('category.admin.index.categories')}}</li>
       </ol>
     </section>
-    @include('admin.layout.message');
+    @include('admin.layout.message')
 
 	  <!-- Create Item Modal -->
-		<div class="modal fade" id="create-category" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal fade" id="create-category" tabindex="-1" role="dialog">
 		  <div class="modal-dialog" role="document">
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-		        <h4 class="modal-title" id="myModalLabel">Create Category</h4>
+		        <h4 class="modal-title" id="myModalLabel">{{__('admin.create_category')}}</h4>
 		      </div>
 		      <div class="modal-body">
             <form data-toggle="validator" action="{!! route('category.store') !!}" method="POST">
               <div class="form-group">
-                <label class="control-label" for="title">Name:</label>
+                <label class="control-label" for="title">{{__('category.admin.index.name')}}:</label>
                 <input type="text" name="category" class="form-control" data-error="Please enter title." />
-              <div class="bg-danger" id="errors-input-name"></div>
-          </div>
-          <div class="form-group">
-            <label class="control-label" for="title">Parent:</label>
-            <select class="form-control" name="category">
-            <option value="0" name="parent_id" class="form-control" data-error="Please enter parent."></option>
-                @foreach ( $nameCategories as $category )
-                <option value="{{ $category->id }}" name="parent_id" class="form-control" data-error="Please enter parent.">{{ $category->name }}</option>
-                @endforeach
-            </select>
-					</div>
-            <div class="form-group">
-             <button type="submit" class="btn create-submit btn-success">Submit</button>
-            </div>           
+                <div class="bg-danger" id="errors-input-name"></div>
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="title">{{__('category.admin.index.parent')}}:</label>
+                <select class="form-control" name="category">
+                <option value="0" name="parent_id" class="form-control" data-error="Please enter parent."></option>
+                    @foreach ( $nameCategories as $category )
+                    <option value="{{ $category->id }}" name="parent_id" class="form-control" data-error="Please enter parent.">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+              </div>
+              <div class="form-group">
+              <button type="submit" class="btn create-submit btn-success">{{__('admin.button_submit')}}</button>
+              </div>           
             </form>     
           </div>
-		    </div>
-		  </div>
-		</div>
+        </div>
+      </div>
+    </div>
     <!-- Main content -->
     <section class="content">
       <div class="row">
