@@ -18,7 +18,8 @@
                 'action' => 'Action'
             ],
             'create' => [
-                'form_title' => 'Create Product',
+                'title' => 'Create Product',
+                'form_title' => 'Create Form',
                 'product' => 'Product',
                 'create' => 'Create',
                 'manage_product' => 'Manage Products',
@@ -42,6 +43,23 @@
                 'product' => 'Product',
                 'back' => 'Back',
                 'edit_product' => 'Edit Product'
-            ]
+            ],
+            'edit' => [
+                'title' => 'Edit Product',
+                'form_title' => 'Edit Form',
+                'edit_product' => 'Edit Product',
+                'product' => 'Product',
+                'edit' => 'Edit',
+                'manage_product' => 'Manage Products',
+                'name' => 'Name',
+                'price' => 'Price',
+                'quantity' => 'Quantity',
+                'category' => 'Category',
+                'preview' => 'Preview',
+                'description' => 'Description',
+                'image' => 'Image',
+                'submit' => 'Submit',
+                'delete_confirm' => 'Do you want to delete this Image?'
+            ],
         ]
     ];
