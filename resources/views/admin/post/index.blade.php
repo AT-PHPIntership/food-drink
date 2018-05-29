@@ -48,11 +48,11 @@
                     <td>{{ $post->rate }}</td>
                     <td>{{ $post->type }}</td>
                     <td>
-                    @if($post->status == App\Post::ENABLE)
+                    @if($post->status == $status['enable'])
                       <a href="{{ route('admin.post.active',['id'=> $post->id]) }}" id="{{ $post->id }}">
                         <img src="{{ asset('images/posts/icons/accept.png') }}" alt="" />
                       </a>
-                    @elseif($post->status== App\Post::DISABLE)
+                    @elseif($post->status == $status['disable'])
                       <a href="{{ route('admin.post.active',['id'=> $post->id]) }}" id="{{ $post->id }}">
                         <img src="{{ asset('images/posts/icons/exclamation.png') }}" alt="" />
                       </a>
@@ -92,7 +92,7 @@
       dataType: 'json',
     })
     .done(function(data) {
-      if(data.status == {{App\Post::ENABLE}}) {
+      if(data.status == {{$status['enable']}}) {
         this_button.find('img').attr('src','/images/posts/icons/accept.png');
       }
       else{

@@ -22,10 +22,10 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="/bower_components/admin-lte/dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="{{ asset('css/admin/add.css') }}">
-  <!-- jquery 1.9.1 -->
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <!-- laracasts/flash style -->
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <!-- jQuery 3 -->
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
