@@ -8,10 +8,9 @@
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-
 <!-- jQuery 3 -->
-<script src="{{ asset('js/admin/add.js') }}"></script>
 <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="{{ asset('js/admin/add.js') }}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- FastClick -->
