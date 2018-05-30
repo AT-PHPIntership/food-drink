@@ -27,7 +27,8 @@
             <!-- /.box-header -->
             <!-- form start -->
             <form method="POST" action="{{ route('category.store') }}">
-            @csrf
+              @csrf
+              @method('PUT')
               <div class="box-body">
                 <div class="form-group">
                   <label>{{__('category.admin.edit.name')}}</label>
@@ -42,7 +43,7 @@
                     <label>{{__('category.admin.edit.parent')}}</label>
                     <select class="form-control" name="parent_id">
                         <option value="0" class="form-control"></option>
-                        @foreach ( $nameCategories as $category )
+                        @foreach ( $categories as $category )
                             <option value="{{ $category->id }}" class="form-control">{{ $category->name }}</option>
                         @endforeach
                     </select>

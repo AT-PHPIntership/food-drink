@@ -58,13 +58,10 @@ class CategoriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Category $nameCategories Category object
-     *
      * @return \Illuminate\Http\Response
     */
-    public function edit(Category $nameCategories)
+    public function edit()
     {
-        $nameCategories = Category::get(['id', 'name']);
-        return view('admin.category.edit', compact('nameCategories'));
+        return view('admin.category.edit');
     }
 }
