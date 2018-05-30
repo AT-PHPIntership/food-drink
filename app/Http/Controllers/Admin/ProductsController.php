@@ -96,6 +96,7 @@ class ProductsController extends Controller
     public function edit(Product $product)
     {
         $product->load('images');
+        // dd($product);
         return view('admin.product.edit', compact('product'));
     }
 
@@ -111,6 +112,7 @@ class ProductsController extends Controller
     {
         DB::beginTransaction();
         try {
+            $arrIdImage = preg_split("/[,]/", $request->delImg);
             $product->update($request->all());
             if ($request->hasFile('images')) {
                 foreach (request()->file('images') as $image) {
@@ -123,6 +125,7 @@ class ProductsController extends Controller
                 }
             }
             $product->update($request->all());
+            Image::whereIn('id', $arrIdImage)->delete();
             DB::commit();
         } catch (Exception $e) {
             flash(trans('message.product.fail_update'))->error();

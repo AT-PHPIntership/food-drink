@@ -90,10 +90,11 @@
                   <label>{{__('product.admin.edit.image')}}</label>
                   @foreach ($product->images as $image)
                     <div id="deleteImage{{ $image->id }}" class="image-edit-product">
-                      <span id="delete{{ $image->id }}" data-id="{{ $image->id }}" data-token="{{ csrf_token() }}" class="delete"><i class="fa fa-trash"></i></span>
+                      <span id="delete{{ $image->id }}" data-id="{{ $image->id }}" class="delete"><i class="fa fa-trash"></i></span>
                       <img id="image{{ $image->id }}" class="image-edit" src="{{ $image->image_url }}" alt="{{ $product->name }}">
                     </div>
                   @endforeach
+                  <input type="text" name="delImg" id="delImage" hidden>
                   <input type="file" multiple name="images[]">  
                   @if($errors->first('images')) 
                     <span class="help-block">
