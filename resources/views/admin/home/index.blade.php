@@ -17,8 +17,8 @@
           <div class="info-box">
             <span class="info-box-icon bg-red"><i class="fa fa-cart-arrow-down"></i></span>
             <div class="info-box-content">
-              <span class="info-box-text">{{__('home.total_product_orderd')}}</span>
-              <span class="info-box-number">{{ $totalProductOrderd }}</span>
+              <span class="info-box-text">{{__('home.total_product_ordered')}}</span>
+              <span class="info-box-number">{{ $totalProductOrdered }}</span>
             </div>
           </div>
         </div>
@@ -66,54 +66,20 @@
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach ($latestOrders as $latestOrder)
                     <tr>
-                      <td><a href="pages/examples/invoice.html">12</a></td>
-                      <td>sam@gmail.com</td>
+                      <td>{{ $latestOrder->id }}</a></td>
+                      <td>{{ $latestOrder->user->email }}</td>
                       <td><span class="label label-warning">Pending</span></td>
-                      <td>17/05/2018</td>
+                      <td>{{ $latestOrder->updated_at }}</td>
                     </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">12</a></td>
-                      <td>sam@gmail.com</td>
-                      <td><span class="label label-warning">Pending</span></td>
-                      <td>17/05/2018</td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">12</a></td>
-                      <td>sam@gmail.com</td>
-                      <td><span class="label label-warning">Pending</span></td>
-                      <td>17/05/2018</td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">12</a></td>
-                      <td>sam@gmail.com</td>
-                      <td><span class="label label-warning">Pending</span></td>
-                      <td>17/05/2018</td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">12</a></td>
-                      <td>sam@gmail.com</td>
-                      <td><span class="label label-warning">Pending</span></td>
-                      <td>17/05/2018</td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">12</a></td>
-                      <td>sam@gmail.com</td>
-                      <td><span class="label label-warning">Pending</span></td>
-                      <td>17/05/2018</td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">12</a></td>
-                      <td>sam@gmail.com</td>
-                      <td><span class="label label-warning">Pending</span></td>
-                      <td>17/05/2018</td>
-                    </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>
             </div>
             <div class="box-footer clearfix">
-              <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">{{__('home.view_all_order')}}</a>
+              <a href="" class="btn btn-sm btn-default btn-flat pull-right">{{__('home.view_all_order')}}</a>
             </div>
           </div>
         </div>
@@ -121,8 +87,8 @@
           <div class="info-box bg-yellow">
             <span class="info-box-icon"><i class="fa fa-product-hunt"></i></span>
             <div class="info-box-content">
-              <span class="info-box-text">{{__('home.total_product')}}</span>
-              <span class="info-box-number"></span>
+              <span class="info-box-text">{{__('home.total_product_ordered')}}</span>
+              <span class="info-box-number">{{ $totalProductOrderedW }}</span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
@@ -133,7 +99,7 @@
             <span class="info-box-icon"><i class="fa fa-money"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">{{__('home.total_orderd')}}</span>
-              <span class="info-box-number"></span>
+              <span class="info-box-number">{{ $totalOrderedWeek }}</span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
@@ -143,8 +109,8 @@
           <div class="info-box bg-red">
             <span class="info-box-icon"><i class="fa fa-product-hunt"></i></span>
             <div class="info-box-content">
-              <span class="info-box-text">{{__('home.total_product')}}</span>
-              <span class="info-box-number"></span>
+              <span class="info-box-text">{{__('home.total_product_ordered')}}</span>
+              <span class="info-box-number">{{ $totalProductOrderedM }}</span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
@@ -155,7 +121,7 @@
             <span class="info-box-icon"><i class="fa fa-money"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">{{__('home.total_orderd')}}</span>
-              <span class="info-box-number"></span>
+              <span class="info-box-number">{{ $totalOrderedMonth }}</span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
