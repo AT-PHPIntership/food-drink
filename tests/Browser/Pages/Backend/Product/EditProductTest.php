@@ -87,13 +87,65 @@ class EditProductTest extends DuskTestCase
         $this->browse(function (Browser $browser) use ($product) {
             $browser->visit('/admin/product/'.$product->id.'/edit')
                     ->type('name', 'test name')
+                    ->type('price', '5.02')
+                    ->type('quantity', '20')
+                    ->select('category_id', '2')
+                    ->type('preview', 'test preview')
+                    ->type('description', 'test description')
+                    ->attach('images[]', 'public/images/products/default-product.jpg')
                     ->press('submit')
                     ->assertPathIs('/admin/product')
                     ->assertSee('Successfully Updated Product!');
             $this->assertDatabaseHas('products', [
                 'id' => 1,
-                'name' => 'test name'
+                'name' => 'test name',
+                'price' => '5.02',
+                'quantity' => '20',
+                'category_id' => '2',
+                'preview' => 'test preview',
+                'description' => 'test description',
             ]);
+            $this->assertDatabaseHas('images', [
+                'id' => '1',
+                'product_id' => '1',
+            ]);
+        });
+    }
+
+    /**
+    * Test 404 Page Not found when click edit product.
+    *
+    * @return void
+    */
+    public function test404PageForClickEdit()
+    {
+        $product = Product::first();
+        $this->browse(function (Browser $browser) use ($product) {
+            $browser->visit('/admin/product')
+                    ->assertSee('List Products');
+            $product->delete();
+            $browser->click('tbody tr:nth-child(2) td:nth-child(8) .fa-edit');
+            $browser->assertSee('Can not find user with corresponding id.');
+        });
+    }
+    
+    /**
+    * Test 404 Page Not found when click submit edit product.
+    *
+    * @return void
+    */
+    public function test404PageForClickSubmit()
+    {
+        $product = Product::first();
+        $this->browse(function (Browser $browser) use ($product) {
+            $browser->visit('/admin/product')
+                    ->click('tbody tr:nth-child(2) td:nth-child(8) .fa-edit')
+                    ->assertPathIs('/admin/product/'.$product->id.'/edit')
+                    ->assertSee('Edit Form Product')
+                    ->type('name', 'test name');
+            $product->delete();
+            $browser->press('submit')
+                    ->assertSee('Can not find user with corresponding id.');
         });
     }
 }
