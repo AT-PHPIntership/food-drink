@@ -20,13 +20,12 @@
             <div class="box-header">
               <h3 class="box-title">{{__('order.admin.index.show_order')}}</h3>
               <div class="box-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control pull-right" placeholder="{{__('order.admin.index.search')}}">
-
+                <form class="input-group input-group-sm" style="width: 150px;" action="{{ route('order.index') }}" method="GET">
+                  <input type="text" name="search" class="form-control pull-right" placeholder="{{__('order.admin.index.search')}}">
                   <div class="input-group-btn">
                     <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
             <!-- /.box-header -->
@@ -37,63 +36,37 @@
                   <th>{{__('order.admin.index.name_user')}}</th>
                   <th>{{__('order.admin.index.email_user')}}</th>
                   <th>{{__('order.admin.index.total')}}</th>
-                  <th>{{__('order.admin.index.date')}}</th>
                   <th>{{__('order.admin.index.status')}}</th>
+                  <th>{{__('order.admin.index.date')}}</th>
                   <th>{{__('order.admin.index.action')}}</th>
                 </tr>
-                <tr>
-                  <td>1</td>
-                  <td>John Doe</td>
-                  <td>jonh@gmail.com</td>
-                  <td>50.25 &dollar;</td>
-                  <td>Accept</td>
-                  <td>11-7-2014</td>
-                  <td>
-                    <a href=""><i class="fa fa-check-circle"></i></a> |
-                    <a href=""><i class="fa fa-ban"></i></a> |
-                    <a href=""><i class="fa fa-info"></i></a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>John Doe</td>
-                  <td>jonh@gmail.com</td>
-                  <td>50.25 &dollar;</td>
-                  <td>Accept</td>
-                  <td>11-7-2014</td>
-                  <td>
-                    <a href=""><i class="fa fa-check-circle"></i></a> |
-                    <a href=""><i class="fa fa-ban"></i></a> |
-                    <a href=""><i class="fa fa-info"></i></a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>John Doe</td>
-                  <td>jonh@gmail.com</td>
-                  <td>50.25 &dollar;</td>
-                  <td>Accept</td>
-                  <td>11-7-2014</td>
-                  <td>
-                    <a href=""><i class="fa fa-check-circle"></i></a> |
-                    <a href=""><i class="fa fa-ban"></i></a> |
-                    <a href=""><i class="fa fa-info"></i></a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>John Doe</td>
-                  <td>jonh@gmail.com</td>
-                  <td>50.25 &dollar;</td>
-                  <td>Accept</td>
-                  <td>11-7-2014</td>
-                  <td>
-                    <a href=""><i class="fa fa-check-circle"></i></a> |
-                    <a href=""><i class="fa fa-ban"></i></a> |
-                    <a href=""><i class="fa fa-info"></i></a>
-                  </td>
-                </tr>
+                  @foreach ($orders as $order)
+                  <tr>
+                    <td>{{ $order->id }}</td>
+                    <td>{{ $order->user->name }}</td>
+                    <td>{{ $order->user->email }}</td>
+                    <td>{{ $order->total }} &dollar;</td>
+                      @if ($order->status == 1)
+                      <td><span class="label label-warning">Pending</span></td>
+                      @elseif ($order->status == 2)
+                      <td><span class="label label-success">Accepted</span></td>
+                      @else
+                      <td><span class="label label-danger">Rejected</span></td>
+                      @endif
+                    <td>{{ $order->updated_at }}</td>
+                    <td>
+                      @if ($order->status == 1)
+                      <a href=""><i class="fa fa-ban"></i></a> |
+                      <a href=""><i class="fa fa-check-circle"></i></a> |
+                      <a href=""><i class="fa fa-info"></i></a>
+                      @else 
+                      <a href=""><i class="fa fa-info"></i></a>
+                      @endif
+                    </td>
+                  </tr>
+                  @endforeach
               </table>
+              {{ $orders->links() }}
             </div>
             <!-- /.box-body -->
           </div>
