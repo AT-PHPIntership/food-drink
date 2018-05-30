@@ -6,7 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    const PAGINATE = 10;
+    const PAGINATE = 10, ENABLE = 1, DISABLE = 0;
+    
+    public static $listStatus = [
+        'enable' => 1,
+        'disable' => 0
+    ];
+    
     protected $fillable = [
         'product_id',
         'user_id',
