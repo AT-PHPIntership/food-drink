@@ -27,5 +27,14 @@
                 'success_create' => 'Successfully Created Category!',
                 'fail_create' => 'Faily Created Product!',
             ],
+            'edit' => [
+                'title' => 'Edit Category',
+                'form_title' => 'Edit From',
+                'category' => 'Category',
+                'edit' => 'Edit',
+                'name' => 'Name Category',
+                'parent' => 'Name Parent',
+                'submit' => 'SubMit'
+            ],
         ],
     ];
