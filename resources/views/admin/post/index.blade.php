@@ -80,6 +80,8 @@
     </section>
     <!-- /.content -->
   </div>
+@endsection
+@section('status')
 <script>
   $(document).on('click','table tr td a',function (event) {
     event.preventDefault();
