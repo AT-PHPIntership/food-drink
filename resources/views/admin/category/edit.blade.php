@@ -42,7 +42,7 @@
                 <div class="form-group">
                     <label>{{__('category.admin.edit.parent')}}</label>
                     <select class="form-control" name="parent_id">
-                        <option value="0" class="form-control"></option>
+                        <option value="{{ App\Category::DEFAULT_VALUE }}" class="form-control"></option>
                         @foreach ( $categories as $category )
                             <option value="{{ $category->id }}" class="form-control">{{ $category->name }}</option>
                         @endforeach
