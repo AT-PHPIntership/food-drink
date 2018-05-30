@@ -96,7 +96,6 @@ class ProductsController extends Controller
     public function edit(Product $product)
     {
         $product->load('images');
-        // dd($product);
         return view('admin.product.edit', compact('product'));
     }
 
@@ -124,8 +123,14 @@ class ProductsController extends Controller
                     ]);
                 }
             }
+            if($request->delImg != null) {
+                foreach($arrIdImage as $i) {
+                    $nameImage = Image::find($i)->image;
+                    unlink("images/products/".$nameImage);
+                }
+                Image::whereIn('id', $arrIdImage)->where('product_id', $product->id)->delete();
+            }
             $product->update($request->all());
-            Image::whereIn('id', $arrIdImage)->delete();
             DB::commit();
         } catch (Exception $e) {
             flash(trans('message.product.fail_update'))->error();
