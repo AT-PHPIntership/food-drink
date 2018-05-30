@@ -47,15 +47,27 @@
                     <td>{{ $post->content }}</td>
                     <td>{{ $post->rate }}</td>
                     <td>{{ $post->type }}</td>
-                    <td>{{ $post->status }}</td>
                     <td>
-                      <form>
+                    @if($post->status == $status['enable'])
+                      <a href="{{ route('admin.post.active',['id'=> $post->id]) }}" id="{{ $post->id }}">
+                        <img src="{{ asset('images/posts/icons/accept.png') }}" alt="" />
+                      </a>
+                    @elseif($post->status == $status['disable'])
+                      <a href="{{ route('admin.post.active',['id'=> $post->id]) }}" id="{{ $post->id }}">
+                        <img src="{{ asset('images/posts/icons/exclamation.png') }}" alt="" />
+                      </a>
+                    @endif
+                    </td>
+                    <td>
+                      <form method="post" action="{{ route('admin.post.delete', $post->id) }}">
+                        @csrf
+                        @method('DELETE')
                         <button type="submit" class="btn btn-danger">
                           <i class="fa fa-trash"></i>
-                        </button>
-                      </form>
-                      </td>
-                  </tr>
+                         </button>
+                       </form>
+                    </td>
+                </tr>
                 @endforeach
               </table>
               <div class="text-center">
@@ -70,4 +82,27 @@
     </section>
     <!-- /.content -->
   </div>
+@endsection
+@section('status')
+<script>
+  $(document).on('click','table tr td a',function (event) {
+    event.preventDefault();
+    var url = $(this).attr('href');
+    var this_button = $(this);
+    $.ajax({
+      url: url,
+      type: 'PUT', 
+      headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+      dataType: 'json',
+    })
+    .done(function(data) {
+      if(data.status == {{$status['enable']}}) {
+        this_button.find('img').attr('src','/images/posts/icons/accept.png');
+      }
+      else{
+        this_button.find('img').attr('src','/images/posts/icons/exclamation.png');
+      }
+    })     
+  })
+</script>
 @endsection

@@ -2,3 +2,4 @@
 @include('admin.layout.sidebar')
 @yield('content')
 @include('admin.layout.footer')
+@yield('status')
