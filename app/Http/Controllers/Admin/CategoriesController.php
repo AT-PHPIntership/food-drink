@@ -62,7 +62,7 @@ class CategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
     */
-    public function edit(Category $category)
+    public function edit(Category $nameCategories)
     {
         $nameCategories = Category::get(['id', 'name']);
         return view('admin.category.edit', compact('nameCategories'));
