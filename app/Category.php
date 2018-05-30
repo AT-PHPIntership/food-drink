@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use SearchTrait;
+    const DEFAULT_VALUE = 0;
 
     protected $search = [
         'name',
