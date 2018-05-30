@@ -23,5 +23,9 @@
                 'parent' => 'Name Parent',
                 'submit' => 'SubMit'
             ],
+            'message' => [
+                'success_create' => 'Successfully Created Category!',
+                'fail_create' => 'Faily Created Product!',
+            ],
         ],
     ];

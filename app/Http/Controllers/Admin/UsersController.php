@@ -59,16 +59,16 @@ class UsersController extends Controller
                     'user_id' =>$data->id,
                     'address' => $request->address,
                     'phone' => $request->phone,
-                    'avatar' => $newName
+                    'avatar' => $newName,
                 ]);
         } else {
             UserInfo::create([
                 'user_id' => $data->id,
                 'address' => $request->address,
-                'phone' => $request->phone
+                'phone' => $request->phone,
             ]);
         }
-        $job = (new SendEmailJob($data))->delay(now()->addSeconds(10));
+        $job = (new SendEmailJob($data));
                 dispatch($job);
         flash(trans('user.admin.message.success_create'))->success();
         return redirect()->route('user.index');
@@ -105,7 +105,7 @@ class UsersController extends Controller
             UserInfo::where('user_id', $user->id)->update([
                 'address' => $request->address,
                 'phone' => $request->phone,
-                'avatar' => $nameNew
+                'avatar' => $nameNew,
             ]);
         } else {
             UserInfo::where('user_id', $user->id)->update([
