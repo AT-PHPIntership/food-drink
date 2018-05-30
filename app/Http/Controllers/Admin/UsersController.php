@@ -69,7 +69,7 @@ class UsersController extends Controller
             ]);
         }
         $job = (new SendEmailJob($data));
-                dispatch($job);
+        dispatch($job);
         flash(trans('user.admin.message.success_create'))->success();
         return redirect()->route('user.index');
     }
