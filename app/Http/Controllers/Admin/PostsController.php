@@ -33,4 +33,22 @@ class PostsController extends Controller
         $post->update(['status' => !$post->status]);
         return response()->json($post);
     }
+    
+    /**
+     * Delete a post
+     *
+     * @param Post $post post
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Post $post)
+    {
+        try {
+            $post->delete();
+            flash(trans('message.post.success_delete'))->success();
+        } catch (Exception $e) {
+            flash(trans('message.post.fail_delete'))->error();
+        }
+        return redirect()->route('admin.post.index');
+    }
 }

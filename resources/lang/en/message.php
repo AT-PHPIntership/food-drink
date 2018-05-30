@@ -10,4 +10,8 @@
             'success_delete' => 'Successfully Deleted Product!',
             'fail_delete' => 'Faily Deleted Product!',
         ],
+        'post' => [
+            'success_delete' => 'Successfully Deleted Post!',
+            'fail_delete' => 'Faily Deleted Post!',
+        ],
     ];

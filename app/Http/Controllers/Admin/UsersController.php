@@ -54,22 +54,22 @@ class UsersController extends Controller
         if ($request->hasFile('avatar')) {
             $image = $request->file('avatar');
             $newName = time().'_'.md5(rand(0, 99999)).'.'.$image->getClientOriginalExtension();
-            dd($image->move(public_path(config('define.images_path_users')), $newName));
-            $data1 = UserInfo::create([
+            $image->move(public_path(config('define.images_path_users')), $newName);
+            UserInfo::create([
                     'user_id' =>$data->id,
                     'address' => $request->address,
                     'phone' => $request->phone,
-                    'avatar' => $newName
+                    'avatar' => $newName,
                 ]);
         } else {
-            $data1 = UserInfo::create([
+            UserInfo::create([
                 'user_id' => $data->id,
                 'address' => $request->address,
-                'phone' => $request->phone
+                'phone' => $request->phone,
             ]);
         }
-        $job = (new SendEmailJob($data))->delay(now()->addSeconds(10));
-                dispatch($job);
+        $job = (new SendEmailJob($data));
+        dispatch($job);
         flash(trans('user.admin.message.success_create'))->success();
         return redirect()->route('user.index');
     }
@@ -105,7 +105,7 @@ class UsersController extends Controller
             UserInfo::where('user_id', $user->id)->update([
                 'address' => $request->address,
                 'phone' => $request->phone,
-                'avatar' => $nameNew
+                'avatar' => $nameNew,
             ]);
         } else {
             UserInfo::where('user_id', $user->id)->update([
