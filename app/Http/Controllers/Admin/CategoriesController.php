@@ -54,4 +54,14 @@ class CategoriesController extends Controller
         }
         return redirect()->route('category.index');
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function edit()
+    {
+        return view('admin.category.edit');
+    }
 }
