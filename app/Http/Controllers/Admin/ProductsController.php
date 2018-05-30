@@ -123,8 +123,8 @@ class ProductsController extends Controller
                     ]);
                 }
             }
-            if($request->delImg != null) {
-                foreach($arrIdImage as $i) {
+            if ($request->delImg != null) {
+                foreach ($arrIdImage as $i) {
                     $nameImage = Image::find($i)->image;
                     unlink("images/products/".$nameImage);
                 }
