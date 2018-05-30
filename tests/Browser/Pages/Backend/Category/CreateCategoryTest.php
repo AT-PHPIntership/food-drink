@@ -92,11 +92,11 @@ class CreateCategoryTest extends DuskTestCase
     }
 
     /**
-     * A Dusk test Route.
+     * A Dusk test Route Create Category.
      *
      * @return void
      */
-    public function testRoute()
+    public function testRouteCreateCategory()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/admin/category')
