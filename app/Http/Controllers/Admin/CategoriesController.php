@@ -58,7 +58,7 @@ class CategoriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Category $category Category object
+     * @param Category $nameCategories Category object
      *
      * @return \Illuminate\Http\Response
     */
