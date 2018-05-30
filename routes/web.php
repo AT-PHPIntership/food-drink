@@ -33,6 +33,10 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
             'uses' => 'PostsController@destroy',
             'as' => 'admin.post.delete'
         ]);
+        Route::put('{id}/active',[
+            'uses' => 'PostsController@active',
+            'as' => 'admin.post.active'
+        ]);
     });
     Route::resource('order', 'OrdersController')->only([
         'index',
