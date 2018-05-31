@@ -46,22 +46,18 @@
                     <td>{{ $order->user->name }}</td>
                     <td>{{ $order->user->email }}</td>
                     <td>{{ $order->total }} &dollar;</td>
-                      @if ($order->status == 1)
+                      @if ($order->status == App\Order::PENDING)
                       <td><span class="label label-warning">Pending</span></td>
-                      @elseif ($order->status == 2)
+                      @elseif ($order->status == App\Order::ACCEPTED)
                       <td><span class="label label-success">Accepted</span></td>
                       @else
                       <td><span class="label label-danger">Rejected</span></td>
                       @endif
                     <td>{{ $order->updated_at }}</td>
                     <td>
-                      @if ($order->status == 1)
                       <a href=""><i class="fa fa-ban"></i></a> |
                       <a href=""><i class="fa fa-check-circle"></i></a> |
                       <a href=""><i class="fa fa-info"></i></a>
-                      @else 
-                      <a href=""><i class="fa fa-info"></i></a>
-                      @endif
                     </td>
                   </tr>
                   @endforeach
