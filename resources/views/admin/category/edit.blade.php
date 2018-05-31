@@ -43,7 +43,7 @@
                     <label>{{__('category.admin.edit.parent')}}</label>
                     <select class="form-control" name="parent_id">
                         <option value="{{ App\Category::DEFAULT_VALUE }}" class="form-control"></option>
-                        @foreach ( $categories as $parentCategory )
+                        @foreach($categories as $parentCategory)
                             <option value="{{ $parentCategory->id }}" class="form-control"{{ $parentCategory->id == $category->parent_id ? 'selected' : '' }}>{{ $parentCategory->name }}</option>
                         @endforeach
                     </select>
