@@ -113,7 +113,7 @@
               </div>
             </div>
             <div class="box-footer clearfix">
-              <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">{{__('home.view_all_order')}}</a>
+              <a href="{{ route('order.index') }}" class="btn btn-sm btn-default btn-flat pull-right">{{__('home.view_all_order')}}</a>
             </div>
           </div>
         </div>

@@ -10,7 +10,7 @@
                 'name_user' => 'Name User',
                 'email_user' => 'Email User',
                 'total' => 'Total',
-                'date' => 'Order',
+                'date' => 'Date',
                 'status' => 'Status',
                 'action' => 'Action',
             ],

@@ -47,7 +47,7 @@
                   @endforeach
                   </td>
                   <td>
-                    <a href=""><i class="fa fa-edit"></i></a>  |
+                    <a href="{{route('category.edit', ['category' => $category->id])}}"><i class="fa fa-edit"></i></a>  |
                     <form method="POST" action="" class="form-trash">
                       @csrf
                       {{ method_field('DELETE') }}
