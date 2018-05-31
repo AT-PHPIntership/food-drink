@@ -64,4 +64,17 @@ class CategoriesController extends Controller
     {
         return view('admin.category.edit');
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Category $category category object
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function destroy(Category $category)
+    {
+        $categories = Category::where('parent_id','=', $câtegory->id);
+        dd($categories);
+    }
 }

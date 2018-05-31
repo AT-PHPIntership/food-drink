@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Order;
 
 class OrdersController extends Controller
 {
@@ -13,6 +14,7 @@ class OrdersController extends Controller
     */
     public function index()
     {
-        return view('admin.order.index');
+        $orders = Order::with('user')->paginate(config('define.number_page_products'));
+        return view('admin.order.index', compact('orders'));
     }
 }
