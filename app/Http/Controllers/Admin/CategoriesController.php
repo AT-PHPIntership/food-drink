@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Category;
+use App\Http\Requests\CategoryRequests;
 
 class CategoriesController extends Controller
 {
@@ -25,7 +26,7 @@ class CategoriesController extends Controller
         return view('admin.category.index', compact('categories'));
     }
 
-     /**
+    /**
      * Show the form for creating a new data.
      *
      * @return \Illuminate\Http\Response
@@ -34,5 +35,33 @@ class CategoriesController extends Controller
     {
         $nameCategories = Category::get(['id', 'name']);
         return view('admin.category.create', compact('nameCategories'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request get request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store(CategoryRequests $request)
+    {
+        try {
+            Category::create($request->all());
+            flash(trans('category.admin.message.success_create'))->success();
+        } catch (Exception $e) {
+            flash(trans('category.admin.message.fail_create'))->error();
+        }
+        return redirect()->route('category.index');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function edit()
+    {
+        return view('admin.category.edit');
     }
 }

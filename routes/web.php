@@ -22,18 +22,23 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
     Route::resource('user', 'UsersController');
     Route::resource('product', 'ProductsController');
     Route::resource('category', 'CategoriesController')->only([
-        'index', 'create'
+        'index', 'create' , 'store', 'edit'
     ]);
     Route::group(['prefix'=>'post'],function (){
         Route::get('',[
             'uses' => 'PostsController@index',
             'as' => 'admin.post.index'
         ]);
+        Route::delete('{post}',[
+            'uses' => 'PostsController@destroy',
+            'as' => 'admin.post.delete'
+        ]);
+        Route::put('{id}/active',[
+            'uses' => 'PostsController@active',
+            'as' => 'admin.post.active'
+        ]);
     });
     Route::resource('order', 'OrdersController')->only([
         'index',
-    ]);
-    Route::resource('image', 'ImagesController')->only([
-        'destroy',
     ]);
 });

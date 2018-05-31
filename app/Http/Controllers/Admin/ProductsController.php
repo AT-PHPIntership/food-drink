@@ -111,6 +111,7 @@ class ProductsController extends Controller
     {
         DB::beginTransaction();
         try {
+            $arrIdImage = preg_split("/[,]/", $request->delImg);
             $product->update($request->all());
             if ($request->hasFile('images')) {
                 foreach (request()->file('images') as $image) {
@@ -121,6 +122,13 @@ class ProductsController extends Controller
                         'image' => $nameNew
                     ]);
                 }
+            }
+            if ($request->delImg != null) {
+                foreach ($arrIdImage as $i) {
+                    $nameImage = Image::find($i)->image;
+                    unlink("images/products/".$nameImage);
+                }
+                Image::whereIn('id', $arrIdImage)->where('product_id', $product->id)->delete();
             }
             $product->update($request->all());
             DB::commit();

@@ -7,28 +7,16 @@ function confirmDelete() {
   }
 }
 
+// delete image in edit product
+var delImg = [];
 $('.delete').click(function() {
   var id = $(this).data("id");
   var token = $(this).data("token");
   msg = Lang.get('product.admin.edit.delete_confirm');
   if (confirm(msg)){
-    $.ajax({
-      type: 'delete',
-      url: '/admin/image/'+id,
-      data: {
-        'id': id,
-        _token: token
-      },
-      success: function(data) {
-        document.getElementById('image'+id).remove();
-        document.getElementById('delete'+id).remove();
-        document.getElementById('deleteImage'+id).remove();
-			},
-			statusCode: {
-        400: function(result) {
-          alert(result.responseText);
-        }
-      }
-    });
+    delImg.push(id);
+    document.getElementById('delImage').value = delImg;
+    document.getElementById('delete'+id).remove();
+    document.getElementById('deleteImage'+id).remove();  
   }
 });
