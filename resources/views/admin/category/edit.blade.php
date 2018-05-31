@@ -32,7 +32,7 @@
               <div class="box-body">
                 <div class="form-group">
                   <label>{{__('category.admin.edit.name')}}</label>
-                  <input type="text" class="form-control" name="name" placeholder="{{__('category.admin.edit.name')}}">
+                  <input type="text" class="form-control" name="name" value="{{ $category->name }}" placeholder="{{__('category.admin.edit.name')}}">
                   @if($errors->first('name')) 
                     <span class="help-block">
                       <strong class="text-danger">{{ $errors->first('name') }}</strong>
@@ -43,8 +43,8 @@
                     <label>{{__('category.admin.edit.parent')}}</label>
                     <select class="form-control" name="parent_id">
                         <option value="{{ App\Category::DEFAULT_VALUE }}" class="form-control"></option>
-                        @foreach ( $categories as $category )
-                            <option value="{{ $category->id }}" class="form-control">{{ $category->name }}</option>
+                        @foreach ( $categories as $parentCategory )
+                            <option value="{{ $parentCategory->id }}" class="form-control"{{ $parentCategory->id == $category->parent_id ? 'selected' : '' }}>{{ $parentCategory->name }}</option>
                         @endforeach
                     </select>
                     @if($errors->first('parent_id')) 
