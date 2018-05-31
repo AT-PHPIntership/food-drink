@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Category;
 use App\Http\Requests\CategoryRequests;
+use App\Http\Requests\UpdateCategoryRequest;
 
 class CategoriesController extends Controller
 {
@@ -66,6 +67,34 @@ class CategoriesController extends Controller
     {
         if ($category->id !== Category::DEFAULT_CATEGORY_FOOD && $category->id !== Category::DEFAULT_CATEGORY_DRINK) {
             return view('admin.category.edit', compact('category'));
+        }
+        return redirect()->route('category.index');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request  request
+     * @param Category                 $category category object
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function update(UpdateCategoryRequest $request, Category $category)
+    {
+        try {
+            $parentLevel = Category::find($request->parent_id)->level;
+            if ($category->level > $parentLevel) {
+                $category->name = $request->name;
+                $category->parent_id = $request->parent_id;
+                $category->level = ++$parentLevel;
+                $category->save();
+                flash(trans('category.admin.message.success_edit'))->success();
+                return redirect()->route('category.index');
+            }
+            flash(trans('category.admin.message.fail_edit'))->error();
+            return view('admin.category.edit', compact('category'));
+        } catch (Exception $e) {
+            flash(trans('category.admin.message.fail_edit'))->error();
         }
         return redirect()->route('category.index');
     }

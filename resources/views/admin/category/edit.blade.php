@@ -26,7 +26,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form method="POST" action="{{ route('category.store') }}">
+            <form method="POST" action="{{ route('category.update', ['category' => $category->id]) }}">
               @csrf
               @method('PUT')
               <div class="box-body">
