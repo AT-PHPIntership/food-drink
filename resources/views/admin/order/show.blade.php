@@ -38,16 +38,12 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputRole">{{__('order.admin.show.address')}}</label>
-                  <input type="text" class="form-control" disabled name="address" value="{{ $orderDetail[0]->address }}">
+                  <input type="text" class="form-control" disabled name="address" value="{{ $order->orderDetails->first()->address }}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputRole">{{__('order.admin.show.phone')}}</label>
                   <input type="text" class="form-control" disabled name="phone" value="{{ $order->user->userInfo->phone }}">
-                </div>     
-                <div class="form-group">
-                  <label for="exampleInputFile">{{__('order.admin.show.avatar')}}</label>
-                  <img src="{{$order->user->userInfo->avatar_url}}" alt="{{$order->user->name}}" class="avatar-edit">
-                </div>         
+                </div>    
               </div>
             </form>
             <!-- form start -->
@@ -64,7 +60,7 @@
                   <th>{{__('order.admin.show.preview')}}</th>
                   <th>{{__('order.admin.show.date')}}</th>
                 </tr>
-                  @foreach ($orderDetail as $item)
+                  @foreach ($order->orderDetails as $item)
                   <tr>
                     <td>{{ $item->name_product }}</td>
                     <td>{{ $item->quantity }}</td>
