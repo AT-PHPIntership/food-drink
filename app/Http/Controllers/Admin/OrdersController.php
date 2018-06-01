@@ -3,6 +3,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ChangeStatusRequest;
+use Symfony\Component\HttpFoundation\Response;
 use App\Order;
 
 class OrdersController extends Controller
@@ -26,10 +28,14 @@ class OrdersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function updateStatus(Request $request, Order $order)
+    public function updateStatus(ChangeStatusRequest $request, Order $order)
     {
-        $order['status'] = $request->status;
-        $order->save();
-        return response()->json($order);
+        try {
+            $order['status'] = $request->status;
+            $order->save();
+            return response()->json($order);
+        } catch (Exception $e) {
+            return response(trans('message.post.fail_delete'), Response::HTTP_BAD_REQUEST);
+        }
     }
 }
