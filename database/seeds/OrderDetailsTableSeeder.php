@@ -22,9 +22,9 @@ class OrderDetailsTableSeeder extends Seeder
         $faker = \Faker\Factory::create();
 
         // And now let's generate a few dozen users for our app:
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 35; $i++) {
             OrderDetail::create([
-                'order_id' => $faker->randomElement(Order::pluck('id')->toArray()),
+                'order_id' => $faker->unique()->numberbetween(1,35),
                 'product_id' => $faker->randomElement(Product::pluck('id')->toArray()),
                 'quantity' => $faker->numberBetween($min = 1, $max = 5),
                 'price' => $faker->numberBetween($min = 10, $max = 200),
