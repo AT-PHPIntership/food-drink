@@ -12,6 +12,7 @@
             'user_id' => 'User ID',
             'status' => 'Status',
             'action' => 'Action',
-            'rate' => 'Rate'
+            'rate' => 'Rate',
+            'type' => 'Type',
         ]
     ];
