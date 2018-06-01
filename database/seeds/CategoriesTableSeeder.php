@@ -23,11 +23,15 @@ class CategoriesTableSeeder extends Seeder
 
         // make a arry food name by 10 category name
         $idParent = array("0", "0", "1", "3" , "3", "3", "2", "7", "7", "7");
+
+        //make a array level 10 category
+        $levelCategory = array("0", "0", "1", "2", "2", "2", "1", "2", "2", "2"); 
         // And now let's generate a few dozen users for our app:
         for ($i = 0; $i < count($foodName); $i++) {
             Category::create([
                 'name' => $foodName[$i],
                 'parent_id' => $idParent[$i],
+                'level' => $levelCategory[$i],
             ]);
         }
 
