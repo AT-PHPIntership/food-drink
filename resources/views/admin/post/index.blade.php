@@ -19,7 +19,7 @@
               <h3 class="box-title">{{__('post.index.show_list_review')}}</h3>
               <div class="box-tools">
                 <form class="input-group input-group-sm" style="width: 150px;" action="" method="GET">
-                  <input type="text" name="user_name" class="form-control pull-right" placeholder="{{__('user.admin.index.search')}}">
+                  <input type="text" name="search" class="form-control pull-right" placeholder="{{__('user.admin.index.search')}}">
                   <div class="input-group-btn">
                   <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
                   </div>
@@ -31,11 +31,11 @@
               <table class="table table-hover">
                 <tr>
                   <th>{{__('post.index.post_id')}}</th>
-                  <th>{{__('post.index.product_id')}}</th>
+                  <th>{{__('post.index.user_id')}}</th>
                   <th>{{__('post.index.product_name')}}</th>
                   <th>{{__('post.index.review')}}</th>
                   <th>{{__('post.index.rate')}}</th>
-                  <th>{{__('post.index.user_id')}}</th>
+                  <th>{{__('post.index.type')}}</th>
                   <th>{{__('post.index.status')}}</th>
                   <th>{{__('post.index.action')}}</th>
                 </tr>
@@ -43,7 +43,7 @@
                   <tr>
                     <td>{{ $post->id }}</td>
                     <td>{{ $post->user_id }}</td>
-                    <td>{{ $post->product_id }}</td>
+                    <td>{{ $post->product->name }}</td>
                     <td>{{ $post->content }}</td>
                     <td>{{ $post->rate }}</td>
                     <td>{{ $post->type }}</td>
