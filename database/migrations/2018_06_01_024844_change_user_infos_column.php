@@ -26,7 +26,7 @@ class ChangeUserInfosColumn extends Migration
     public function down()
     {
         Schema::table('user_infos', function ($table) {
-            $table->string('phone')->nullable->change();
+            $table->renameColumn('phone', 'phone');
         });
     }
 }
