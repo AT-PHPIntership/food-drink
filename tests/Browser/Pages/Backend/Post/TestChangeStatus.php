@@ -27,7 +27,7 @@ class TestChangeStatus extends DuskTestCase
             $browser->visit('/admin/post')
                     ->click('table tr td a')
                     ->pause(1000);
-            $this->assertDatabaseHas('posts',['status' => 1]);
+            $this->assertDatabaseHas('posts',['status' => Post::ENABLE]);
         });
     }
 }
