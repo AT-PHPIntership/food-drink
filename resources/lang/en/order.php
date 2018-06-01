@@ -13,6 +13,10 @@
                 'date' => 'Date',
                 'status' => 'Status',
                 'action' => 'Action',
+                'confirm_status' => 'Are your sure change status order?',
+                'pending' => 'Pending',
+                'accepted' => 'Accepted',
+                'rejected' => 'Rejected',
             ],
         ]
     ];

@@ -20,3 +20,24 @@ $('.delete').click(function() {
     document.getElementById('deleteImage'+id).remove();  
   }
 });
+
+//change status order
+$(document).ready(function () {
+  $('.status').click(function () {
+    var status = $(this).val();
+    var id = $(this).data("id");
+    console.log(status);
+    msg = Lang.get('order.admin.index.confirm_status');
+    if (confirm(msg)){
+      $.ajax({
+        url: 'order/'+id+'/updateStatus',
+        type: 'PUT',
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        dataType: 'json',
+        data: {
+          "status": status
+        }
+      });
+    }
+  })
+})

@@ -17,4 +17,20 @@ class OrdersController extends Controller
         $orders = Order::with('user')->paginate(config('define.number_page_products'));
         return view('admin.order.index', compact('orders'));
     }
+
+        /**
+     * Update status of order
+     *
+     * @param \Illuminate\Http\Request $request request
+     * @param \App\Models\order        $order   order
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function updateStatus(Request $request, Order $order)
+    {
+        $order['status'] = $request->status;
+        // dd($order['status']);
+        $order->save();
+        return response()->json($order);
+    }
 }

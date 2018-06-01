@@ -39,6 +39,7 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
         ]);
     });
     Route::resource('order', 'OrdersController')->only([
-        'index',
+        'index', 'update'
     ]);
+    Route::put('order/{order}/updateStatus', 'OrdersController@updateStatus');
 });
