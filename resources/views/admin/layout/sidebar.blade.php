@@ -26,7 +26,7 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="{{route('admin.post.index')}}">
           <i class="fa fa-clipboard"></i> <span>{{__('admin.manage_post')}}</span>
         </a>
       </li>
