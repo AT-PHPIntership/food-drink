@@ -26,7 +26,6 @@ $(document).ready(function () {
   $('.status').click(function () {
     var status = $(this).val();
     var id = $(this).data("id");
-    console.log(status);
     msg = Lang.get('order.admin.index.confirm_status');
     if (confirm(msg)){
       $.ajax({

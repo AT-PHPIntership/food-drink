@@ -18,7 +18,7 @@ class OrdersController extends Controller
         return view('admin.order.index', compact('orders'));
     }
 
-        /**
+    /**
      * Update status of order
      *
      * @param \Illuminate\Http\Request $request request
@@ -29,7 +29,6 @@ class OrdersController extends Controller
     public function updateStatus(Request $request, Order $order)
     {
         $order['status'] = $request->status;
-        // dd($order['status']);
         $order->save();
         return response()->json($order);
     }

@@ -6,7 +6,7 @@
     <section class="content-header">
       <h1>{{ __('order.admin.index.list_order') }}</h1>
       <ol class="breadcrumb">
-        <li><a href="{{route('admin')}}"><i class="fa fa-dashboard"></i> {{ __('admin.dashboard') }}</a></li>
+        <li><a href="{{ route('admin') }}"><i class="fa fa-dashboard"></i> {{ __('admin.dashboard') }}</a></li>
         <li class="active">{{ __('admin.manage_order') }}</li>
       </ol>
     </section>
@@ -45,7 +45,7 @@
                     <td>{{ $order->id }}</td>
                     <td>{{ $order->user->name }}</td>
                     <td>{{ $order->user->email }}</td>
-                    <td>{{ $order->total }} &dollar;</td>
+                    <td>{{ $order->total }} {{ __('order.admin.index.money') }}</td>
                     <td>
                       <select class="form-control status" name="status" data-id="{{ $order->id }}">
                         <option value="{{ App\Order::PENDING }}" {{ $order->status == App\Order::PENDING ? 'selected="selected"' : '' }}>{{ __('order.admin.index.pending') }}</option>
