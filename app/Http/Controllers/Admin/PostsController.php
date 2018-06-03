@@ -11,13 +11,24 @@ class PostsController extends Controller
     /**
     * Display a listing of the resource.
     *
+    * @param Http\Requests\Request $request request
+    *
     * @return \Illuminate\Http\Response
     */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::paginate(Post::PAGINATE);
+        $search = $request->search;
+        if ($search != '') {
+            $posts = Post::with('product')->whereHas('product', function ($query) use ($search) {
+                return $query->where('name', 'Like', "%$search%")
+                            ->orWhere("content", 'Like', "%$search%");
+            });
+            $posts = $posts->paginate(Post::PAGINATE)->appends(['search' => $search]);
+        } else {
+            $posts = Post::with('product')->paginate(Post::PAGINATE);
+        }
         $status = Post::$listStatus;
-        return view('admin.post.index', ['posts'=>$posts, 'status'=>$status]);
+        return view('admin.post.index', ['posts' => $posts, 'status' => $status]);
     }
     
     /**
