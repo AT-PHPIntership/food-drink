@@ -8,6 +8,7 @@ use App\Product;
 use App\Order;
 use App\OrderDetail;
 use Carbon\Carbon;
+use DB;
 
 class HomeController extends Controller
 {
@@ -23,40 +24,30 @@ class HomeController extends Controller
         $totalProduct = Product::count();
         $totalOrder = Order::where('status', Order::ACCEPTED)->count();
         $totalRevenue = Order::where('status', Order::ACCEPTED)->sum('total');
+        $latestOrders = Order::with('user')->where('status', Order::ACCEPTED)->orderBy('orders.updated_at', 'desc')->limit(7)->get();
         $totalProductOrdered = OrderDetail::whereHas('order', function ($query) {
             $query->where('status', '=', Order::ACCEPTED);
         })->sum('quantity');
-        $latestOrders = Order::with('user')->where('status', Order::ACCEPTED)->orderBy('orders.updated_at', 'desc')->limit(7)->get();
-        $totalProductOrderedW = OrderDetail::whereHas('order', function ($query) {
-            $query->where([
-                ['status', '=', Order::ACCEPTED],
-                ['updated_at', '>', new Carbon('last week')],
-            ]);
-        })->sum('quantity');
-        $totalOrderedWeek = Order::where([
-            ['status', Order::ACCEPTED],
-            ['updated_at', '>', $lastweek],
-        ])->count();
-        $totalProductOrderedM = OrderDetail::whereHas('order', function ($query) {
-            $query->where([
-                ['status', '=', Order::ACCEPTED],
-                ['updated_at', '>', new Carbon('last month')],
-            ]);
-        })->sum('quantity');
-        $totalOrderedMonth = Order::where([
-            ['status', Order::ACCEPTED],
-            ['updated_at', '>', $lastmonth],
-        ])->count();
+        $totalWeek = Order::select(DB::raw("count(orders.id) as count_order"), DB::raw("sum(order_details.quantity) as sum_quantity_product"))
+                    ->join('order_details', 'orders.id', '=', 'order_details.order_id')
+                    ->where([
+                        ['orders.status', '=', Order::ACCEPTED],
+                        ['orders.updated_at', '>', $lastweek],
+                    ])->first();
+        $totalMonth = Order::select(DB::raw("count(orders.id) as count_order"), DB::raw("sum(order_details.quantity) as sum_quantity_product"))
+                    ->join('order_details', 'orders.id', '=', 'order_details.order_id')
+                    ->where([
+                        ['orders.status', '=', Order::ACCEPTED],
+                        ['orders.updated_at', '>', $lastmonth],
+                    ])->first();
         return view('admin.home.index', compact(
             'totalProduct',
             'totalOrder',
             'totalRevenue',
             'totalProductOrdered',
             'latestOrders',
-            'totalProductOrderedW',
-            'totalOrderedWeek',
-            'totalProductOrderedM',
-            'totalOrderedMonth'
+            'totalWeek',
+            'totalMonth'
         ));
     }
 }

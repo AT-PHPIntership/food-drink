@@ -27,7 +27,7 @@
           <div class="info-box">
             <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
             <div class="info-box-content">
-              <span class="info-box-text">{{__('home.total_orderd')}}</span>
+              <span class="info-box-text">{{__('home.total_ordered')}}</span>
               <span class="info-box-number">{{ $totalOrder }}</span>
             </div>
           </div>
@@ -79,7 +79,7 @@
               </div>
             </div>
             <div class="box-footer clearfix">
-              <a href="" class="btn btn-sm btn-default btn-flat pull-right">{{__('home.view_all_order')}}</a>
+              <a href="{{ route('order.index') }}" class="btn btn-sm btn-default btn-flat pull-right">{{__('home.view_all_order')}}</a>
             </div>
           </div>
         </div>
@@ -88,7 +88,7 @@
             <span class="info-box-icon"><i class="fa fa-product-hunt"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">{{__('home.total_product_ordered')}}</span>
-              <span class="info-box-number">{{ $totalProductOrderedW }}</span>
+              <span class="info-box-number">{{ $totalWeek->sum_quantity_product }}</span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
@@ -98,8 +98,8 @@
           <div class="info-box bg-green">
             <span class="info-box-icon"><i class="fa fa-money"></i></span>
             <div class="info-box-content">
-              <span class="info-box-text">{{__('home.total_orderd')}}</span>
-              <span class="info-box-number">{{ $totalOrderedWeek }}</span>
+              <span class="info-box-text">{{__('home.total_ordered')}}</span>
+              <span class="info-box-number">{{ $totalWeek->count_order }}</span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
@@ -110,7 +110,7 @@
             <span class="info-box-icon"><i class="fa fa-product-hunt"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">{{__('home.total_product_ordered')}}</span>
-              <span class="info-box-number">{{ $totalProductOrderedM }}</span>
+              <span class="info-box-number">{{ $totalMonth->sum_quantity_product }}</span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
@@ -120,8 +120,8 @@
           <div class="info-box bg-aqua">
             <span class="info-box-icon"><i class="fa fa-money"></i></span>
             <div class="info-box-content">
-              <span class="info-box-text">{{__('home.total_orderd')}}</span>
-              <span class="info-box-number">{{ $totalOrderedMonth }}</span>
+              <span class="info-box-text">{{__('home.total_ordered')}}</span>
+              <span class="info-box-number">{{ $totalMonth->count_order }}</span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
