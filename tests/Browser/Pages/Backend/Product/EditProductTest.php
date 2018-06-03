@@ -148,4 +148,35 @@ class EditProductTest extends DuskTestCase
                     ->assertSee('Can not find user with corresponding id.');
         });
     }
+
+    /**
+     * A Dusk test delete image success.
+     *
+     * @return void
+     */
+    public function testDeleteImage() {
+        $product = Product::first();
+        $this->browse(function (Browser $browser) use ($product) {
+            $browser->visit('/admin/product/'.$product->id.'/edit')
+                    ->attach('images[]', 'public/images/products/default-product.jpg')
+                    ->press('submit')
+                    ->assertPathIs('/admin/product')
+                    ->assertSee('Successfully Updated Product!');
+            $this->assertDatabaseHas('images', [
+                'id' => '1',
+                'product_id' => '1',
+                'deleted_at' => null
+            ]);
+            $browser->visit('/admin/product/'.$product->id.'/edit')
+                    ->click('#delete1')
+                    ->acceptDialog()
+                    ->press('submit')
+                    ->assertPathIs('/admin/product');
+            $this->assertDatabaseMissing('images', [
+                'id' => '1',
+                'product_id' => '1',
+                'deleted_at' => null
+            ]);
+        });
+    }
 }
