@@ -26,9 +26,13 @@ class ProductsController extends Controller
         $productName = $request->product_name;
         $product = Product::with('category', 'images');
         if ($productName) {
-            $product = $product->search($productName);
+            $product = $product->search($productName)->when(isset($request->sortBy) && isset($request->dir), function ($query) use ($request) {
+                return $query->orderBy($request->sortBy, $request->dir);
+            });
         }
-        $product = $product->paginate(config('define.number_page_products'));
+        $product = $product->when(isset($request->sortBy) && isset($request->dir), function ($query) use ($request) {
+            return $query->orderBy($request->sortBy, $request->dir);
+        })->paginate(config('define.number_page_products'))->appends(request()->query());
         return view('admin.product.index', compact('product'));
     }
 
