@@ -39,6 +39,6 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
         ]);
     });
     Route::resource('order', 'OrdersController')->only([
-        'index',
+        'index', 'show'
     ]);
 });
