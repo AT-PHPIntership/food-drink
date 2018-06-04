@@ -57,3 +57,7 @@
 .image-edit-product:hover .delete {
   opacity: 1;
 }
+.list-product {
+  border-top: 1px solid #3c8dbc;
+  margin-top: 15px;
+}
