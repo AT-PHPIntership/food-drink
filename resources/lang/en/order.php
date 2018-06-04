@@ -7,12 +7,17 @@
                 'show_order' => 'Show list orders',
                 'search' => 'Search',
                 'id' => 'ID',
-                'name_product' => 'Name Product',
+                'name_user' => 'Name User',
                 'email_user' => 'Email User',
                 'total' => 'Total',
                 'date' => 'Date',
                 'status' => 'Status',
                 'action' => 'Action',
+                'confirm_status' => 'Are you sure change status order?',
+                'pending' => 'Pending',
+                'accepted' => 'Accepted',
+                'rejected' => 'Rejected',
+                'money' => '$'
             ],
             'show' => [
                 'title' => 'Show detail order',
