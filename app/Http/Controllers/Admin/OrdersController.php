@@ -16,16 +16,15 @@ class OrdersController extends Controller
     */
     public function index(Request $request)
     {
-        $orders = Order::with('user');
         $search = $request->search;
         if ($search != '') {
-            $orders = $orders->whereHas('user', function ($query) use ($search) {
+            $orders = Order::with('user')->whereHas('user', function ($query) use ($search) {
                 return $query->where('name', 'Like', "%$search%")
                             ->orWhere("email", 'Like', "%$search%");
             });
             $orders = $orders->paginate(config('define.number_page_products'))->appends(['search' => $search]);
         } else {
-            $orders = $orders->paginate(config('define.number_page_products'));
+            $orders = Order::with('user')->paginate(config('define.number_page_products'));
         }
         return view('admin.order.index', compact('orders'));
     }
