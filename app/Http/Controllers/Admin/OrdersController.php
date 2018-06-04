@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Order;
+use App\OrderDetail;
 
 class OrdersController extends Controller
 {
@@ -27,5 +28,18 @@ class OrdersController extends Controller
             $orders = Order::with('user')->paginate(config('define.number_page_products'));
         }
         return view('admin.order.index', compact('orders'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Order $order order object
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function show(Order $order)
+    {
+        $order->load('orderDetails', 'user.userInfo');
+        return view('admin.order.show', compact('order'));
     }
 }
