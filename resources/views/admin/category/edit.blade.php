@@ -39,7 +39,7 @@
                     </span>
                   @endif
                 </div>
-                @if($idCategory !== App\Category::DEFAULT_CATEGORY_FOOD && $idCategory !== App\Category::DEFAULT_CATEGORY_DRINK)
+                @if($category->id !== App\Category::DEFAULT_CATEGORY_FOOD && $category->id !== App\Category::DEFAULT_CATEGORY_DRINK)
                   <div class="form-group">
                       <label>{{__('category.admin.edit.parent')}}</label>
                       <select class="form-control" name="parent_id">
