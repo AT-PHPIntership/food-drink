@@ -56,11 +56,11 @@
             </div>
             <div class="box-body">
               <div class="table-responsive">
-                <table id="myTable" class="table no-margin">
+                <table class="table no-margin">
                   <thead>
                     <tr>
                       <th>{{__('home.order_id')}}</th>
-                      <th onclick="sortTable(1)">{{__('home.email')}}</th>
+                      <th>{{__('home.email')}}</th>
                       <th>{{__('home.status')}}</th>
                       <th>{{__('home.time')}}</th>
                     </tr>

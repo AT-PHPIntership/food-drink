@@ -57,6 +57,3 @@
 .image-edit-product:hover .delete {
   opacity: 1;
 }
-#myTable th:nth-child(2)  {
-  cursor: pointer;
-}
