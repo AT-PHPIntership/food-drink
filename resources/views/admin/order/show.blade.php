@@ -60,14 +60,14 @@
                   <th>{{__('order.admin.show.preview')}}</th>
                   <th>{{__('order.admin.show.date')}}</th>
                 </tr>
-                  @foreach ($order->orderDetails as $item)
+                  @foreach ($order->orderDetails as $orderDetail)
                   <tr>
-                    <td>{{ $item->name_product }}</td>
-                    <td>{{ $item->quantity }}</td>
-                    <td>{{ $item->price }} &dollar;</td>
-                    <td><img src="{{ $item->image_url }}" alt="{{ $item->name_product }}"></td>
-                    <td>{{ $item->preview }}</td>
-                    <td>{{ $item->updated_at }}</td>
+                    <td>{{ $orderDetail->name_product }}</td>
+                    <td>{{ $orderDetail->quantity }}</td>
+                    <td>{{ $orderDetail->price }} &dollar;</td>
+                    <td><img src="{{ $orderDetail->image_url }}" alt="{{ $orderDetail->name_product }}"></td>
+                    <td>{{ $orderDetail->preview }}</td>
+                    <td>{{ $orderDetail->updated_at }}</td>
                   </tr>
                   @endforeach
               </table>
