@@ -26,7 +26,7 @@ class OrderDetailsTableSeeder extends Seeder
             OrderDetail::create([
                 'order_id' => $faker->unique()->numberbetween(1,35),
                 'product_id' => $faker->randomElement(Product::pluck('id')->toArray()),
-                'quantity' => $faker->numberBetween($min = 1, $max = 5),
+                'quantity' => $faker->numberBetween($min = 3, $max = 10),
                 'price' => $faker->numberBetween($min = 10, $max = 200),
                 'preview' => $faker->randomElement(Product::pluck('preview')->toArray()),
                 'address' => $faker->address,
