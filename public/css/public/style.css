@@ -4118,22 +4118,6 @@ html {
 	letter-spacing: 1px;
 	font-family: "Roboto", sans-serif;
 }
-.mega-menu-title h3:after {
-	content: "\f039";
-	display: inline-block;
-	background: #4caf50;
-	width: 55px;
-	height: 58px;
-	position: absolute;
-	top: 0;
-	right: 0;
-	font-family: 'FontAwesome';
-	text-align: center;
-	color: #fff;
-	font-size: 18px;
-	line-height: 58px;
-	font-weight: normal;
-}
 .mega-menu-title:hover h3:after {
 	background: #ffa200;
 }
