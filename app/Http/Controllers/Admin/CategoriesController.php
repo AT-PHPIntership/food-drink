@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Category;
 use App\Http\Requests\CategoryRequests;
+use App\Http\Requests\UpdateCategoryRequest;
 
 class CategoriesController extends Controller
 {
@@ -58,11 +59,47 @@ class CategoriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
+     * @param Category $category category object
+     *
      * @return \Illuminate\Http\Response
     */
-    public function edit()
+    public function edit(Category $category)
     {
-        return view('admin.category.edit');
+        return view('admin.category.edit', compact('category'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request  request
+     * @param Category                 $category category object
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function update(UpdateCategoryRequest $request, Category $category)
+    {
+        try {
+            if ($category->id == Category::DEFAULT_CATEGORY_FOOD || $category->id == Category::DEFAULT_CATEGORY_DRINK) {
+                $category->name = $request->name;
+                $category->save();
+                flash(trans('category.admin.message.success_edit'))->success();
+                return redirect()->route('category.index');
+            }
+            $parentLevel = Category::find($request->parent_id)->level;
+            if ($category->level > $parentLevel) {
+                $category->name = $request->name;
+                $category->parent_id = $request->parent_id;
+                $category->level = ++$parentLevel;
+                $category->save();
+                flash(trans('category.admin.message.success_edit'))->success();
+                return redirect()->route('category.index');
+            }
+            flash(trans('category.admin.message.fail_edit'))->error();
+            return view('admin.category.edit', compact('category'));
+        } catch (Exception $e) {
+            flash(trans('category.admin.message.fail_edit'))->error();
+        }
+        return redirect()->route('category.index');
     }
 
     /**
@@ -74,7 +111,9 @@ class CategoriesController extends Controller
     */
     public function destroy(Category $category)
     {
-        $categories = Category::where('parent_id','=', $câtegory->id);
-        dd($categories);
+        Category::where('parent_id','like', '%'. $category->id .'%')
+                ->update(['parent_id' => $category->parent_id]);
+        $category->delete();
+        return redirect()->route('category.index');
     }
 }
