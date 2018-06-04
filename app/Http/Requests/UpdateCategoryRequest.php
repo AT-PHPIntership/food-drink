@@ -25,13 +25,9 @@ class UpdateCategoryRequest extends FormRequest
     public function rules()
     {
         $category = $this->route()->parameter('category');
-        $ruleParentId = '';
-        if ($category->id !== Category::DEFAULT_CATEGORY_FOOD && $category->id !== Category::DEFAULT_CATEGORY_DRINK) {
-            $ruleParentId .= 'required|integer|exists:categories,id';
-        }
         return [
             'name'=>'required|unique:categories,name,' . $category->name . ',name|max:25|min:2',
-            'parent_id' => $ruleParentId,
+            'parent_id' => 'integer|exists:categories,id',
         ];
     }
 }
