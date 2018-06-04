@@ -8,6 +8,11 @@ class Category extends Model
 {
     use SearchTrait;
     const DEFAULT_VALUE = 0;
+    /**
+     * Value of Defauft Category
+     */
+    const DEFAULT_CATEGORY_FOOD = 1;
+    const DEFAULT_CATEGORY_DRINK = 2;
 
     protected $search = [
         'name',
