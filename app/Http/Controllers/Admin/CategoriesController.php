@@ -111,8 +111,10 @@ class CategoriesController extends Controller
     */
     public function destroy(Category $category)
     {
-        Category::where('parent_id','like', '%'. $category->id .'%')
-                ->update(['parent_id' => $category->parent_id]);
+        Category::where('parent_id', 'like', '%'. $category->id .'%')
+                ->update([
+                    'parent_id' => $category->parent_id,
+                    'level' => $category->level,]);
         $category->delete();
         return redirect()->route('category.index');
     }
