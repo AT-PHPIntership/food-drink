@@ -94,7 +94,7 @@
                   <td>{{ $item->avg_rate }}</td>
                   <td>
                     <a href="{{route('product.edit', ['product' => $item->id])}}"><i class="fa fa-edit"></i></a> |
-                    <a href="{{route('product.show', ['product' => $item->id])}}"><i class="fa fa-wrench"></i></a> |
+                    <a href="{{route('product.show', ['product' => $item->id])}}"><i class="fa fa-info"></i></i></a> |
                     <form method="POST" action="{{route('product.destroy', ['product' => $item->id])}}" class="form-trash" onsubmit="return confirmDelete()">
                       @csrf
                       {{ method_field('DELETE') }}
