@@ -36,7 +36,7 @@
                 <tr>
                   <th>{{__('product.admin.index.id')}}</th>
                   <th>{{__('product.admin.index.name')}}
-                    @if (app('request')->input('sortBy') == 'name' && app('request')->input('dir') == 'DESC')
+                    @if (request()->dir == 'DESC')
                       <a href="{{ route('product.index', ['product_name' => request('product_name'), 'sortBy' => 'name', 'dir' => 'ASC']) }}">
                         <i class="fa fa-sort-up"></i>
                       </a>
@@ -47,7 +47,7 @@
                     @endif
                   </th>
                   <th>{{__('product.admin.index.price')}}
-                    @if (app('request')->input('sortBy') == 'price' && app('request')->input('dir') == 'DESC')
+                    @if (request()->dir == 'DESC')
                       <a href="{{ route('product.index', ['product_name' => request('product_name'), 'sortBy' => 'price', 'dir' => 'ASC']) }}">
                         <i class="fa fa-sort-up"></i>
                       </a>
@@ -59,7 +59,7 @@
                   </th>
                   <th>{{__('product.admin.index.image')}}</th>
                   <th>{{__('product.admin.index.quantity')}}
-                    @if (app('request')->input('sortBy') == 'quantity' && app('request')->input('dir') == 'DESC')
+                    @if (request()->dir == 'DESC')
                       <a href="{{ route('product.index', ['product_name' => request('product_name'), 'sortBy' => 'quantity', 'dir' => 'ASC']) }}">
                         <i class="fa fa-sort-up"></i>
                       </a>
@@ -71,7 +71,7 @@
                   </th>
                   <th>{{__('product.admin.index.category')}}</th>
                   <th>{{__('product.admin.index.rate_avg')}}
-                    @if (app('request')->input('sortBy') == 'avg_rate' && app('request')->input('dir') == 'DESC')
+                    @if (request()->dir == 'DESC')
                       <a href="{{ route('product.index', ['product_name' => request('product_name'), 'sortBy' => 'avg_rate', 'dir' => 'ASC']) }}">
                         <i class="fa fa-sort-up"></i>
                       </a>
