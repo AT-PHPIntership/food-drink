@@ -8,6 +8,7 @@ class Order extends Model
 {
     const ACCEPTED = 2;
     const PENDING = 1;
+    const LATEST_ORDERS = 7;
     
     protected $fillable=[
         'user_id',
