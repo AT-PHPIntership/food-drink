@@ -12,6 +12,14 @@ class User extends Authenticatable
 {
     use Notifiable, SoftDeletes, SearchTrait;
 
+     /**
+     * User role
+     *
+     * @type int
+     */
+    const ROLE_USER = 0;
+    const ROLE_ADMIN = 1;
+    
     protected $search = [
         'name',
         'email'

@@ -42,3 +42,7 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
         'index', 'show'
     ]);
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
