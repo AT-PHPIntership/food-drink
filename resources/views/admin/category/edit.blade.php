@@ -39,20 +39,22 @@
                     </span>
                   @endif
                 </div>
-                <div class="form-group">
-                    <label>{{__('category.admin.edit.parent')}}</label>
-                    <select class="form-control" name="parent_id">
-                        <option value="{{ App\Category::DEFAULT_VALUE }}" class="form-control"></option>
-                        @foreach($categories as $parentCategory)
-                            <option value="{{ $parentCategory->id }}" class="form-control"{{ $parentCategory->id == $category->parent_id ? 'selected' : '' }}>{{ $parentCategory->name }}</option>
-                        @endforeach
-                    </select>
-                    @if($errors->first('parent_id')) 
-                        <span class="help-block">
-                        <strong class="text-danger">{{ $errors->first('parent_id') }}</strong>
-                        </span>
-                    @endif
-                </div>            
+                @if($category->id !== App\Category::DEFAULT_CATEGORY_FOOD && $category->id !== App\Category::DEFAULT_CATEGORY_DRINK)
+                  <div class="form-group">
+                      <label>{{__('category.admin.edit.parent')}}</label>
+                      <select class="form-control" name="parent_id">
+                          <option value="{{ App\Category::DEFAULT_VALUE }}" class="form-control"></option>
+                          @foreach($categories as $parentCategory)
+                              <option value="{{ $parentCategory->id }}" class="form-control"{{ $parentCategory->id == $category->parent_id ? 'selected' : '' }}>{{ $parentCategory->name }}</option>
+                          @endforeach
+                      </select>
+                      @if($errors->first('parent_id')) 
+                          <span class="help-block">
+                          <strong class="text-danger">{{ $errors->first('parent_id') }}</strong>
+                          </span>
+                      @endif
+                  </div>
+                @endif            
               </div>
               <div class="box-footer">
                 <button type="submit" class="btn btn-primary" name="submit">{{__('category.admin.edit.submit')}}</button>

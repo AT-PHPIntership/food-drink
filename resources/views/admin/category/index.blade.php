@@ -47,8 +47,8 @@
                   @endforeach
                   </td>
                   <td>
+                    <a href="{{route('category.edit', ['category' => $category->id])}}"><i class="fa fa-edit"></i></a>
                     @if($category->id !== App\Category::DEFAULT_CATEGORY_FOOD && $category->id !== App\Category::DEFAULT_CATEGORY_DRINK)
-                      <a href="{{route('category.edit', ['category' => $category->id])}}"><i class="fa fa-edit"></i></a>  |
                       <form method="POST" action="" class="form-trash">
                         @csrf
                         {{ method_field('DELETE') }}

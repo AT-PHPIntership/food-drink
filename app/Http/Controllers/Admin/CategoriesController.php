@@ -65,10 +65,7 @@ class CategoriesController extends Controller
     */
     public function edit(Category $category)
     {
-        if ($category->id !== Category::DEFAULT_CATEGORY_FOOD && $category->id !== Category::DEFAULT_CATEGORY_DRINK) {
-            return view('admin.category.edit', compact('category'));
-        }
-        return redirect()->route('category.index');
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
