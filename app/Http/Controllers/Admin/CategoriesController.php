@@ -79,6 +79,12 @@ class CategoriesController extends Controller
     public function update(UpdateCategoryRequest $request, Category $category)
     {
         try {
+            if($category->id == Category::DEFAULT_CATEGORY_FOOD || $category->id == Category::DEFAULT_CATEGORY_DRINK) {
+                $category->name = $request->name;
+                $category->save();
+                flash(trans('category.admin.message.success_edit'))->success();
+                return redirect()->route('category.index');
+            }
             $parentLevel = Category::find($request->parent_id)->level;
             if ($category->level > $parentLevel) {
                 $category->name = $request->name;
