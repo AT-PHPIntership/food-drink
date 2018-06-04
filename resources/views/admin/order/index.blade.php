@@ -69,6 +69,3 @@
     <!-- /.content -->
   </div>
 @endsection
-@section('status')
-  <script src="js/updateStatusBorrow.js"></script>
-@endsection

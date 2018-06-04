@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use App\Order;
 
 class ChangeStatusRequest extends FormRequest
 {
@@ -24,7 +26,10 @@ class ChangeStatusRequest extends FormRequest
     public function rules()
     {
         return [
-            'status' => 'required|integer|exists:orders,status',
+            'status' => [
+                'required',
+                Rule::in([Order::PENDING, Order::ACCEPTED, Order::REJECTED]),
+            ],
         ];
     }
 }
