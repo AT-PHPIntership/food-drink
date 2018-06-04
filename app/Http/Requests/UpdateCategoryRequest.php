@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Category;
 
 class UpdateCategoryRequest extends FormRequest
 {
@@ -25,7 +26,7 @@ class UpdateCategoryRequest extends FormRequest
     {
         $category = $this->route()->parameter('category');
         $ruleParentId = '';
-        if ($this->parent_id !== null) {
+        if ($category->id !== Category::DEFAULT_CATEGORY_FOOD && $category->id !== Category::DEFAULT_CATEGORY_DRINK) {
             $ruleParentId .= 'required|integer|exists:categories,id';
         }
         return [
