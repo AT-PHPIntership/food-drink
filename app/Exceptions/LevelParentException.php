@@ -3,16 +3,10 @@
 namespace App\Exceptions;
 
 use Exception;
+use Symfony\Component\HttpFoundation\Response;
 
 class LevelParentException extends Exception
 {
-    /**
-     * Report or log an exception.
-     *
-     * @return void
-     */
-    public function report()
-    {
-        flash(trans('category.admin.message.fail_edit'))->error();
-    }
+    protected $statusCode = Response::HTTP_CONFLICT;
+    protected $message = 'Faily Edit Category!';
 }

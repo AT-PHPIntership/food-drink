@@ -92,8 +92,8 @@ class CategoriesController extends Controller
             }
             $category->save();
             flash(trans('category.admin.message.success_edit'))->success();
-        } catch (LevelParentException $e) {
-            $e->report();
+        } catch (\Exception $e) {
+            flash($e->getMessage())->error();
             return view('admin.category.edit', compact('category'));
         }
         return redirect()->route('category.index');
