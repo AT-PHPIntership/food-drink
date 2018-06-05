@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Order;
 
-class ChangeStatusRequest extends FormRequest
+class SortProductRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +24,8 @@ class ChangeStatusRequest extends FormRequest
     public function rules()
     {
         return [
-            'status' => 'required|integer|in:'.implode(',', [Order::PENDING, Order::ACCEPTED, Order::REJECTED])
+            'sortBy' => 'in:'.implode(',', ['name', 'price', 'quantity', 'avg_rate']),
+            'dir' => 'in:'.implode(',', ['DESC', 'ASC'])
         ];
     }
 }
