@@ -17,14 +17,35 @@ class ListOrderTest extends DuskTestCase
     const NUMBER_RECORD_LAST = 6;
 
     /**
-     * A Dusk test show list order.
+    * Override function setUp() for make user login
+    *
+    * @return void
+    */
+    public function setUp()
+    {
+        parent::setUp();
+        factory(User::class, self::NUMBER_RECORD_CREATE)->create();
+        factory(Order::class, self::NUMBER_RECORD_CREATE)->create();
+    }
+
+    public function setUpDB()
+    {
+        parent::setUp();
+        factory(User::class)->create([
+            'name' => 'test name',
+            'email' => 'testemail@gmail.com'
+        ]);
+        factory(Order::class)->create();
+    }
+
+
+    /**
+     * A Dusk test show list orders.
      *
      * @return void
      */
     public function testShowListOrder()
     {
-        factory(User::class, self::NUMBER_RECORD_CREATE)->create();
-        factory(Order::class, self::NUMBER_RECORD_CREATE)->create();
         $this->browse(function (Browser $browser) {
             $browser->visit('/admin/order')
                     ->assertPathIs('/admin/order')
@@ -41,8 +62,6 @@ class ListOrderTest extends DuskTestCase
     */
     public function testPaginateLast()
     {
-        factory(User::class, self::NUMBER_RECORD_CREATE)->create();
-        factory(Order::class, self::NUMBER_RECORD_CREATE)->create();
         $this->browse(function (Browser $browser) {
             $browser->visit('/admin/order?page=2')
                     ->assertSee('Show list orders');
@@ -57,12 +76,8 @@ class ListOrderTest extends DuskTestCase
      * @return void
     */
     public function testSearchNameAndEmail()
-    {
-        factory(User::class, 1)->create([
-            'name' => 'test name',
-            'email' => 'testemail@gmail.com'
-        ]);
-        factory(Order::class, 1)->create();
+    {   
+        setUpDB();
         $this->browse(function (Browser $browser) {
             $browser->visit('/admin/order')
                     ->type('search', 'test name')
@@ -84,11 +99,6 @@ class ListOrderTest extends DuskTestCase
      */
     public function testSearchNoRecordReturn()
     {
-        factory(User::class, 1)->create([
-            'name' => 'test name',
-            'email' => 'testemail@gmail.com'
-        ]);
-        factory(Order::class, 1)->create();
         $this->browse(function (Browser $browser) {
             $browser->visit('/admin/order')
                         ->type('search', 'test fail')
