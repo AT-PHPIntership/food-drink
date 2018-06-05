@@ -43,3 +43,9 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
     ]);
     Route::put('order/{order}/updateStatus', 'OrdersController@updateStatus');
 });
+Route::get('/api-docs', function () {
+    return view('api-docs');
+});
+Route::get('/api-doc-builders', function () {
+    return view('api-docs-builders.index');
+});
