@@ -114,7 +114,8 @@ class CategoriesController extends Controller
         Category::where('parent_id', 'like', '%'. $category->id .'%')
                 ->update([
                     'parent_id' => $category->parent_id,
-                    'level' => $category->level,]);
+                    'level' => $category->level,
+                ]);
         $category->delete();
         return redirect()->route('category.index');
     }
