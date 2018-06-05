@@ -19,13 +19,12 @@ class CategoriesController extends Controller
      */
     public function index(SortCategoryRequest $request)
     {
-        $categories = Category::with('parentCategories');
         if ($request->category_name) {
-            $categories = $categories->search($request->category_name)->when(isset($request->sortBy) && isset($request->dir), function ($query) use ($request) {
+            $categories = Category::with('parentCategories')->search($request->category_name)->when(isset($request->sortBy) && isset($request->dir), function ($query) use ($request) {
                 return $query->orderBy($request->sortBy, $request->dir);
             });
         }
-        $categories = $categories->when(isset($request->sortBy) && isset($request->dir), function ($query) use ($request) {
+        $categories = Category::with('parentCategories')->when(isset($request->sortBy) && isset($request->dir), function ($query) use ($request) {
                         return $query->orderBy($request->sortBy, $request->dir);
         })->paginate(config('define.number_pages'));
         return view('admin.category.index', compact('categories'));

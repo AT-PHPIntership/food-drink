@@ -24,8 +24,8 @@ class SortCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'sortBy' => 'in:'.implode(',', ['id', 'name']),
-            'dir' => 'in:'.implode(',', ['DESC', 'ASC'])
+            'sortBy' => 'in:id, name',
+            'dir' => 'in:DESC, ASC',
         ];
     }
 }
