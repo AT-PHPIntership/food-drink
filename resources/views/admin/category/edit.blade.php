@@ -33,6 +33,7 @@
                 <div class="form-group">
                   <label>{{__('category.admin.edit.name')}}</label>
                   <input type="text" class="form-control" name="name" value="{{ $category->name }}" placeholder="{{__('category.admin.edit.name')}}">
+                  <input type="number" name="parent_id" value="{{ $category->id }}" hidden="hidden">
                   @if($errors->first('name')) 
                     <span class="help-block">
                       <strong class="text-danger">{{ $errors->first('name') }}</strong>

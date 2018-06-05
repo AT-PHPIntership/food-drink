@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Category;
 use App\Http\Requests\CategoryRequests;
+use App\Http\Requests\SortCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use App\Exceptions\LevelParentException;
 
 class CategoriesController extends Controller
 {
@@ -19,11 +21,14 @@ class CategoriesController extends Controller
      */
     public function index(Request $request)
     {
-        $categories = Category::with('parentCategories');
         if ($request->category_name) {
-            $categories = $categories->search($request->category_name);
+            $categories = Category::with('parentCategories')->search($request->category_name);
+        } else {
+            $categories = Category::with('parentCategories');
         }
-        $categories = $categories->paginate(config('define.number_pages'));
+        $categories = $categories->when(isset($request->sortBy) && isset($request->dir), function ($query) use ($request) {
+            return $query->orderBy($request->sortBy, $request->dir);
+        })->paginate(config('define.number_pages'));
         return view('admin.category.index', compact('categories'));
     }
 
@@ -79,25 +84,21 @@ class CategoriesController extends Controller
     public function update(UpdateCategoryRequest $request, Category $category)
     {
         try {
-            if ($category->id == Category::DEFAULT_CATEGORY_FOOD || $category->id == Category::DEFAULT_CATEGORY_DRINK) {
-                $category->name = $request->name;
-                $category->save();
-                flash(trans('category.admin.message.success_edit'))->success();
-                return redirect()->route('category.index');
+            $category->name = $request->name;
+            if ($category->id != Category::DEFAULT_CATEGORY_FOOD && $category->id != Category::DEFAULT_CATEGORY_DRINK) {
+                $parentLevel = Category::find($request->parent_id)->level;
+                if ($category->level > $parentLevel) {
+                    $category->parent_id = $request->parent_id;
+                    $category->level = ++$parentLevel;
+                } else {
+                    throw new LevelParentException();
+                }
             }
-            $parentLevel = Category::find($request->parent_id)->level;
-            if ($category->level > $parentLevel) {
-                $category->name = $request->name;
-                $category->parent_id = $request->parent_id;
-                $category->level = ++$parentLevel;
-                $category->save();
-                flash(trans('category.admin.message.success_edit'))->success();
-                return redirect()->route('category.index');
-            }
-            flash(trans('category.admin.message.fail_edit'))->error();
+            $category->save();
+            flash(trans('category.admin.message.success_edit'))->success();
+        } catch (\Exception $e) {
+            flash($e->getMessage())->error();
             return view('admin.category.edit', compact('category'));
-        } catch (Exception $e) {
-            flash(trans('category.admin.message.fail_edit'))->error();
         }
         return redirect()->route('category.index');
     }
@@ -111,12 +112,17 @@ class CategoriesController extends Controller
     */
     public function destroy(Category $category)
     {
-        Category::where('parent_id', 'like', '%'. $category->id .'%')
+        try {
+            Category::where('parent_id', 'like', '%'. $category->id .'%')
                 ->update([
                     'parent_id' => $category->parent_id,
                     'level' => $category->level,
                 ]);
-        $category->delete();
+            $category->delete();
+            flash(trans('category.admin.message.success_delete'))->success();
+        } catch (Exception $e) {
+            flash(trans('category.admin.message.fail_delete'))->error();
+        }
         return redirect()->route('category.index');
     }
 }

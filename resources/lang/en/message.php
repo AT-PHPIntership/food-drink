@@ -16,4 +16,7 @@
             'success_delete' => 'Successfully Deleted Post!',
             'fail_delete' => 'Faily Deleted Post!',
         ],
+        'order' => [
+            'fail_change_status' => 'Faily Changed Status!',
+        ],
     ];
