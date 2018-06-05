@@ -14,7 +14,7 @@ class ListOrderTest extends DuskTestCase
     
     const NUMBER_RECORD_CREATE = 15;
     const RECORD_LIMIT = 11;
-    const NUMBER_RECORD_LAST = 6;
+    const NUMBER_RECORD_LAST = 7;
 
     /**
     * Override function setUp() for make user login
@@ -22,13 +22,6 @@ class ListOrderTest extends DuskTestCase
     * @return void
     */
     public function setUp()
-    {
-        parent::setUp();
-        factory(User::class, self::NUMBER_RECORD_CREATE)->create();
-        factory(Order::class, self::NUMBER_RECORD_CREATE)->create();
-    }
-
-    public function setUpDB()
     {
         parent::setUp();
         factory(User::class)->create([
@@ -46,6 +39,8 @@ class ListOrderTest extends DuskTestCase
      */
     public function testShowListOrder()
     {
+        factory(User::class, self::NUMBER_RECORD_CREATE)->create();
+        factory(Order::class, self::NUMBER_RECORD_CREATE)->create();
         $this->browse(function (Browser $browser) {
             $browser->visit('/admin/order')
                     ->assertPathIs('/admin/order')
@@ -62,6 +57,8 @@ class ListOrderTest extends DuskTestCase
     */
     public function testPaginateLast()
     {
+        factory(User::class, self::NUMBER_RECORD_CREATE)->create();
+        factory(Order::class, self::NUMBER_RECORD_CREATE)->create();
         $this->browse(function (Browser $browser) {
             $browser->visit('/admin/order?page=2')
                     ->assertSee('Show list orders');
@@ -76,8 +73,7 @@ class ListOrderTest extends DuskTestCase
      * @return void
     */
     public function testSearchNameAndEmail()
-    {   
-        setUpDB();
+    {
         $this->browse(function (Browser $browser) {
             $browser->visit('/admin/order')
                     ->type('search', 'test name')
