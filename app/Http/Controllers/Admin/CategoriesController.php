@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Category;
 use App\Http\Requests\CategoryRequests;
 use App\Http\Requests\UpdateCategoryRequest;
+use App\Exceptions\LevelParentException;
 
 class CategoriesController extends Controller
 {
@@ -86,14 +87,14 @@ class CategoriesController extends Controller
                     $category->parent_id = $request->parent_id;
                     $category->level = ++$parentLevel;
                 } else {
-                    flash(trans('category.admin.message.fail_edit'))->error();
-                    return view('admin.category.edit', compact('category'));
+                    throw new LevelParentException();
                 }
             }
             $category->save();
             flash(trans('category.admin.message.success_edit'))->success();
-        } catch (Exception $e) {
-            flash(trans('category.admin.message.fail_edit'))->error();
+        } catch (LevelParentException $e) {
+            $e->report();
+            return view('admin.category.edit', compact('category'));
         }
         return redirect()->route('category.index');
     }
