@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Order;
+use App\Category;
 
-class ChangeStatusRequest extends FormRequest
+class UpdateCategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,8 @@ class ChangeStatusRequest extends FormRequest
     public function rules()
     {
         return [
-            'status' => 'required|integer|in:'.implode(',', [Order::PENDING, Order::ACCEPTED, Order::REJECTED])
+            'name'=>'required|unique:categories,name,' . $this->category->name . ',name|max:50|min:2',
+            'parent_id' => 'integer|exists:categories,id',
         ];
     }
 }

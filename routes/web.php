@@ -21,8 +21,8 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
     ]);
     Route::resource('user', 'UsersController');
     Route::resource('product', 'ProductsController');
-    Route::resource('category', 'CategoriesController')->only([
-        'index', 'create' , 'store', 'edit'
+    Route::resource('category', 'CategoriesController')->except([
+        'destroy', 'show'
     ]);
     Route::group(['prefix'=>'post'],function (){
         Route::get('',[

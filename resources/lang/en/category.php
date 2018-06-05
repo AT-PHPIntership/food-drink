@@ -26,6 +26,8 @@
             'message' => [
                 'success_create' => 'Successfully Created Category!',
                 'fail_create' => 'Faily Created Product!',
+                'success_edit' => 'Successfully Edit Category!',
+                'fail_edit' => 'Faily Edit Category!',
             ],
             'edit' => [
                 'title' => 'Edit Category',
