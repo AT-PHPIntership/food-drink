@@ -79,23 +79,19 @@ class CategoriesController extends Controller
     public function update(UpdateCategoryRequest $request, Category $category)
     {
         try {
-            if ($category->id == Category::DEFAULT_CATEGORY_FOOD || $category->id == Category::DEFAULT_CATEGORY_DRINK) {
-                $category->name = $request->name;
-                $category->save();
-                flash(trans('category.admin.message.success_edit'))->success();
-                return redirect()->route('category.index');
+            $category->name = $request->name;
+            if ($category->id != Category::DEFAULT_CATEGORY_FOOD && $category->id != Category::DEFAULT_CATEGORY_DRINK) {
+                $parentLevel = Category::find($request->parent_id)->level;
+                if ($category->level > $parentLevel) {
+                    $category->parent_id = $request->parent_id;
+                    $category->level = ++$parentLevel;
+                } else {
+                    flash(trans('category.admin.message.fail_edit'))->error();
+                    return view('admin.category.edit', compact('category'));
+                }
             }
-            $parentLevel = Category::find($request->parent_id)->level;
-            if ($category->level > $parentLevel) {
-                $category->name = $request->name;
-                $category->parent_id = $request->parent_id;
-                $category->level = ++$parentLevel;
-                $category->save();
-                flash(trans('category.admin.message.success_edit'))->success();
-                return redirect()->route('category.index');
-            }
-            flash(trans('category.admin.message.fail_edit'))->error();
-            return view('admin.category.edit', compact('category'));
+            $category->save();
+            flash(trans('category.admin.message.success_edit'))->success();
         } catch (Exception $e) {
             flash(trans('category.admin.message.fail_edit'))->error();
         }
