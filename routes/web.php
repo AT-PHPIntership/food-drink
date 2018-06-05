@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
+Route::group(['namespace'=>'Admin','prefix'=>'admin','middleware' => 'admin'],function () {
     Route::get('',[
         'uses'=>'HomeController@index',
         'as'=>'admin'
@@ -42,7 +42,19 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
         'index', 'show'
     ]);
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', function () {
+    return view('welcome');
+})->name('welcome');
+Route::group(['prefix' => 'admin'],function (){
+Route::get('login', [
+    'uses' => 'Auth\LoginController@showLoginForm',
+    'as' => 'admin.login'
+]);
+Route::post('login',[
+    'uses' => 'Auth\LoginController@login',
+]);
+Route::post('logout',[
+    'uses' => 'Auth\LoginController@logout',
+    'as' => 'admin.logout'
+]);
+});
