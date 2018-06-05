@@ -13,6 +13,11 @@
                 'date' => 'Date',
                 'status' => 'Status',
                 'action' => 'Action',
+                'confirm_status' => 'Are you sure change status order?',
+                'pending' => 'Pending',
+                'accepted' => 'Accepted',
+                'rejected' => 'Rejected',
+                'money' => '$'
             ],
             'show' => [
                 'title' => 'Show detail order',
