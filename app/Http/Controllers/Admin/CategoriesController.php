@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Category;
 use App\Http\Requests\CategoryRequests;
 use App\Http\Requests\SortCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
+use App\Exceptions\LevelParentException;
 
 class CategoriesController extends Controller
 {
@@ -69,5 +71,35 @@ class CategoriesController extends Controller
     public function edit(Category $category)
     {
         return view('admin.category.edit', compact('category'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request  request
+     * @param Category                 $category category object
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function update(UpdateCategoryRequest $request, Category $category)
+    {
+        try {
+            $category->name = $request->name;
+            if ($category->id != Category::DEFAULT_CATEGORY_FOOD && $category->id != Category::DEFAULT_CATEGORY_DRINK) {
+                $parentLevel = Category::find($request->parent_id)->level;
+                if ($category->level > $parentLevel) {
+                    $category->parent_id = $request->parent_id;
+                    $category->level = ++$parentLevel;
+                } else {
+                    throw new LevelParentException();
+                }
+            }
+            $category->save();
+            flash(trans('category.admin.message.success_edit'))->success();
+        } catch (\Exception $e) {
+            flash($e->getMessage())->error();
+            return view('admin.category.edit', compact('category'));
+        }
+        return redirect()->route('category.index');
     }
 }

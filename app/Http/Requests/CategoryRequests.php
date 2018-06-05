@@ -22,13 +22,9 @@ class CategoryRequests extends FormRequest
      */
     public function rules()
     {
-        $ruleParentId = "required|integer";
-        if ($this->parent_id > 0) {
-            $ruleParentId .= "|exists:categories,id";
-        }
         return [
-            'name' => 'required|unique:categories|max:25|min:2',
-            'parent_id' => $ruleParentId,
+            'name' => 'required|unique:categories|max:50|min:2',
+            'parent_id' => "integer|exists:categories,id",
         ];
     }
 }
