@@ -11,13 +11,15 @@ use App\UserInfo;
 class CreateUserTest extends DuskTestCase
 {
     use DatabaseMigrations;
-    const NUMBER_RECORD_CREATE = 5;
+    const NUMBER_RECORD_CREATE_ADMIN = 5;
+    const NUMBER_RECORD_CREATE_USER = 6;
 
     public function setUp()
     {
         parent::setUp();
-        factory(User::class, self::NUMBER_RECORD_CREATE)->create();
-        factory(UserInfo::class, self::NUMBER_RECORD_CREATE + 1)->create();
+        factory('App\User', 'admin', 1)->create();
+        factory(User::class, self::NUMBER_RECORD_CREATE_ADMIN)->create();
+        factory(UserInfo::class, self::NUMBER_RECORD_CREATE_USER)->create();
     }
 
     /**
@@ -28,7 +30,7 @@ class CreateUserTest extends DuskTestCase
     public function testCreateUserUrl()
     {
         $this->browse(function (Browser $browser){
-            $browser->loginAs($this->user)
+            $browser->loginAs(User::find(1))
                     ->visit('/admin/user/create')
                     ->assertPathIs('/admin/user/create')
                     ->assertSee('Create Form');
@@ -37,7 +39,7 @@ class CreateUserTest extends DuskTestCase
     public function testValidate()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs($this->user)
+            $browser->loginAs(User::find(1))
                     ->visit('admin/user/create')
                     ->type('name', '')
                     ->type('email', '')
@@ -57,7 +59,7 @@ class CreateUserTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser)
         {
-            $browser->loginAs($this->user)
+            $browser->loginAs(User::find(1))
                     ->visit('/admin/user/create')
                     ->type('name','Big')
                     ->type('email','big@gmail.com')

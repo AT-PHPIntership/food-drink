@@ -13,13 +13,6 @@ abstract class DuskTestCase extends BaseTestCase
     use CreatesApplication;
 
     /**
-     * Logged in user
-     *
-     * @var App\User
-     */
-    protected $user;
-
-    /**
      * Override function setUp() for make user login
      *
      * @return void
@@ -27,7 +20,6 @@ abstract class DuskTestCase extends BaseTestCase
     public function setUp()
     {
         parent::setUp();
-        $this->user = $this->createAdminUser();
     }
 
     /**
@@ -59,19 +51,5 @@ abstract class DuskTestCase extends BaseTestCase
                 ChromeOptions::CAPABILITY, $options
             )
         );
-    }
-
-    /**
-     * Make user belong is admin
-     *
-     * @return App\Model\User
-     */
-    public function createAdminUser()
-    {
-        return factory(User::class)->create([
-            'name' => 'Dung Le',
-            'email' => 'dungle@gmail.com',
-            'role' => User::ROLE_ADMIN,
-        ]);
     }
 }

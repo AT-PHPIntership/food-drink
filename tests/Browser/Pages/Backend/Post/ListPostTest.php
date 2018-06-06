@@ -24,6 +24,7 @@ class ListPostTest extends DuskTestCase
     public function setUp()
     {
         parent::setUp();
+        factory('App\User', 'admin', 1)->create();
         factory(User::class, self::NUMBER_RECORD_CREATE)->create();
         factory(Category::class, 'parent', self::NUMBER_RECORD_CREATE)->create();
         factory(Product::class, self::NUMBER_RECORD_CREATE)->create();
@@ -37,7 +38,7 @@ class ListPostTest extends DuskTestCase
     public function testListPost()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs($this->user)
+            $browser->loginAs(User::find(1))
                     ->visit('/admin/post')
                     ->assertSee('Show List Review');
         $elements = $browser->elements('.table tbody tr');
@@ -59,7 +60,7 @@ class ListPostTest extends DuskTestCase
             'content' => $testContent
         ]);
         $this->browse(function (Browser $browser) use ($testContent) {
-            $browser->loginAs($this->user)
+            $browser->loginAs(User::find(1))
                     ->visit('/admin/post')
                     ->type('search', $testContent)
                     ->click('.fa-search')

@@ -8,6 +8,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\DB;
 use App\Product;
 use App\Category;
+use App\User;
 
 class DeleteProductTest extends DuskTestCase
 {
@@ -22,6 +23,7 @@ class DeleteProductTest extends DuskTestCase
     public function setUp()
     {
         parent::setUp();
+        factory('App\User', 'admin', 1)->create();
         factory(Category::class, 'parent', self::NUMBER_RECORD_CREATE)->create();
         factory(Category::class, self::NUMBER_RECORD_CREATE)->create();
         factory(Product::class, self::NUMBER_RECORD_CREATE)->create();
@@ -35,7 +37,7 @@ class DeleteProductTest extends DuskTestCase
     public function testDeleteSuccess()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs($this->user)
+            $browser->loginAs(User::find(1))
                     ->visit('/admin/product');
             $browser->click('tbody tr:nth-child(4) td:nth-child(8) .but-trash')
                     ->assertDialogOpened('Are you sure you want to delete?')
@@ -52,7 +54,7 @@ class DeleteProductTest extends DuskTestCase
     */
     public function testDeleteProductNotExist() {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs($this->user)
+            $browser->loginAs(User::find(1))
                     ->visit('/admin/product');
             DB::table('products')->delete(2);
             $browser->click('tbody tr:nth-child(3) td:nth-child(8) .but-trash')
@@ -70,7 +72,7 @@ class DeleteProductTest extends DuskTestCase
     public function testDeleteCancelConfirm()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs($this->user)
+            $browser->loginAs(User::find(1))
                     ->visit('/admin/product');
             $browser->click('tbody tr:nth-child(4) td:nth-child(8) .but-trash')
                     ->assertDialogOpened('Are you sure you want to delete?')

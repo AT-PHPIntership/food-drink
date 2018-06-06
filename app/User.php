@@ -26,11 +26,6 @@ class User extends Authenticatable
     ];
 
     /**
-     * Value of root admin
-     */
-    const ROOT_ADMIN = 1;
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array

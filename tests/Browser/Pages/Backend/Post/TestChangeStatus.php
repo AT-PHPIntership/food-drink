@@ -15,6 +15,17 @@ class TestChangeStatus extends DuskTestCase
 {
     use DatabaseMigrations;
     
+     /**
+     * Override function setUp() for make user login
+     *
+     * @return void
+     */
+    public function setUp()
+    {
+        parent::setUp();
+        factory('App\User', 'admin', 1)->create();
+    }
+
     /**
      * test if change post status work.
      *
@@ -29,7 +40,7 @@ class TestChangeStatus extends DuskTestCase
             'status' => Post::DISABLE
         ]);
         $this->browse(function (Browser $browser) {
-            $browser->loginAs($this->user)
+            $browser->loginAs(User::find(1))
                     ->visit('/admin/post')
                     ->click('table tr td a')
                     ->pause(1000);
@@ -45,7 +56,7 @@ class TestChangeStatus extends DuskTestCase
             'status' => Post::DISABLE
         ]);
         $this->browse(function (Browser $browser) {
-            $browser->loginAs($this->user)
+            $browser->loginAs(User::find(1))
                     ->visit('/admin/post');
             DB::table('posts')->delete(1);
             $browser->click('table tr td a')

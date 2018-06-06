@@ -5,6 +5,7 @@ namespace Tests\Browser\Pages\Backend\Category;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use App\User;
 
 class ListCategoryTest extends DuskTestCase
 {
@@ -26,6 +27,7 @@ class ListCategoryTest extends DuskTestCase
     public function setUp()
     {
         parent::setUp();
+        factory('App\User', 'admin', 1)->create();
         factory('App\Category', 'parent', self::NUMBER_RECORD_PARENT)->create([
             'name' => self::NAME_SEARCH,
         ]);
@@ -40,7 +42,7 @@ class ListCategoryTest extends DuskTestCase
     public function testRoute()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs($this->user)
+            $browser->loginAs(User::find(1))
                     ->visit('/admin/category')
                     ->assertSee('List Category');
         });
@@ -54,7 +56,7 @@ class ListCategoryTest extends DuskTestCase
     public function testPaginate()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs($this->user)
+            $browser->loginAs(User::find(1))
                     ->visit('/admin/category');
             $elements = $browser->elements('.table tr');
             $this->assertCount(self::RECORD_LIMIT, $elements);
@@ -69,7 +71,7 @@ class ListCategoryTest extends DuskTestCase
     public function testPaginateLast()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs($this->user)
+            $browser->loginAs(User::find(1))
                     ->visit('/admin/category?page=3');
             $elements = $browser->elements('.table tr');
             $this->assertCount(self::NUMBER_LAST_RECORD, $elements);
@@ -84,7 +86,7 @@ class ListCategoryTest extends DuskTestCase
     public function testNameNotExist()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs($this->user)
+            $browser->loginAs(User::find(1))
                     ->visit('/admin/category')
                     ->type('category_name', 'Beer')
                     ->click('.search-category')
@@ -102,7 +104,7 @@ class ListCategoryTest extends DuskTestCase
     public function testSearchName()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs($this->user)
+            $browser->loginAs(User::find(1))
                     ->visit('/admin/category')
                     ->type('category_name', self::NAME_SEARCH)
                     ->click('.search-category')
@@ -120,7 +122,7 @@ class ListCategoryTest extends DuskTestCase
     public function testSearchSpace()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs($this->user)
+            $browser->loginAs(User::find(1))
                     ->visit('/admin/category')
                     ->type('category_name', ' ')
                     ->click('.search-category')
@@ -138,7 +140,7 @@ class ListCategoryTest extends DuskTestCase
     public function testNamesWithSpaces()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs($this->user)
+            $browser->loginAs(User::find(1))
                     ->visit('/admin/category')
                     ->type('category_name', self::NAME_SEARCH_NAME)
                     ->click('.search-category')

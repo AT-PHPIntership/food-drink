@@ -24,6 +24,7 @@ class DeletePostTest extends DuskTestCase
     public function setUp()
     {
         parent::setUp();
+        factory('App\User', 'admin', 1)->create();
     }
     /**
      * A Dusk test delete success.
@@ -41,7 +42,7 @@ class DeletePostTest extends DuskTestCase
             'content' => $testContent
         ]);
         $this->browse(function (Browser $browser) use ($testContent) {
-            $browser->loginAs($this->user)
+            $browser->loginAs(User::find(1))
                     ->visit('/admin/post')
                     ->click('#post_1')
                     ->click('#post_2')
@@ -59,7 +60,7 @@ class DeletePostTest extends DuskTestCase
         factory('App\User', 1)->create();
         factory('App\Post', 2)->create();
         $this->browse(function (Browser $browser) {
-            $browser->loginAs($this->user)
+            $browser->loginAs(User::find(1))
                     ->visit('/admin/post');
             DB::table('posts')->delete(1);
             $browser->click('#post_1')

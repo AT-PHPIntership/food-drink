@@ -6,6 +6,7 @@ use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use App\Category;
+use App\User;
 
 class CreateProductTest extends DuskTestCase
 {
@@ -20,6 +21,7 @@ class CreateProductTest extends DuskTestCase
     public function setUp()
     {
         parent::setUp();
+        factory('App\User', 'admin', 1)->create();
         factory(Category::class, 'parent', self::NUMBER_RECORD_CREATE)->create();
         factory(Category::class, self::NUMBER_RECORD_CREATE)->create();
     }
@@ -32,7 +34,7 @@ class CreateProductTest extends DuskTestCase
     public function testRouteCreate()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs($this->user)
+            $browser->loginAs(User::find(1))
                     ->visit('/admin/product/create')
                     ->assertSee('Create Form', 'Quantity');
         });
@@ -69,7 +71,7 @@ class CreateProductTest extends DuskTestCase
     public function testValidateForInput($name, $content, $message)
     {
         $this->browse(function (Browser $browser) use ($name, $content, $message) {
-            $browser->loginAs($this->user)
+            $browser->loginAs(User::find(1))
                     ->visit('admin/product/create')
                     ->press('submit')
                     ->assertSee($message);
@@ -84,7 +86,7 @@ class CreateProductTest extends DuskTestCase
     public function testCreateProductSuccess()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs($this->user)
+            $browser->loginAs(User::find(1))
                     ->visit('/admin/product/create')
                     ->type('name', 'test name')
                     ->type('price', '2.05')

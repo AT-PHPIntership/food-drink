@@ -126,7 +126,7 @@ class UsersController extends Controller
     */
     public function destroy(User $user)
     {
-        if ($user->id == User::ROOT_ADMIN) {
+        if ($user->id == User::ROLE_ADMIN) {
             flash(trans('user.admin.message.cancel'))->error();
             return redirect()->route('user.index');
         }

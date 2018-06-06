@@ -12,7 +12,7 @@ class DeleteUserTest extends DuskTestCase
 {
     use DatabaseMigrations;
     const NUMBER_RECORD_CREATE_USER = 10;
-    const NUMBER_RECORD_CREATE_USER_INFO = 10;
+    const NUMBER_RECORD_CREATE_USER_INFO = 11;
     const NUMBER_RECORD_ADMIN = 10;
     const LAST_RECORD_AFTER_DELETE = 2;
 
@@ -24,8 +24,9 @@ class DeleteUserTest extends DuskTestCase
     public function setUp()
     {
         parent::setUp();
+        factory('App\User', 'admin', 1)->create();
         factory('App\User', self::NUMBER_RECORD_ADMIN)->create();
-        factory('App\UserInfo', self::NUMBER_RECORD_CREATE_USER_INFO + 1)->create();
+        factory('App\UserInfo', self::NUMBER_RECORD_CREATE_USER_INFO)->create();
     }
 
     /**
@@ -36,7 +37,7 @@ class DeleteUserTest extends DuskTestCase
     public function testRoute()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs($this->user)
+            $browser->loginAs(User::find(1))
                     ->visit('/admin/user')
                     ->assertSee('List Users');
         });
@@ -50,7 +51,7 @@ class DeleteUserTest extends DuskTestCase
     public function testDeleteUser()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs($this->user)
+            $browser->loginAs(User::find(1))
                     ->visit('/admin/user')
                     ->click('td button.but-trash')
                     ->assertDialogOpened('Are you sure you want to delete?')
@@ -67,7 +68,7 @@ class DeleteUserTest extends DuskTestCase
     public function testRecordAfterDelete()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs($this->user)
+            $browser->loginAs(User::find(1))
                     ->visit('/admin/user')
                     ->click('td button.but-trash')
                     ->acceptDialog();
