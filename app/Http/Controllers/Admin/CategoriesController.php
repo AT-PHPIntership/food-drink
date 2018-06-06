@@ -121,10 +121,9 @@ class CategoriesController extends Controller
                     'parent_id' => $category->parent_id,
                     'level' => $category->level,
                 ]);
-            Product::where('category_id', '=', $category->id)
-                ->update([
-                    'category_id' => $category->parent_id,
-                ]);
+            Product::where('category_id', '=', $category->id)->update([
+                'category_id' => $category->parent_id
+            ]);
             $category->delete();
             flash(trans('category.admin.message.success_delete'))->success();
             DB::commit();
