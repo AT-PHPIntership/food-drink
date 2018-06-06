@@ -25,8 +25,12 @@ class UsersController extends Controller
      */
     public function index(SortUserRequest $request)
     {
-        $userName = $request->user_name;
-        $users = User::search($userName)->with('userInfo')->when(isset($request->sortBy) && isset($request->dir), function ($query) use ($request) {
+        if ($request->user_name) {
+            $users = User::search($request->user_name)->with('userInfo');
+        } else {
+            $users = User::with('userInfo');
+        }
+        $users = $users->when(isset($request->sortBy) && isset($request->dir), function ($query) use ($request) {
             return $query->orderBy($request->sortBy, $request->dir);
         })->paginate(config('define.number_pages'));
         return view('admin.user.index', compact('users'));
