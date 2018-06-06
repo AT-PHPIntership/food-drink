@@ -21,13 +21,15 @@
                 'create' => 'Create',
                 'name' => 'Name Category',
                 'parent' => 'Name Parent',
-                'submit' => 'SubMit'
+                'submit' => 'Submit'
             ],
             'message' => [
                 'success_create' => 'Successfully Created Category!',
-                'fail_create' => 'Faily Created Product!',
+                'fail_create' => 'Faily Created Category!',
                 'success_edit' => 'Successfully Edit Category!',
                 'fail_edit' => 'Faily Edit Category!',
+                'success_delete' => 'Successfully Delete Category!',
+                'fail_delete' => 'Faily Delete Category!',
             ],
             'edit' => [
                 'title' => 'Edit Category',
@@ -36,7 +38,7 @@
                 'edit' => 'Edit',
                 'name' => 'Name Category',
                 'parent' => 'Name Parent',
-                'submit' => 'SubMit'
+                'submit' => 'Submit'
             ],
         ],
     ];

@@ -18,7 +18,6 @@ class CreateUserTest extends DuskTestCase
         parent::setUp();
         factory(User::class, self::NUMBER_RECORD_CREATE)->create();
         factory(UserInfo::class, self::NUMBER_RECORD_CREATE + 1)->create();
-        dd(UserInfo::all()->toArray());
     }
 
     /**
