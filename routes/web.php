@@ -49,3 +49,6 @@ Route::get('/api-docs', function () {
 Route::get('/api-doc-builders', function () {
     return view('api-docs-builders.index');
 });
+
+//frontend
+Route::get('home', 'HomeController@index');
