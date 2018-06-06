@@ -132,7 +132,6 @@ class UsersController extends Controller
         }
         $user->userInfo()->delete();
         $user->posts()->delete();
-        $user->orders()->delete();
         $user->delete();
         flash(trans('user.admin.message.success'))->success();
         return redirect()->route('user.index');
