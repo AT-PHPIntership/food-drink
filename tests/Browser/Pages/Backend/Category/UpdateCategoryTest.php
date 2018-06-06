@@ -71,4 +71,42 @@ class UpdateCategoryTest extends DuskTestCase
             ]);
         });
     }
+
+    /**
+    * Test 404 Page Not found when click submit edit category.
+    *
+    * @return void
+    */
+    public function test404PageForClickSubmit()
+    {
+        $category = Category::first();
+        $this->browse(function (Browser $browser) use ($category) {
+            $browser->visit('/admin/category')
+                    ->click('tbody tr:nth-child(2) td:nth-child(4) .fa-edit')
+                    ->assertPathIs('/admin/category/'.$category->id.'/edit')
+                    ->assertSee('Edit')
+                    ->type('name', 'test name');
+            $category->delete();
+            $browser->press('submit')
+                    ->assertSee('Can not find user with corresponding id.');
+        });
+    }
+
+
+    /**
+    * Test 404 Page Not found when click edit category.
+    *
+    * @return void
+    */
+    public function test404PageForClickEdit()
+    {
+        $category = Category::first();
+        $this->browse(function (Browser $browser) use ($category) {
+            $browser->visit('/admin/category')
+                    ->assertSee('List Category');
+            $category->delete();
+            $browser->click('tbody tr:nth-child(2) td:nth-child(4) .fa-edit');
+            $browser->assertSee('Can not find user with corresponding id.');
+        });
+    }
 }
