@@ -130,6 +130,8 @@ class UsersController extends Controller
             flash(trans('user.admin.message.cancel'))->error();
             return redirect()->route('user.index');
         }
+        $user->userInfo()->delete();
+        $user->posts()->delete();
         $user->delete();
         flash(trans('user.admin.message.success'))->success();
         return redirect()->route('user.index');

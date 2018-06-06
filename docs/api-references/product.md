@@ -2,7 +2,7 @@
 
 ### `GET` Top 10 new product
 ```
-/api/product/top-new-product
+/api/products?sort=new?limit=10
 ```
 Get top 10 new product
 #### Request Headers
@@ -104,7 +104,7 @@ Get top 10 new product
 
 ### `GET` Top 10 rate product
 ```
-/api/product/top-rate-product
+/api/products?sort=rate?limit=10
 ```
 Get top 10 rate product
 #### Request Headers
@@ -184,9 +184,9 @@ Get top 10 rate product
 }
 ```
 
-### `GET` Product by category `Food` or `Drink`
+### `GET` Product by category `Food` and `Drink`
 ```
-/api/product?category=1
+/api/products?category=1
 ```
 Get product by category food
 #### Request Headers

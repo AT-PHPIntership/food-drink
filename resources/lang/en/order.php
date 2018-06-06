@@ -7,7 +7,7 @@
                 'show_order' => 'Show list orders',
                 'search' => 'Search',
                 'id' => 'ID',
-                'name_product' => 'Name Product',
+                'name_user' => 'Name User',
                 'email_user' => 'Email User',
                 'total' => 'Total',
                 'date' => 'Date',
