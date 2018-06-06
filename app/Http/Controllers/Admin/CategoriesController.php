@@ -10,6 +10,7 @@ use App\Http\Requests\SortCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Exceptions\LevelParentException;
 use DB;
+use App\Product;
 
 class CategoriesController extends Controller
 {
@@ -119,6 +120,10 @@ class CategoriesController extends Controller
                 ->update([
                     'parent_id' => $category->parent_id,
                     'level' => $category->level,
+                ]);
+            Product::where('category_id', '=', $category->id)
+                ->update([
+                    'category_id' => $category->parent_id,
                 ]);
             $category->delete();
             flash(trans('category.admin.message.success_delete'))->success();
