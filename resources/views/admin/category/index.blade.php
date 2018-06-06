@@ -69,12 +69,12 @@
                   <td>
                     <a href="{{route('category.edit', ['category' => $category->id])}}"><i class="fa fa-edit"></i></a>
                     @if($category->id !== App\Category::DEFAULT_CATEGORY_FOOD && $category->id !== App\Category::DEFAULT_CATEGORY_DRINK)
-                      <form method="POST" action="" class="form-trash">
+                      <form method="POST" action="{{route('category.destroy', ['category' => $category->id])}}" class="form-trash" onsubmit="return confirmDelete()">
                         @csrf
                         {{ method_field('DELETE') }}
-                        <button type="submit" class="but-trash"><i class="fa fa-trash"></i></button>
+                        | <button type="submit" class="but-trash"><i class="fa fa-trash"></i></button>
                       </form>
-                    @endif
+                    @endif 
                   </td>
                 </tr>
                 @endforeach

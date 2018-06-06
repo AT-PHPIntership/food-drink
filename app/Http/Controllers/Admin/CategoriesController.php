@@ -9,6 +9,7 @@ use App\Http\Requests\CategoryRequests;
 use App\Http\Requests\SortCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Exceptions\LevelParentException;
+use DB;
 
 class CategoriesController extends Controller
 {
@@ -99,6 +100,32 @@ class CategoriesController extends Controller
         } catch (\Exception $e) {
             flash($e->getMessage())->error();
             return view('admin.category.edit', compact('category'));
+        }
+        return redirect()->route('category.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Category $category category object
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function destroy(Category $category)
+    {
+        DB::beginTransaction();
+        try {
+            Category::where('parent_id', '=', $category->id)
+                ->update([
+                    'parent_id' => $category->parent_id,
+                    'level' => $category->level,
+                ]);
+            $category->delete();
+            flash(trans('category.admin.message.success_delete'))->success();
+            DB::commit();
+        } catch (Exception $e) {
+            DB::rollBack();
+            flash(trans('category.admin.message.fail_delete'))->error();
         }
         return redirect()->route('category.index');
     }
