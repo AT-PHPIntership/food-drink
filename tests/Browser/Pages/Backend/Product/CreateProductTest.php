@@ -32,7 +32,8 @@ class CreateProductTest extends DuskTestCase
     public function testRouteCreate()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/product/create')
+            $browser->loginAs($this->user)
+                    ->visit('/admin/product/create')
                     ->assertSee('Create Form', 'Quantity');
         });
     }
@@ -68,7 +69,8 @@ class CreateProductTest extends DuskTestCase
     public function testValidateForInput($name, $content, $message)
     {
         $this->browse(function (Browser $browser) use ($name, $content, $message) {
-            $browser->visit('admin/product/create')
+            $browser->loginAs($this->user)
+                    ->visit('admin/product/create')
                     ->press('submit')
                     ->assertSee($message);
         });
@@ -82,7 +84,8 @@ class CreateProductTest extends DuskTestCase
     public function testCreateProductSuccess()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/product/create')
+            $browser->loginAs($this->user)
+                    ->visit('/admin/product/create')
                     ->type('name', 'test name')
                     ->type('price', '2.05')
                     ->type('quantity', '20')

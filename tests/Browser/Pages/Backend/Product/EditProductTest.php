@@ -35,7 +35,8 @@ class EditProductTest extends DuskTestCase
     {
         $product = Product::first();
         $this->browse(function (Browser $browser) use ($product) {
-            $browser->visit('admin/product/'. $product->id.'/edit')
+            $browser->loginAs($this->user)
+                    ->visit('admin/product/'. $product->id.'/edit')
                     ->assertSee('Edit Form', $product->name, $product->price, $product->category->name);
         });
     }
@@ -70,7 +71,8 @@ class EditProductTest extends DuskTestCase
     public function testValidateForInput($name, $content, $message)
     {
         $this->browse(function (Browser $browser) use ($name, $content, $message) {
-            $browser->visit('admin/product/create')
+            $browser->loginAs($this->user)
+                    ->visit('admin/product/create')
                     ->press('submit')
                     ->assertSee($message);
         });
@@ -85,7 +87,8 @@ class EditProductTest extends DuskTestCase
     {
         $product = Product::first();
         $this->browse(function (Browser $browser) use ($product) {
-            $browser->visit('/admin/product/'.$product->id.'/edit')
+            $browser->loginAs($this->user)
+                    ->visit('/admin/product/'.$product->id.'/edit')
                     ->type('name', 'test name')
                     ->type('price', '5.02')
                     ->type('quantity', '20')
@@ -121,7 +124,8 @@ class EditProductTest extends DuskTestCase
     {
         $product = Product::first();
         $this->browse(function (Browser $browser) use ($product) {
-            $browser->visit('/admin/product')
+            $browser->loginAs($this->user)
+                    ->visit('/admin/product')
                     ->assertSee('List Products');
             $product->delete();
             $browser->click('tbody tr:nth-child(2) td:nth-child(8) .fa-edit');
@@ -138,7 +142,8 @@ class EditProductTest extends DuskTestCase
     {
         $product = Product::first();
         $this->browse(function (Browser $browser) use ($product) {
-            $browser->visit('/admin/product')
+            $browser->loginAs($this->user)
+                    ->visit('/admin/product')
                     ->click('tbody tr:nth-child(2) td:nth-child(8) .fa-edit')
                     ->assertPathIs('/admin/product/'.$product->id.'/edit')
                     ->assertSee('Edit Form Product')
@@ -157,7 +162,8 @@ class EditProductTest extends DuskTestCase
     public function testDeleteImage() {
         $product = Product::first();
         $this->browse(function (Browser $browser) use ($product) {
-            $browser->visit('/admin/product/'.$product->id.'/edit')
+            $browser->loginAs($this->user)
+                    ->visit('/admin/product/'.$product->id.'/edit')
                     ->attach('images[]', 'public/images/products/default-product.jpg')
                     ->press('submit')
                     ->assertPathIs('/admin/product')

@@ -11,7 +11,7 @@ class ListUserTest extends DuskTestCase
     use DatabaseMigrations;
     const NUMBER_RECORD_CREATE = 31;
     const RECORD_LIMIT = 11;
-    const LAST_RECORD = 2;
+    const LAST_RECORD = 3;
     const NUMBER_RECORD_LAST = 31;
 
     /**
@@ -24,7 +24,7 @@ class ListUserTest extends DuskTestCase
         parent::setUp();
         
         factory('App\User', self::NUMBER_RECORD_CREATE)->create();
-        factory('App\UserInfo', self::NUMBER_RECORD_CREATE)->create();
+        factory('App\UserInfo', self::NUMBER_RECORD_CREATE + 1)->create();
     }
     /**
      * A Dusk test Route show list user.
@@ -34,7 +34,8 @@ class ListUserTest extends DuskTestCase
     public function testRoute()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/user')
+            $browser->loginAs($this->user)
+                    ->visit('/admin/user')
                     ->assertSee('List Users');
         });
     }
@@ -46,7 +47,8 @@ class ListUserTest extends DuskTestCase
     public function testRecord()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/user');
+            $browser->loginAs($this->user)
+                    ->visit('/admin/user');
             $elements = $browser->elements('.table tr');
             $this->assertCount(self::RECORD_LIMIT, $elements);
         });
@@ -59,7 +61,8 @@ class ListUserTest extends DuskTestCase
     public function testPaginate()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/user?page=4');
+            $browser->loginAs($this->user)
+                    ->visit('/admin/user?page=4');
             $elements = $browser->elements('.table tr');
             $this->assertCount(self::LAST_RECORD, $elements);
         });
@@ -72,8 +75,9 @@ class ListUserTest extends DuskTestCase
     public function testLastUser()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/user?page=4')
-                ->assertSee(self::LAST_RECORD);
+            $browser->loginAs($this->user)
+                    ->visit('/admin/user?page=4')
+                    ->assertSee(self::LAST_RECORD);
         });
     }
 }

@@ -40,7 +40,8 @@ class ListCategoryTest extends DuskTestCase
     public function testRoute()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/category')
+            $browser->loginAs($this->user)
+                    ->visit('/admin/category')
                     ->assertSee('List Category');
         });
     }
@@ -53,7 +54,8 @@ class ListCategoryTest extends DuskTestCase
     public function testPaginate()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/category');
+            $browser->loginAs($this->user)
+                    ->visit('/admin/category');
             $elements = $browser->elements('.table tr');
             $this->assertCount(self::RECORD_LIMIT, $elements);
         });
@@ -67,7 +69,8 @@ class ListCategoryTest extends DuskTestCase
     public function testPaginateLast()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/category?page=3');
+            $browser->loginAs($this->user)
+                    ->visit('/admin/category?page=3');
             $elements = $browser->elements('.table tr');
             $this->assertCount(self::NUMBER_LAST_RECORD, $elements);
         });
@@ -81,10 +84,11 @@ class ListCategoryTest extends DuskTestCase
     public function testNameNotExist()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/category')
-                ->type('category_name', 'Beer')
-                ->click('.search-category')
-                ->assertSee('List Category');
+            $browser->loginAs($this->user)
+                    ->visit('/admin/category')
+                    ->type('category_name', 'Beer')
+                    ->click('.search-category')
+                    ->assertSee('List Category');
             $elements = $browser->elements('.table tbody tr');
             $this->assertCount(self::NUMBER_SEARCH_RECORD, $elements);
         });
@@ -98,10 +102,11 @@ class ListCategoryTest extends DuskTestCase
     public function testSearchName()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/category')
-                ->type('category_name', self::NAME_SEARCH)
-                ->click('.search-category')
-                ->assertSee('List Category');
+            $browser->loginAs($this->user)
+                    ->visit('/admin/category')
+                    ->type('category_name', self::NAME_SEARCH)
+                    ->click('.search-category')
+                    ->assertSee('List Category');
             $elements = $browser->elements('.table tbody tr');
             $this->assertCount(self::NUMBER_RECORD_AFTER_SEARCH, $elements);
         });
@@ -115,10 +120,11 @@ class ListCategoryTest extends DuskTestCase
     public function testSearchSpace()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/category')
-                ->type('category_name', ' ')
-                ->click('.search-category')
-                ->assertSee('List Category');
+            $browser->loginAs($this->user)
+                    ->visit('/admin/category')
+                    ->type('category_name', ' ')
+                    ->click('.search-category')
+                    ->assertSee('List Category');
             $elements = $browser->elements('.table tbody tr');
             $this->assertCount(self::RECORD_LIMIT, $elements);
         });
@@ -132,10 +138,11 @@ class ListCategoryTest extends DuskTestCase
     public function testNamesWithSpaces()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/category')
-                ->type('category_name', self::NAME_SEARCH_NAME)
-                ->click('.search-category')
-                ->assertSee('List Category');
+            $browser->loginAs($this->user)
+                    ->visit('/admin/category')
+                    ->type('category_name', self::NAME_SEARCH_NAME)
+                    ->click('.search-category')
+                    ->assertSee('List Category');
             $elements = $browser->elements('.table tbody tr');
             $this->assertCount(self::NUMBER_RECORD_AFTER_SEARCH, $elements);
         });

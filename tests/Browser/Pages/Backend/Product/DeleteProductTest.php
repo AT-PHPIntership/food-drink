@@ -35,7 +35,8 @@ class DeleteProductTest extends DuskTestCase
     public function testDeleteSuccess()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/product');
+            $browser->loginAs($this->user)
+                    ->visit('/admin/product');
             $browser->click('tbody tr:nth-child(4) td:nth-child(8) .but-trash')
                     ->assertDialogOpened('Are you sure you want to delete?')
                     ->acceptDialog()
@@ -51,7 +52,8 @@ class DeleteProductTest extends DuskTestCase
     */
     public function testDeleteProductNotExist() {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/product');
+            $browser->loginAs($this->user)
+                    ->visit('/admin/product');
             DB::table('products')->delete(2);
             $browser->click('tbody tr:nth-child(3) td:nth-child(8) .but-trash')
                     ->assertDialogOpened('Are you sure you want to delete?')
@@ -68,7 +70,8 @@ class DeleteProductTest extends DuskTestCase
     public function testDeleteCancelConfirm()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/product');
+            $browser->loginAs($this->user)
+                    ->visit('/admin/product');
             $browser->click('tbody tr:nth-child(4) td:nth-child(8) .but-trash')
                     ->assertDialogOpened('Are you sure you want to delete?')
                     ->dismissDialog();

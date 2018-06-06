@@ -39,7 +39,8 @@ class ShowProductTest extends DuskTestCase
     {
         $product = Product::first();
         $this->browse(function (Browser $browser) use($product) {
-            $browser->visit('/admin/product')
+            $browser->loginAs($this->user)
+                    ->visit('/admin/product')
                     ->assertSee('Show list products', $product->name, $product->quantity);
         });
     }
@@ -52,7 +53,8 @@ class ShowProductTest extends DuskTestCase
     public function testRecord()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/product');
+            $browser->loginAs($this->user)
+                    ->visit('/admin/product');
             $elements = $browser->elements('.table tr');
             $this->assertCount(self::RECORD_LIMIT, $elements);
         });
@@ -66,7 +68,8 @@ class ShowProductTest extends DuskTestCase
     public function testPaginate()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/product?page=2');
+            $browser->loginAs($this->user)
+                    ->visit('/admin/product?page=2');
             $elements = $browser->elements('.table tr');
             $this->assertCount(self::LAST_RECORD, $elements);
         });
@@ -80,7 +83,8 @@ class ShowProductTest extends DuskTestCase
     public function testPaginateLast()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/product?page=3');
+            $browser->loginAs($this->user)
+                    ->visit('/admin/product?page=3');
             $elements = $browser->elements('.table tr');
             $this->assertCount(self::NUMBER_RECORD_LAST, $elements);
         });
