@@ -131,7 +131,6 @@ class ProductsController extends Controller
             if ($request->delImg != null) {
                 foreach ($arrIdImage as $i) {
                     $nameImage = Image::find($i)->image;
-                    unlink("images/products/".$nameImage);
                 }
                 Image::whereIn('id', $arrIdImage)->where('product_id', $product->id)->delete();
             }
@@ -155,6 +154,7 @@ class ProductsController extends Controller
     public function destroy(Product $product)
     {
         try {
+            $product->images()->delete();
             $product->delete();
             flash(trans('message.product.success_delete'))->success();
         } catch (ModelNotFoundException $e) {
