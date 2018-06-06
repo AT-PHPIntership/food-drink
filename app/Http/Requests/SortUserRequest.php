@@ -24,8 +24,8 @@ class SortUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'sortBy' => 'in:'.implode(',', ['name', 'email']),
-            'dir' => 'in:'.implode(',', ['DESC', 'ASC'])
+            'sortBy' => 'in:name,email',
+            'dir' => 'in:DESC,ASC'
         ];
     }
 }
