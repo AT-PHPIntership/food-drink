@@ -5,19 +5,10 @@
 /api/product/top-new-product
 ```
 Get top 10 new product
-#### Response - Success
-| Field | Type | Description |
-|-------|------|-------------|
-| meta | Object | Object meta |
-| status | String | Status result |
-| code | Number | HTTP status codes |
-| data | Array | Array of list top books review |
-| name | Varchar | name of product |
-| avg_rate | Float | Average review of a product |
-| image | String | Image of the product |
-| price | Float | Price of the product |
-| product_id | Number | Id of product |
-| created-at | timestamp() | Created at of a product |
+#### Request Headers
+| Key | Value |
+|---|---|
+|Accept|application\json
 
 #### Response
 ```json
@@ -116,17 +107,10 @@ Get top 10 new product
 /api/product/top-rate-product
 ```
 Get top 10 rate product
-#### Response - Success
-| Field | Type | Description |
-|-------|------|-------------|
-| meta | Object | Object meta |
-| status | String | Status result |
-| code | Number | HTTP status codes |
-| data | Array | Array of list top books review |
-| name | Varchar | name of product |
-| avg_rate | Float | Average review of a product |
-| image | String | Image of the product |
-| price | Float | Price of the product |
+#### Request Headers
+| Key | Value |
+|---|---|
+|Accept|application\json
 
 #### Response
 ```json
@@ -200,126 +184,15 @@ Get top 10 rate product
 }
 ```
 
-### `GET` Top 10 ordered product
-```
-/api/product/top-ordered-product
-```
-Get top 10 ordered product
-#### Response - Success
-| Field | Type | Description |
-|-------|------|-------------|
-| meta | Object | Object meta |
-| status | String | Status result |
-| code | Number | HTTP status codes |
-| data | Array | Array of list top books review |
-| name | Varchar | name of product |
-| avg_rate | Float | Average review of a product |
-| image | String | Image of the product |
-| price | Float | Price of the product |
-| count_product | Number | Count of the product |
-
-#### Response
-```json
-{
-    "meta": {
-        "status": "Successfully",
-        "code": 200
-    },
-    "data": [
-        {
-            "name": "Joe Cassin DVM",
-            "image": "default-product.jpg",
-            "avg_rate": 4.5,
-            "price": "161.00",
-            "count_product": "19"
-        },
-        {
-            "name": "Aidan Hintz",
-            "image": "default-product.jpg",
-            "avg_rate": 4,
-            "price": "129.00",
-            "count_product": "17"
-        },
-        {
-            "name": "Fredrick Schamberger",
-            "image": "default-product.jpg",
-            "avg_rate": 3.8,
-            "price": "153.00",
-            "count_product": "16"
-        },
-        {
-            "name": "Sebastian Reichert",
-            "image": "default-product.jpg",
-            "avg_rate": 3.7,
-            "price": "96.00",
-            "count_product": "15"
-        },
-        {
-            "name": "Ahmad Mitchell",
-            "image": "default-product.jpg",
-            "avg_rate": 3.7,
-            "price": "89.00",
-            "count_product": "12"
-        },
-        {
-            "name": "Electa Hayes DDS",
-            "image": "default-product.jpg",
-            "avg_rate": 3.5,
-            "price": "50.00",
-            "count_product": "11"
-        },
-        {
-            "name": "Prof. Lula O'Kon V",
-            "image": "default-product.jpg",
-            "avg_rate": 3.4,
-            "price": "195.00",
-            "count_product": "10"
-        },
-        {
-            "name": "Prof. Lula O'Kon V",
-            "image": "default-product.jpg",
-            "avg_rate": 3.4,
-            "price": "195.00",
-            "count_product": "9"
-        },
-        {
-            "name": "Prof. Lula O'Kon V",
-            "image": "default-product.jpg",
-            "avg_rate": 3.4,
-            "price": "195.00",
-            "count_product": "8"
-        },
-        {
-            "name": "Brionna Breitenberg",
-            "image": "default-product.jpg",
-            "avg_rate": 3.3,
-            "price": "75.00",
-            "count_product": "8"
-        }
-    ]
-}
-```
-
-### `GET` Product by category `Food`
+### `GET` Product by category `Food` or `Drink`
 ```
 /api/product?category=1
 ```
 Get product by category food
-#### Response - Success
-| Field | Type | Description |
-|-------|------|-------------|
-| meta | Object | Object meta |
-| status | String | Status result |
-| code | Number | HTTP status codes |
-| data | Array | Array of list top books review |
-| id | Number | id of product |
-| name | Varchar | name of product |
-| avg_rate | Float | Average review of a product |
-| image | String | Image of the product |
-| price | Float | Price of the product |
-| category_id | number | id of category |
-| name | Varchar | name of category is food |
-
+#### Request Headers
+| Key | Value |
+|---|---|
+|Accept|application\json
 
 #### Response
 ```json
@@ -347,8 +220,8 @@ Get product by category food
             "avg_rate": 4,
             "price": "129.00",
             "category": {
-                "id": 1,
-                "name": "food"
+                "id": 2,
+                "name": "drink"
             }
         },
         {
@@ -380,8 +253,8 @@ Get product by category food
             "avg_rate": 3.7,
             "price": "89.00",
             "category": {
-                "id": 1,
-                "name": "food"
+                "id": 2,
+                "name": "drink"
             }
         },
         {
@@ -424,8 +297,8 @@ Get product by category food
             "avg_rate": 3.4,
             "price": "195.00",
             "category": {
-                "id": 1,
-                "name": "food"
+                "id": 2,
+                "name": "drink"
             }
         },
         {
@@ -449,195 +322,5 @@ Get product by category food
             "links": {
                 "next": "http://192.168.33.10/api/product?category=1&page=2"
             }
-}
-```
-#### Response - Fail
-| Field | Type | Description |
-|-------|------|-------------|
-| meta | Object | object meta |
-| status | String | Status result |
-| code | Number | HTTP status codes |
-| error | Object | object error |
-| message | String |error message |
-```json
-{
-    "meta": {
-        "status": "failed",
-        "code": 404
-    },
-    "error": {
-        "message": "Page not found!"
-    }
-}
-```
-
-### `GET` Product by category `Drink`
-```
-/api/product?category=2
-```
-Get product by category drink
-#### Response - Success
-| Field | Type | Description |
-|-------|------|-------------|
-| meta | Object | Object meta |
-| status | String | Status result |
-| code | Number | HTTP status codes |
-| data | Array | Array of list top books review |
-| id | Number | id of product |
-| name | Varchar | name of product |
-| avg_rate | Float | Average review of a product |
-| image | String | Image of the product |
-| price | Float | Price of the product |
-| category_id | number | id of category |
-| name | Varchar | name of category is drink |
-
-
-#### Response
-```json
-{
-    "meta": {
-        "status": "Successfully",
-        "code": 200
-    },
-    "data": [
-        {
-            "id": 1,
-            "name": "Joe Cassin DVM",
-            "image": "default-product.jpg",
-            "avg_rate": 4.5,
-            "price": "161.00",
-            "category": {
-                "id": 2,
-                "name": "drink"
-            }
-        },
-        {
-            "id": 3,
-            "name": "Aidan Hintz",
-            "image": "default-product.jpg",
-            "avg_rate": 4,
-            "price": "129.00",
-            "category": {
-                "id": 2,
-                "name": "drink"
-            }
-        },
-        {
-            "id": 5,
-            "name": "Fredrick Schamberger",
-            "image": "default-product.jpg",
-            "avg_rate": 3.8,
-            "price": "153.00",
-            "category": {
-                "id": 2,
-                "name": "drink"
-            }
-        },
-        {
-            "id": 6,
-            "name": "Sebastian Reichert",
-            "image": "default-product.jpg",
-            "avg_rate": 3.7,
-            "price": "96.00",
-            "category": {
-                "id": 2,
-                "name": "drink"
-            }
-        },
-        {
-            "id": 8,
-            "name": "Ahmad Mitchell",
-            "image": "default-product.jpg",
-            "avg_rate": 3.7,
-            "price": "89.00",
-            "category": {
-                "id": 2,
-                "name": "drink"
-            }
-        },
-        {
-            "id": 12,
-            "name": "Electa Hayes DDS",
-            "image": "default-product.jpg",
-            "avg_rate": 3.5,
-            "price": "50.00",
-            "category": {
-                "id": 2,
-                "name": "drink"
-            }
-        },
-        {
-            "id": 14,
-            "name": "Prof. Lula O'Kon V",
-            "image": "default-product.jpg",
-            "avg_rate": 3.4,
-            "price": "195.00",
-            "category": {
-                "id": 2,
-                "name": "drink"
-            }
-        },
-        {
-            "id": 15,
-            "name": "Prof. Lula O'Kon V",
-            "image": "default-product.jpg",
-            "avg_rate": 3.4,
-            "price": "195.00",
-            "category": {
-                "id": 2,
-                "name": "drink"
-            }
-        },
-        {
-            "id": 21,
-            "name": "Prof. Lula O'Kon V",
-            "image": "default-product.jpg",
-            "avg_rate": 3.4,
-            "price": "195.00",
-            "category": {
-                "id": 2,
-                "name": "drink"
-            }
-        },
-        {
-            "id": 22,
-            "name": "Brionna Breitenberg",
-            "image": "default-product.jpg",
-            "avg_rate": 3.3,
-            "price": "75.00",
-            "category": {
-                "id": 2,
-                "name": "drink"
-            }
-        }
-    ],
-    "pagination": {
-            "total": 32,
-            "per_page": 10,
-            "count": 10,
-            "current_page": 1,
-            "total_pages": 4,
-            "links": {
-                "next": "http://192.168.33.10/api/product?category=2&page=2"
-            }
-}
-```
-#### Response - Fail
-| Field | Type | Description |
-|-------|------|-------------|
-| meta | Object | object meta |
-| status | String | Status result |
-| code | Number | HTTP status codes |
-| error | Object | object error |
-| message | String |error message |
-```json
-{
-    "meta": {
-        "status": "failed",
-        "code": 404
-    },
-    "error": {
-        "message": "Page not found!"
-    }
 }
 ```
