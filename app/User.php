@@ -6,11 +6,12 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\UserInfo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Kyslik\ColumnSortable\Sortable;
 use App\SearchTrait;
 
 class User extends Authenticatable
 {
-    use Notifiable, SoftDeletes, SearchTrait;
+    use Notifiable, SoftDeletes, SearchTrait, Sortable;
 
     protected $search = [
         'name',
@@ -22,6 +23,12 @@ class User extends Authenticatable
      */
     const ROOT_ADMIN = 1;
     
+    public $sortable = [
+        'id',
+        'name',
+        'email',
+    ];
+
     /**
      * The attributes that are mass assignable.
      *

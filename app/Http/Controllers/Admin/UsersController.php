@@ -30,9 +30,7 @@ class UsersController extends Controller
         } else {
             $users = User::with('userInfo');
         }
-        $users = $users->when(isset($request->sortBy) && isset($request->dir), function ($query) use ($request) {
-            return $query->orderBy($request->sortBy, $request->dir);
-        })->paginate(config('define.number_pages'));
+        $users = $users->sortable()->paginate(config('define.number_pages'));
         return view('admin.user.index', compact('users'));
     }
     /**
