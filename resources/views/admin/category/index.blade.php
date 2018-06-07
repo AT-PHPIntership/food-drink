@@ -18,7 +18,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">{{__('category.admin.index.list_category')}}</h3>
-              <a href="{{ route('category.create') }}" class="add-users">{{__('category.admin.index.new_category')}}</a>
+              <a href="{{ route('category.create') }}" class="add-users create-category">{{__('category.admin.index.new_category')}}</a>
               <div class="box-tools">
                 <form class="input-group input-group-sm" style="width: 150px;" action="{!! route('category.index') !!}" method="GET">
                   <input type="text" name="category_name" class="form-control pull-right" placeholder="Search">
