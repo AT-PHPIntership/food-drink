@@ -32,28 +32,8 @@
             <div class="box-body table-responsive no-padding">
               <table class="table table-hover">
                 <tr>
-                  <th>{{__('category.admin.index.id')}}
-                    @if (request()->dir == 'DESC')
-                      <a href="{{ route('category.index', ['category_name' => request('category_name'), 'sortBy' => 'id', 'dir' => 'ASC']) }}">
-                        <i class="fa fa-sort-up"></i>
-                      </a>
-                    @else
-                      <a href="{{ route('category.index', ['category_name' => request('category_name'), 'sortBy' => 'id', 'dir' => 'DESC']) }}">
-                        <i class="fa fa-sort-down"></i>
-                      </a>
-                    @endif
-                  </th>
-                  <th>{{__('category.admin.index.name')}}
-                    @if (request()->dir == 'DESC')
-                      <a href="{{ route('category.index', ['category_name' => request('category_name'), 'sortBy' => 'name', 'dir' => 'ASC']) }}">
-                        <i class="fa fa-sort-up"></i>
-                      </a>
-                    @else
-                      <a href="{{ route('category.index', ['category_name' => request('category_name'), 'sortBy' => 'name', 'dir' => 'DESC']) }}">
-                        <i class="fa fa-sort-down"></i>
-                      </a>
-                    @endif
-                  </th>
+                  <th>@sortablelink('id', __('category.admin.index.id'))</th>
+                  <th>@sortablelink('name', __('category.admin.index.name'))</th>
                   <th>{{__('category.admin.index.parent')}}</th>
                   <th>{{__('category.admin.index.action')}}</th>
                 </tr>
@@ -79,7 +59,7 @@
                 </tr>
                 @endforeach
               </table>
-              {{ $categories->links() }}
+              {{ $categories->appends(\Request::except('page'))->render() }}
             </div>
             <!-- /.box-body -->
           </div>

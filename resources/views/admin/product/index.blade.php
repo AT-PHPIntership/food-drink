@@ -34,53 +34,13 @@
             <div class="box-body table-responsive no-padding">
               <table class="table table-hover">
                 <tr>
-                  <th>{{__('product.admin.index.id')}}</th>
-                  <th>{{__('product.admin.index.name')}}
-                    @if (request()->dir == 'DESC')
-                      <a href="{{ route('product.index', ['product_name' => request('product_name'), 'sortBy' => 'name', 'dir' => 'ASC']) }}">
-                        <i class="fa fa-sort-up"></i>
-                      </a>
-                    @else
-                      <a href="{{ route('product.index', ['product_name' => request('product_name'), 'sortBy' => 'name', 'dir' => 'DESC']) }}">
-                        <i class="fa fa-sort-down"></i>
-                      </a>
-                    @endif
-                  </th>
-                  <th>{{__('product.admin.index.price')}}
-                    @if (request()->dir == 'DESC')
-                      <a href="{{ route('product.index', ['product_name' => request('product_name'), 'sortBy' => 'price', 'dir' => 'ASC']) }}">
-                        <i class="fa fa-sort-up"></i>
-                      </a>
-                    @else
-                      <a href="{{ route('product.index', ['product_name' => request('product_name'), 'sortBy' => 'price', 'dir' => 'DESC']) }}">
-                        <i class="fa fa-sort-down"></i>
-                      </a>
-                    @endif
-                  </th>
+                  <th>@sortablelink('id', __('product.admin.index.id'))</th>
+                  <th>@sortablelink('name', __('product.admin.index.name'))</th>
+                  <th>@sortablelink('price', __('product.admin.index.price'))</th>
                   <th>{{__('product.admin.index.image')}}</th>
-                  <th>{{__('product.admin.index.quantity')}}
-                    @if (request()->dir == 'DESC')
-                      <a href="{{ route('product.index', ['product_name' => request('product_name'), 'sortBy' => 'quantity', 'dir' => 'ASC']) }}">
-                        <i class="fa fa-sort-up"></i>
-                      </a>
-                    @else
-                      <a href="{{ route('product.index', ['product_name' => request('product_name'), 'sortBy' => 'quantity', 'dir' => 'DESC']) }}">
-                        <i class="fa fa-sort-down"></i>
-                      </a>
-                    @endif
-                  </th>
+                  <th>@sortablelink('quantity', __('product.admin.index.quantity'))</th>
                   <th>{{__('product.admin.index.category')}}</th>
-                  <th>{{__('product.admin.index.rate_avg')}}
-                    @if (request()->dir == 'DESC')
-                      <a href="{{ route('product.index', ['product_name' => request('product_name'), 'sortBy' => 'avg_rate', 'dir' => 'ASC']) }}">
-                        <i class="fa fa-sort-up"></i>
-                      </a>
-                    @else
-                      <a href="{{ route('product.index', ['product_name' => request('product_name'), 'sortBy' => 'avg_rate', 'dir' => 'DESC']) }}">
-                        <i class="fa fa-sort-down"></i>
-                      </a>
-                    @endif
-                  </th>
+                  <th>@sortablelink('avg_rate', __('product.admin.index.rate_avg'))</th>
                   <th>{{__('product.admin.index.action')}}</th>
                 </tr>
                 @foreach($product as $item)
@@ -105,7 +65,7 @@
                 @endforeach
                 </tr>
               </table>
-              {{ $product->links() }}
+              {{ $product->appends(\Request::except('page'))->render() }}
             </div>
             <!-- /.box-body -->
           </div>
