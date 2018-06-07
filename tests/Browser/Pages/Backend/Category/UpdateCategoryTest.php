@@ -6,6 +6,7 @@ use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use App\Category;
+use App\User;
 
 class UpdateCategoryTest extends DuskTestCase
 {
@@ -25,6 +26,7 @@ class UpdateCategoryTest extends DuskTestCase
     public function setUp()
     {
         parent::setUp();
+        factory('App\User', 'admin', 1)->create();
         factory('App\Category', 'parent', self::NUMBER_RECORD_PARENT)->create();
         factory('App\Category', self::NUMBER_RECORD_CREATE)->create();
         factory('App\Category', self::NUMBER_RECORD_UPDATE)->create([
@@ -44,7 +46,8 @@ class UpdateCategoryTest extends DuskTestCase
     {
         $category = Category::first();
         $this->browse(function (Browser $browser) use ($category) {
-            $browser->visit('admin/category/'. $category->id.'/edit')
+            $browser->loginAs(User::find(1))
+                    ->visit('admin/category/'. $category->id.'/edit')
                     ->assertSee('Edit', $category->name);
         });
     }
@@ -58,7 +61,8 @@ class UpdateCategoryTest extends DuskTestCase
     {
         $category = Category::find(23);
         $this->browse(function (Browser $browser) use ($category) {
-            $browser->visit('/admin/category/'.$category->id.'/edit')
+            $browser->loginAs(User::find(1))
+                    ->visit('/admin/category/'.$category->id.'/edit')
                     ->type('name', 'test name')
                     ->select('parent_id', '1')
                     ->press('submit')
@@ -81,7 +85,8 @@ class UpdateCategoryTest extends DuskTestCase
     {
         $category = Category::first();
         $this->browse(function (Browser $browser) use ($category) {
-            $browser->visit('/admin/category')
+            $browser->loginAs(User::find(1))
+                    ->visit('/admin/category')
                     ->click('tbody tr:nth-child(2) td:nth-child(4) .fa-edit')
                     ->assertPathIs('/admin/category/'.$category->id.'/edit')
                     ->assertSee('Edit')
@@ -102,7 +107,8 @@ class UpdateCategoryTest extends DuskTestCase
     {
         $category = Category::first();
         $this->browse(function (Browser $browser) use ($category) {
-            $browser->visit('/admin/category')
+            $browser->loginAs(User::find(1))
+                    ->visit('/admin/category')
                     ->assertSee('List Category');
             $category->delete();
             $browser->click('tbody tr:nth-child(2) td:nth-child(4) .fa-edit');
