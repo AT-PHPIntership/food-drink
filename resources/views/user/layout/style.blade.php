@@ -8,13 +8,13 @@
 <!-- CSS Style -->
 
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" type="text/css"  href="{{ asset('css/bootstrap.min.css')}}">
+<link rel="stylesheet" type="text/css"  href="{{ asset('frontend/css/bootstrap.min.css')}}">
 
 <!-- font-awesome & simple line icons CSS -->
-<link rel="stylesheet" type="text/css"  href="{{ asset('css/font-awesome.css')}}" media="all">
+<link rel="stylesheet" type="text/css"  href="{{ asset('frontend/css/font-awesome.css')}}" media="all">
 
 <!-- owl.carousel CSS -->
-<link rel="stylesheet" type="text/css"  href="{{ asset('css/owl.carousel.css')}}">
-<link rel="stylesheet" type="text/css"  href="{{ asset('css/owl.theme.css')}}">
+<link rel="stylesheet" type="text/css"  href="{{ asset('frontend/css/owl.carousel.css')}}">
+<link rel="stylesheet" type="text/css"  href="{{ asset('frontend/css/owl.theme.css')}}">
 <!-- style CSS -->
-<link rel="stylesheet" type="text/css"  href="{{ asset('css/style.css')}}" media="all">
+<link rel="stylesheet" type="text/css"  href="{{ asset('frontend/css/style.css')}}" media="all">

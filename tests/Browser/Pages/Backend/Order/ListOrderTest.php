@@ -29,7 +29,7 @@ class ListOrderTest extends DuskTestCase
     }
 
     /**
-    * Override function setUp() for make user login
+    * Override function setUpOneRecord() for make user login
     *
     * @return void
     */
@@ -61,7 +61,7 @@ class ListOrderTest extends DuskTestCase
     }
 
     /**
-     * A Dusk test numberRecord show list order.
+     * A Dusk test paginate last show list order.
      *
      * @return void
     */

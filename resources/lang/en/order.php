@@ -39,5 +39,25 @@
                 'date' => 'Date',
                 'list_product' => 'List Product'
             ],
+            'show' => [
+                'title' => 'Show detail order',
+                'form_title' => 'Show detail',
+                'order' => 'Order',
+                'back' => 'Back',
+                'user_info' => 'User Infomation',
+                'name' => 'Name',
+                'email' => 'Email',
+                'password' => 'Password',
+                'address' => 'Address',
+                'phone' => 'Phone',
+                'avatar' => 'Avatar',
+                'name_product' => 'Name Product',
+                'quantity' => 'Quantity',
+                'total' => 'Total',
+                'image' => 'Image',
+                'preview' => 'Preview',
+                'date' => 'Date',
+                'list_product' => 'List Product'
+            ],
         ]
     ];

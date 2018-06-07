@@ -7,7 +7,7 @@
 <title>@yield('title')</title>
 <meta name="Before buying it, get the feel and look of the Refresh Food & Restaurant Website Template by viewing the demo preview. View the pages, examine the images, click the buttons, explore the features.">
 <meta name="keywords" content="food shop, fresh, modern, Refresh farm, Restaurant farm shop, Refresh food, Refresh shop, agriculture, e-commerce, eco, eco products, farm, farming, food, health, Restaurant, Refresh food, retail, shop, store"/>
-@include('layout.style')
+@include('user.layout.style')
 <!-- Mobile specific metas  -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -15,18 +15,18 @@
 <body class="cms-index-index cms-home-page">
   <div id="page">
     <!-- Header -->
-    @include('layout.header')
+    @include('user.layout.header')
     <!-- end header --> 
     <!-- Navbar -->
-    @include('layout.nav')
+    @include('user.layout.nav')
     <!-- end nav -->
     @yield('content')
     <!-- Footer -->
-    @include('layout.footer')
+    @include('user.layout.footer')
     <!-- End Footer -->
   <!-- JS --> 
   </div>
   <!-- Script -->
-  @include('layout.script')
+  @include('user.layout.script')
 </body>
 </html>

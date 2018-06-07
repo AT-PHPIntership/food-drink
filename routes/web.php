@@ -21,8 +21,8 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
     ]);
     Route::resource('user', 'UsersController');
     Route::resource('product', 'ProductsController');
-    Route::resource('category', 'CategoriesController')->only([
-        'index', 'create' , 'store', 'edit'
+    Route::resource('category', 'CategoriesController')->except([
+        'show'
     ]);
     Route::group(['prefix'=>'post'],function (){
         Route::get('',[
@@ -42,4 +42,10 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
         'index', 'show'
     ]);
     Route::put('order/{order}/updateStatus', 'OrdersController@updateStatus');
+});
+Route::get('/api-docs', function () {
+    return view('api-docs');
+});
+Route::get('/api-doc-builders', function () {
+    return view('api-docs-builders.index');
 });
