@@ -25,7 +25,7 @@ $factory->define(App\Image::class, function (Faker $faker) {
 });
 $factory->define(App\OrderDetail::class, function (Faker $faker) {
     return [
-        'order_id' => $faker->randomElement(App\Order::pluck('id')->toArray()),
+        'order_id' => $faker->unique()->numberBetween(1, 15),
         'product_id' => $faker->randomElement(App\Product::pluck('id')->toArray()),
         'quantity' => $faker->numberBetween(1, 5),
         'price' => $faker->numberBetween(10, 200),

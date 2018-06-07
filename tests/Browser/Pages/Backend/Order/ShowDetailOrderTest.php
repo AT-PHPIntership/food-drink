@@ -40,7 +40,7 @@ class ShowDetailOrderTest extends DuskTestCase
      *
      * @return void
      */
-    public function testRoute()
+    public function testRouteOrderDetail()
     {
         $order = Order::with('user', 'orderdetails')->first();
         $this->browse(function (Browser $browser) use ($order) {
@@ -60,20 +60,20 @@ class ShowDetailOrderTest extends DuskTestCase
         });
     }
 
-    // /**
-    // * Test 404 Page Not found when click show detail order.
-    // *
-    // * @return void
-    // */
-    // public function test404PageForClickShow()
-    // {
-    //     $order = Order::with('user', 'orderdetails')->first();
-    //     $this->browse(function (Browser $browser) use ($order) {
-    //         $browser->visit('/admin/order')
-    //                 ->assertSee('List Orders');
-    //         $order->delete();
-    //         $browser->click('tbody tr:nth-child(2) td:nth-child(7) .fa-edit');
-    //         $browser->assertSee('Can not find user with corresponding id.');
-    //     });
-    // }
+    /**
+    * Test 404 Page Not found when click show detail order.
+    *
+    * @return void
+    */
+    public function test404PageForClickShow()
+    {
+        $order = Order::with('user', 'orderdetails')->first();
+        $this->browse(function (Browser $browser) use ($order) {
+            $browser->visit('/admin/order')
+                    ->assertSee('List Orders');
+            $order->delete();
+            $browser->click('tbody tr:nth-child(2) td:nth-child(7) .fa-info');
+            $browser->assertSee('Can not find user with corresponding id.');
+        });
+    }
 }

@@ -32,9 +32,9 @@
                 <tr>
                   <th>{{__('post.index.post_id')}}</th>
                   <th>{{__('post.index.user_id')}}</th>
-                  <th>{{__('post.index.product_name')}}</th>
+                  <th>@sortablelink('product.name', __('post.index.product_name'))</th>
                   <th>{{__('post.index.review')}}</th>
-                  <th>{{__('post.index.rate')}}</th>
+                  <th>@sortablelink('rate', __('post.index.rate'))</th>
                   <th>{{__('post.index.type')}}</th>
                   <th>{{__('post.index.status')}}</th>
                   <th>{{__('post.index.action')}}</th>
@@ -71,7 +71,7 @@
                 @endforeach
               </table>
               <div class="text-center">
-                {{ $posts->links() }}
+                {{ $posts->appends(\Request::except('page'))->render() }}
               </div>
             </div>
             <!-- /.box-body -->

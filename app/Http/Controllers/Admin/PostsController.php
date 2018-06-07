@@ -23,9 +23,9 @@ class PostsController extends Controller
                 return $query->where('name', 'Like', "%$search%")
                             ->orWhere("content", 'Like', "%$search%");
             });
-            $posts = $posts->paginate(Post::PAGINATE)->appends(['search' => $search]);
+            $posts = $posts->sortable()->paginate(Post::PAGINATE)->appends(['search' => $search]);
         } else {
-            $posts = Post::with('product')->paginate(Post::PAGINATE);
+            $posts = Post::with('product')->sortable()->paginate(Post::PAGINATE);
         }
         $status = Post::$listStatus;
         return view('admin.post.index', ['posts' => $posts, 'status' => $status]);
