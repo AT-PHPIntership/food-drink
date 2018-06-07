@@ -12,7 +12,6 @@ use App\Jobs\SendEmailJob;
 use App\Http\Requests\UpdateUsersRequest;
 use App\UserInfo;
 use Session;
-use App\Http\Requests\SortUserRequest;
 
 class UsersController extends Controller
 {
@@ -23,7 +22,7 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(SortUserRequest $request)
+    public function index(Request $request)
     {
         if ($request->user_name) {
             $users = User::search($request->user_name)->with('userInfo');

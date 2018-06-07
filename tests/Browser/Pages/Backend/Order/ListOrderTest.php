@@ -42,7 +42,9 @@ class ListOrderTest extends DuskTestCase
             'name' => 'test name',
             'email' => 'testemail@gmail.com'
         ]);
-        factory(Order::class)->create();
+        factory(Order::class)->create([
+            'user_id' => 2
+        ]);
     }
 
     /**
