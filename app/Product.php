@@ -14,6 +14,8 @@ class Product extends Model
         'name',
     ];
 
+    public $sortable = ['name'];
+
     protected $fillable=[
         'name',
         'category_id',

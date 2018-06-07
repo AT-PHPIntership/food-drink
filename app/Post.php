@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class Post extends Model
 {
+    use Sortable;
     const PAGINATE = 10, ENABLE = 1, DISABLE = 0;
     
     public static $listStatus = [
@@ -20,6 +22,10 @@ class Post extends Model
         'rate',
         'type',
         'status',
+    ];
+
+    public $sortable = [
+        'rate',
     ];
 
     /**
