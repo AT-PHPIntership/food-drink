@@ -20,8 +20,8 @@ class ProductController extends ApiController
     public function index(SortApiProductRequest $request)
     {
         $product = Product::with('category', 'images')
-                        ->when(isset($request->sort_type) && isset($request->sort_type), function ($query) use ($request) {
-                            return $query->orderBy($request->sort_type, $request->sort_type);
+                        ->when(isset($request->sort) && isset($request->sort_type), function ($query) use ($request) {
+                            return $query->orderBy($request->sort, $request->sort_type);
                         })
                         ->when(isset($request->limit), function ($query) use ($request) {
                             return $query->limit($request->limit);
