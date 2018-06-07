@@ -25,9 +25,9 @@ class OrdersController extends Controller
                 return $query->where('name', 'Like', "%$search%")
                             ->orWhere("email", 'Like', "%$search%");
             });
-            $orders = $orders->paginate(config('define.number_page_products'))->appends(['search' => $search]);
+            $orders = $orders->sortable()->paginate(config('define.number_page_products'))->appends(['search' => $search]);
         } else {
-            $orders = Order::with('user')->paginate(config('define.number_page_products'));
+            $orders = Order::with('user')->sortable()->paginate(config('define.number_page_products'));
         }
         return view('admin.order.index', compact('orders'));
     }

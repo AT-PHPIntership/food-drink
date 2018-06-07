@@ -24,6 +24,11 @@ class User extends Authenticatable
         'name',
         'email'
     ];
+    
+    public $sortable = [
+        'name',
+        'email',
+    ];
 
     /**
      * The attributes that are mass assignable.

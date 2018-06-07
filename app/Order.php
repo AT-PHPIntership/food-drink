@@ -3,13 +3,21 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class Order extends Model
 {
+    use Sortable;
     const ACCEPTED = 2;
     const PENDING = 1;
     const REJECTED = 3;
     const LATEST_ORDERS = 7;
+
+    public $sortable = [
+        'id',
+        'total',
+        'updated_at'
+    ];
     
     protected $fillable=[
         'user_id',
