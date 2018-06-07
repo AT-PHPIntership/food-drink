@@ -24,6 +24,7 @@ class ListOrderTest extends DuskTestCase
     public function setUp()
     {
         parent::setUp();
+        factory('App\User', 'admin', 1)->create();
         factory(User::class, self::NUMBER_RECORD_CREATE)->create();
         factory(Order::class, self::NUMBER_RECORD_CREATE)->create();
     }
@@ -36,6 +37,7 @@ class ListOrderTest extends DuskTestCase
     public function setUpOneRecord()
     {
         parent::setUp();
+        factory('App\User', 'admin', 1)->create();
         factory(User::class)->create([
             'name' => 'test name',
             'email' => 'testemail@gmail.com'
@@ -52,7 +54,8 @@ class ListOrderTest extends DuskTestCase
     {
         $this->setUp();
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/order')
+            $browser->loginAs(User::find(1))
+                    ->visit('/admin/order')
                     ->assertPathIs('/admin/order')
                     ->assertSee('Show list orders');
         $elements = $browser->elements('.table tbody tr');
@@ -69,7 +72,8 @@ class ListOrderTest extends DuskTestCase
     {
         $this->setUp();
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/order?page=2')
+            $browser->loginAs(User::find(1))
+                    ->visit('/admin/order?page=2')
                     ->assertSee('Show list orders');
             $elements = $browser->elements('.table tr');
             $this->assertCount(self::NUMBER_RECORD_LAST, $elements);
@@ -85,12 +89,14 @@ class ListOrderTest extends DuskTestCase
     {
         $this->setUpOneRecord();
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/order')
+            $browser->loginAs(User::find(1))
+                    ->visit('/admin/order')
                     ->type('search', 'test name')
                     ->click('.fa-search');
             $elements = $browser->elements('.table tbody tr');
             $this->assertCount(2, $elements);
-            $browser->visit('/admin/order')
+            $browser->loginAs(User::find(1))
+                    ->visit('/admin/order')
                     ->type('search', 'testemail@gmail.com')
                     ->click('.fa-search');
             $elements = $browser->elements('.table tbody tr');
@@ -107,7 +113,8 @@ class ListOrderTest extends DuskTestCase
     {
         $this->setUpOneRecord();
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/order')
+            $browser->loginAs(User::find(1))
+                    ->visit('/admin/order')
                         ->type('search', 'test fail')
                         ->click('.fa-search');
             $elements = $browser->elements('.table tbody tr');
