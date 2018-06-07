@@ -43,7 +43,7 @@ class ListOrderTest extends DuskTestCase
             'email' => 'testemail@gmail.com'
         ]);
         factory(Order::class)->create([
-            'user_id' => 2,
+            'user_id' => 2
         ]);
     }
 

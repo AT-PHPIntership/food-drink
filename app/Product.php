@@ -4,17 +4,24 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Kyslik\ColumnSortable\Sortable;
 use App\SearchTrait;
 
 class Product extends Model
 {
-    use SearchTrait, SoftDeletes;
+    use SearchTrait, SoftDeletes, Sortable;
     
     protected $search = [
         'name',
     ];
 
-    public $sortable = ['name'];
+    public $sortable = [
+        'id',
+        'name',
+        'price',
+        'quantity',
+        'avg_rate',
+    ];
 
     protected $fillable=[
         'name',
