@@ -49,3 +49,11 @@ Route::get('/api-docs', function () {
 Route::get('/api-doc-builders', function () {
     return view('api-docs-builders.index');
 });
+
+//frontend
+Route::group(['namespace'=>'User','prefix'=>'user'],function () {
+    Route::get('',[
+        'uses'=>'HomeController@index',
+        'as'=>'user'
+    ]);
+});
