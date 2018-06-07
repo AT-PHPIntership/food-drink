@@ -19,6 +19,8 @@ class OrdersController extends Controller
     */
     public function index(Request $request)
     {
+        // $order = Order::with('user', 'orderdetails')->first();
+        // dd($order->orderDetails->first()->address);
         $search = $request->search;
         if ($search != '') {
             $orders = Order::with('user')->whereHas('user', function ($query) use ($search) {

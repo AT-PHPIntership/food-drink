@@ -41,7 +41,7 @@ class User extends Authenticatable
      */
     public function userInfo()
     {
-        return $this->hasOne(UserInfo::class);
+        return $this->hasOne(UserInfo::class)->withTrashed();
     }
 
     /**
