@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Api\ApiController;
 use App\Product;
 use App\Order;
-use App\Http\Requests\SortApiProdctRequest;
+use App\Http\Requests\SortApiProductRequest;
 
 class ProductController extends ApiController
 {
@@ -17,7 +17,7 @@ class ProductController extends ApiController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(SortApiProdctRequest $request)
+    public function index(SortApiProductRequest $request)
     {
         $product = Product::with('category', 'images')
                         ->when(isset($request->sort_type), function ($query) use ($request) {

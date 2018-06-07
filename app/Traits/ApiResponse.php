@@ -44,13 +44,13 @@ trait ApiResponse
             ],
             'data' => $responseData->toArray()['data'],
             'pagination' => [
-                'total' =>    $responseData->total(),
-                'per_page' =>    $responseData->perPage(),
-                'current_page' =>    $responseData->currentPage(),
-                'total_pages' =>    $responseData->lastPage(),
+                'total' => $responseData->total(),
+                'per_page' => $responseData->perPage(),
+                'current_page' => $responseData->currentPage(),
+                'total_pages' => $responseData->lastPage(),
                 'links' => [
                      'prev' => $responseData->previousPageUrl(),
-                     'next' =>$responseData->nextPageUrl(),
+                     'next' => $responseData->nextPageUrl(),
                 ]
             ],
         ], $code);

@@ -16,6 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::group(['namespace'=>'Api'],function () {
-    Route::apiresource('products', 'ProductController');
+Route::group(['namespace' => 'Api'], function () {
+    Route::apiResource('products', 'ProductController')->only([
+        'index'
+    ]);
 });

@@ -9,14 +9,4 @@ use App\Traits\ApiResponse;
 class ApiController extends Controller
 {
     use ApiResponse;
-
-     /**
-     * Construct parent Controller
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        // $this->middleware('auth:api');
-    }
 }
