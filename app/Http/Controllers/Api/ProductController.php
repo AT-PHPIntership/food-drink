@@ -6,76 +6,29 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Api\ApiController;
 use App\Product;
 use App\Order;
+use App\Http\Requests\SortApiProdctRequest;
 
 class ProductController extends ApiController
 {
-    private $product;
-
-    public function __construct(Product $product)
-    {
-        $this->product = $product;
-    }
-
     /**
-     * Get top 10 latest product
+     * index Product 
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(SortApiProdctRequest $request)
     {
-        $fields = [
-            'name',
-            'image',
-            'avg_rate',
-            'price',
-            'product_id',
-            'products.created_at'
-        ];
-        $topNewProduct = Product::join('images', 'products.id', '=', 'images.product_id')
-                        ->distinct('product_id')
-                        ->select($fields)
-                        ->orderBy('products.created_at', 'DESC')
-                        ->limit(10)->get();
-        return $this->responseSuccess($topNewProduct);
-    }
-
-    /**
-     * Get top 10 rate highest product
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function topRate()
-    {
-        
-        $fields = [
-            'name',
-            'image',
-            'avg_rate',
-            'price'
-        ];
-        $toprateProduct = Product::join('images', 'products.id', '=', 'images.product_id')
-                        ->select($fields)
-                        ->orderBy('avg_rate', 'DESC')
-                        ->limit(10)->get();
-        return $this->responseSuccess( $toprateProduct);
-    }
-
-    /**
-     * Get top 3 product orderd
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function topProductOrdered()
-    {
-        $fields = [
-            'name_product',
-            'image',
-            'price'
-        ];
-        $rateProduct = Order::join('order_details', 'orders.id', '=', 'order_details.order_id')
-                        ->select($fields)
-                        ->orderBy('orders.updated_at', 'DESC')
-                        ->limit(3)->get();
-        return response()->json(['data' => $rateProduct, 200]);
+        $product = Product::with('category', 'images')
+                        ->when(isset($request->sort_type), function ($query) use ($request) {
+                            return $query->orderBy('created_at', $request->sort_type);
+                        })
+                        ->when(isset($request->limit), function ($query) use ($request) {
+                            return $query->limit($request->limit);
+                        })
+                        ->when(isset($request->category), function ($query) use ($request) {
+                            return $query->whereHas('category', function ($query) use($request){
+                                $query->where('id', $request->category);
+                            });
+                        })->get();
+        return $this->responseSuccess($product);
     }
 }
