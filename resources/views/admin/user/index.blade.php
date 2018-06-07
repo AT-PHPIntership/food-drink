@@ -32,8 +32,28 @@
               <table class="table table-hover">
                 <tr>
                   <th>{{__('user.admin.index.id')}}</th>
-                  <th>{{__('user.admin.index.name')}}</th>
-                  <th>{{__('user.admin.index.email')}}</th>
+                  <th>{{__('user.admin.index.name')}}
+                    @if (request()->dir == 'DESC')
+                      <a href="{{ route('user.index', ['user_name' => request('user_name'), 'sortBy' => 'name', 'dir' => 'ASC']) }}">
+                        <i class="fa fa-sort-up"></i>
+                      </a>
+                    @else
+                      <a href="{{ route('user.index', ['user_name' => request('user_name'), 'sortBy' => 'name', 'dir' => 'DESC']) }}">
+                        <i class="fa fa-sort-down"></i>
+                      </a>
+                    @endif
+                  </th>
+                  <th>{{__('user.admin.index.email')}}
+                    @if (request()->dir == 'DESC')
+                      <a href="{{ route('user.index', ['user_name' => request('user_name'), 'sortBy' => 'email', 'dir' => 'ASC']) }}">
+                        <i class="fa fa-sort-up"></i>
+                      </a>
+                    @else
+                      <a href="{{ route('user.index', ['user_name' => request('user_name'), 'sortBy' => 'email', 'dir' => 'DESC']) }}">
+                        <i class="fa fa-sort-down"></i>
+                      </a>
+                    @endif
+                  </th>
                   <th>{{__('user.admin.index.address')}}</th>
                   <th>{{__('user.admin.index.phone')}}</th>
                   <th>{{__('user.admin.index.avatar')}}</th>
@@ -49,7 +69,7 @@
                   <td><img src="{{ asset('images/users/'.$user->userInfo->avatar) }}" alt="{{ $user->userInfo->avatar }}" class="avatar"></td>
                   <td>
                     <a href="{{route('user.edit', $user->id)}}"><i class="fa fa-edit"></i></a>
-                    @if($user->id !== App\User::ROOT_ADMIN)
+                    @if($user->id !== App\User::ROLE_ADMIN)
                     <form method="POST" action="{!! route('user.destroy', ['user' => $user->id]) !!}" class="form-trash" onsubmit="return confirmDelete()">
                       @csrf
                       {{ method_field('DELETE') }}

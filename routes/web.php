@@ -13,8 +13,8 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
-Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
+})->name('welcome');
+Route::group(['namespace'=>'Admin','prefix'=>'admin','middleware' => 'admin'],function () {
     Route::get('',[
         'uses'=>'HomeController@index',
         'as'=>'admin'
@@ -43,9 +43,30 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function () {
     ]);
     Route::put('order/{order}/updateStatus', 'OrdersController@updateStatus');
 });
+Route::group(['prefix' => 'admin'],function (){
+    Route::get('login', [
+        'uses' => 'Auth\LoginController@showLoginForm',
+        'as' => 'admin.login'
+        ]);
+        Route::post('login',[
+        'uses' => 'Auth\LoginController@login',
+    ]);
+    Route::post('logout',[
+        'uses' => 'Auth\LoginController@logout',
+        'as' => 'admin.logout'
+    ]);
+});
 Route::get('/api-docs', function () {
     return view('api-docs');
 });
 Route::get('/api-doc-builders', function () {
     return view('api-docs-builders.index');
+});
+
+//frontend
+Route::group(['namespace'=>'User','prefix'=>'user'],function () {
+    Route::get('',[
+        'uses'=>'HomeController@index',
+        'as'=>'user'
+    ]);
 });
