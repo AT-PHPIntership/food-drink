@@ -26,6 +26,7 @@ class ShowDetailOrderTest extends DuskTestCase
     public function setUp()
     {
         parent::setUp();
+        factory('App\User', 'admin', 1)->create();
         factory(User::class, self::NUMBER_RECORD_CREATE)->create();
         factory(Order::class, self::NUMBER_RECORD_CREATE)->create();
         factory(Category::class, 'parent', self::NUMBER_RECORD_CREATE)->create();
@@ -44,7 +45,8 @@ class ShowDetailOrderTest extends DuskTestCase
     {
         $order = Order::with('user', 'orderdetails')->first();
         $this->browse(function (Browser $browser) use ($order) {
-            $browser->visit('/admin/order/'.$order->id)
+            $browser->loginAs(User::find(1))
+                    ->visit('/admin/order/'.$order->id)
                     ->assertSee(
                         'Show detail Order',
                         'User Infomation',
@@ -69,7 +71,8 @@ class ShowDetailOrderTest extends DuskTestCase
     {
         $order = Order::with('user', 'orderdetails')->first();
         $this->browse(function (Browser $browser) use ($order) {
-            $browser->visit('/admin/order')
+            $browser->loginAs(User::find(1))
+                    ->visit('/admin/order')
                     ->assertSee('List Orders');
             $order->delete();
             $browser->click('tbody tr:nth-child(2) td:nth-child(7) .fa-info');
