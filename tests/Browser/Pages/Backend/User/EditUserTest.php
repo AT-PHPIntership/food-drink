@@ -11,14 +11,16 @@ use App\UserInfo;
 class EditUserTest extends DuskTestCase
 {
     use DatabaseMigrations;
-    const NUMBER_RECORD_CREATE = 5;
+    const NUMBER_RECORD_CREATE_ADMIN = 5;
+    const NUMBER_RECORD_CREATE_USER = 6;
     const NUMBER_RECORD_FIND = 5;
 
     public function setUp()
     {
         parent::setUp();
-        factory(User::class, self::NUMBER_RECORD_CREATE)->create();
-        factory(UserInfo::class, self::NUMBER_RECORD_CREATE)->create();
+        factory('App\User', 'admin', 1)->create();
+        factory(User::class, self::NUMBER_RECORD_CREATE_ADMIN)->create();
+        factory(UserInfo::class, self::NUMBER_RECORD_CREATE_USER)->create();
     }
 
     /**
@@ -31,7 +33,8 @@ class EditUserTest extends DuskTestCase
         $user = User::first();
         $userInfo = $user->load('userInfo');
         $this->browse(function (Browser $browser) use ($user, $userInfo) {
-            $browser->visit('admin/user/'.$user->id.'/edit')
+            $browser->loginAs(User::find(1))
+                    ->visit('admin/user/'.$user->id.'/edit')
                     ->assertSee('Edit Form', $user->name, $userInfo->userInfo->phone, $userInfo->userInfo->address);
         });
     }
@@ -47,7 +50,8 @@ class EditUserTest extends DuskTestCase
     {
         $user = User::first();
         $this->browse(function (Browser $browser) use ($user) {
-            $browser->visit('/admin/user/'.$user->id.'/edit')
+            $browser->loginAs(User::find(1))
+                    ->visit('/admin/user/'.$user->id.'/edit')
                     ->type('name', 'test name')
                     ->press('submit')
                     ->assertPathIs('/admin/user')
@@ -65,7 +69,8 @@ class EditUserTest extends DuskTestCase
     {
     $user = User::first();
     $this->browse(function (Browser $browser) use ($user) {
-        $browser->visit('/admin/user/'.$user->id.'/edit')
+        $browser->loginAs(User::find(1))
+                ->visit('/admin/user/'.$user->id.'/edit')
                 ->type('name', '')
                 ->type('phone', '(873) 396-4030(873) 396-4030(873) 396-4030(873) 396-4030(873) 396-4030(873) 396-4030')
                 ->type('address', '4361 Jayce Summit Apt. 286North Mariobury')
@@ -85,7 +90,8 @@ class EditUserTest extends DuskTestCase
     {
         $user = User::find(self::NUMBER_RECORD_FIND);
         $this->browse(function (Browser $browser) use ($user) {
-            $browser->visit('/admin/user')
+            $browser->loginAs(User::find(1))
+                    ->visit('/admin/user')
                     ->assertSee('List Users');
             $user->delete();
             $browser->press('tbody tr:nth-child(6) td:nth-child(7) a');
@@ -102,7 +108,8 @@ class EditUserTest extends DuskTestCase
     {
         $user = User::find(self::NUMBER_RECORD_FIND);
         $this->browse(function (Browser $browser) use ($user) {
-            $browser->visit('/admin/user')
+            $browser->loginAs(User::find(1))
+                    ->visit('/admin/user')
                     ->assertSee('List User')
                     ->press('tbody tr:nth-child(6) td:nth-child(7) a')
                     ->assertPathIs('/admin/user/'.$user->id.'/edit')

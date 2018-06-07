@@ -5,13 +5,16 @@ namespace Tests\Browser\Pages\Users;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use App\User;
+use App\UserInfo;
 
 class ListUserTest extends DuskTestCase
 {
     use DatabaseMigrations;
-    const NUMBER_RECORD_CREATE = 31;
+    const NUMBER_RECORD_CREATE_USER = 31;
+    const NUMBER_RECORD_CREATE_USER_INFO = 32;
     const RECORD_LIMIT = 11;
-    const LAST_RECORD = 2;
+    const LAST_RECORD = 3;
     const NUMBER_RECORD_LAST = 31;
 
     /**
@@ -22,9 +25,9 @@ class ListUserTest extends DuskTestCase
     public function setUp()
     {
         parent::setUp();
-        
-        factory('App\User', self::NUMBER_RECORD_CREATE)->create();
-        factory('App\UserInfo', self::NUMBER_RECORD_CREATE)->create();
+        factory('App\User', 'admin', 1)->create();
+        factory('App\User', self::NUMBER_RECORD_CREATE_USER)->create();
+        factory('App\UserInfo', self::NUMBER_RECORD_CREATE_USER_INFO)->create();
     }
     /**
      * A Dusk test Route show list user.
@@ -34,7 +37,8 @@ class ListUserTest extends DuskTestCase
     public function testRoute()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/user')
+            $browser->loginAs(User::find(1))
+                    ->visit('/admin/user')
                     ->assertSee('List Users');
         });
     }
@@ -46,7 +50,8 @@ class ListUserTest extends DuskTestCase
     public function testRecord()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/user');
+            $browser->loginAs(User::find(1))
+                    ->visit('/admin/user');
             $elements = $browser->elements('.table tr');
             $this->assertCount(self::RECORD_LIMIT, $elements);
         });
@@ -59,7 +64,8 @@ class ListUserTest extends DuskTestCase
     public function testPaginate()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/user?page=4');
+            $browser->loginAs(User::find(1))
+                    ->visit('/admin/user?page=4');
             $elements = $browser->elements('.table tr');
             $this->assertCount(self::LAST_RECORD, $elements);
         });
@@ -72,8 +78,9 @@ class ListUserTest extends DuskTestCase
     public function testLastUser()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/user?page=4')
-                ->assertSee(self::LAST_RECORD);
+            $browser->loginAs(User::find(1))
+                    ->visit('/admin/user?page=4')
+                    ->assertSee(self::LAST_RECORD);
         });
     }
 }

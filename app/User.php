@@ -12,16 +12,19 @@ class User extends Authenticatable
 {
     use Notifiable, SoftDeletes, SearchTrait;
 
+     /**
+     * User role
+     *
+     * @type int
+     */
+    const ROLE_USER = 0;
+    const ROLE_ADMIN = 1;
+    
     protected $search = [
         'name',
         'email'
     ];
 
-    /**
-     * Value of root admin
-     */
-    const ROOT_ADMIN = 1;
-    
     /**
      * The attributes that are mass assignable.
      *
