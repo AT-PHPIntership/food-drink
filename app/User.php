@@ -6,11 +6,12 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\UserInfo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Kyslik\ColumnSortable\Sortable;
 use App\SearchTrait;
 
 class User extends Authenticatable
 {
-    use Notifiable, SoftDeletes, SearchTrait;
+    use Notifiable, SoftDeletes, SearchTrait, Sortable;
 
      /**
      * User role
@@ -26,6 +27,7 @@ class User extends Authenticatable
     ];
     
     public $sortable = [
+        'id',
         'name',
         'email',
     ];

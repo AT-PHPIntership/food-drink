@@ -30,7 +30,7 @@
             <div class="box-body table-responsive no-padding">
               <table class="table table-hover">
                 <tr>
-                  <th>{{__('post.index.post_id')}}</th>
+                  <th>@sortablelink('id', __('post.index.post_id'))</th>
                   <th>{{__('post.index.user_id')}}</th>
                   <th>@sortablelink('product.name', __('post.index.product_name'))</th>
                   <th>{{__('post.index.review')}}</th>

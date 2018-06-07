@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateProductRequest;
 use App\Http\Requests\UpdateProductRequest;
-use App\Http\Requests\SortProductRequest;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Product;
 use App\Category;
@@ -22,18 +21,14 @@ class ProductsController extends Controller
     *
     * @return \Illuminate\Http\Response
     */
-    public function index(SortProductRequest $request)
+    public function index(Request $request)
     {
         $productName = $request->product_name;
         $product = Product::with('category', 'images');
         if ($productName) {
-            $product = $product->search($productName)->when(isset($request->sortBy) && isset($request->dir), function ($query) use ($request) {
-                return $query->orderBy($request->sortBy, $request->dir);
-            });
+            $product = $product->sortable()->search($productName);
         }
-        $product = $product->when(isset($request->sortBy) && isset($request->dir), function ($query) use ($request) {
-            return $query->orderBy($request->sortBy, $request->dir);
-        })->paginate(config('define.number_page_products'))->appends(request()->query());
+        $product = $product->sortable()->paginate(config('define.number_page_products'));
         return view('admin.product.index', compact('product'));
     }
 

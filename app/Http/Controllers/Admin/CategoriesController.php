@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Category;
 use App\Http\Requests\CategoryRequests;
-use App\Http\Requests\SortCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Exceptions\LevelParentException;
 use DB;
@@ -28,9 +27,7 @@ class CategoriesController extends Controller
         } else {
             $categories = Category::with('parentCategories');
         }
-        $categories = $categories->when(isset($request->sortBy) && isset($request->dir), function ($query) use ($request) {
-            return $query->orderBy($request->sortBy, $request->dir);
-        })->paginate(config('define.number_pages'));
+        $categories = $categories->sortable()->paginate(config('define.number_pages'));
         return view('admin.category.index', compact('categories'));
     }
 
