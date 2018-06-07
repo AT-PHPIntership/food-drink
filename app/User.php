@@ -13,15 +13,18 @@ class User extends Authenticatable
 {
     use Notifiable, SoftDeletes, SearchTrait, Sortable;
 
+     /**
+     * User role
+     *
+     * @type int
+     */
+    const ROLE_USER = 0;
+    const ROLE_ADMIN = 1;
+    
     protected $search = [
         'name',
         'email'
     ];
-
-    /**
-     * Value of root admin
-     */
-    const ROOT_ADMIN = 1;
     
     public $sortable = [
         'id',
@@ -48,7 +51,7 @@ class User extends Authenticatable
      */
     public function userInfo()
     {
-        return $this->hasOne(UserInfo::class);
+        return $this->hasOne(UserInfo::class)->withTrashed();
     }
 
     /**

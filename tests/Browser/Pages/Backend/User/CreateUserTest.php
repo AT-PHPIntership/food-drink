@@ -11,14 +11,15 @@ use App\UserInfo;
 class CreateUserTest extends DuskTestCase
 {
     use DatabaseMigrations;
-    const NUMBER_RECORD_CREATE = 5;
-    const NUMBER_RECORD_FIND = 5;
+    const NUMBER_RECORD_CREATE_ADMIN = 5;
+    const NUMBER_RECORD_CREATE_USER = 6;
 
     public function setUp()
     {
         parent::setUp();
-        factory(User::class, self::NUMBER_RECORD_CREATE)->create();
-        factory(UserInfo::class, self::NUMBER_RECORD_CREATE)->create();
+        factory('App\User', 'admin', 1)->create();
+        factory(User::class, self::NUMBER_RECORD_CREATE_ADMIN)->create();
+        factory(UserInfo::class, self::NUMBER_RECORD_CREATE_USER)->create();
     }
 
     /**
@@ -29,7 +30,8 @@ class CreateUserTest extends DuskTestCase
     public function testCreateUserUrl()
     {
         $this->browse(function (Browser $browser){
-            $browser->visit('/admin/user/create')
+            $browser->loginAs(User::find(1))
+                    ->visit('/admin/user/create')
                     ->assertPathIs('/admin/user/create')
                     ->assertSee('Create Form');
         });
@@ -37,14 +39,15 @@ class CreateUserTest extends DuskTestCase
     public function testValidate()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('admin/user/create')
-                ->type('name', '')
-                ->type('email', '')
-                ->type('password', '');
+            $browser->loginAs(User::find(1))
+                    ->visit('admin/user/create')
+                    ->type('name', '')
+                    ->type('email', '')
+                    ->type('password', '');
             $browser->press('Submit')
-                ->assertSee('The name field is required.')
-                ->assertSee('The email field is required.')
-                ->assertSee('The password field is required.');
+                    ->assertSee('The name field is required.')
+                    ->assertSee('The email field is required.')
+                    ->assertSee('The password field is required.');
                 });
     }
     /**
@@ -56,15 +59,16 @@ class CreateUserTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser)
         {
-            $browser->visit('/admin/user/create')
-            ->type('name','Big')
-            ->type('email','big@gmail.com')
-            ->type('password','123123123')
-            ->type('address','132 nhs')
-            ->type('phone','0913');
-            $browser->press('Submit')
-            ->assertPathIs('/admin/user')
-            ->assertSee('Successfully created the user!');
+            $browser->loginAs(User::find(1))
+                    ->visit('/admin/user/create')
+                    ->type('name','Big')
+                    ->type('email','big@gmail.com')
+                    ->type('password','123123123')
+                    ->type('phone', '0913')
+                    ->type('address', '132 nhs')
+                    ->press('submit')
+                    ->assertPathIs('/admin/user')
+                    ->assertSee('Successfully created the user!');
             $this->assertDatabaseHas('users', [
                 'name' => 'Big',
                 'email' => 'big@gmail.com',

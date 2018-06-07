@@ -69,7 +69,10 @@
                     <a href="#" class="btn btn-default btn-flat">{{__('admin.profile')}}</a>
                   </div>
                   <div class="pull-right">
-                    <a href="#" class="btn btn-default btn-flat">{{__('admin.sign_out')}}</a>
+                    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST">
+                      @csrf
+                      <input type="submit" value="{{__('admin.sign_out')}}" class="btn btn-default btn-flat"/>
+                    </form>
                   </div>
                 </li>
               </ul>
