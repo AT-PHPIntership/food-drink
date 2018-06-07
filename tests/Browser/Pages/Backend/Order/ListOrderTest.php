@@ -14,7 +14,7 @@ class ListOrderTest extends DuskTestCase
     
     const NUMBER_RECORD_CREATE = 15;
     const RECORD_LIMIT = 11;
-    const NUMBER_RECORD_LAST = 7;
+    const NUMBER_RECORD_LAST = 6;
 
     /**
     * Override function setUp() for make user login
@@ -24,13 +24,24 @@ class ListOrderTest extends DuskTestCase
     public function setUp()
     {
         parent::setUp();
+        factory(User::class, self::NUMBER_RECORD_CREATE)->create();
+        factory(Order::class, self::NUMBER_RECORD_CREATE)->create();
+    }
+
+    /**
+    * Override function setUp() for make user login
+    *
+    * @return void
+    */
+    public function setUpOneRecord()
+    {
+        parent::setUp();
         factory(User::class)->create([
             'name' => 'test name',
             'email' => 'testemail@gmail.com'
         ]);
         factory(Order::class)->create();
     }
-
 
     /**
      * A Dusk test show list orders.
@@ -39,8 +50,7 @@ class ListOrderTest extends DuskTestCase
      */
     public function testShowListOrder()
     {
-        factory(User::class, self::NUMBER_RECORD_CREATE)->create();
-        factory(Order::class, self::NUMBER_RECORD_CREATE)->create();
+        $this->setUp();
         $this->browse(function (Browser $browser) {
             $browser->visit('/admin/order')
                     ->assertPathIs('/admin/order')
@@ -57,8 +67,7 @@ class ListOrderTest extends DuskTestCase
     */
     public function testPaginateLast()
     {
-        factory(User::class, self::NUMBER_RECORD_CREATE)->create();
-        factory(Order::class, self::NUMBER_RECORD_CREATE)->create();
+        $this->setUp();
         $this->browse(function (Browser $browser) {
             $browser->visit('/admin/order?page=2')
                     ->assertSee('Show list orders');
@@ -74,6 +83,7 @@ class ListOrderTest extends DuskTestCase
     */
     public function testSearchNameAndEmail()
     {
+        $this->setUpOneRecord();
         $this->browse(function (Browser $browser) {
             $browser->visit('/admin/order')
                     ->type('search', 'test name')
@@ -95,6 +105,7 @@ class ListOrderTest extends DuskTestCase
      */
     public function testSearchNoRecordReturn()
     {
+        $this->setUpOneRecord();
         $this->browse(function (Browser $browser) {
             $browser->visit('/admin/order')
                         ->type('search', 'test fail')
