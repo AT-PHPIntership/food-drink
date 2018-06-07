@@ -31,7 +31,7 @@ trait ApiResponse
      * Response list data
      *
      * @param LengthAwarePaginator $responseData list resource
-     * @param int                    $code         response status
+     * @param int                  $code         response status
      *
      * @return \Illuminate\Http\Response
      */

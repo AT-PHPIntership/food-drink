@@ -11,7 +11,9 @@ use App\Http\Requests\SortApiProdctRequest;
 class ProductController extends ApiController
 {
     /**
-     * index Product 
+     * Display a doc of the resource.
+     *
+     * @param \Illuminate\Http\Request $request request
      *
      * @return \Illuminate\Http\Response
      */
@@ -25,8 +27,8 @@ class ProductController extends ApiController
                             return $query->limit($request->limit);
                         })
                         ->when(isset($request->category), function ($query) use ($request) {
-                            return $query->whereHas('category', function ($query) use($request){
-                                $query->where('id', $request->category);
+                            return $query->whereHas('category', function ($query) use ($request) {
+                                        $query->where('id', $request->category);
                             });
                         })->get();
         return $this->responseSuccess($product);
