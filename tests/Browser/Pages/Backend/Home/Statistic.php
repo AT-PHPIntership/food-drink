@@ -25,23 +25,24 @@ class Statistic extends DuskTestCase
         factory('App\User', 'admin', 1)->create();
         factory(User::class, self::NUMBER_RECORD_CREATE)->create();
         factory(Order::class, self::NUMBER_RECORD_CREATE)->create();
+        $this->user = User::find(1);
     }
 
     /**
-     * A Dusk test example.
+     * A Dusk test Route Home.
      *
      * @return void
      */
     public function testRouteHome()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs(User::find(1))
+            $browser->loginAs($this->user)
                     ->visit('/admin')
                     ->assertSee('TOTAL PRODUCTS', 'TOTAL ORDERED', 'Latest Orders');
         });
     }
 
-        /**
+    /**
      * Test value show on page.
      *
      * @return void
@@ -49,7 +50,7 @@ class Statistic extends DuskTestCase
     public function testValueOnHomePage()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs(User::find(1))
+            $browser->loginAs($this->user)
                     ->visit('/admin')
                     ->assertSee('TOTAL PRODUCTS', 'TOTAL ORDERED', 'Latest Orders');
             $elements = $browser->elements('.table tr');
