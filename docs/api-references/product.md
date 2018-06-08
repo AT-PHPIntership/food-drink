@@ -21,7 +21,8 @@ Get product
 ##### Example
 | URL | Description |
 |---|---|
-| /api/products?sort=new&limit=10 | Get Top 10 New product |
+| /api/products?sort=created_at&limit=10 | Get Top 10 New product |
+| /api/products?sort=avg_rate&limit=10 | Get Top 10 Rate product |
 | /api/products?category=1 | Get Product By Category Food |
 
 #### Response
