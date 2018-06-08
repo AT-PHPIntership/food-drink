@@ -222,3 +222,57 @@ Get product
     ]
 }
 ```
+### `GET` Product Detail
+```
+/api/products/{products}
+```
+Get product
+##### Example
+| URL | Description |
+|---|---|
+| /api/products/5 | Get Product Detail by id = 5|
+#### Response
+```json
+{
+    "meta": {
+        "status": "Successfully",
+        "code": 200
+    },
+    "data": [
+        {
+            "id": 5,
+            "name": "Ms. Mozell Gleichner V",
+            "price": "40.00",
+            "quantity": 4,
+            "category_id": 8,
+            "preview": "Distinctio porro eum nulla voluptatum. Iste quaerat enim occaecati ea id. Suscipit possimus blanditiis accusantium. Quam dolorem molestiae aut corporis eum recusandae id.",
+            "description": "Qui nulla aut rem voluptatibus mollitia aut pariatur unde. Vel dolorum quis ut dolorum ea. Ex impedit veniam id cupiditate dolorem rerum quia. Iste esse labore dolores odio qui.",
+            "avg_rate": 4.3,
+            "sum_rate": 2,
+            "total_rate": 63,
+            "created_at": "1983-06-17 06:32:59",
+            "updated_at": "1994-10-19 12:04:49",
+            "deleted_at": null,
+            "category": {
+                "id": 8,
+                "name": "Lager Beer",
+                "parent_id": 7,
+                "created_at": "2018-06-07 08:38:42",
+                "updated_at": "2018-06-07 08:38:42",
+                "deleted_at": null,
+                "level": 2
+            },
+            "images": [
+                {
+                    "id": 17,
+                    "image": "default-product.jpg",
+                    "product_id": 5,
+                    "created_at": "2018-06-07 08:38:43",
+                    "updated_at": "2018-06-07 08:38:43",
+                    "deleted_at": null
+                }
+            ]
+        }
+    ]
+}
+```
