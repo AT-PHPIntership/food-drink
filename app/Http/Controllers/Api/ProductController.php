@@ -33,4 +33,17 @@ class ProductController extends ApiController
                         })->get();
         return $this->responseSuccess($product);
     }
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param id $id id product
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function show($id)
+    {
+        $product = Product::with('images', 'category')->where('id', '=', $id)->get();
+        return $this->responseSuccess($product);
+    }
 }
