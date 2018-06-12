@@ -14,6 +14,13 @@ class Image extends Model
         'product_id',
         'deleted_at'
     ];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['image_url'];
     
     /**
      * Image Belong To Product
@@ -33,22 +40,5 @@ class Image extends Model
     public function getImageUrlAttribute()
     {
         return asset(config('define.images_path_products') . $this->image);
-    }
-
-    /**
-    * Get the path product's image.
-    *
-    * @return string
-    */
-    public function toArray()
-    {
-        return [
-           'id' => $this->id,
-           'product_id' => $this->product_id,
-           'image' => $this->image_url,
-           'created_at' => $this->created_at,
-           'updated_at' => $this->updated_at,
-           'deleted_at' => $this->deleted_at,
-        ];
     }
 }
