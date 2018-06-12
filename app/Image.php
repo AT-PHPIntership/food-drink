@@ -14,6 +14,13 @@ class Image extends Model
         'product_id',
         'deleted_at'
     ];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['image_url'];
     
     /**
      * Image Belong To Product

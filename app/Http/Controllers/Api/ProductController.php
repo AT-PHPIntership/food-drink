@@ -34,7 +34,20 @@ class ProductController extends ApiController
                         })->get();
         return $this->responseSuccess($product);
     }
-
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param Product $product Product object
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function show(Product $product)
+    {
+        $product = $product->load('images', 'category');
+        return $this->responseSuccess($product);
+    }
+    
     /**
      * Get all product's post
      *
