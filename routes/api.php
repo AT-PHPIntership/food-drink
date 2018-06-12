@@ -20,4 +20,5 @@ Route::group(['namespace' => 'Api'], function () {
     Route::apiResource('products', 'ProductController')->only([
         'index'
     ]);
+    Route::get('posts', 'ProductController@getPosts');
 });
