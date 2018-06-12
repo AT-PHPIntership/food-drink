@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateProductRequest;
 use App\Http\Requests\UpdateProductRequest;
-use App\Http\Requests\SortProductRequest;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Product;
 use App\Category;
@@ -22,7 +21,7 @@ class ProductsController extends Controller
     *
     * @return \Illuminate\Http\Response
     */
-    public function index(SortProductRequest $request)
+    public function index(Request $request)
     {
         $productName = $request->product_name;
         $product = Product::with('category', 'images');

@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Category;
 use App\Http\Requests\CategoryRequests;
-use App\Http\Requests\SortCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Exceptions\LevelParentException;
 use DB;

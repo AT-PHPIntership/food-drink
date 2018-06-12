@@ -32,12 +32,12 @@
             <div class="box-body table-responsive no-padding">
               <table class="table table-hover">
                 <tr>
-                  <th>{{ __('order.admin.index.id') }}</th>
-                  <th>{{ __('order.admin.index.name_user') }}</th>
-                  <th>{{ __('order.admin.index.email_user') }}</th>
-                  <th>{{ __('order.admin.index.total') }}</th>
+                  <th>@sortablelink('id', __('order.admin.index.id'))</th>
+                  <th>@sortablelink('user.name', __('order.admin.index.name_user'))</th>
+                  <th>@sortablelink('user.email', __('order.admin.index.email_user'))</th>
+                  <th>@sortablelink('total', __('order.admin.index.total'))</th>
                   <th>{{ __('order.admin.index.status') }}</th>
-                  <th>{{ __('order.admin.index.date')}}</th>
+                  <th>@sortablelink('updated_at', __('order.admin.index.date'))</th>
                   <th>{{ __('order.admin.index.action') }}</th>
                 </tr>
                   @foreach ($orders as $order)
@@ -58,7 +58,7 @@
                   </tr>
                   @endforeach
               </table>
-              {{ $orders->links() }}
+              {{ $orders->appends(\Request::except('page'))->render() }}
             </div>
             <!-- /.box-body -->
           </div>
