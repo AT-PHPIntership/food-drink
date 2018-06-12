@@ -34,4 +34,16 @@ class Image extends Model
     {
         return asset(config('define.images_path_products') . $this->image);
     }
+
+    public function toArray()
+   {
+       return [
+           'id' => $this->id,
+           'product_id' => $this->product_id,
+           'image' => $this->getImageUrlAttribute(),
+           'created_at' => $this->created_at,
+           'updated_at' => $this->updated_at,
+           'deleted_at' => $this->deleted_at,
+       ];
+   }
 }
