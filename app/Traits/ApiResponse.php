@@ -71,20 +71,4 @@ trait ApiResponse
             ],
         ], $code);
     }
-
-    /**
-     * Show All data of a Collection
-     *
-     * @param Illuminate\Support\Collection $collection data to response
-     * @param statusCode                    $code       status code for response
-     *
-     * @return \Illuminate\Http\Response
-     */
-    protected function showAll(Collection $collection, $code = 200)
-    {
-        if ($collection->isEmpty()) {
-            return $this->responseSuccess(['data' => $collection], $code);
-        }
-        return $this->responseSuccess($collection, $code);
-    }
 }

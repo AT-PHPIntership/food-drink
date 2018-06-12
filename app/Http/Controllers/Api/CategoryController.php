@@ -16,7 +16,7 @@ class CategoryController extends ApiController
      */
     public function index()
     {
-        $categories = Category::with('children.children')->get();
-        return $this->showAll($categories, Response::HTTP_OK);
+        $categories = Category::where('level', Category::DEFAULT_VALUE)->with('children.children')->get();
+        return $this->responseSuccess($categories);
     }
 }

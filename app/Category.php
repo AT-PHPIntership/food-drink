@@ -17,7 +17,6 @@ class Category extends Model
      */
     const DEFAULT_CATEGORY_FOOD = 1;
     const DEFAULT_CATEGORY_DRINK = 2;
-
     public $sortable = [
         'id',
         'name',
