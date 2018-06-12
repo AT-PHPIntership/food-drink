@@ -45,7 +45,7 @@ class Image extends Model
         return [
            'id' => $this->id,
            'product_id' => $this->product_id,
-           'image' => $this->getImageUrlAttribute(),
+           'image' => $this->image_url,
            'created_at' => $this->created_at,
            'updated_at' => $this->updated_at,
            'deleted_at' => $this->deleted_at,
