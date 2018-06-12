@@ -34,15 +34,4 @@ class ProductController extends ApiController
                         })->get();
         return $this->responseSuccess($product);
     }
-
-    /**
-     * Get all product's post
-     *
-     * @return Illuminate\Http\Response
-     */
-    public function getPosts()
-    {
-        $posts = Post::with('product', 'user.userInfo')->paginate(config('define.number_page_posts_user'));
-        return $this->responsePaginate($posts);
-    }
 }
