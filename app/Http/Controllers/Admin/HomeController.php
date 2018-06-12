@@ -24,7 +24,7 @@ class HomeController extends Controller
         $totalProduct = Product::count();
         $totalOrder = Order::where('status', Order::ACCEPTED)->count();
         $totalRevenue = Order::where('status', Order::ACCEPTED)->sum('total');
-        $latestOrders = Order::with('user')->where('status', Order::ACCEPTED)->orderBy('orders.updated_at', 'desc')->limit(Order::LATEST_ORDERS)->get();
+        $latestOrders = Order::with('user')->where('status', Order::PENDING)->orderBy('orders.updated_at', 'desc')->limit(Order::LATEST_ORDERS)->get();
         $totalProductOrdered = OrderDetail::whereHas('order', function ($query) {
             $query->where('status', '=', Order::ACCEPTED);
         })->sum('quantity');
