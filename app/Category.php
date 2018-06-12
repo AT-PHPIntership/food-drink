@@ -70,4 +70,14 @@ class Category extends Model
     {
         return $this->hasMany(self::class, 'id', 'parent_id');
     }
+
+    /**
+     * Sub Category beLongto  Parent Category
+     *
+     * @return mixed
+     */
+    public function children()
+    {
+        return $this->hasMany(self::class, 'parent_id', 'id');
+    }
 }
