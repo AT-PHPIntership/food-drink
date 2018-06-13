@@ -9,7 +9,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 trait ApiResponser
 {
-    protected $limit = 20;
+    protected $unit = 20;
     /**
      * Return success Response
      *
@@ -96,19 +96,19 @@ trait ApiResponser
     protected function paginate(Collection $collection)
     {
         $rules = [
-            'limit' => 'integer|min:2|max:50'
+            'unit' => 'integer|min:2|max:50'
         ];
         
         Validator::validate(request()->all(), $rules);
         
         $page = LengthAwarePaginator::resolveCurrentPage();
-        if (request()->has('limit')) {
-            $this->limit = request()->limit;
+        if (request()->has('unit')) {
+            $this->unit = request()->unit;
         }
         
-        $result = $collection->slice(($page - 1) * $this->limit, $this->limit);
+        $result = $collection->slice(($page - 1) * $this->unit, $this->unit);
         
-        $paginated = new LengthAwarePaginator($result, $collection->count(), $this->limit, $page, [
+        $paginated = new LengthAwarePaginator($result, $collection->count(), $this->unit, $page, [
             'path' => LengthAwarePaginator::resolveCurrentPath()
         ]);
         
