@@ -32,194 +32,211 @@ Get product
         "status": "Successfully",
         "code": 200
     },
-    "data": [
-        {
-            "id": 11,
-            "name": "Mr. Rickey Lowe DVM",
-            "price": "141.00",
-            "quantity": 9,
-            "category_id": 7,
-            "preview": "Et enim inventore sed incidunt fugit aut quia. Et sed et doloremque adipisci ad. Et non qui minus recusandae doloribus est reiciendis.",
-            "description": "Odit corporis sunt iusto a culpa. Voluptatem omnis tenetur exercitationem possimus eum quia maiores. Quia et ut facilis voluptatem et eligendi ad. Rem eum libero sequi sit.",
-            "avg_rate": 1.2,
-            "sum_rate": 15,
-            "total_rate": 34,
-            "created_at": "1978-06-26 08:42:07",
-            "updated_at": "2016-11-07 16:00:42",
-            "deleted_at": null,
-            "category": {
-                "id": 7,
-                "name": "Beer",
-                "parent_id": 2,
-                "created_at": "2018-06-06 07:32:14",
-                "updated_at": "2018-06-06 07:32:14",
-                "deleted_at": null,
-                "level": 1
-            },
-            "images": [
-                {
-                    "id": 9,
-                    "image": "default-product.jpg",
-                    "product_id": 9,
-                    "created_at": "2018-06-06 07:32:15",
-                    "updated_at": "2018-06-06 07:32:15",
-                    "deleted_at": null
-                }
-            ]
-        },
-        {
-            "id": 1,
-            "name": "Karen Leffler",
-            "price": "47.00",
-            "quantity": 15,
-            "category_id": 4,
-            "preview": "Laudantium repudiandae velit dolores veniam ut et. Aut dolor eius voluptas. Sed voluptatem recusandae voluptas et dolorem odit.",
-            "description": "Et vitae ducimus explicabo repellat. Quibusdam natus quod qui et corporis. Velit doloribus recusandae accusantium veritatis necessitatibus eius ullam.",
-            "avg_rate": 1.4,
-            "sum_rate": 3,
-            "total_rate": 38,
-            "created_at": "1979-06-07 03:03:06",
-            "updated_at": "1991-04-27 22:54:46",
-            "deleted_at": null,
-            "category": {
-                "id": 4,
-                "name": "Gala Apple",
-                "parent_id": 3,
-                "created_at": "2018-06-06 07:32:14",
-                "updated_at": "2018-06-06 07:32:14",
-                "deleted_at": null,
-                "level": 2
-            },
-            "images": [
-                {
-                    "id": 1,
-                    "image": "default-product.jpg",
-                    "product_id": 1,
-                    "created_at": "2018-06-06 07:32:15",
-                    "updated_at": "2018-06-06 07:32:15",
-                    "deleted_at": null
-                },
-                {
-                    "id": 6,
-                    "image": "default-product.jpg",
-                    "product_id": 1,
-                    "created_at": "2018-06-06 07:32:15",
-                    "updated_at": "2018-06-06 07:32:15",
-                    "deleted_at": null
-                },
-                {
-                    "id": 11,
-                    "image": "default-product.jpg",
-                    "product_id": 1,
-                    "created_at": "2018-06-06 07:32:15",
-                    "updated_at": "2018-06-06 07:32:15",
-                    "deleted_at": null
-                }
-            ]
-        },
-        {
-            "id": 8,
-            "name": "Dr. Jamaal Beier Jr.",
-            "price": "26.00",
-            "quantity": 9,
-            "category_id": 1,
-            "preview": "Velit similique quo saepe in. Voluptatem ad iusto recusandae molestias. Nobis et ut qui qui.",
-            "description": "Debitis magnam omnis repellendus rerum et quisquam dolor. Excepturi ratione occaecati doloremque facilis nam unde. Quod aspernatur aut distinctio voluptatum soluta dolorem.",
-            "avg_rate": 4.4,
-            "sum_rate": 15,
-            "total_rate": 62,
-            "created_at": "1980-06-04 23:40:38",
-            "updated_at": "1994-12-14 17:50:31",
-            "deleted_at": null,
-            "category": {
+    "data": {
+        "current_page": 1,
+        "data": [
+            {
                 "id": 1,
-                "name": "food",
-                "parent_id": 0,
-                "created_at": "2018-06-06 07:32:14",
-                "updated_at": "2018-06-06 07:32:14",
+                "name": "Doris Ledner Sr.",
+                "price": "51.00",
+                "quantity": 8,
+                "category_id": 4,
+                "preview": "Id est sed enim soluta ipsum. Adipisci et sunt veniam impedit sunt qui. Ea ipsam mollitia molestiae nam facere libero perspiciatis.",
+                "description": "Quia culpa voluptates provident esse voluptatum laborum. Aut sed quo non rerum quam voluptatibus. Quo non saepe doloribus rerum unde.",
+                "avg_rate": 2.9,
+                "sum_rate": 8,
+                "total_rate": 62,
+                "created_at": "1998-07-13 20:41:07",
+                "updated_at": "1990-10-20 17:15:32",
                 "deleted_at": null,
-                "level": 0
+                "category": {
+                    "id": 4,
+                    "name": "Gala Apple",
+                    "parent_id": 3,
+                    "created_at": "2018-06-13 04:33:41",
+                    "updated_at": "2018-06-13 04:33:41",
+                    "deleted_at": null,
+                    "level": 2
+                },
+                "images": []
             },
-            "images": [
-                {
+            {
+                "id": 2,
+                "name": "Solon Price",
+                "price": "50.00",
+                "quantity": 1,
+                "category_id": 4,
+                "preview": "Aliquid illo eos commodi modi itaque repellat. Excepturi est asperiores vero incidunt. Et quisquam at eaque laudantium. Quibusdam exercitationem et velit laboriosam ipsum sed ipsa.",
+                "description": "Dolores et itaque non dicta nemo maxime quidem omnis. Hic sit unde occaecati optio voluptatum. Ducimus distinctio non corrupti voluptates sint. Doloribus iste sit corrupti modi reprehenderit et.",
+                "avg_rate": 2.2,
+                "sum_rate": 12,
+                "total_rate": 43,
+                "created_at": "1983-11-30 13:42:30",
+                "updated_at": "1981-07-06 01:25:33",
+                "deleted_at": null,
+                "category": {
+                    "id": 4,
+                    "name": "Gala Apple",
+                    "parent_id": 3,
+                    "created_at": "2018-06-13 04:33:41",
+                    "updated_at": "2018-06-13 04:33:41",
+                    "deleted_at": null,
+                    "level": 2
+                },
+                "images": [
+                    {
+                        "id": 3,
+                        "image": "default-product.jpg",
+                        "product_id": 2,
+                        "created_at": "2018-06-13 04:33:41",
+                        "updated_at": "2018-06-13 04:33:41",
+                        "deleted_at": null,
+                        "image_url": "http://192.168.33.10/images/products/default-product.jpg"
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "name": "Larue Koch",
+                "price": "113.00",
+                "quantity": 10,
+                "category_id": 6,
+                "preview": "Molestias rerum et occaecati. Sunt rerum est nihil aut. Consequuntur nam voluptas reprehenderit fugit impedit. Dolorum vel dolorem iusto nam fuga.",
+                "description": "Ea debitis eligendi asperiores praesentium. Facilis vel similique dolor id error nostrum accusantium. Quis facere et est est et qui.",
+                "avg_rate": 3,
+                "sum_rate": 15,
+                "total_rate": 43,
+                "created_at": "2001-08-03 19:03:08",
+                "updated_at": "2001-08-16 12:58:47",
+                "deleted_at": null,
+                "category": {
+                    "id": 6,
+                    "name": "Envy Apple",
+                    "parent_id": 3,
+                    "created_at": "2018-06-13 04:33:41",
+                    "updated_at": "2018-06-13 04:33:41",
+                    "deleted_at": null,
+                    "level": 2
+                },
+                "images": [
+                    {
+                        "id": 8,
+                        "image": "default-product.jpg",
+                        "product_id": 3,
+                        "created_at": "2018-06-13 04:33:41",
+                        "updated_at": "2018-06-13 04:33:41",
+                        "deleted_at": null,
+                        "image_url": "http://192.168.33.10/images/products/default-product.jpg"
+                    }
+                ]
+            },
+            {
+                "id": 4,
+                "name": "Herman Blanda",
+                "price": "24.00",
+                "quantity": 15,
+                "category_id": 3,
+                "preview": "Est in tenetur consequatur ut. Assumenda quidem dolor dolorum sapiente aut occaecati aut. Magnam autem dolores quia necessitatibus ut ut iure.",
+                "description": "Assumenda voluptatem facere soluta totam eaque minima. Iusto officia est fugit sed sint saepe. Possimus mollitia similique similique maiores amet.",
+                "avg_rate": 2.9,
+                "sum_rate": 10,
+                "total_rate": 65,
+                "created_at": "2016-05-22 06:56:46",
+                "updated_at": "1988-08-06 23:09:35",
+                "deleted_at": null,
+                "category": {
                     "id": 3,
-                    "image": "default-product.jpg",
-                    "product_id": 8,
-                    "created_at": "2018-06-06 07:32:15",
-                    "updated_at": "2018-06-06 07:32:15",
-                    "deleted_at": null
-                }
-            ]
-        },
-        {
-            "id": 12,
-            "name": "Alessandro Cartwright",
-            "price": "121.00",
-            "quantity": 8,
-            "category_id": 10,
-            "preview": "Assumenda repellendus delectus expedita. Doloribus sapiente molestiae et doloribus. Est quis provident aut voluptas voluptas.",
-            "description": "Eligendi aut aut illum quis. Qui rerum perferendis similique sed exercitationem animi necessitatibus. Voluptatem quia adipisci sint quae.",
-            "avg_rate": 4,
-            "sum_rate": 1,
-            "total_rate": 79,
-            "created_at": "1983-05-18 12:37:40",
-            "updated_at": "1988-10-13 18:23:41",
-            "deleted_at": null,
-            "category": {
-                "id": 10,
-                "name": "Way Beer",
-                "parent_id": 7,
-                "created_at": "2018-06-06 07:32:14",
-                "updated_at": "2018-06-06 07:32:14",
-                "deleted_at": null,
-                "level": 2
+                    "name": "apple",
+                    "parent_id": 1,
+                    "created_at": "2018-06-13 04:33:41",
+                    "updated_at": "2018-06-13 04:33:41",
+                    "deleted_at": null,
+                    "level": 1
+                },
+                "images": [
+                    {
+                        "id": 17,
+                        "image": "default-product.jpg",
+                        "product_id": 4,
+                        "created_at": "2018-06-13 04:33:41",
+                        "updated_at": "2018-06-13 04:33:41",
+                        "deleted_at": null,
+                        "image_url": "http://192.168.33.10/images/products/default-product.jpg"
+                    }
+                ]
             },
-            "images": [
-                {
-                    "id": 9,
-                    "image": "default-product.jpg",
-                    "product_id": 9,
-                    "created_at": "2018-06-06 07:32:15",
-                    "updated_at": "2018-06-06 07:32:15",
-                    "deleted_at": null
-                }
-            ]
-        },
-        {
-            "id": 9,
-            "name": "Darron Torphy",
-            "price": "113.00",
-            "quantity": 5,
-            "category_id": 8,
-            "preview": "Esse quas molestiae officiis cum officia quam. Libero nobis corrupti esse temporibus tempore labore. Qui qui suscipit accusamus deserunt illum.",
-            "description": "In sed at sit voluptatem. Error doloremque in dicta. Impedit voluptatem illum eveniet ullam et saepe qui.",
-            "avg_rate": 2.9,
-            "sum_rate": 5,
-            "total_rate": 19,
-            "created_at": "1985-04-02 13:46:44",
-            "updated_at": "1988-11-11 14:52:23",
-            "deleted_at": null,
-            "category": {
-                "id": 8,
-                "name": "Lager Beer",
-                "parent_id": 7,
-                "created_at": "2018-06-06 07:32:14",
-                "updated_at": "2018-06-06 07:32:14",
+            {
+                "id": 5,
+                "name": "Katarina Sauer",
+                "price": "148.00",
+                "quantity": 3,
+                "category_id": 8,
+                "preview": "Dicta pariatur consectetur et sed. Quidem in animi impedit placeat vitae nisi est. Et perspiciatis soluta nostrum beatae.",
+                "description": "Et culpa aut adipisci praesentium quae aspernatur rerum. Aspernatur ut voluptas illum aut ratione nihil et.",
+                "avg_rate": 4,
+                "sum_rate": 6,
+                "total_rate": 62,
+                "created_at": "1995-12-10 12:04:39",
+                "updated_at": "2015-05-18 03:37:45",
                 "deleted_at": null,
-                "level": 2
+                "category": {
+                    "id": 8,
+                    "name": "Lager Beer",
+                    "parent_id": 7,
+                    "created_at": "2018-06-13 04:33:41",
+                    "updated_at": "2018-06-13 04:33:41",
+                    "deleted_at": null,
+                    "level": 2
+                },
+                "images": []
             },
-            "images": [
-                {
-                    "id": 9,
-                    "image": "default-product.jpg",
-                    "product_id": 9,
-                    "created_at": "2018-06-06 07:32:15",
-                    "updated_at": "2018-06-06 07:32:15",
-                    "deleted_at": null
-                }
-            ]
-        },
-    ]
+            {
+                "id": 6,
+                "name": "Filomena Hilll",
+                "price": "79.00",
+                "quantity": 13,
+                "category_id": 8,
+                "preview": "Iure nemo veniam dolor voluptate. Fugiat consequuntur voluptatum reiciendis optio non numquam. Sunt reiciendis consectetur quia.",
+                "description": "Nostrum ipsa sunt officiis nemo ab praesentium cum. Est illum omnis numquam inventore quibusdam ipsum et. Asperiores nisi aut quas deleniti nobis quas qui. Temporibus aut sint enim rerum ut sunt.",
+                "avg_rate": 1.1,
+                "sum_rate": 12,
+                "total_rate": 69,
+                "created_at": "2012-01-01 12:53:50",
+                "updated_at": "2016-10-08 12:01:29",
+                "deleted_at": null,
+                "category": {
+                    "id": 8,
+                    "name": "Lager Beer",
+                    "parent_id": 7,
+                    "created_at": "2018-06-13 04:33:41",
+                    "updated_at": "2018-06-13 04:33:41",
+                    "deleted_at": null,
+                    "level": 2
+                },
+                "images": [
+                    {
+                        "id": 16,
+                        "image": "default-product.jpg",
+                        "product_id": 6,
+                        "created_at": "2018-06-13 04:33:41",
+                        "updated_at": "2018-06-13 04:33:41",
+                        "deleted_at": null,
+                        "image_url": "http://192.168.33.10/images/products/default-product.jpg"
+                    }
+                ]
+            }
+        ],
+        "first_page_url": "http://192.168.33.10/api/products?limit=6&page=1",
+        "from": 1,
+        "last_page": 4,
+        "last_page_url": "http://192.168.33.10/api/products?limit=6&page=4",
+        "next_page_url": "http://192.168.33.10/api/products?limit=6&page=2",
+        "path": "http://192.168.33.10/api/products",
+        "per_page": "6",
+        "prev_page_url": null,
+        "to": 6,
+        "total": 20
+    }
 }
 ```
 ### `GET` Product Detail
@@ -238,41 +255,40 @@ Get product
         "status": "Successfully",
         "code": 200
     },
-    "data": [
-        {
-            "id": 5,
-            "name": "Ms. Mozell Gleichner V",
-            "price": "40.00",
-            "quantity": 4,
-            "category_id": 8,
-            "preview": "Distinctio porro eum nulla voluptatum. Iste quaerat enim occaecati ea id. Suscipit possimus blanditiis accusantium. Quam dolorem molestiae aut corporis eum recusandae id.",
-            "description": "Qui nulla aut rem voluptatibus mollitia aut pariatur unde. Vel dolorum quis ut dolorum ea. Ex impedit veniam id cupiditate dolorem rerum quia. Iste esse labore dolores odio qui.",
-            "avg_rate": 4.3,
-            "sum_rate": 2,
-            "total_rate": 63,
-            "created_at": "1983-06-17 06:32:59",
-            "updated_at": "1994-10-19 12:04:49",
-            "deleted_at": null,
-            "category": {
-                "id": 8,
-                "name": "Lager Beer",
-                "parent_id": 7,
-                "created_at": "2018-06-07 08:38:42",
-                "updated_at": "2018-06-07 08:38:42",
+    "data": {
+        "id": 4,
+        "name": "Herman Blanda",
+        "price": "24.00",
+        "quantity": 15,
+        "category_id": 3,
+        "preview": "Est in tenetur consequatur ut. Assumenda quidem dolor dolorum sapiente aut occaecati aut. Magnam autem dolores quia necessitatibus ut ut iure.",
+        "description": "Assumenda voluptatem facere soluta totam eaque minima. Iusto officia est fugit sed sint saepe. Possimus mollitia similique similique maiores amet.",
+        "avg_rate": 2.9,
+        "sum_rate": 10,
+        "total_rate": 65,
+        "created_at": "2016-05-22 06:56:46",
+        "updated_at": "1988-08-06 23:09:35",
+        "deleted_at": null,
+        "images": [
+            {
+                "id": 17,
+                "image": "default-product.jpg",
+                "product_id": 4,
+                "created_at": "2018-06-13 04:33:41",
+                "updated_at": "2018-06-13 04:33:41",
                 "deleted_at": null,
-                "level": 2
-            },
-            "images": [
-                {
-                    "id": 17,
-                    "image": "default-product.jpg",
-                    "product_id": 5,
-                    "created_at": "2018-06-07 08:38:43",
-                    "updated_at": "2018-06-07 08:38:43",
-                    "deleted_at": null
-                }
-            ]
+                "image_url": "http://192.168.33.10/images/products/default-product.jpg"
+            }
+        ],
+        "category": {
+            "id": 3,
+            "name": "apple",
+            "parent_id": 1,
+            "created_at": "2018-06-13 04:33:41",
+            "updated_at": "2018-06-13 04:33:41",
+            "deleted_at": null,
+            "level": 1
         }
-    ]
+    }
 }
 ```

@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Api\ApiController;
 use App\Product;
 use App\Order;
-use App\Http\Requests\SortApiProductRequest;
+use App\Http\Requests\Api\SortApiProductRequest;
+use Symfony\Component\HttpFoundation\Response;
 use App\Post;
 
 class ProductController extends ApiController
@@ -20,22 +21,22 @@ class ProductController extends ApiController
      */
     public function index(SortApiProductRequest $request)
     {
-        $product = Product::with('category', 'images')
-                        ->when(isset($request->name), function ($query) use ($request) {
-                            return $query->where('name', 'like', $request->name);
-                        })
-                        ->when(isset($request->sort) && isset($request->sort_type), function ($query) use ($request) {
-                            return $query->orderBy($request->sort, $request->sort_type);
-                        })
-                        ->when(isset($request->limit), function ($query) use ($request) {
-                            return $query->limit($request->limit);
-                        })
-                        ->when(isset($request->category), function ($query) use ($request) {
-                            return $query->whereHas('category', function ($query) use ($request) {
-                                        $query->where('id', $request->category);
-                            });
-                        })->get();
-        return $this->responseSuccess($product);
+        $products = Product::with('category', 'images')
+                    ->when(isset($request->name), function ($query) use ($request) {
+                        return $query->where('name', 'like', $request->name);
+                    })
+                    ->when(isset($request->sort) && isset($request->sort_type), function ($query) use ($request) {
+                        return $query->orderBy($request->sort, $request->sort_type);
+                    })
+                    ->when(isset($request->limit), function ($query) use ($request) {
+                        return $query->limit($request->limit);
+                    })
+                    ->when(isset($request->category), function ($query) use ($request) {
+                        return $query->whereHas('category', function ($query) use ($request) {
+                                    $query->where('id', $request->category);
+                        });
+                    })->get();
+        return $this->showAll($products, Response::HTTP_OK);
     }
     
     /**
@@ -48,7 +49,7 @@ class ProductController extends ApiController
     public function show(Product $product)
     {
         $product = $product->load('images', 'category');
-        return $this->responseSuccess($product);
+        return $this->showOne($product, Response::HTTP_OK);
     }
     
     /**
@@ -58,7 +59,7 @@ class ProductController extends ApiController
      */
     public function getPosts()
     {
-        $posts = Post::with('product', 'user.userInfo')->paginate(config('define.number_page_posts_user'));
-        return $this->responsePaginate($posts);
+        $posts = Post::with('product', 'user.userInfo')->get();
+        return $this->showAll($posts, Response::HTTP_OK);
     }
 }
