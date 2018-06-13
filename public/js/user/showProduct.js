@@ -38,6 +38,6 @@ $.ajax({
                 </div>\
             </div>';
         });
-        document.getElementById('food-product')[0].innerHTML += html;
+        document.getElementsByClassName('food-product')[0].innerHTML += html;
     }
  });
