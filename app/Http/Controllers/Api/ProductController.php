@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Api\ApiController;
 use App\Product;
 use App\Order;
-use App\Http\Requests\SortApiProductRequest;
+use App\Http\Requests\Api\SortApiProductRequest;
+use App\Http\Requests\Api\SortApiPostRequest;
 use App\Post;
+use App\User;
 
 class ProductController extends ApiController
 {
@@ -34,17 +36,26 @@ class ProductController extends ApiController
                         })->get();
         return $this->responseSuccess($product);
     }
-
     /**
      * Get all product's post
      *
-     * @param Product $product Product object
+     * @param \Illuminate\Http\Request $request request
+     * @param Product                  $product Product object
      *
      * @return Illuminate\Http\Response
      */
-    public function getPosts(Product $product)
+    public function getPosts(Product $product, SortApiPostRequest $request)
     {
-        $posts = Post::with('user.userInfo')->where('product_id', $product->id)->paginate(config('define.number_page_posts_user'));
-        return $this->responsePaginate($posts);
+        $product = $product->load(['posts' => function ($query) use ($request) {
+            $query->when(isset($request->type), function ($q) use ($request) {
+                $q->where('type', $request->type);
+            });
+            // $query->when(isset($request->sort)&& isset($request->sort_type), function ($q) use ($request) {
+            //     $q->orderBy($request->sort, $request->sort_type);
+            // });
+        }]);
+        $posts = $product->posts()->with('user.userInfo')->showAll();
+        // dd($posts);
+        return $this->responsePaginate($posts, 200);
     }
 }
