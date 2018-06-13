@@ -18,6 +18,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::group(['namespace' => 'Api'], function () {
     Route::apiResource('products', 'ProductController')->only([
+        'index', 'show'
+    ]);
+    Route::apiResource('categories', 'CategoryController')->only([
         'index'
     ]);
+    Route::get('posts', 'ProductController@getPosts');
 });

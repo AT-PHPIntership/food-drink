@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\ApiController;
 use App\Product;
 use App\Order;
 use App\Http\Requests\SortApiProductRequest;
+use App\Post;
 
 class ProductController extends ApiController
 {
@@ -20,6 +21,9 @@ class ProductController extends ApiController
     public function index(SortApiProductRequest $request)
     {
         $product = Product::with('category', 'images')
+                        ->when(isset($request->name), function ($query) use ($request) {
+                            return $query->where('name', 'like', $request->name);
+                        })
                         ->when(isset($request->sort) && isset($request->sort_type), function ($query) use ($request) {
                             return $query->orderBy($request->sort, $request->sort_type);
                         })
@@ -32,5 +36,29 @@ class ProductController extends ApiController
                             });
                         })->get();
         return $this->responseSuccess($product);
+    }
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param Product $product Product object
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function show(Product $product)
+    {
+        $product = $product->load('images', 'category');
+        return $this->responseSuccess($product);
+    }
+    
+    /**
+     * Get all product's post
+     *
+     * @return Illuminate\Http\Response
+     */
+    public function getPosts()
+    {
+        $posts = Post::with('product', 'user.userInfo')->paginate(config('define.number_page_posts_user'));
+        return $this->responsePaginate($posts);
     }
 }

@@ -17,7 +17,6 @@ class Category extends Model
      */
     const DEFAULT_CATEGORY_FOOD = 1;
     const DEFAULT_CATEGORY_DRINK = 2;
-
     public $sortable = [
         'id',
         'name',
@@ -69,5 +68,15 @@ class Category extends Model
     public function parentCategories()
     {
         return $this->hasMany(self::class, 'id', 'parent_id');
+    }
+
+    /**
+     * Sub Category beLongto  Parent Category
+     *
+     * @return mixed
+     */
+    public function children()
+    {
+        return $this->hasMany(self::class, 'parent_id', 'id');
     }
 }
