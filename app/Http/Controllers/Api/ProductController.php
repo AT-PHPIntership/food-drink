@@ -64,17 +64,14 @@ class ProductController extends ApiController
      */
     public function getPosts(SortApiPostRequest $request, Product $product)
     {
-        $product = $product->load(['posts' => function ($query) use ($request) {
-            $query->with('user.userInfo');
-            $query->when(isset($request->type), function ($q) use ($request) {
-                $q->where('type', $request->type);
-            });
-            $query->when(isset($request->sort)&& isset($request->sort_type), function ($q) use ($request) {
-                $q->orderBy($request->sort, $request->sort_type);
-            });
-        }]);
-        
-        $posts = $product->posts;
-        return $this->showAll($posts, Response::HTTP_OK);
+        $posts = $product->posts()->with('user.userInfo');
+        if (isset($request->type)) {
+            $posts = $posts->where('type', $request->type);
+        }
+        if (isset($request->sort) && isset($request->sort_type)) {
+            $posts = $posts->orderBy($request->sort, $request->sort_type);
+        }
+        $posts = $posts->paginate(config('define.number_page_posts_user'));
+        return $this->successResponse($posts, Response::HTTP_OK);
     }
 }
