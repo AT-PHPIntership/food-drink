@@ -22,7 +22,7 @@ class ProductController extends ApiController
     {
         $product = Product::with('category', 'images')
                         ->when(isset($request->name), function ($query) use ($request) {
-                            return $query->where('name','like', $request->name);
+                            return $query->where('name', 'like', $request->name);
                         })
                         ->when(isset($request->sort) && isset($request->sort_type), function ($query) use ($request) {
                             return $query->orderBy($request->sort, $request->sort_type);
