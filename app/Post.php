@@ -28,6 +28,7 @@ class Post extends Model
     public $sortable = [
         'id',
         'rate',
+        'updated_at',
     ];
 
     /**

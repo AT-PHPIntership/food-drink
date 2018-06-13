@@ -68,8 +68,8 @@ class ProductController extends ApiController
         if (isset($request->type)) {
             $posts = $posts->where('type', $request->type);
         }
-        if (isset($request->sort) && isset($request->sort_type)) {
-            $posts = $posts->orderBy($request->sort, $request->sort_type);
+        if (isset($request->sort) && isset($request->order)) {
+            $posts = $posts->sortable();
         }
         $posts = $posts->paginate(config('define.number_page_posts_user'));
         return $this->successResponse($posts, Response::HTTP_OK);
