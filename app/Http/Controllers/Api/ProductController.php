@@ -26,9 +26,6 @@ class ProductController extends ApiController
                     ->when(isset($request->name), function ($query) use ($request) {
                         return $query->where('name', 'like', $request->name);
                     })
-                    ->when(isset($request->sort) && isset($request->sort_type), function ($query) use ($request) {
-                        return $query->orderBy($request->sort, $request->sort_type);
-                    })
                     ->when(isset($request->limit), function ($query) use ($request) {
                         return $query->limit($request->limit);
                     })
@@ -36,8 +33,8 @@ class ProductController extends ApiController
                         return $query->whereHas('category', function ($query) use ($request) {
                                     $query->where('id', $request->category);
                         });
-                    })->get();
-        return $this->showAll($products, Response::HTTP_OK);
+                    })->sortable()->paginate($request->unit);
+        return $this->successResponse($products, Response::HTTP_OK);
     }
     
     /**
@@ -67,8 +64,7 @@ class ProductController extends ApiController
         if (isset($request->type)) {
             $posts = $posts->where('type', $request->type);
         }
-        $posts = $posts->sortable();
-        $posts = $posts->paginate(config('define.number_page_posts_user'));
+        $posts = $posts->sortable()->paginate(config('define.number_page_posts_user'));
         return $this->successResponse($posts, Response::HTTP_OK);
     }
 }

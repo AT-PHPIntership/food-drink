@@ -23,9 +23,8 @@ class SortApiProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'sort' => 'in:created_at,avg_rate',
-            'sort_type' => 'in:DESC,ASC',
             'limit' => 'integer',
+            'unit' => 'integer',
             'category' => 'integer|exists:categories,id',
             'name' => 'string|max:50'
         ];
