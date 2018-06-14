@@ -15,7 +15,6 @@ Delete The Post
 {
     "data": {
         "id": 20,
-        "name": "Mychim",
         "user_id": 8,
         "product_id": 8,
         "content": "con chim non tren canh cay",
