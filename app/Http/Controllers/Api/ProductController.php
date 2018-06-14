@@ -22,6 +22,9 @@ class ProductController extends ApiController
     public function index(SortApiProductRequest $request)
     {
         $products = Product::with('category', 'images')
+                    ->when(isset($request->price), function ($query) use ($request) {
+                        return $query->where('price', '>=', $request->price);
+                    })
                     ->when(isset($request->name), function ($query) use ($request) {
                         return $query->where('name', 'like', $request->name);
                     })
