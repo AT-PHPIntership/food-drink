@@ -27,7 +27,8 @@ class SortApiProductRequest extends FormRequest
             'sort_type' => 'in:DESC,ASC',
             'limit' => 'integer',
             'category' => 'integer|exists:categories,id',
-            'name' => 'string|max:50'
+            'name' => 'string|max:50',
+            'price' => 'integer',
         ];
     }
 }
