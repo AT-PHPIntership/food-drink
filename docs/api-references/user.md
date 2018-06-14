@@ -23,23 +23,23 @@ Get user's infomation
     },
     "data": {
         "id": 8,
-            "name": "Prof. Nestor Reinger III",
-            "email": "verna53@hessel.com",
-            "role": 0,
-            "created_at": "2018-06-14 01:02:45",
-            "updated_at": "2018-06-14 01:02:45",
+        "name": "Prof. Nestor Reinger III",
+        "email": "verna53@hessel.com",
+        "role": 0,
+        "created_at": "2018-06-14 01:02:45",
+        "updated_at": "2018-06-14 01:02:45",
+        "deleted_at": null,
+        "user_info": {
+            "id": 8,
+            "user_id": 8,
+            "address": "67100 Pierre Islands\nMedhurstbury, NJ 05891",
+            "phone": "241-312-4635",
+            "avatar": "default-user-avatar.png",
+            "created_at": "2018-06-14 01:02:47",
+            "updated_at": "2018-06-14 01:02:47",
             "deleted_at": null,
-            "user_info": {
-                "id": 8,
-                "user_id": 8,
-                "address": "67100 Pierre Islands\nMedhurstbury, NJ 05891",
-                "phone": "241-312-4635",
-                "avatar": "default-user-avatar.png",
-                "created_at": "2018-06-14 01:02:47",
-                "updated_at": "2018-06-14 01:02:47",
-                "deleted_at": null,
-                "avatar_url": "http://192.168.33.10/images/users/default-user-avatar.png"
-            }
+            "avatar_url": "http://192.168.33.10/images/users/default-user-avatar.png"
+        }
     }
 }
 ```
