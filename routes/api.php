@@ -29,4 +29,5 @@ Route::group(['namespace' => 'Api'], function () {
         Route::post('logout','LoginController@logout');
         Route::post('detail','LoginController@detail');
     });
+    Route::get('products/{product}/posts', 'ProductController@getPosts');
 });
