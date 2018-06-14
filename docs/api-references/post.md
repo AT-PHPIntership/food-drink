@@ -12,17 +12,16 @@ Get product
 
 #### Query Param
 | Param | Type | Required | Description |
-|---|---|---|
+|---|---|---|---|
 | product | int | required | Product's id |
-| sort | string | No | Sort Product |
-| order | string | No | Type Sort Product |
-| type | int | No | Get Product By Type |
+| sort | string | optional | Sort Product |
+| order | string | optional | Type Sort Product |
+| type | int | optional | Get Product By Type |
 
 ##### Example
 | URL | Description |
 |---|---|
-| /api/products{product}/posts?sort=updated_at | Get Post and sort by updated_at |
-| /api/products{product}/posts?type=1 | Get Product By Type Comment |
+| /api/products/{product}/posts?type=2&sort=updated_at | Get Post by type review and sort by updated_at |
 
 #### Response
 ```json
@@ -35,130 +34,80 @@ Get product
         "current_page": 1,
         "data": [
             {
-                "id": 19,
-                "name": "Joany Boehm",
-                "price": "187.00",
-                "quantity": 2,
-                "category_id": 8,
-                "preview": "Fugiat commodi aliquid tempore consequatur ad. Aspernatur ut quaerat cumque voluptatibus quisquam ut doloremque nesciunt.",
-                "description": "Sequi enim ea quia nihil. Est autem adipisci dicta. Consectetur neque nam ab ut et veritatis.",
-                "avg_rate": 3.8,
-                "sum_rate": 9,
-                "total_rate": 21,
-                "created_at": "1980-11-04 03:26:30",
-                "updated_at": "1996-01-22 20:35:36",
+                "id": 1,
+                "user_id": 8,
+                "product_id": 13,
+                "content": "Numquam similique veritatis totam perferendis cum natus architecto. In aut dolorum aut similique magnam. Non nulla consequatur nisi totam. Velit vel explicabo ut optio quia id eveniet.",
+                "rate": 0,
+                "type": 2,
+                "created_at": "2017-02-27 15:02:14",
+                "updated_at": "2015-04-03 15:38:59",
                 "deleted_at": null,
-                "category": {
+                "status": 0,
+                "user": {
                     "id": 8,
-                    "name": "Lager Beer",
-                    "parent_id": 7,
-                    "created_at": "2018-06-14 01:02:47",
-                    "updated_at": "2018-06-14 01:02:47",
+                    "name": "Prof. Nestor Reinger III",
+                    "email": "verna53@hessel.com",
+                    "role": 0,
+                    "created_at": "2018-06-14 01:02:45",
+                    "updated_at": "2018-06-14 01:02:45",
                     "deleted_at": null,
-                    "level": 2
-                },
-                "images": [
-                    {
-                        "id": 2,
-                        "image": "default-product.jpg",
-                        "product_id": 19,
+                    "user_info": {
+                        "id": 8,
+                        "user_id": 8,
+                        "address": "67100 Pierre Islands\nMedhurstbury, NJ 05891",
+                        "phone": "241-312-4635",
+                        "avatar": "default-user-avatar.png",
                         "created_at": "2018-06-14 01:02:47",
                         "updated_at": "2018-06-14 01:02:47",
                         "deleted_at": null,
-                        "image_url": "http://192.168.33.10/images/products/default-product.jpg"
-                    },
-                    {
-                        "id": 6,
-                        "image": "default-product.jpg",
-                        "product_id": 19,
-                        "created_at": "2018-06-14 01:02:47",
-                        "updated_at": "2018-06-14 01:02:47",
-                        "deleted_at": null,
-                        "image_url": "http://192.168.33.10/images/products/default-product.jpg"
+                        "avatar_url": "http://192.168.33.10/images/users/default-user-avatar.png"
                     }
-                ]
+                }
             },
             {
-                "id": 8,
-                "name": "Wanda Koepp",
-                "price": "30.00",
-                "quantity": 2,
-                "category_id": 8,
-                "preview": "In quod aliquam ea non. Reiciendis porro ut quae. Qui autem consequuntur vero quos praesentium. Distinctio eum iure est eos. Quo impedit provident tenetur molestias et.",
-                "description": "Suscipit velit incidunt velit vel ipsum. Aut quo beatae esse quo quia dolores quo. In sit possimus consequatur vel et quidem. Natus reiciendis nam assumenda suscipit consequatur ut qui.",
-                "avg_rate": 2.3,
-                "sum_rate": 12,
-                "total_rate": 10,
-                "created_at": "1994-11-30 18:53:29",
-                "updated_at": "2010-08-04 16:52:50",
+                "id": 15,
+                "user_id": 24,
+                "product_id": 13,
+                "content": "In eius nobis modi dolores et nesciunt voluptas cumque. Est deleniti id minus. Rerum laboriosam ut eveniet minus dolore alias quia neque.",
+                "rate": 0,
+                "type": 1,
+                "created_at": "2013-03-24 12:12:53",
+                "updated_at": "1986-09-21 01:29:40",
                 "deleted_at": null,
-                "category": {
-                    "id": 8,
-                    "name": "Lager Beer",
-                    "parent_id": 7,
-                    "created_at": "2018-06-14 01:02:47",
-                    "updated_at": "2018-06-14 01:02:47",
+                "status": 0,
+                "user": {
+                    "id": 24,
+                    "name": "Dr. Jarod Bruen DVM",
+                    "email": "pfeffer.sarah@hotmail.com",
+                    "role": 0,
+                    "created_at": "2018-06-14 01:02:46",
+                    "updated_at": "2018-06-14 01:02:46",
                     "deleted_at": null,
-                    "level": 2
-                },
-                "images": [
-                    {
-                        "id": 14,
-                        "image": "default-product.jpg",
-                        "product_id": 8,
+                    "user_info": {
+                        "id": 24,
+                        "user_id": 24,
+                        "address": "87329 Corkery Valleys\nNew Melvinstad, MI 77391",
+                        "phone": "+1-515-744-9589",
+                        "avatar": "default-user-avatar.png",
                         "created_at": "2018-06-14 01:02:47",
                         "updated_at": "2018-06-14 01:02:47",
                         "deleted_at": null,
-                        "image_url": "http://192.168.33.10/images/products/default-product.jpg"
+                        "avatar_url": "http://192.168.33.10/images/users/default-user-avatar.png"
                     }
-                ]
-            },
-            {
-                "id": 18,
-                "name": "Annalise Harber IV",
-                "price": "35.00",
-                "quantity": 8,
-                "category_id": 1,
-                "preview": "Maiores numquam dolores ad nihil error veritatis. At et eius voluptatem ut tenetur.",
-                "description": "Aspernatur nesciunt possimus dolor deleniti voluptatibus ducimus. Voluptas repudiandae quae maxime ducimus nisi debitis aspernatur tempore. Sequi et corporis quos ut numquam ut aliquam.",
-                "avg_rate": 1,
-                "sum_rate": 1,
-                "total_rate": 36,
-                "created_at": "1995-02-21 09:51:56",
-                "updated_at": "1986-04-03 06:15:49",
-                "deleted_at": null,
-                "category": {
-                    "id": 1,
-                    "name": "food",
-                    "parent_id": 0,
-                    "created_at": "2018-06-14 01:02:47",
-                    "updated_at": "2018-06-14 01:02:47",
-                    "deleted_at": null,
-                    "level": 0
-                },
-                "images": [
-                    {
-                        "id": 23,
-                        "image": "1528938624_524e30e771dba8110c0241a0882023d0.jpg",
-                        "product_id": 18,
-                        "created_at": "2018-06-14 01:10:24",
-                        "updated_at": "2018-06-14 01:10:24",
-                        "deleted_at": null,
-                        "image_url": "http://192.168.33.10/images/products/1528938624_524e30e771dba8110c0241a0882023d0.jpg"
-                    }
-                ]
+                }
             }
         ],
-        "first_page_url": "http://192.168.33.10/api/products?sort=avg_rate&order=desc&page=1",
+        "first_page_url": "http://192.168.33.10/api/products/13/posts?page=1",
         "from": 1,
-        "last_page": 1,
-        "last_page_url": "http://192.168.33.10/api/products?sort=avg_rate&order=desc&page=1",
-        "next_page_url": null,
-        "path": "http://192.168.33.10/api/products",
-        "per_page": 20,
+        "last_page": 2,
+        "last_page_url": "http://192.168.33.10/api/products/13/posts?page=2",
+        "next_page_url": "http://192.168.33.10/api/products/13/posts?page=2",
+        "path": "http://192.168.33.10/api/products/13/posts",
+        "per_page": 5,
         "prev_page_url": null,
-        "to": 20,
-        "total": 20
+        "to": 5,
+        "total": 6
     }
 }
 ```
