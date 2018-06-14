@@ -10,7 +10,6 @@ use App\Http\Requests\Api\SortApiProductRequest;
 use App\Http\Requests\Api\SortApiPostRequest;
 use Symfony\Component\HttpFoundation\Response;
 use App\Post;
-use App\User;
 
 class ProductController extends ApiController
 {
@@ -68,9 +67,7 @@ class ProductController extends ApiController
         if (isset($request->type)) {
             $posts = $posts->where('type', $request->type);
         }
-        // if (isset($request->sort) && isset($request->order)) {
-            $posts = $posts->sortable();
-        // }
+        $posts = $posts->sortable();
         $posts = $posts->paginate(config('define.number_page_posts_user'));
         return $this->successResponse($posts, Response::HTTP_OK);
     }
