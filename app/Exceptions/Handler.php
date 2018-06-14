@@ -4,9 +4,14 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Response;
+use App\Traits\ApiResponser;
 
 class Handler extends ExceptionHandler
 {
+    use ApiResponser;
+
     /**
      * A list of the exception types that are not reported.
      *
@@ -48,6 +53,18 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        $message = "";
+        $code = 0;
+        if ($request->route() != null) {
+            if ($request->route()->getPrefix() === 'api') {
+                // error 404
+                if ($exception instanceof ModelNotFoundException) {
+                    $code = Response::HTTP_NOT_FOUND;
+                    $message = __('api.error_404');
+                    return $this->errorResponse($message, $code);
+                }
+            }
+        }
         return parent::render($request, $exception);
     }
 }
