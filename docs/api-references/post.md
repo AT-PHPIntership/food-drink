@@ -67,12 +67,11 @@ Create New Post
 {
     "data": {
         "id": 20,
-        "name": "Mychim",
         "user_id": 8,
         "product_id": 8,
         "content": "Repellendus qui adipisci ut nesciunt veniam a dolores",
-        "rate": "1.00",
-        "type": "2",
+        "rate": 3,
+        "type": null,
         "status": "0",
         "user": {
             "id": 8,
@@ -84,7 +83,7 @@ Create New Post
         },
         "created_at": "2018-02-08 01:24:23",
         "updated_at": "2018-02-08 02:24:23",
-        "deleted_at": "2018-02-08 03:24:23"
+        "deleted_at": null
     }
 }
 ```
