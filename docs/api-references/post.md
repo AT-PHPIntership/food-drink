@@ -72,7 +72,7 @@ Create New Post
         "content": "Repellendus qui adipisci ut nesciunt veniam a dolores",
         "rate": 3,
         "type": null,
-        "status": "0",
+        "status": 0,
         "user": {
             "id": 8,
             "name": "ngoc trinh"
