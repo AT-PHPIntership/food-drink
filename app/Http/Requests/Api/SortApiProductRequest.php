@@ -24,9 +24,9 @@ class SortApiProductRequest extends FormRequest
     {
         return [
             'limit' => 'integer',
-            'unit' => 'integer',
             'category' => 'integer|exists:categories,id',
-            'name' => 'string|max:50'
+            'name' => 'string|max:50',
+            'price' => 'integer',
         ];
     }
 }
