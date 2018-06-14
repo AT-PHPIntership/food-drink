@@ -44,10 +44,16 @@ class listCategoriesTest extends TestCase
                                 'id',   
                                 'name',
                                 'parent_id',
-                                'created_at',
-                                'updated_at',
                                 'level',
-                                'children' => []
+                                'children' => [
+                                    [
+                                        'id',
+                                        'name',
+                                        'parent_id',
+                                        'level',
+                                        'children' => []
+                                    ]
+                                ]
                             ]
                         ]
             ]
@@ -61,6 +67,9 @@ class listCategoriesTest extends TestCase
     public function testJsonListCategories()
     {
         factory(Category::class, 'parent', 1)->create();
+        factory(Category::class,1)->create([
+            'parent_id' => 1
+        ]);
         $response = $this->json('GET', '/api/categories');
         $response->assertJsonStructure($this->jsonStructureListCategories());
     }
@@ -81,5 +90,18 @@ class listCategoriesTest extends TestCase
             ];
             $this->assertDatabaseHas('categories', $arrayCompare);
         }
+    }
+    
+    /**
+     * Test structure of json when empty categories.
+     *
+     * @return void
+     */
+    public function testEmptyCategories()
+    {
+        $response = $this->json('GET', '/api/categories');   
+        $response->assertJson([
+            'data' => []
+        ]);
     }
 }

@@ -11,7 +11,7 @@ Get list categories
 |---|---|
 |Accept|application\json
 
-#### Response
+#### Response - Success
 ```json
 {
     "meta": {
@@ -25,45 +25,30 @@ Get list categories
                 "id": 1,
                 "name": "food",
                 "parent_id": 0,
-                "created_at": "2018-06-07 03:41:54",
-                "updated_at": "2018-06-07 03:41:54",
-                "deleted_at": null,
                 "level": 0,
                 "children": [
                     {
                         "id": 3,
                         "name": "apple",
                         "parent_id": 1,
-                        "created_at": "2018-06-07 03:41:54",
-                        "updated_at": "2018-06-07 03:41:54",
-                        "deleted_at": null,
                         "level": 1,
                         "children": [
                             {
                                 "id": 4,
                                 "name": "Gala Apple",
                                 "parent_id": 3,
-                                "created_at": "2018-06-07 03:41:54",
-                                "updated_at": "2018-06-07 03:41:54",
-                                "deleted_at": null,
                                 "level": 2
                             },
                             {
                                 "id": 5,
                                 "name": "Ambrosia Apple",
                                 "parent_id": 3,
-                                "created_at": "2018-06-07 03:41:54",
-                                "updated_at": "2018-06-07 03:41:54",
-                                "deleted_at": null,
                                 "level": 2
                             },
                             {
                                 "id": 6,
                                 "name": "Envy Apple",
                                 "parent_id": 3,
-                                "created_at": "2018-06-07 03:41:54",
-                                "updated_at": "2018-06-07 03:41:54",
-                                "deleted_at": null,
                                 "level": 2
                             }
                         ]
@@ -74,45 +59,30 @@ Get list categories
                 "id": 2,
                 "name": "drink",
                 "parent_id": 0,
-                "created_at": "2018-06-07 03:41:54",
-                "updated_at": "2018-06-07 03:41:54",
-                "deleted_at": null,
                 "level": 0,
                 "children": [
                     {
                         "id": 7,
                         "name": "Beer",
                         "parent_id": 2,
-                        "created_at": "2018-06-07 03:41:54",
-                        "updated_at": "2018-06-07 03:41:54",
-                        "deleted_at": null,
                         "level": 1,
                         "children": [
                             {
                                 "id": 8,
                                 "name": "Lager Beer",
                                 "parent_id": 7,
-                                "created_at": "2018-06-07 03:41:54",
-                                "updated_at": "2018-06-07 03:41:54",
-                                "deleted_at": null,
                                 "level": 2
                             },
                             {
                                 "id": 9,
                                 "name": "Ale Beer",
                                 "parent_id": 7,
-                                "created_at": "2018-06-07 03:41:54",
-                                "updated_at": "2018-06-07 03:41:54",
-                                "deleted_at": null,
                                 "level": 2
                             },
                             {
                                 "id": 10,
                                 "name": "Way Beer",
                                 "parent_id": 7,
-                                "created_at": "2018-06-07 03:41:54",
-                                "updated_at": "2018-06-07 03:41:54",
-                                "deleted_at": null,
                                 "level": 2
                             }
                         ]
@@ -131,5 +101,13 @@ Get list categories
         "to": 2,
         "total": 2
     }
+}
+```
+
+#### Response - Fail
+``` json
+{
+    "error" : "Page not found",
+    "code" : 404
 }
 ```
