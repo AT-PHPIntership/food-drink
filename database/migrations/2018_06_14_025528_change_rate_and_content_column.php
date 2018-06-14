@@ -14,8 +14,8 @@ class ChangeRateAndContentColumn extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('rate')->nullable(true)->change();
-            $table->string('content')->nullable(true)->change();
+            $table->string('rate')->nullable()->change();
+            $table->string('content')->nullable()->change();
         });
     }
 
