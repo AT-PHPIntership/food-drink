@@ -18,9 +18,9 @@ Delete The Post
         "user_id": 8,
         "product_id": 8,
         "content": "con chim non tren canh cay",
-        "rate": "1.00",
-        "type": "2",
-        "status": "0",
+        "rate": 1.00,
+        "type": 2,
+        "status": 0,
         "user": {
             "id": 8,
             "name": "ngoc trinh"
