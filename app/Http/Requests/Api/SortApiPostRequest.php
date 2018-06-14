@@ -25,8 +25,6 @@ class SortApiPostRequest extends FormRequest
     public function rules()
     {
         return [
-            'sort' => 'in:updated_at',
-            'order' => 'in:desc,asc',
             'type' => 'in:' . Post::COMMENT . ',' . Post::REVIEW,
         ];
     }
