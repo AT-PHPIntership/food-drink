@@ -24,4 +24,9 @@ Route::group(['namespace' => 'Api'], function () {
         'index'
     ]);
     Route::get('posts', 'ProductController@getPosts');
+    Route::post('login', 'LoginController@login');
+    Route::group(['middleware'=>'auth:api'], function () {
+        Route::post('logout','LoginController@logout');
+        Route::post('detail','LoginController@detail');
+    });
 });
