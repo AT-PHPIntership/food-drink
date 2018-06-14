@@ -105,14 +105,9 @@ Get list categories
 ```
 
 #### Response - Fail
-```json
+``` json
 {
-    "meta": {
-        "status": "failed",
-        "code": 404
-    },
-    "error": {
-        "message": "Page not found!"
-    }
+    "error" : "Page not found",
+    "code" : 404
 }
 ```
