@@ -21,6 +21,7 @@ class Product extends Model
         'price',
         'quantity',
         'avg_rate',
+        'created_at',
     ];
 
     protected $fillable=[
