@@ -15,4 +15,5 @@
         'search' => 'Search',
         'min_price' => 'Min price',
         'max_price' => 'Max price',
+        'up' => '(Up)',
     ];

@@ -8,46 +8,93 @@
       <form action="">
         <div class="layered-Category">
           <h2 class="saider-bar-title">{{__('sidebar.categories')}}</h2>
-          <div class="layered-content">
-            <ul class="check-box-list">
-              <li>
-                <input type="checkbox" id="jtv1" name="jtvc">
-                <label for="jtv1"> <span class="button"></span> Camera & Photo<span class="count"></span> </label>
-              </li>
-              <li>
-                <input type="checkbox" id="jtv2" name="jtvc">
-                <label for="jtv2"> <span class="button"></span> Computers<span class="count"></span> </label>
-              </li>
-              <li>
-                <input type="checkbox" id="jtv3" name="jtvc">
-                <label for="jtv3"> <span class="button"></span> Apple Store<span class="count"></span> </label>
-              </li>
-              <li>
-                <input type="checkbox" id="jtv4" name="jtvc">
-                <label for="jtv4"> <span class="button"></span> Car Electronic<span class="count"></span> </label>
-              </li>
-              <li>
-                <input type="checkbox" id="jtv5" name="jtvc">
-                <label for="jtv5"> <span class="button"></span> Accessories<span class="count"></span> </label>
-              </li>
-              <li>
-                <input type="checkbox" id="jtv7" name="jtvc">
-                <label for="jtv7"> <span class="button"></span> Game & Video<span class="count"></span> </label>
-              </li>
-              <li>
-                <input type="checkbox" id="jtv8" name="jtvc">
-                <label for="jtv8"> <span class="button"></span> Best selling<span class="count"></span> </label>
-              </li>
-            </ul>
+          <div class="mega-container visible-lg visible-md visible-sm">
+              <div class="mega-menu-title">
+                <h3>Shop by category</h3>
+              </div>
+              <div class="mega-menu-category">
+                <ul class="nav">
+                  <li> <a href="#">Vegetables</a>
+                    <div class="wrap-popup parent_nav">
+                      <div class="popup">
+                        <div class="row">
+                          <div class="col-md-3">
+                            <ul class="nav">
+                              <li> <a href="#">Vegetables</a>
+                                <div class="wrap-popup child_nav">
+                                  <div class="popup">
+                                    <div class="row">
+                                      <div class="col-md-4">
+                                        <ul class="nav">
+                                          <li><a href="shop_grid.html"><span>Nikon</span></a></li>
+                                          <li><a href="shop_grid.html"><span>Olympus</span> </a></li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </li>
+                              <li><a href="shop_grid.html"><span>Nikon</span></a></li>
+                              <li><a href="shop_grid.html"><span>Olympus</span> </a></li>
+                              <li><a href="shop_grid.html"><span>ALPA</span> </a></li>
+                              <li> <a href="shop_grid.html"><span>Bolex</span></a></li>
+                              <li><a href="shop_grid.html"><span>Samsung </span></a></li>
+                              <li><a href="shop_grid.html"><span>Panasonic</span></a></li>
+                              <li><a href="shop_grid.html"><span>Thomson </span></a></li>
+                              <li><a href="shop_grid.html"><span>Bell & Howell</span></a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
           </div>
         </div>
         <div class="size-area">
           <h2 class="saider-bar-title">{{__('sidebar.rate')}} (<i class="fa fa-star"></i>)</h2>
           <div class="slider-range">
-            <ul class="check-box-list">
+            <ul class="rating"> 
               <li>
-                <input type="number" class="filter-rate" name="rate" />
+                <i class="fa fa-star"></i> 
+                <i class="fa fa-star"></i> 
+                <i class="fa fa-star"></i> 
+                <i class="fa fa-star"></i> 
+                <i class="fa fa-star"></i>
               </li>
+              <li>
+                <i class="fa fa-star"></i> 
+                <i class="fa fa-star"></i> 
+                <i class="fa fa-star"></i> 
+                <i class="fa fa-star"></i> 
+                <i class="fa fa-star-o"></i>
+                <span>{{__('sidebar.up')}}</span>
+              </li> 
+              <li>
+                <i class="fa fa-star"></i> 
+                <i class="fa fa-star"></i> 
+                <i class="fa fa-star"></i> 
+                <i class="fa fa-star-o"></i> 
+                <i class="fa fa-star-o"></i>
+                <span>{{__('sidebar.up')}}</span>
+              </li> 
+              <li>
+                <i class="fa fa-star"></i> 
+                <i class="fa fa-star"></i> 
+                <i class="fa fa-star-o"></i> 
+                <i class="fa fa-star-o"></i> 
+                <i class="fa fa-star-o"></i>
+                <span>{{__('sidebar.up')}}</span>
+              </li>
+              <li>
+                <i class="fa fa-star"></i> 
+                <i class="fa fa-star-o"></i> 
+                <i class="fa fa-star-o"></i> 
+                <i class="fa fa-star-o"></i> 
+                <i class="fa fa-star-o"></i>
+                <span>{{__('sidebar.up')}}</span>
+              </li> 
             </ul>
           </div>
         </div>
@@ -55,8 +102,7 @@
           <h2 class="saider-bar-title">{{__('sidebar.price')}} ({{__('sidebar.money')}})</h2>
           <div class="cart-plus-minus">
             <div class="numbers-row">
-            <input type="number" step="any" name="min_price" class="input-sm col-sm-6" name="price" placeholder="{{__('sidebar.min_price')}}" />
-            <input type="number" step="any" name="max_price" class="input-sm col-sm-6" name="price" placeholder="{{__('sidebar.max_price')}}" />
+            <input type="number" class="form-control" placeholder="Price" name="price">
             </div>
           </div>
         </div>
