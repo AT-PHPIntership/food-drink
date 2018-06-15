@@ -74,4 +74,8 @@ Route::group(['namespace'=>'User','prefix'=>'user'],function () {
         'uses'=>'HomeController@index',
         'as'=>'user'
     ]);
+    Route::get('info', [
+        'uses' => 'UserController@index',
+        'as' => 'user.info.index'
+    ]);
 });
