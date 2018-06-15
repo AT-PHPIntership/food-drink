@@ -27,20 +27,8 @@ class LoginController extends ApiController
             $data['user'] = $user->load('userInfo');
             return $this->successResponse($data, Response::HTTP_OK);
         } else {
-            return $this->errorResponse(config('define.login.unauthorised'), Response::HTTP_UNAUTHORIZED);
+            return $this->errorResponse(trans('login.user.unauthorised'), Response::HTTP_UNAUTHORIZED);
         }
-    }
-
-    /**
-     * Get user details
-     *
-     * @return json user, userInfo
-     */
-    public function detail()
-    {
-        $user = Auth::user();
-        $data['user'] = $user->load('userInfo');
-        return $this->successResponse($data, Response::HTTP_OK);
     }
 
     /**
@@ -52,13 +40,7 @@ class LoginController extends ApiController
     {
         $user = Auth::user();
         $accessToken = $user->token();
-        DB::table('oauth_refresh_tokens')
-            ->where('access_token_id', $accessToken->id)
-            ->update([
-                'revoked' => true
-            ]);
         $accessToken->revoke();
-        $user->save();
         return $this->successResponse(null, Response::HTTP_NO_CONTENT);
     }
 }

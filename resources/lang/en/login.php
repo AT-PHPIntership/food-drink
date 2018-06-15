@@ -7,5 +7,6 @@
             'password' => 'Password',
             'remember_me' => 'Remember me',
             'register' => 'Create your very own account!!!',
+            'unauthorised' => 'Unauthorised'
         ]
     ];

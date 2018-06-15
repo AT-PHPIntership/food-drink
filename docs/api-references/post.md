@@ -1,5 +1,4 @@
-## POST - API
-
+## Post - API
 ### `GET` Post
 ```
 /api/products/{product}/posts
@@ -109,5 +108,43 @@ Get product
         "to": 5,
         "total": 6
     }
+}
+```
+
+### `DELETE` Post
+```
+api/posts/{post}
+```
+Delete The Post
+#### Request Headers
+| Key | Value |
+|---|---|
+|Accept|application\json |
+|Authorization|{token_type} {access_token}|
+#### Parameters
+| Field | Type | Description |
+| --- | --- | --- |
+| id | Number | Id of post |
+
+#### Response success
+| Field | Type | Description |
+|---|---|---|
+| meta | Object | Object meta |
+| status | String | Status result |
+| code | Number | HTTP status code |
+#### Response
+```json
+{
+     "meta": {
+        "status": "Successfully",
+        "code": 200
+    },
+}
+```
+#### Response fail
+```json
+{
+    "error": "Page not found",
+    "code": 404
 }
 ```
