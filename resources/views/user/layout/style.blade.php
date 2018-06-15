@@ -18,3 +18,5 @@
 <link rel="stylesheet" type="text/css"  href="{{ asset('frontend/css/owl.theme.css')}}">
 <!-- style CSS -->
 <link rel="stylesheet" type="text/css"  href="{{ asset('frontend/css/style.css')}}" media="all">
+<!-- add CSS -->
+<link rel="stylesheet" type="text/css"  href="{{ asset('frontend/css/add.css')}}" media="all">
