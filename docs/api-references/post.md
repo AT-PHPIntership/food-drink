@@ -171,7 +171,7 @@ Create New Post
 {
     "meta": {
         "status": "Successfully",
-        "code": 200,
+        "code": 201,
     },
     "data": {
         "id": 145,
@@ -181,42 +181,19 @@ Create New Post
         "product_id": 1,
         "rate": 4,
         "type": 2,
-        "created_at": "2018-03-06 08:53:31",
-        "updated_at": "2018-03-06 08:53:31",
         "user": {
             "id": 8,
             "name": "Prof. Nestor Reinger III",
             "email": "verna53@hessel.com",
             "role": 0,
-            "created_at": "2018-06-14 01:02:45",
-            "updated_at": "2018-06-14 01:02:45",
-            "deleted_at": null,
             "user_info": {
                 "id": 8,
                 "user_id": 8,
                 "address": "67100 Pierre Islands\nMedhurstbury, NJ 05891",
                 "phone": "241-312-4635",
                 "avatar": "default-user-avatar.png",
-                "created_at": "2018-06-14 01:02:47",
-                "updated_at": "2018-06-14 01:02:47",
-                "deleted_at": null,
                 "avatar_url": "http://192.168.33.10/images/users/default-user-avatar.png"
             },
-        },
-        "product": {
-            "id": 4,
-            "name": "Herman Blanda",
-            "price": "24.00",
-            "quantity": 15,
-            "category_id": 3,
-            "preview": "Est in tenetur consequatur ut. Assumenda quidem dolor dolorum sapiente aut occaecati aut. Magnam autem dolores quia necessitatibus ut ut iure.",
-            "description": "Assumenda voluptatem facere soluta totam eaque minima. Iusto officia est fugit sed sint saepe. Possimus mollitia similique similique maiores amet.",
-            "avg_rate": 2.9,
-            "sum_rate": 10,
-            "total_rate": 65,
-            "created_at": "2016-05-22 06:56:46",
-            "updated_at": "1988-08-06 23:09:35",
-            "deleted_at": null,
         },
     }
 }
