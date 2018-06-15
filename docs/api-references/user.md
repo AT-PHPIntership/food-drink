@@ -50,3 +50,17 @@ Get user's infomation
     "code": 404,
 }
 ```
+### `POST` Logout
+```
+/api/logout
+```
+Logout User
+#### Request Headers
+| Key | Value |
+|---|---|
+|Accept|application/json
+|Authorization|Bearer $token
+
+#### Response
+ _Success_
+ 
