@@ -17,6 +17,7 @@ Get product
 | order | string | Type Sort Product |
 | limit | number | Top Product |
 | category | int | Get Product By Category |
+| price | int | Get Product By Price |
 
 ##### Example
 | URL | Description |
@@ -24,6 +25,7 @@ Get product
 | /api/products?sort=created_at&limit=10 | Get Top 10 New product |
 | /api/products?sort=avg_rate&limit=10 | Get Top 10 Rate product |
 | /api/products?category=1 | Get Product By Category Food |
+| /api/products?price=120 | Get Product By Price Upwards |
 
 #### Response
 ```json
@@ -236,6 +238,74 @@ Get product
         "prev_page_url": null,
         "to": 6,
         "total": 20
+    }
+}
+```
+#### Response Filter By Price
+```json
+{
+    "meta": {
+        "status": "Successfully",
+        "code": 200
+    },
+    "data": {
+        "current_page": 1,
+        "data": [
+            {
+                "id": 2,
+                "name": "Lavada Buckridge",
+                "price": "173.00",
+                "quantity": 0,
+                "category_id": 9,
+                "preview": "Non voluptate repellat sunt ipsa. Porro et distinctio est tenetur debitis reprehenderit amet qui. Odit aspernatur fuga nam quod. Assumenda alias pariatur repellat blanditiis repellat nobis.",
+                "description": "Dicta quae et dolorem temporibus dolorem voluptas. Et voluptatem consequuntur doloribus earum tempora quis sequi. Commodi consequuntur itaque rerum debitis consequatur.",
+                "avg_rate": 2.4,
+                "sum_rate": 3,
+                "total_rate": 13,
+                "created_at": "1982-07-13 03:40:36",
+                "updated_at": "2002-12-19 09:53:42",
+                "deleted_at": null,
+                "category": {
+                    "id": 9,
+                    "name": "Ale Beer",
+                    "parent_id": 7,
+                    "created_at": "2018-06-14 03:52:27",
+                    "updated_at": "2018-06-14 03:52:27",
+                    "deleted_at": null,
+                    "level": 2
+                },
+                "images": [
+                    {
+                        "id": 1,
+                        "image": "default-product.jpg",
+                        "product_id": 2,
+                        "created_at": "2018-06-14 03:52:27",
+                        "updated_at": "2018-06-14 03:52:27",
+                        "deleted_at": null,
+                        "image_url": "http://192.168.33.10/images/products/default-product.jpg"
+                    },
+                    {
+                        "id": 5,
+                        "image": "default-product.jpg",
+                        "product_id": 2,
+                        "created_at": "2018-06-14 03:52:27",
+                        "updated_at": "2018-06-14 03:52:27",
+                        "deleted_at": null,
+                        "image_url": "http://192.168.33.10/images/products/default-product.jpg"
+                    }
+                ]
+            }
+        ],
+        "first_page_url": "http://192.168.33.10/api/products?page=1",
+        "from": 1,
+        "last_page": 9,
+        "last_page_url": "http://192.168.33.10/api/products?page=9",
+        "next_page_url": "http://192.168.33.10/api/products?page=2",
+        "path": "http://192.168.33.10/api/products",
+        "per_page": "1",
+        "prev_page_url": null,
+        "to": 1,
+        "total": 9
     }
 }
 ```
