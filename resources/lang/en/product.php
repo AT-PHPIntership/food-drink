@@ -62,5 +62,13 @@
                 'delete_confirm' => 'Do you want to delete this Image?',
                 'canot_delete_image' => 'Cannot delete the last image!!!'
             ],
+        ],
+        'user' => [
+            'add_to_cart' => 'Add to Cart',
+            'money' => '$',
+            'filter' => [
+                'title' => 'Filter Product',
+                'list_product' => 'List Product',
+            ]
         ]
     ];

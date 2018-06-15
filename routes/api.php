@@ -23,5 +23,5 @@ Route::group(['namespace' => 'Api'], function () {
     Route::apiResource('categories', 'CategoryController')->only([
         'index'
     ]);
-    Route::get('posts', 'ProductController@getPosts');
+    Route::get('products/{product}/posts', 'ProductController@getPosts');
 });
