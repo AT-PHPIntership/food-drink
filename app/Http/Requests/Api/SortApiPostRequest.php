@@ -3,8 +3,9 @@
 namespace App\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Post;
 
-class SortApiProductRequest extends FormRequest
+class SortApiPostRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -15,6 +16,7 @@ class SortApiProductRequest extends FormRequest
     {
         return true;
     }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -23,10 +25,7 @@ class SortApiProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'limit' => 'integer',
-            'category' => 'integer|exists:categories,id',
-            'name' => 'string|max:50',
-            'price' => 'integer',
+            'type' => 'in:' . Post::COMMENT . ',' . Post::REVIEW,
         ];
     }
 }

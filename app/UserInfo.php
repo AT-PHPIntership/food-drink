@@ -17,6 +17,13 @@ class UserInfo extends Model
     ];
 
     /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['avatar_url'];
+
+    /**
      * UserInfo Belong To User
      *
      * @return mixed
@@ -32,6 +39,16 @@ class UserInfo extends Model
     * @return string
     */
     public function getAvatarUrlAttribute()
+    {
+        return asset(config('define.images_path_users') . $this->avatar);
+    }
+
+    /**
+    * Get the product's image.
+    *
+    * @return string
+    */
+    public function getImageUrlAttribute()
     {
         return asset(config('define.images_path_users') . $this->avatar);
     }

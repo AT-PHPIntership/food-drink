@@ -144,13 +144,8 @@ Delete The Post
 #### Response fail
 ```json
 {
-    "meta": {
-        "status": "Failed",
-        "code": 404,
-    },
-    "error": {
-        "message": "Data not found!",
-    }
+    "error": "Page not found",
+    "code": 404,
 }
 ```
 ### `POST` Post

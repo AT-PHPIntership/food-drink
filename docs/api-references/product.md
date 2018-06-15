@@ -14,7 +14,7 @@ Get product
 | Param | Type | Description |
 |---|---|---|
 | sort | string | Sort Product |
-| sort_type | string | Type Sort Product |
+| order | string | Type Sort Product |
 | limit | number | Top Product |
 | category | int | Get Product By Category |
 
