@@ -46,12 +46,7 @@ Get user's infomation
 #### Response - Fail
 ```json
 {
-    "meta": {
-        "status": "failed",
-        "code": 404
-    },
-    "error": {
-        "message": "data not found"
-    }
+    "error": "Page not found",
+    "code": 404,
 }
 ```
