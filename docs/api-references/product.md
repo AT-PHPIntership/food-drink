@@ -14,9 +14,10 @@ Get product
 | Param | Type | Description |
 |---|---|---|
 | sort | string | Sort Product |
-| sort_type | string | Type Sort Product |
+| order | string | Type Sort Product |
 | limit | number | Top Product |
 | category | int | Get Product By Category |
+| name | string | Get Product By Name Product |
 
 ##### Example
 | URL | Description |
@@ -24,6 +25,8 @@ Get product
 | /api/products?sort=created_at&limit=10 | Get Top 10 New product |
 | /api/products?sort=avg_rate&limit=10 | Get Top 10 Rate product |
 | /api/products?category=1 | Get Product By Category Food |
+| /api/products?name=Dr. Jared Kris | Get Product By Name Product |
+
 
 #### Response
 ```json
@@ -236,6 +239,124 @@ Get product
         "prev_page_url": null,
         "to": 6,
         "total": 20
+    }
+}
+```
+####  Response Filter Product By Name
+```json
+{
+    "meta": {
+        "status": "Successfully",
+        "code": 200
+    },
+    "data": {
+        "current_page": 1,
+        "data": [
+            {
+                "id": 1,
+                "name": "Dr. Jared Kris",
+                "price": "92.00",
+                "quantity": 3,
+                "category_id": 7,
+                "preview": "Quidem in quis sequi. Aut ut quis in reprehenderit. Quis repellat deserunt officiis aliquam voluptas non et.",
+                "description": "Voluptas in natus maxime aut qui. Dolore doloribus fuga ea voluptatem pariatur.",
+                "avg_rate": 4,
+                "sum_rate": 17,
+                "total_rate": 19,
+                "created_at": "1993-03-05 02:02:25",
+                "updated_at": "2013-10-10 17:04:12",
+                "deleted_at": null,
+                "category": {
+                    "id": 7,
+                    "name": "Beer",
+                    "parent_id": 2,
+                    "created_at": "2018-06-14 03:52:27",
+                    "updated_at": "2018-06-14 03:52:27",
+                    "deleted_at": null,
+                    "level": 1
+                },
+                "images": [
+                    {
+                        "id": 6,
+                        "image": "default-product.jpg",
+                        "product_id": 1,
+                        "created_at": "2018-06-14 03:52:27",
+                        "updated_at": "2018-06-14 03:52:27",
+                        "deleted_at": null,
+                        "image_url": "http://192.168.33.10/images/products/default-product.jpg"
+                    }
+                ]
+            }
+        ],
+        "first_page_url": "http://192.168.33.10/api/products?page=1",
+        "from": 1,
+        "last_page": 1,
+        "last_page_url": "http://192.168.33.10/api/products?page=1",
+        "next_page_url": null,
+        "path": "http://192.168.33.10/api/products",
+        "per_page": 15,
+        "prev_page_url": null,
+        "to": 1,
+        "total": 1
+    }
+}
+``` 
+#### Response Filter By Category
+```json
+{
+    "meta": {
+        "status": "Successfully",
+        "code": 200
+    },
+    "data": {
+        "current_page": 1,
+        "data": [
+            {
+                "id": 4,
+                "name": "Leon Mitchell",
+                "price": "159.00",
+                "quantity": 7,
+                "category_id": 1,
+                "preview": "Quia omnis aut numquam magni nesciunt consequuntur est. Modi ut nihil consectetur dolores est ab. Fuga dolor soluta ut facere. Beatae magnam facilis itaque.",
+                "description": "Quo deleniti blanditiis quasi ipsa libero id quo. Vitae velit possimus modi repellendus aperiam sint repudiandae. Natus sit pariatur maiores perspiciatis iste.",
+                "avg_rate": 3.1,
+                "sum_rate": 17,
+                "total_rate": 37,
+                "created_at": "2014-10-17 06:17:00",
+                "updated_at": "2017-09-06 03:36:25",
+                "deleted_at": null,
+                "category": {
+                    "id": 1,
+                    "name": "food",
+                    "parent_id": 0,
+                    "created_at": "2018-06-14 03:52:27",
+                    "updated_at": "2018-06-14 03:52:27",
+                    "deleted_at": null,
+                    "level": 0
+                },
+                "images": [
+                    {
+                        "id": 3,
+                        "image": "default-product.jpg",
+                        "product_id": 4,
+                        "created_at": "2018-06-14 03:52:27",
+                        "updated_at": "2018-06-14 03:52:27",
+                        "deleted_at": null,
+                        "image_url": "http://192.168.33.10/images/products/default-product.jpg"
+                    }
+                ]
+            },
+        ],
+        "first_page_url": "http://192.168.33.10/api/products?page=1",
+        "from": 1,
+        "last_page": 1,
+        "last_page_url": "http://192.168.33.10/api/products?page=1",
+        "next_page_url": null,
+        "path": "http://192.168.33.10/api/products",
+        "per_page": 15,
+        "prev_page_url": null,
+        "to": 3,
+        "total": 3
     }
 }
 ```

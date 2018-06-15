@@ -6922,16 +6922,16 @@ p.note {
 36. Login page
 ******************************************/
 .account-login {
-  display: inline-block;
-  width: 50%;
-  display: flex;
+	display: inline-block;
+	width: 50%;
+	display: flex;
   margin: auto;
 }
 .box-authentication {
-  display: inline-block;
-  width: 100%;
-  float: left;
-  margin: auto;
+	display: inline-block;
+	width: 48%;
+	float: left;
+	margin-left: 70px;
 }
 .box-authentication>h3 {
   margin-bottom: 15px;
@@ -6941,17 +6941,24 @@ p.note {
   margin-bottom: 2px;
 }
 .box-authentication .forgot-pass {
-  margin-top: 15px;
+	margin-top: 15px;
+	text-transform: uppercase;
 }
 .box-authentication input, .box-authentication textarea {
-  border-radius: 0px;
-  border: 1px solid #e8e6e2;
-  -webkit-box-shadow: inherit;
-  box-shadow: inherit;
-  width: 100%;
+	border-radius: 0px;
+	border: 1px solid #e8e6e2;
+	-webkit-box-shadow: inherit;
+	box-shadow: inherit;
+	width: 150%;
 }
 .box-authentication .button {
-  margin-top: 15px;
+	margin-top: 15px;
+	padding: 5px;
+	-webkit-transition-duration: 0.6s;
+	transition-duration: 0.6s;
+}
+.box-authentication .button:hover {
+	background-color: green;
 }
 @media only screen and (min-width: 300px) and (max-width: 767px) {
 .box-authentication {

@@ -9,6 +9,7 @@ class Post extends Model
 {
     use Sortable;
     const PAGINATE = 10, ENABLE = 1, DISABLE = 0;
+    const COMMENT = 1, REVIEW = 2;
     
     public static $listStatus = [
         'enable' => 1,
@@ -27,6 +28,7 @@ class Post extends Model
     public $sortable = [
         'id',
         'rate',
+        'updated_at',
     ];
 
     /**
