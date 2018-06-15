@@ -262,16 +262,10 @@ Get product
                 "avg_rate": 2.4,
                 "sum_rate": 3,
                 "total_rate": 13,
-                "created_at": "1982-07-13 03:40:36",
-                "updated_at": "2002-12-19 09:53:42",
-                "deleted_at": null,
                 "category": {
                     "id": 9,
                     "name": "Ale Beer",
                     "parent_id": 7,
-                    "created_at": "2018-06-14 03:52:27",
-                    "updated_at": "2018-06-14 03:52:27",
-                    "deleted_at": null,
                     "level": 2
                 },
                 "images": [
@@ -279,18 +273,12 @@ Get product
                         "id": 1,
                         "image": "default-product.jpg",
                         "product_id": 2,
-                        "created_at": "2018-06-14 03:52:27",
-                        "updated_at": "2018-06-14 03:52:27",
-                        "deleted_at": null,
                         "image_url": "http://192.168.33.10/images/products/default-product.jpg"
                     },
                     {
                         "id": 5,
                         "image": "default-product.jpg",
                         "product_id": 2,
-                        "created_at": "2018-06-14 03:52:27",
-                        "updated_at": "2018-06-14 03:52:27",
-                        "deleted_at": null,
                         "image_url": "http://192.168.33.10/images/products/default-product.jpg"
                     }
                 ]
