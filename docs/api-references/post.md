@@ -171,7 +171,7 @@ Create New Post
 {
     "meta": {
         "status": "Successfully",
-        "code": 201,
+        "code": 201
     },
     "data": {
         "id": 145,
@@ -193,7 +193,7 @@ Create New Post
                 "phone": "241-312-4635",
                 "avatar": "default-user-avatar.png",
                 "avatar_url": "http://192.168.33.10/images/users/default-user-avatar.png"
-            },
-        },
+            }
+        }
     }
 }
