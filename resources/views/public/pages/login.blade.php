@@ -13,6 +13,9 @@
             <input class="form-control" type="email" name="" id="session_email" />
             <label for="session_password">{{__('login.user.password')}}</label>
             <input class="form-control" type="password" name="" id="session_password" />
+            <span class="help-block">
+              <strong class="text-danger" id="login-error"></strong>
+            </span>
             <label class=" inline" for="session_remember_me">
               <input name="" type="hidden" value="0" /><input type="checkbox" value="1" name="" id="session_remember_me" />
               <span>{{__('login.user.remember_me')}}</span>

@@ -14,7 +14,7 @@ $( document ).ready(function() {
                 window.location.href = 'http://' + window.location.hostname + '/user';
             },
             error: function (data) {
-                alert(data.responseJSON.error);
+                document.getElementById("login-error").innerHTML = data.responseJSON.error;
             }
         });
     });
