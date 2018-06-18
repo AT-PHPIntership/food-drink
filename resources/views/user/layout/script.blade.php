@@ -15,3 +15,6 @@
 
 <!-- show user info js --> 
 <script type="text/javascript" src="{{ asset('js/user/showProfileUser.js')}} "></script> 
+
+<!-- login user js --> 
+<script type="text/javascript" src="{{ asset('js/user/userLogin.js')}} "></script> 
