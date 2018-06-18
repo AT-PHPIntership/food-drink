@@ -1,5 +1,4 @@
-## POST - API
-
+## Post - API
 ### `GET` Post
 ```
 /api/products/{product}/posts
@@ -111,3 +110,90 @@ Get product
     }
 }
 ```
+
+### `DELETE` Post
+```
+api/posts/{post}
+```
+Delete The Post
+#### Request Headers
+| Key | Value |
+|---|---|
+|Accept|application\json |
+|Authorization|{token_type} {access_token}|
+#### Parameters
+| Field | Type | Description |
+| --- | --- | --- |
+| id | Number | Id of post |
+
+#### Response success
+| Field | Type | Description |
+|---|---|---|
+| meta | Object | Object meta |
+| status | String | Status result |
+| code | Number | HTTP status code |
+#### Response
+```json
+{
+     "meta": {
+        "status": "Successfully",
+        "code": 200
+    },
+}
+```
+#### Response fail
+```json
+{
+    "error": "Page not found",
+    "code": 404,
+}
+```
+### `POST` Post
+```
+/api/posts
+```
+Create New Post
+#### Request Headers
+| Key | Value |
+|---|---|
+|Accept|application\json
+|Authorization|{token_type} {access_token}|
+
+#### Parameters
+| Key | Type | Required | Description |
+|---|---|---|---|
+| content | String | optional | content post |
+| rate | Integer | optional | rate post |
+| product | Integer | required | id product |
+
+#### Response - Success
+```json
+{
+    "meta": {
+        "status": "Successfully",
+        "code": 201
+    },
+    "data": {
+        "id": 145,
+        "content": " Consequuntur beatae est quidem adipisci officia",
+        "status": 2,
+        "user_id": 1,
+        "product_id": 1,
+        "rate": 4,
+        "type": 2,
+        "user": {
+            "id": 8,
+            "name": "Prof. Nestor Reinger III",
+            "email": "verna53@hessel.com",
+            "role": 0,
+            "user_info": {
+                "id": 8,
+                "user_id": 8,
+                "address": "67100 Pierre Islands\nMedhurstbury, NJ 05891",
+                "phone": "241-312-4635",
+                "avatar": "default-user-avatar.png",
+                "avatar_url": "http://192.168.33.10/images/users/default-user-avatar.png"
+            }
+        }
+    }
+}

@@ -8,10 +8,11 @@ use App\UserInfo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Kyslik\ColumnSortable\Sortable;
 use App\SearchTrait;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use Notifiable, SoftDeletes, SearchTrait, Sortable;
+    use Notifiable, SoftDeletes, SearchTrait, Sortable, HasApiTokens;
 
      /**
      * User role

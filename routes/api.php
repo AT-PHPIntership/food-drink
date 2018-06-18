@@ -23,6 +23,12 @@ Route::group(['namespace' => 'Api'], function () {
     Route::apiResource('categories', 'CategoryController')->only([
         'index'
     ]);
+    Route::get('posts', 'ProductController@getPosts');
+    Route::post('login', 'LoginController@login');
+    Route::group(['middleware'=>'auth:api'], function () {
+        Route::get('show', 'UserController@show');
+        Route::post('logout', 'LoginController@logout');
+    });
     Route::get('products/{product}/posts', 'ProductController@getPosts');
     Route::apiResource('posts', 'PostController')->only([
         'destroy'
