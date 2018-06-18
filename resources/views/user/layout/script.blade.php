@@ -12,3 +12,6 @@
 
 <!-- main js --> 
 <script type="text/javascript" src="{{ asset('frontend/js/main.js')}} "></script> 
+
+<!-- show user info js --> 
+<script type="text/javascript" src="{{ asset('js/user/showProfileUser.js')}} "></script> 
