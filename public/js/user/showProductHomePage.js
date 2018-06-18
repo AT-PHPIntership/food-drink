@@ -1,6 +1,7 @@
 var idCategoryFood = 1;
 var idCategoryDrink = 2;
 var limit = 8;
+var id = '';
 
 //Top 8 New Product
 $('document').ready(function () {
@@ -20,35 +21,8 @@ $('document').ready(function () {
           stars += '<i class="fa fa-star-o"></i>'
         }
       }
-      $('#new-product').append(
-        '<li class="item col-lg-3 col-md-3 col-sm-6 col-xs-6 ">\
-          <div class="product-item">\
-            <div class="item-inner">\
-              <div class="product-thumbnail">\
-                <div class="pr-img-area"> <a title="'+ element.name +'" href="single_product.html">\
-                  <figure> <img class="first-img" src="'+ element.images[0].image_url +'" alt=""> <img class="hover-img" src="'+ element.images[0].image_url +'" alt=""></figure>\
-                  </a>\
-                  <button type="button" class="add-to-cart-mt"> <i class="fa fa-shopping-cart"></i><span>'+ Lang.get('home.user.main.add_to_cart') +'</span> </button>\
-                </div>\
-              </div>\
-              <div class="item-info">\
-                <div class="info-inner">\
-                  <div class="item-title"> <a title="'+ element.name +'" href="single_product.html">'+ element.name +' </a> </div>\
-                  <div class="item-content">\
-                  <div class="rating">' 
-                  + stars +
-                  '<span>('+ element.avg_rate +')</span>\
-                  </div>\
-                    <div class="item-price">\
-                      <div class="price-box"> <span class="regular-price"> <span class="price">'+ Lang.get('home.user.main.money') + element.price +'</span> </span> </div>\
-                    </div>\
-                  </div>\
-                </div>\
-              </div>\
-            </div>\
-          </div>\
-        </li>'
-      );
+      id = 'new-product';
+      appendHtml(id, element, stars);
     });
   });
 });
@@ -71,35 +45,8 @@ $('document').ready(function () {
           stars += '<i class="fa fa-star-o"></i>'
         }
       }
-      $('#rate-product').append(
-        '<li class="item col-lg-3 col-md-3 col-sm-6 col-xs-6 ">\
-          <div class="product-item">\
-            <div class="item-inner">\
-              <div class="product-thumbnail">\
-                <div class="pr-img-area"> <a title="'+ element.name +'" href="single_product.html">\
-                  <figure> <img class="first-img" src="'+ element.images[0].image_url +'" alt=""> <img class="hover-img" src="'+ element.images[0].image_url +'" alt=""></figure>\
-                  </a>\
-                  <button type="button" class="add-to-cart-mt"> <i class="fa fa-shopping-cart"></i><span>'+ Lang.get('home.user.main.add_to_cart') +'</span> </button>\
-                </div>\
-              </div>\
-              <div class="item-info">\
-                <div class="info-inner">\
-                  <div class="item-title"> <a title="'+ element.name +'" href="single_product.html">'+ element.name +' </a> </div>\
-                  <div class="item-content">\
-                    <div class="rating">' 
-                    + stars +
-                    '<span>('+ element.avg_rate +')</span>\
-                    </div>\
-                    <div class="item-price">\
-                      <div class="price-box"> <span class="regular-price"> <span class="price">'+ Lang.get('home.user.main.money') + element.price +'</span> </span> </div>\
-                    </div>\
-                  </div>\
-                </div>\
-              </div>\
-            </div>\
-          </div>\
-        </li>'
-      );
+      id = 'rate-product';
+      appendHtml(id, element, stars);
     });
   });
 });
@@ -122,35 +69,8 @@ $('document').ready(function () {
           stars += '<i class="fa fa-star-o"></i>'
         }
       }
-      $('#food-product').append(
-        '<li class="item col-lg-3 col-md-3 col-sm-6 col-xs-6 ">\
-          <div class="product-item">\
-            <div class="item-inner">\
-              <div class="product-thumbnail">\
-                <div class="pr-img-area"> <a title="'+ element.name +'" href="single_product.html">\
-                  <figure> <img class="first-img" src="'+ element.images[0].image_url +'" alt=""> <img class="hover-img" src="'+ element.images[0].image_url +'" alt=""></figure>\
-                  </a>\
-                  <button type="button" class="add-to-cart-mt"> <i class="fa fa-shopping-cart"></i><span>'+ Lang.get('home.user.main.add_to_cart') +'</span> </button>\
-                </div>\
-              </div>\
-              <div class="item-info">\
-                <div class="info-inner">\
-                  <div class="item-title"> <a title="'+ element.name +'" href="single_product.html">'+ element.name +' </a> </div>\
-                  <div class="item-content">\
-                    <div class="rating">' 
-                    + stars +
-                    '<span>('+ element.avg_rate +')</span>\
-                    </div>\
-                    <div class="item-price">\
-                      <div class="price-box"> <span class="regular-price"> <span class="price">'+ Lang.get('home.user.main.money') + element.price +'</span> </span> </div>\
-                    </div>\
-                  </div>\
-                </div>\
-              </div>\
-            </div>\
-          </div>\
-        </li>'
-      );
+      id = 'food-product';
+      appendHtml(id, element, stars);
     });
   });
 });
@@ -173,35 +93,41 @@ $('document').ready(function () {
           stars += '<i class="fa fa-star-o"></i>'
         }
       }
-      $('#drink-product').append(
-        '<li class="item col-lg-3 col-md-3 col-sm-6 col-xs-6 ">\
-          <div class="product-item">\
-            <div class="item-inner">\
-              <div class="product-thumbnail">\
-                <div class="pr-img-area"> <a title="'+ element.name +'" href="single_product.html">\
-                  <figure> <img class="first-img" src="'+ element.images[0].image_url +'" alt=""> <img class="hover-img" src="'+ element.images[0].image_url +'" alt=""></figure>\
-                  </a>\
-                  <button type="button" class="add-to-cart-mt"> <i class="fa fa-shopping-cart"></i><span>'+ Lang.get('home.user.main.add_to_cart') +'</span> </button>\
-                </div>\
+      id = 'drink-product';
+      appendHtml(id, element, stars);
+    });
+  });
+});
+
+//append Html
+function appendHtml(id, element, stars) {
+  $('#'+id+'').append(
+    '<li class="item col-lg-3 col-md-3 col-sm-6 col-xs-6 ">\
+      <div class="product-item">\
+        <div class="item-inner">\
+          <div class="product-thumbnail">\
+            <div class="pr-img-area"> <a title="'+ element.name +'" href="single_product.html">\
+              <figure> <img class="first-img" src="'+ element.images[0].image_url +'" alt=""> <img class="hover-img" src="'+ element.images[0].image_url +'" alt=""></figure>\
+              </a>\
+              <button type="button" class="add-to-cart-mt"> <i class="fa fa-shopping-cart"></i><span>'+ Lang.get('home.user.main.add_to_cart') +'</span> </button>\
+            </div>\
+          </div>\
+          <div class="item-info">\
+            <div class="info-inner">\
+              <div class="item-title"> <a title="'+ element.name +'" href="single_product.html">'+ element.name +' </a> </div>\
+              <div class="item-content">\
+              <div class="rating">' 
+              + stars +
+              '<span>('+ element.avg_rate +')</span>\
               </div>\
-              <div class="item-info">\
-                <div class="info-inner">\
-                  <div class="item-title"> <a title="'+ element.name +'" href="">'+ element.name +' </a> </div>\
-                  <div class="item-content">\
-                    <div class="rating">' 
-                    + stars +
-                    '<span>('+ element.avg_rate +')</span>\
-                    </div>\
-                    <div class="item-price">\
-                      <div class="price-box"> <span class="regular-price"> <span class="price">'+ Lang.get('home.user.main.money') + element.price +'</span> </span> </div>\
-                    </div>\
-                  </div>\
+                <div class="item-price">\
+                  <div class="price-box"> <span class="regular-price"> <span class="price">'+ Lang.get('home.user.main.money') + element.price +'</span> </span> </div>\
                 </div>\
               </div>\
             </div>\
           </div>\
-        </li>'
-      );
-    });
-  });
-});
+        </div>\
+      </div>\
+    </li>'
+  );
+}
