@@ -8,7 +8,7 @@
         <div class="box-authentication">
           <h4>{{__('login.user.login')}}</h4>
           <p class="before-login-text">{{__('login.user.welcome')}}</p>
-          <form action="#" accept-charset="UTF-8" method="post">
+          <form class="login-form" accept-charset="UTF-8"id="login-form" >
             <label for="session_email">{{__('login.user.email')}}</label>
             <input class="form-control" type="email" name="" id="session_email" />
             <label for="session_password">{{__('login.user.password')}}</label>
