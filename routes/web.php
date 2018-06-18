@@ -74,5 +74,8 @@ Route::group(['namespace'=>'User','prefix'=>'user'],function () {
         'uses'=>'HomeController@index',
         'as'=>'user'
     ]);
+    Route::resource('profile', 'UserController')->only([
+        'index'
+    ]);
     Route::get('filter', 'FilterController@index');
 });
