@@ -50,7 +50,7 @@
             <div class="mini-cart">
               <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"> <a href="#">
                 <div class="cart-icon"><i class="fa fa-shopping-cart"></i></div>
-                <div class="shoppingcart-inner hidden-xs"><span class="cart-title">{{ __('home.user.header.cart' )}}</span> <span class="cart-total">4 {{ __('home.user.header.items' )}}</span></div>
+                <div class="shoppingcart-inner hidden-xs"><span class="cart-title">{{ __('home.user.header.cart' )}}</span> <span class="cart-total" id="number-item">0 {{ __('home.user.header.items' )}}</span></div>
                 </a></div>
               <div>
                 <div class="top-cart-content">
