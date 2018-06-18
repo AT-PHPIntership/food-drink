@@ -81,12 +81,6 @@
             @include('user.home.listFood')
           </div>
           <div class="pagination-area ">
-            <ul>
-              <li><a class="active" href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-            </ul>
           </div>
         </div>
       </div>
@@ -105,13 +99,7 @@
           <div class="product-grid-area">
             @include('user.home.listDrink')
           </div>
-          <div class="pagination-area ">
-            <ul>
-              <li><a class="active" href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-            </ul>
+          <div class="text-center">
           </div>
         </div>
       </div>
