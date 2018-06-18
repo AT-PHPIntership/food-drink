@@ -24,12 +24,12 @@
       <div class="row">
         <div class="col-sm-3 col-md-3 col-xs-12"> 
           <!-- Header Logo -->
-          <div class="logo"><a title="e-commerce" href="index.html"><img alt="e-commerce" src="images/logo.png"></a> </div>
+          <div class="logo"><a title="e-commerce" href="index.html"><img alt="e-commerce" src="{{ asset('frontend/images/logo.png') }}"></a> </div>
           <!-- End Header Logo --> 
         </div>
         <div class="col-xs-9 col-sm-6 col-md-7"> 
           <!-- Search -->
-          
+          @if (!request()->is('user/login'))
           <div class="top-search">
             <div id="search">
               <form>
@@ -40,7 +40,7 @@
               </form>
             </div>
           </div>
-          
+          @endif
           <!-- End Search --> 
         </div>
         <!-- top cart -->
