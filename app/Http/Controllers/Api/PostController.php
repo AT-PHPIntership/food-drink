@@ -7,7 +7,7 @@ use App\Http\Controllers\Api\ApiController;
 use Symfony\Component\HttpFoundation\Response;
 use App\Post;
 use App\User;
-use DB;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends ApiController
 {
@@ -20,8 +20,7 @@ class PostController extends ApiController
      */
     public function destroy(Post $post)
     {
-        $user = User::findOrFail($post->id);
-        if ($user->id === $post->id) {
+        if ($post->user_id == Auth::id()) {
             try {
                 $post->delete();
                 return $this->responseDeleteSuccess(Response::HTTP_OK);
