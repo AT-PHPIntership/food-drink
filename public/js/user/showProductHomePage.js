@@ -1,6 +1,7 @@
 var idCategoryFood = 1;
 var idCategoryDrink = 2;
 var limit = 8;
+var rate = 0;
 
 $(document).ready(function () {
   //Top 8 New Product
@@ -24,17 +25,17 @@ $(document).ready(function () {
 //append Html
 function appendHtml(id, response) {
   response.data.data.forEach(element => {
+    var stars = '';
     img_url = 'https://image.ibb.co/dqd4QJ/default_product.jpg';
     if (typeof element.images[0] !== 'undefined') {
       img_url = element.images[0].image_url;
     }
-    let stars = '';
-    let rate = Math.round(element.avg_rate);
+    rate = Math.round(element.avg_rate);
     for (i = 1; i <= 5 ; i++) {
       if (i <= rate) {
         stars += '<i class="fa fa-star"></i>';
       } else {
-        stars += '<i class="fa fa-star-o"></i>'
+        stars += '<i class="fa fa-star-o"></i>';
       }
     }
     $('#'+id).append(
@@ -45,7 +46,7 @@ function appendHtml(id, response) {
               <div class="pr-img-area"> <a title="'+ element.name +'" href="single_product.html">\
                 <figure> <img class="first-img" src="'+ img_url +'" alt=""> <img class="hover-img" src="'+ img_url +'" alt=""></figure>\
                 </a>\
-                <button type="button" class="add-to-cart-mt"  onclick="addCart('+ element.id +', \''+element.name +'\', \''+element.price +'\', \''+ img_url +'\')"> <i class="fa fa-shopping-cart"></i><span>'+ Lang.get('home.user.main.add_to_cart') +'</span> </button>\
+                <button type="button" class="add-to-cart-mt"  onclick="addCart('+ element.id +', \''+element.name +'\', \''+element.price +'\', '+element.quantity +', \''+ img_url +'\')"> <i class="fa fa-shopping-cart"></i><span>'+ Lang.get('home.user.main.add_to_cart') +'</span> </button>\
               </div>\
             </div>\
             <div class="item-info">\

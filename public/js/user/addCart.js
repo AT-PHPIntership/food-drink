@@ -2,27 +2,25 @@ var itemCart = [];
 var item = [];
 var cartProduct = [];
 var n = 0;
-function addCart(idProduct, nameProduct, priceProduct, imgProduct) {
+function addCart(idProduct, nameProduct, priceProduct, quantityProduct, imgProduct) {
+  var exists = false;
   item = {
     id: idProduct,
     name: nameProduct,
     price: priceProduct,
+    quantity: quantityProduct,
     img_url: imgProduct,
     count: 1
   };
-  var exists = false;
-  if (typeof(Storage) !== 'undefined') {
-    if (localStorage.count) {
-      document.getElementById('number-item').innerHTML = localStorage.count;
-    }
-    if (localStorage.carts) {
-      cartProduct = JSON.parse(localStorage.carts);
-      if (cartProduct.length > 0) {
+    if (typeof(Storage) !== 'undefined') {
+      if (localStorage.carts) {
+        cartProduct = JSON.parse(localStorage.carts);
         $.each(cartProduct, function(index, value) {
           itemCart = {
             id: value.id,
             name: value.name,
             price: value.price,
+            quantity: value.quantity,
             img_url: value.img_url,
             count: value.count
           }
@@ -31,8 +29,7 @@ function addCart(idProduct, nameProduct, priceProduct, imgProduct) {
             exists = true;
             return false;
           }
-        });
-      }
+      });
     }
   }
   if(!exists) {

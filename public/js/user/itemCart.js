@@ -5,11 +5,11 @@ function itemCart() {
   if (localStorage.count) {
     document.getElementById('number-item').innerHTML = localStorage.count;
   }
-  if (localStorage.carts === 'undefined') {
-    lengthCart = 0;
-  } else {
+  if (localStorage.carts) {
     arrCart = JSON.parse(localStorage.getItem('carts'));
     lengthCart = parseInt(arrCart.length);
+  } else {
+    lengthCart = 0;
   }
   for (let i = 0; i < lengthCart; i++) {
     var name, price, img_url, count;
