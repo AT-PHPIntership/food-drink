@@ -8,11 +8,11 @@ $( document ).ready(function() {
     url: '/api/profile',
     headers: { 'authorization': 'Bearer '+ localStorage.getItem('access_token') },
     success: function (response){
-      document.getElementById("user-avatar").src = response.data.user.user_info.avatar_url;
-      document.getElementById("user-name").innerHTML = response.data.user.name;
-      document.getElementById("user-address").innerHTML = response.data.user.user_info.address;
-      document.getElementById("user-phone").innerHTML = response.data.user.user_info.phone;
-      document.getElementById("user-email").innerHTML = response.data.user.email;
+      $("#user-avatar").attr('src', response.data.user.user_info.avatar_url);
+      $("#user-name").html(response.data.user.name);
+      $("#user-address").html(response.data.user.user_info.address);
+      $("#user-phone").html(response.data.user.user_info.phone);
+      $("#user-email").html(response.data.user.email);
     }
   });
 });
