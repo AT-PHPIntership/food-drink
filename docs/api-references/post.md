@@ -1,4 +1,4 @@
-## Post - API
+## POST - API
 ### `GET` Post
 ```
 /api/products/{product}/posts
@@ -197,3 +197,4 @@ Create New Post
         }
     }
 }
+```
