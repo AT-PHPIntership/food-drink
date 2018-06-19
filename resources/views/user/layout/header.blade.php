@@ -13,8 +13,8 @@
           <!-- top links -->
           <div class="headerlinkmenu col-lg-8 col-md-7 col-sm-8 col-xs-12">
             <div class="links">
-              <div class="myaccount"><a title="My Account" href="account_page.html"><i class="fa fa-user"></i><span class="hidden-xs">{{__('home.user.header.my_account')}}</span></a></div>
-              <div class="login"><a href="account_page.html"><i class="fa fa-unlock-alt"></i><span class="hidden-xs">{{__('home.user.header.log_in')}}</span></a></div>
+              <div class="myaccount"><a title="My Account" href="account_page.html"><i class="fa fa-user"></i><span class="hidden-xs">{{ __('home.user.header.my_account') }}</span></a></div>
+              <div class="login"><a href="{{ route('user.login') }}"><i class="fa fa-unlock-alt"></i><span class="hidden-xs">{{ __('home.user.header.log_in') }}</span></a></div>
             </div>
           </div>
         </div>
@@ -24,7 +24,7 @@
       <div class="row">
         <div class="col-sm-3 col-md-3 col-xs-12"> 
           <!-- Header Logo -->
-          <div class="logo"><a title="e-commerce" href="index.html"><img alt="e-commerce" src="{{ asset('frontend/images/logo.png') }}"></a> </div>
+          <div class="logo"><a title="e-commerce" href="{{ route('user') }}"><img alt="e-commerce" src="{{ asset('frontend/images/logo.png') }}"></a> </div>
           <!-- End Header Logo --> 
         </div>
         <div class="col-xs-9 col-sm-6 col-md-7"> 

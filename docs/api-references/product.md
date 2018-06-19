@@ -18,6 +18,8 @@ Get product
 | limit | number | Top Product |
 | category | int | Get Product By Category |
 | name | string | Get Product By Name Product |
+| price | int | Get Product By Price |
+
 
 ##### Example
 | URL | Description |
@@ -26,6 +28,7 @@ Get product
 | /api/products?sort=avg_rate&limit=10 | Get Top 10 Rate product |
 | /api/products?category=1 | Get Product By Category Food |
 | /api/products?name=Dr. Jared Kris | Get Product By Name Product |
+| /api/products?price=120 | Get Product By Price Upwards |
 
 
 #### Response
@@ -243,6 +246,7 @@ Get product
 }
 ```
 ####  Response Filter Product By Name
+
 ```json
 {
     "meta": {
@@ -322,16 +326,10 @@ Get product
                 "avg_rate": 3.1,
                 "sum_rate": 17,
                 "total_rate": 37,
-                "created_at": "2014-10-17 06:17:00",
-                "updated_at": "2017-09-06 03:36:25",
-                "deleted_at": null,
                 "category": {
                     "id": 1,
                     "name": "food",
                     "parent_id": 0,
-                    "created_at": "2018-06-14 03:52:27",
-                    "updated_at": "2018-06-14 03:52:27",
-                    "deleted_at": null,
                     "level": 0
                 },
                 "images": [
@@ -339,9 +337,6 @@ Get product
                         "id": 3,
                         "image": "default-product.jpg",
                         "product_id": 4,
-                        "created_at": "2018-06-14 03:52:27",
-                        "updated_at": "2018-06-14 03:52:27",
-                        "deleted_at": null,
                         "image_url": "http://192.168.33.10/images/products/default-product.jpg"
                     }
                 ]
@@ -357,6 +352,63 @@ Get product
         "prev_page_url": null,
         "to": 3,
         "total": 3
+    }
+}
+```
+#### Response Filter By Price
+
+```json
+{
+    "meta": {
+        "status": "Successfully",
+        "code": 200
+    },
+    "data": {
+        "current_page": 1,
+        "data": [
+            {
+                "id": 2,
+                "name": "Lavada Buckridge",
+                "price": "173.00",
+                "quantity": 0,
+                "category_id": 9,
+                "preview": "Non voluptate repellat sunt ipsa. Porro et distinctio est tenetur debitis reprehenderit amet qui. Odit aspernatur fuga nam quod. Assumenda alias pariatur repellat blanditiis repellat nobis.",
+                "description": "Dicta quae et dolorem temporibus dolorem voluptas. Et voluptatem consequuntur doloribus earum tempora quis sequi. Commodi consequuntur itaque rerum debitis consequatur.",
+                "avg_rate": 2.4,
+                "sum_rate": 3,
+                "total_rate": 13,
+                "category": {
+                    "id": 9,
+                    "name": "Ale Beer",
+                    "parent_id": 7,
+                    "level": 2
+                },
+                "images": [
+                    {
+                        "id": 1,
+                        "image": "default-product.jpg",
+                        "product_id": 2,
+                        "image_url": "http://192.168.33.10/images/products/default-product.jpg"
+                    },
+                    {
+                        "id": 5,
+                        "image": "default-product.jpg",
+                        "product_id": 2,
+                        "image_url": "http://192.168.33.10/images/products/default-product.jpg"
+                    }
+                ]
+            }
+        ],
+        "first_page_url": "http://192.168.33.10/api/products?page=1",
+        "from": 1,
+        "last_page": 9,
+        "last_page_url": "http://192.168.33.10/api/products?page=9",
+        "next_page_url": "http://192.168.33.10/api/products?page=2",
+        "path": "http://192.168.33.10/api/products",
+        "per_page": "1",
+        "prev_page_url": null,
+        "to": 1,
+        "total": 9
     }
 }
 ```

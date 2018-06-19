@@ -11,7 +11,7 @@
           <div class="banner-box banner-box1"> 
             <img src="/frontend/images/banner_food.jpg" alt="">
             <div class="box-hover">
-              <div class="banner-title">{{__('home.user.main.food')}}</div>
+              <div class="banner-title">{{ __('home.user.main.food') }}</div>
             </div>
           </div>
         </a>
@@ -21,7 +21,7 @@
           <div class="banner-box banner-box1"> 
             <img src="/frontend/images/banner_drink.jpg" alt="">
             <div class="box-hover">
-              <div class="banner-title">{{__('home.user.main.drink')}}</div>
+              <div class="banner-title">{{ __('home.user.main.drink') }}</div>
             </div>
           </div>
         </a>
@@ -37,7 +37,7 @@
       <div class="col-main col-sm-12 col-xs-12 home-inline">
         <div class="shop-inner home-inline">
           <div class="page-title">
-            <h2>{{__('home.user.main.new_product')}}</h2>
+            <h2>{{ __('home.user.main.new_product') }}</h2>
           </div>
           <div class="product-grid-area">
             @include('user.home.topNewProduct')
@@ -71,7 +71,7 @@
       <div class="col-main col-sm-12 col-xs-12">
         <div class="shop-inner">
           <div class="page-title">
-            <h2><a href="">{{__('home.user.main.food')}}</a></h2>
+            <h2><a href="">{{ __('home.user.main.food') }}</a></h2>
           </div>
           <div class="product-grid-area">
             @include('user.home.listFood')
@@ -90,7 +90,7 @@
       <div class="col-main col-sm-12 col-xs-12">
         <div class="shop-inner">
           <div class="page-title">
-            <h2><a href="">{{__('home.user.main.drink')}}</a></h2>
+            <h2><a href="">{{ __('home.user.main.drink') }}</a></h2>
           </div>
           <div class="product-grid-area">
             @include('user.home.listDrink')
