@@ -1,5 +1,8 @@
 // show user info
 $( document ).ready(function() {
+  if (localStorage.getItem('access_token')) {
+    $('.links .login').hide();
+  }
   $.ajax({
     type: 'GET',
     url: '/api/profile',
