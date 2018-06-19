@@ -69,7 +69,7 @@ Route::group(['namespace' => 'Home','prefix' => 'user'], function (){
     ]);
 });
 //frontend
-Route::group(['namespace'=>'User','prefix'=>'user'],function () {
+Route::group(['namespace'=>'User','prefix'=>'/home'],function () {
     Route::get('',[
         'uses'=>'HomeController@index',
         'as'=>'user'
