@@ -54,7 +54,7 @@
       <div class="col-main col-sm-12 col-xs-12 ">
         <div class="shop-inner home-inline">
           <div class="page-title">
-            <h2>{{ __('home.user.main.rate_product') }}</h2>
+            <h2>{{__('home.user.main.rate_product')}}</h2>
           </div>
           <div class="product-grid-area">
             @include('user.home.topRateProduct')

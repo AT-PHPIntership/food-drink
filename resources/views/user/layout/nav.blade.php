@@ -5,7 +5,7 @@
         <div class="mega-container visible-lg visible-md visible-sm">
           <div class="navleft-container">
             <div class="mega-menu-title">
-              <h3>{{ __('home.user.nav.shop_food_drink' )}}</h3>
+              <h3>{__('home.user.nav.shop_food_drink')}}</h3>
             </div>
           </div>
         </div>
@@ -16,7 +16,7 @@
             <li class="mt-root">
               <a href="">
                 <div class="mt-root-item">
-                  <div class="title title_font"><span class="title-text">{{ __('home.user.nav.search' )}}</span></div>
+                  <div class="title title_font"><span class="title-text">{__('home.user.nav.search')}}</span></div>
                 </div>
               </a>
             </li>
