@@ -14,3 +14,6 @@
 
 <!-- main js --> 
 <script type="text/javascript" src="{{ asset('frontend/js/main.js')}} "></script> 
+
+<!-- login user js --> 
+<script type="text/javascript" src="{{ asset('js/user/userLogin.js')}} "></script> 
