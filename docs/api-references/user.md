@@ -2,7 +2,7 @@
 
 ### `GET` User Infomation
 ```
-/api/users/{user}
+/api/user/
 ```
 Get user's infomation
 #### Request Headers
