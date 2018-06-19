@@ -2,7 +2,7 @@
 
 ### `GET` User Infomation
 ```
-/api/user
+/api/profile
 ```
 Get user's infomation
 
