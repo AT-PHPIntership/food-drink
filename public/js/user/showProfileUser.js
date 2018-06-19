@@ -2,7 +2,7 @@
 $( document ).ready(function() {
   $.ajax({
     type: 'GET',
-    url: '/api/user',
+    url: '/api/profile',
     headers: { 'authorization': 'Bearer '+ localStorage.getItem('access_token') },
     success: function (response){
       document.getElementById("user-avatar").src = response.data.user.user_info.avatar_url;

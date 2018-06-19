@@ -26,6 +26,7 @@ Route::group(['namespace' => 'Api'], function () {
      Route::get('posts', 'ProductController@getPosts');
     Route::post('login', 'LoginController@login');
     Route::group(['middleware'=>'auth:api'], function () {
+        Route::get('profile', 'ProfileController@show');
         Route::post('logout', 'LoginController@logout');
         Route::apiResource('user', 'UserController')->only([
             'index'

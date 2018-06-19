@@ -1,10 +1,11 @@
-## USER API
+## USER - API
 
 ### `GET` User Infomation
 ```
-/api/user/
+/api/profile
 ```
 Get user's infomation
+
 #### Request Headers
 | Key | Value |
 |---|---|
@@ -50,6 +51,7 @@ Get user's infomation
     "code": 404,
 }
 ```
+
 ### `POST` Login
 ```
 /api/login

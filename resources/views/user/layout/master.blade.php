@@ -28,5 +28,6 @@
   </div>
   <!-- Script -->
   @include('user.layout.script')
+  @yield('scripts')
 </body>
 </html>
