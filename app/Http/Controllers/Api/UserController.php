@@ -17,7 +17,7 @@ class UserController extends ApiController
      *
      * @return json user, userInfo
      */
-    public function show()
+    public function index()
     {
         $user = Auth::user();
         $data['user'] = $user->load('userInfo');
