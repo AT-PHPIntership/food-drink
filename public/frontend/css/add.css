@@ -15,5 +15,6 @@
   font-size: 17px !important;
 }
 .home-inline {
-  display: inline-block !important;
+  display: inline-block;
+  width: 100%;
 }
