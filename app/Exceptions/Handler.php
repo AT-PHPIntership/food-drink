@@ -53,8 +53,6 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        $message = "";
-        $code = 0;
         if ($request->route() != null) {
             if ($request->route()->getPrefix() === 'api') {
                 // error 404
