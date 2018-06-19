@@ -17,7 +17,7 @@ class ProfileController extends ApiController
      *
      * @return json user, userInfo
      */
-    public function index()
+    public function show()
     {
         $user = Auth::user();
         $data['user'] = $user->load('userInfo');
