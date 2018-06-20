@@ -48,13 +48,14 @@
         <div class="col-lg-2 col-xs-3 top-cart">
           <div class="top-cart-contain">
             <div class="mini-cart">
-              <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"> <a href="#">
-                <div class="cart-icon"><i class="fa fa-shopping-cart"></i></div>
-                <div class="shoppingcart-inner hidden-xs">
-                  <span class="cart-title">{{ __('home.user.header.cart') }}</span>
-                  <span id="number-item">0</span>
-                  <span class="cart-total">{{ __('home.user.header.items') }}</span>
-                </div>
+              <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"> 
+                <a href="#">
+                  <div class="cart-icon"><i class="fa fa-shopping-cart"></i></div>
+                  <div class="shoppingcart-inner hidden-xs">
+                    <span class="cart-title">{{ __('home.user.header.cart') }}</span>
+                    <span id="number-item">0</span>
+                    <span class="cart-total">{{ __('home.user.header.items') }}</span>
+                  </div>
                 </a>
               </div>
             </div>
