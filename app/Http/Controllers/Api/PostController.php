@@ -24,7 +24,7 @@ class PostController extends ApiController
             try {
                 $post->delete();
                 return $this->responseDeleteSuccess(Response::HTTP_OK);
-            } catch (ModelNotFoundException $e) {
+            } catch (Exception $e) {
                 return response()->json();
             }
         }
