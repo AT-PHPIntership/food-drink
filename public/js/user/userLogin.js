@@ -11,7 +11,7 @@ $( document ).ready(function() {
             }),
             success: function (data){
                 window.localStorage.setItem('access_token', data.data.token);
-                window.location.href = 'http://' + window.location.hostname + '/home';
+                window.location.href = 'http://' + window.location.hostname + '/';
             },
             error: function (data) {
                 document.getElementById("login-error").innerHTML = data.responseJSON.error;
