@@ -1,8 +1,8 @@
 // show user info
+if (!localStorage.getItem('access_token')) {
+  window.location.href = 'http://' + window.location.hostname + '/';
+}
 $( document ).ready(function() {
-  if (localStorage.getItem('access_token')) {
-    $('.links .login').hide();
-  }
   $.ajax({
     type: 'GET',
     url: '/api/profile',
