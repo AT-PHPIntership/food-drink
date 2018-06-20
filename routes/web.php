@@ -78,4 +78,7 @@ Route::group(['namespace'=>'User','prefix'=>'/'],function () {
         'index'
     ]);
     Route::get('filter', 'FilterController@index');
+    Route::resource('cart', 'CartController')->only([
+        'index'
+    ]);
 });

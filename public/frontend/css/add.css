@@ -17,3 +17,29 @@
 .home-inline {
   display: inline-block !important;
 }
+.cart_summary {
+  border-collapse: collapse;
+
+}
+.cart_summary th, .cart_summary td {
+  border: 1px solid #ddd;
+}
+.continue-btn {
+  cursor: pointer;
+}
+.current {
+  padding: 10px 0;
+}
+.current-product {
+  background: none !important;
+  color: #000 !important;
+  padding: 0 0 0 5px !important;
+}
+.del-item-cart {
+  background: none!important;
+  color: inherit;
+  border: none;
+  padding: 0!important;
+  font: inherit;
+  cursor: pointer;
+}
