@@ -34,8 +34,7 @@ function addCart(idProduct, nameProduct, priceProduct, quantityProduct, imgProdu
   if(!exists) {
     cartProduct.push(item);
     localStorage.setItem('carts', JSON.stringify(cartProduct));
-    getcarts = JSON.parse(localStorage.carts);
-    n = getcarts.length;
+    n = cartProduct.length;
     localStorage.setItem('count', n);
   }
   numberItem();
