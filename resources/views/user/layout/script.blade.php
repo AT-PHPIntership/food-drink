@@ -17,3 +17,7 @@
 
 <!-- login user js --> 
 <script type="text/javascript" src="{{ asset('js/user/userLogin.js')}} "></script> 
+
+<!-- show post of product js --> 
+<script type="text/javascript" src="{{ asset('js/user/showPostOfProduct.js')}} "></script>
+

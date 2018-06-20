@@ -7,6 +7,7 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Auth\AuthenticationException;
 use App\Traits\ApiResponser;
 use Illuminate\Http\Response;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class Handler extends ExceptionHandler
 {
@@ -52,21 +53,21 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($request->route() != null) {
+            if ($request->route()->getPrefix() === 'api') {
+                // error 404
+                if ($exception instanceof ModelNotFoundException) {
+                    $code = Response::HTTP_NOT_FOUND;
+                    $message = __('api.error_404');
+                    return $this->errorResponse($message, $code);
+                }
+            }
+        }
+        if ($exception instanceof AuthenticationException) {
+            $code = Response::HTTP_UNAUTHORIZED;
+            $message = __('login.user.unauthorised');
+            return $this->errorResponse($message, $code);
+        }
         return parent::render($request, $exception);
-    }
-    
-    /**
-     * Return response error.
-     *
-     * @param \Illuminate\Http\Request                 $request   request
-     * @param \Illuminate\Auth\AuthenticationException $exception exception
-     *
-     * @return \Illuminate\Http\Response
-     */
-    protected function unauthenticated($request, AuthenticationException $exception)
-    {
-         if($request->expectsJson()){
-            return response()->json(['message' => $exception->getMessage()], Response::HTTP_UNAUTHORIZED);
-         }
     }
 }
