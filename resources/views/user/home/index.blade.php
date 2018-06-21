@@ -79,7 +79,7 @@
             @include('user.home.listFood')
           </div>
           <div class="home-inline"></div>
-          <a id="view-more-food" href="">{{ __('home.user.main.view_more_food') }}</a>
+          <a id="view-more-food">{{ __('home.user.main.view_more_food') }}</a>
         </div>
       </div>
     </div>
@@ -98,7 +98,7 @@
             @include('user.home.listDrink')
           </div>
           <div class="home-inline"></div>
-          <a id="view-more-drink" href="">{{ __('home.user.main.view_more_food') }}</a>
+          <a id="view-more-drink">{{ __('home.user.main.view_more_food') }}</a>
         </div>
       </div>
     </div>
