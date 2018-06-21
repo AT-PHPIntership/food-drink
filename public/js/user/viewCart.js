@@ -5,7 +5,7 @@ $(document).ready(function() {
       itemCart(cartProduct);
       $('.del-item-cart').click(function() {
         var index = $(this).data("index");
-        msg = 'Are you sure remove this product?';
+        msg = Lang.get('cart.are_you_sure');
         if (confirm(msg)) {
           cartProduct = JSON.parse(localStorage.carts);
           cartProduct.splice(index, 1);
@@ -63,12 +63,13 @@ function changeQuantity(id, quantity, index) {
             localStorage.setItem('carts', JSON.stringify(cartProduct));
             itemCart(cartProduct);
           } else {
-            alert('aa');
+            alert(Lang.get('cart.quantity_greater'));
           }
         }
       }
     } else {
-      alert('Do not exceed product quantity in stock('+ qty +')');
+      var greater = Lang.get('cart.not_exceed') + qty + Lang.get('cart.close')
+      alert(greater);
     }
     location.reload();
   });

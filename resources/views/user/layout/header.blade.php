@@ -13,8 +13,8 @@
           <!-- top links -->
           <div class="headerlinkmenu col-lg-8 col-md-7 col-sm-8 col-xs-12">
             <div class="links">
-              <div class="myaccount"><a title="My Account" href="account_page.html"><i class="fa fa-user"></i><span class="hidden-xs">{{ __('home.user.header.my_account') }}</span></a></div>
-              <div class="login"><a href="{{ route('user.login') }}"><i class="fa fa-unlock-alt"></i><span class="hidden-xs">{{ __('home.user.header.log_in') }}</span></a></div>
+              <div class="myaccount"><a title="My Account" href="{{ route('profile.index') }}"><i class="fa fa-user"></i><span class="hidden-xs">{{ __('home.user.header.my_account' ) }}</span></a></div>
+              <div class="login"><a href="{{ route('user.login') }}"><i class="fa fa-unlock-alt"></i><span class="hidden-xs">{{ __('home.user.header.log_in' ) }}</span></a></div>
             </div>
           </div>
         </div>
