@@ -62,9 +62,6 @@ class productDetailTest extends TestCase
                         'avg_rate',
                         'sum_rate',
                         'total_rate',
-                        'created_at',
-                        'updated_at',
-                        'deleted_at',
                         'images' => [
                             
                         ],
@@ -72,9 +69,6 @@ class productDetailTest extends TestCase
                             'id',
                             'name',
                             'parent_id',
-                            'created_at',
-                            'updated_at',
-                            'deleted_at',
                             'level'
                         ]
             ]
