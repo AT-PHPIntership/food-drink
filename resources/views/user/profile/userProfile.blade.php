@@ -7,11 +7,11 @@
       <div class="well well-sm">
         <div class="row">
           <div class="col-sm-6 col-md-4">
-            <img src="" alt="" class="img-rounded img-responsive" id="user-avatar"/>
+            <img class="img-rounded img-responsive" id="user-avatar"/>
           </div>
           <div class="col-sm-6 col-md-8">
             <h4 id="user-name"></h4>
-            <small><cite title="" id="user-address" > <i class="glyphicon glyphicon-map-marker"></i></cite></small>
+            <small><cite  id="user-address" > <i class="glyphicon glyphicon-map-marker"></i></cite></small>
             <p>
               <i class="glyphicon glyphicon-envelope" id="user-email"></i> 
               <br />

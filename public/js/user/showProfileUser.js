@@ -1,6 +1,6 @@
 // show user info
 if (!localStorage.getItem('access_token')) {
-  window.location.href = 'http://' + window.location.hostname + '/';
+  window.location.href = window.location.hostname + '/';
 }
 $( document ).ready(function() {
   $.ajax({
