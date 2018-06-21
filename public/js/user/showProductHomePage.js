@@ -43,10 +43,10 @@ function appendHtml(id, response) {
         <div class="product-item">\
           <div class="item-inner">\
             <div class="product-thumbnail">\
-              <div class="pr-img-area"> <a title="'+ element.name +'" href="single_product.html">\
+              <div class="pr-img-area"> <a title="'+ element.name +'" href="">\
                 <figure> <img class="first-img" src="'+ img_url +'" alt=""> <img class="hover-img" src="'+ img_url +'" alt=""></figure>\
                 </a>\
-                <button type="button" class="add-to-cart-mt"> <i class="fa fa-shopping-cart"></i><span>'+ Lang.get('home.user.main.add_to_cart') +'</span> </button>\
+                <button type="button" class="add-to-cart-mt"  onclick="addCart('+ element.id +', \''+element.name +'\', \''+element.price +'\', '+element.quantity +', \''+ img_url +'\')"> <i class="fa fa-shopping-cart"></i><span>'+ Lang.get('home.user.main.add_to_cart') +'</span> </button>\
               </div>\
             </div>\
             <div class="item-info">\
