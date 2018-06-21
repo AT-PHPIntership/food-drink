@@ -4,3 +4,21 @@
 .display-inline {
     display: inline-block;
 }
+.list-group-item a {
+    padding-left: 0px;
+}
+.is-current > a {
+    padding-left: 20px;
+}
+.is-child > a {
+    padding-left: 10px;
+}
+
+ul.slideContent {
+  display: none;
+}
+
+a.header {
+    color: #4caf50 ;
+  }
+  

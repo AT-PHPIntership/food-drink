@@ -8,8 +8,58 @@
       <form action="">
         <div class="layered-Category">
           <h2 class="saider-bar-title">{{__('sidebar.categories')}}</h2>
+          <!-- list category -->
           <div class="layered-content">
-            <ul class="check-box-list">
+          <div id="collapse-category" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading-category">
+            <!-- <div class="list-group">
+              <div class="list-group-item">
+                  <a href="">                   
+                    Tivi &amp; Thiết Bị Nghe Nhìn
+                  </a>
+              </div>
+              <div class="list-group-item is-current">
+                  <a href="">
+                    Tivi
+                  </a>
+              </div>
+              <div class="list-group-item is-child">
+                  <a href="">Tivi 4K</a>
+              </div>
+              <div class="list-group-item is-child">
+                <a href="">Tivi Màn Hình Cong</a>
+              </div> 
+              <div class="list-group-item">
+                  <a href="" >
+                      Android TV Box, Smart Box
+                  </a>                    
+              </div>
+            </div> -->
+            <nav>
+              <ul>
+                <li class="depth">
+                  <a class="slide header" href="#">Identity</a>  
+                  <ul class="slideContent" >
+                    <li class="depth is-child"><a href="#">Link</a></li>
+                  </ul>
+                </li>
+                <li class="depth">
+                  <a class="slide header is-top" href="#">Products</a>
+                  <ul class="slideContent">
+                    <li class="depth is-child">
+                      <a href="#">Widgets</a>
+                    </li>
+                    <li class="depth is-child">
+                      <a class="slide" href="#">Desktop Apps</a>
+                    </li>
+                    <li class="depth is-child">
+                      <a href="#">Mobile Apps</a>
+                    </li>
+                  </ul> 
+                </li>
+              </ul>   
+            </nav>
+        </div>
+            <!-- <ul class="check-box-list">
               <li>
                 <input type="checkbox" id="jtv1" name="jtvc">
                 <label for="jtv1"> <span class="button"></span> Camera & Photo<span class="count"></span> </label>
@@ -38,7 +88,7 @@
                 <input type="checkbox" id="jtv8" name="jtvc">
                 <label for="jtv8"> <span class="button"></span> Best selling<span class="count"></span> </label>
               </li>
-            </ul>
+            </ul> -->
           </div>
         </div>
         <div class="size-area">
@@ -107,3 +157,6 @@
     </div>
   </div>
 </aside>
+@section('scripts')
+  <script type="text/javascript" src="{{ asset('js/user/slideToggle.js') }}"></script>
+@endsection
