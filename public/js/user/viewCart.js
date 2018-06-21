@@ -5,8 +5,7 @@ $(document).ready(function() {
       itemCart(cartProduct);
       $('.del-item-cart').click(function() {
         var index = $(this).data("index");
-        msg = Lang.get('cart.are_you_sure');
-        if (confirm(msg)) {
+        if (confirm(msg = Lang.get('cart.are_you_sure'))) {
           cartProduct = JSON.parse(localStorage.carts);
           cartProduct.splice(index, 1);
           localStorage.setItem('carts', JSON.stringify(cartProduct));
