@@ -20,3 +20,6 @@
 <link rel="stylesheet" type="text/css"  href="{{ asset('frontend/css/style.css')}}" media="all">
 <!-- add CSS -->
 <link rel="stylesheet" type="text/css"  href="{{ asset('frontend/css/add.css')}}" media="all">
+
+<!-- add CSS user-->
+<link rel="stylesheet" type="text/css"  href="{{ asset('css/user/add.css')}}" media="all">

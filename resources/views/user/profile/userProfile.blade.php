@@ -7,20 +7,18 @@
       <div class="well well-sm">
         <div class="row">
           <div class="col-sm-6 col-md-4">
-            <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" />
+            <img class="img-rounded img-responsive" id="user-avatar"/>
           </div>
           <div class="col-sm-6 col-md-8">
-            <h4>Bhaumik Patel</h4>
-            <small><cite title="San Francisco, USA">San Francisco, USA <i class="glyphicon glyphicon-map-marker"></i></cite></small>
+            <h4 id="user-name"></h4>
+            <small><cite  id="user-address" > <i class="glyphicon glyphicon-map-marker"></i></cite></small>
             <p>
-              <i class="glyphicon glyphicon-envelope"></i> email@example.com
+              <i class="glyphicon glyphicon-envelope" id="user-email"></i> 
               <br />
-              <i class="glyphicon glyphicon-phone"></i>+016823476525
+              <i class="glyphicon glyphicon-phone" id="user-phone"> </i>
               <br />
               <i class="glyphicon glyphicon-lock"></i>*******
               <br />
-              <i class="glyphicon glyphicon-gift"></i>June 02, 1988
-            </p>
             <div class="btn-group">
               <p class="btn btn-primary">User</p>
             </div>
@@ -30,4 +28,7 @@
     </div>
   </div>
 </div>
+@endsection
+@section('scripts')
+  <script type="text/javascript" src="{{ asset('js/user/showProfileUser.js') }}"></script>
 @endsection
