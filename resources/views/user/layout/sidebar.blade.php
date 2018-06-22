@@ -10,32 +10,10 @@
           <h2 class="saider-bar-title">{{__('sidebar.categories')}}</h2>
           <!-- list category -->
           <div class="layered-content">
-            <div id="collapse-category" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading-category">
-              <nav>
-                <ul>
-                  <li class="depth">
-                    <a class="slide header" href="#">Identity</a>  
-                    <ul class="slideContent" >
-                      <li class="depth is-child"><a href="#">Link</a></li>
-                    </ul>
-                  </li>
-                  <li class="depth">
-                    <a class="slide header is-top" href="#">Products</a>
-                    <ul class="slideContent">
-                      <li class="depth is-child">
-                        <a href="#">Widgets</a>
-                      </li>
-                      <li class="depth is-child">
-                        <a class="slide" href="#">Desktop Apps</a>
-                      </li>
-                      <li class="depth is-child">
-                        <a href="#">Mobile Apps</a>
-                      </li>
-                    </ul> 
-                  </li>
-                </ul>   
-              </nav>
-            </div>
+            
+            <div id="js-build-category" class="category-collaps">
+    
+          </div>
           </div>
         </div>
         <div class="size-area">
@@ -103,7 +81,11 @@
       </div>
     </div>
   </div>
+
+  <div id="js-build-category" class="category-collaps">
+
+  </div>
 </aside>
 @section('scripts')
-  <script type="text/javascript" src="{{ asset('js/user/slideToggle.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/user/showListCategory.js') }}"></script>
 @endsection
