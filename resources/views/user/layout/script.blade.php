@@ -26,3 +26,4 @@
 <!-- show post of product js --> 
 <script type="text/javascript" src="{{ asset('js/user/showPostOfProduct.js')}} "></script>
 
+<script type="text/javascript" src="{{ asset('js/user/showListCategory.js') }}"></script>
