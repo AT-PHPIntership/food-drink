@@ -1,14 +1,14 @@
 $( document ).ready(function() {
   accessToken = localStorage.getItem('access_token');
   if (accessToken) {
-    // checkLogin();
-    $('.links .login').hide();
+    checkLogin();
   } else {
     $('.links .myaccount').hide();
     $('.links .logout').hide();
+    window.location.host;
   }
 
-  $(document).on('click', '.agile-login #header-logout #btn-logout', function (event) {
+  $('#logout').on('click', function (event) {
     event.preventDefault();
     if (accessToken) {
       $.ajax({
@@ -20,7 +20,7 @@ $( document ).ready(function() {
         type: "post",
         success: function (response) {
           localStorage.removeItem('login-token');
-          window.location.reload();
+          window.location.href = 'http://' + window.location.hostname + '/';
         }
       });
     }
@@ -36,11 +36,12 @@ function checkLogin() {
       Authorization: 'Bearer ' + accessToken,
     }),
     success: function (response){
-      $('.agile-login #header-login').hide();
+      $('.links .login').hide();
     },
     error: function () {
-      window.localStorage.removeItem('login-token');
-      $('.agile-login #header-logout').hide();
+      window.localStorage.removeItem('access_token');
+      $('.links .myaccount').hide();
+      $('.links .logout').hide();
     }
   });
 }
