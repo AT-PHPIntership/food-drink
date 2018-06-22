@@ -16,7 +16,7 @@ class ListProductTest extends TestCase
     const NUMBER_RECORD_CREATE = 25;
 
     /**
-    * Override function setUp() for make product login
+    * Override function setUp() for make product
     *
     * @return void
     */
@@ -29,12 +29,24 @@ class ListProductTest extends TestCase
     }
 
     /**
+    * Override function setUp() for make product
+    *
+    * @return void
+    */
+    public function setUpNoData()
+    {
+        parent::setUp();
+        factory(Product::class, 0)->create();
+    }
+
+    /**
      * Receive status code 200 when get product success.
      *
      * @return void
      */
     public function testStatusCodeSuccess()
     {
+        $this->setUp();
         $response = $this->json('GET','/api/products');
         $response->assertStatus(Response::HTTP_OK);
     }
@@ -44,40 +56,40 @@ class ListProductTest extends TestCase
      *
      * @return array
      */
-    public function jsonStructureProductDetail()
+    public function jsonStructureShowProduct()
     {
         return [
             'meta' => [
                 'status',
                 'code'
             ],
-            "data" => [
-                "current_page",
-                "data" => [
+            'data' => [
+                'current_page',
+                'data' => [
                     [
-                        "id",
-                        "name",
-                        "price",
-                        "quantity",
-                        "category_id",
-                        "preview",
-                        "description",
-                        "avg_rate",
-                        "sum_rate",
-                        "total_rate",
-                        "created_at",
-                        "updated_at",
-                        "deleted_at",
-                        "category" => [
-                            "id",
-                            "name",
-                            "parent_id",
-                            "created_at",
-                            "updated_at",
-                            "deleted_at",
-                            "level",
+                        'id',
+                        'name',
+                        'price',
+                        'quantity',
+                        'category_id',
+                        'preview',
+                        'description',
+                        'avg_rate',
+                        'sum_rate',
+                        'total_rate',
+                        'created_at',
+                        'updated_at',
+                        'deleted_at',
+                        'category' => [
+                            'id',
+                            'name',
+                            'parent_id',
+                            'created_at',
+                            'updated_at',
+                            'deleted_at',
+                            'level',
                         ],
-                        "images", [
+                        'images', [
                             
                         ]
                     ],
@@ -94,5 +106,37 @@ class ListProductTest extends TestCase
                 'total'
             ]
         ];
+    }
+
+    /**
+     * Test paginate
+     *
+     * @return void
+     */
+    public function testJsonPaginate()
+    {
+        $this->setUp();
+        $dataTest = [
+            'limit' => 5,
+            'page' => 2
+        ];
+        $response = $this->json('GET', '/api/products?limit=' . $dataTest['limit'] . '&page=' . $dataTest['page'] . '');
+        $data = json_decode($response->getContent());
+        $this->assertEquals($data->data->current_page, $dataTest['page']);
+        $this->assertEquals($data->data->per_page, $dataTest['limit']);
+    }
+
+    /**
+     * Test structure of json when empty products.
+     *
+     * @return void
+     */
+    public function testEmptyProducts()
+    {
+        $this->setUpNoData();
+        $response = $this->json('GET', '/api/products');   
+        $response->assertJson([
+            'data' => []
+        ]);
     }
 }
