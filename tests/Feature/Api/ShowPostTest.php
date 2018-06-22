@@ -28,22 +28,11 @@ class ShowPostTest extends TestCase
         factory(Category::class, 'parent')->create();
         factory(User::class, 'admin')->create();
         factory(Product::class)->create();
-        factory(Post::class, self::NUMBER_RECORD_CREATE)->create();
-    }
-
-    /**
-    * Override function setUp() for make post of product have type comment
-    *
-    * @return void
-    */
-    public function setUpOneRecordTypeComment()
-    {
-        factory(Category::class, 'parent')->create();
-        factory(User::class, 'admin')->create();
-        factory(Product::class)->create();
         factory(Post::class)->create([
+            'id' => 1,
             'type' => Post::COMMENT,
         ]);
+        factory(Post::class, self::NUMBER_RECORD_CREATE)->create();
     }
 
     /**
@@ -131,7 +120,6 @@ class ShowPostTest extends TestCase
      */
     public function testJsonComment()
     {
-        $this->setUpOneRecordTypeComment();
         $response = $this->json('GET', '/api/products/1/posts?type=' . POST::COMMENT . '');
         $data = json_decode($response->getContent());
         $this->assertEquals($data->data->data[0]->type, 1);
