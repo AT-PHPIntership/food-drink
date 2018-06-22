@@ -31,6 +31,7 @@ Route::group(['namespace' => 'Api'], function () {
         Route::apiResource('posts', 'PostController')->only([
             'destroy'
         ]);
+        Route::get('checkAccessToken', 'LoginController@checkAccessToken');
     });
     Route::get('products/{product}/posts', 'ProductController@getPosts');
 });

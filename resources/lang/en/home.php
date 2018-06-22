@@ -26,6 +26,7 @@
                 'subtotal' => 'Subtotal: ',
                 'checkout' => 'Checkout',
                 'view_cart' => 'View Cart',
+                'log_out' => 'Log Out',
             ],
             'nav' => [
                 'shop_food_drink' => 'Shop Foods and Drinks',
