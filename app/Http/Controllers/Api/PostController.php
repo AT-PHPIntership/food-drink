@@ -8,6 +8,9 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Post;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use App\Product;
+use App\Http\Requests\Api\CreatePostRequest;
+
 
 class PostController extends ApiController
 {
@@ -28,5 +31,28 @@ class PostController extends ApiController
                 return response()->json();
             }
         }
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param \App\Models\Product                  $product product of this post
+     * @param \App\Http\Requests\CreatePostRequest $request request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Product $product, CreatePostRequest $request)
+    {
+        $user = Auth::user();
+        $input = $request->only('type', 'content');
+        if ($input['type'] == Post::REVIEW) {
+            $input['rate'] = $request->rating;
+        }
+        $input['user_id'] = $user->id;
+        $input['product_id'] = $product->id;
+        $input['status'] = Post::DISABLE;
+        $post = Post::create($input);
+        $post = $post->load('user.userInfo');
+        return $this->showOne($post, Response::HTTP_OK);
     }
 }
