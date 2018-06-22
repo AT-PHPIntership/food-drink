@@ -10,10 +10,9 @@
           <h2 class="saider-bar-title">{{__('sidebar.categories')}}</h2>
           <!-- list category -->
           <div class="layered-content">
-            
             <div id="js-build-category" class="category-collaps">
-    
-          </div>
+      
+            </div>
           </div>
         </div>
         <div class="size-area">
@@ -80,10 +79,6 @@
         <button class="button button-checkout" title="Submit" type="submit"><i class="fa fa-check"></i> <span>{{__('sidebar.checkout')}}</span></button>
       </div>
     </div>
-  </div>
-
-  <div id="js-build-category" class="category-collaps">
-
   </div>
 </aside>
 @section('scripts')
