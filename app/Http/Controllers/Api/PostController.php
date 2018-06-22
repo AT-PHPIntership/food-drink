@@ -43,6 +43,7 @@ class PostController extends ApiController
      */
     public function store(Product $product, CreatePostRequest $request)
     {
+        \DB::enableQueryLog();
         $user = Auth::user();
         $input = $request->only('type', 'content');
         if ($input['type'] == Post::REVIEW) {
@@ -53,6 +54,7 @@ class PostController extends ApiController
         $input['status'] = Post::DISABLE;
         $post = Post::create($input);
         $post = $post->load('user.userInfo');
+        dd(\DB::getQueryLog());
         return $this->showOne($post, Response::HTTP_OK);
     }
 }
