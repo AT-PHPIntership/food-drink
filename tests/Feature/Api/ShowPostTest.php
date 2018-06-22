@@ -16,6 +16,7 @@ class ShowPostTest extends TestCase
 {
     use DatabaseMigrations;
     const NUMBER_RECORD_CREATE = 25;
+
     /**
     * Override function setUp() for make post of product
     *
@@ -25,22 +26,24 @@ class ShowPostTest extends TestCase
     {
         parent::setUp();
         factory(Category::class, 'parent')->create();
-        factory(User::class, 'admin', 1)->create();
-        factory(Product::class, self::NUMBER_RECORD_CREATE)->create();
+        factory(User::class, 'admin')->create();
+        factory(Product::class)->create();
+        factory(Post::class, self::NUMBER_RECORD_CREATE)->create();
     }
 
     /**
-    * Override function setUp() for post of product
+    * Override function setUp() for make post of product have type comment
     *
     * @return void
     */
-    public function setUpNoData()
+    public function setUpOneRecordTypeComment()
     {
-        parent::setUp();
         factory(Category::class, 'parent')->create();
+        factory(User::class, 'admin')->create();
         factory(Product::class)->create();
-        factory(User::class, 'admin', 1)->create();
-        factory(Post::class, 0)->create();
+        factory(Post::class)->create([
+            'type' => Post::COMMENT,
+        ]);
     }
 
     /**
@@ -50,7 +53,6 @@ class ShowPostTest extends TestCase
      */
     public function testStatusCodeSuccess()
     {
-        $this->setUp();
         $response = $this->json('GET','/api/products/1/posts');
         $response->assertStatus(Response::HTTP_OK);
     }
@@ -116,26 +118,22 @@ class ShowPostTest extends TestCase
      */
     public function testJsonPaginate()
     {
-        $this->setUp();
-        $dataTest = [
-            'page' => 2
-        ];
-        $response = $this->json('GET', '/api/products/1/posts?page=' . $dataTest['page'] . '');
+        $response = $this->json('GET', '/api/products/1/posts?page=2');
         $data = json_decode($response->getContent());
-        $this->assertEquals($data->data->current_page, $dataTest['page']);
+        $this->assertEquals($data->data->current_page, 2);
         $this->assertEquals($data->data->per_page, 5);
     }
+
     /**
-     * Test structure of json when empty posts.
+     * Test type comment
      *
      * @return void
      */
-    public function testEmptyPosts()
+    public function testJsonComment()
     {
-        $this->setUpNoData();
-        $response = $this->json('GET', '/api/products/1/posts');   
-        $response->assertJson([
-            'data' => []
-        ]);
+        $this->setUpOneRecordTypeComment();
+        $response = $this->json('GET', '/api/products/1/posts?type=' . POST::COMMENT . '');
+        $data = json_decode($response->getContent());
+        $this->assertEquals($data->data->data[0]->type, 1);
     }
 }
