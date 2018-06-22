@@ -77,7 +77,7 @@ Route::group(['namespace'=>'User','prefix'=>'/'],function () {
     Route::resource('profile', 'UserController')->only([
         'index'
     ]);
-    Route::get('filter', 'FilterController@index');
+    Route::get('product', 'ProductsController@index');
     Route::resource('cart', 'CartController')->only([
         'index'
     ]);

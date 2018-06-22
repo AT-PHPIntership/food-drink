@@ -8,37 +8,34 @@
       <form action="">
         <div class="layered-Category">
           <h2 class="saider-bar-title">{{__('sidebar.categories')}}</h2>
+          <!-- list category -->
           <div class="layered-content">
-            <ul class="check-box-list">
-              <li>
-                <input type="checkbox" id="jtv1" name="jtvc">
-                <label for="jtv1"> <span class="button"></span> Camera & Photo<span class="count"></span> </label>
-              </li>
-              <li>
-                <input type="checkbox" id="jtv2" name="jtvc">
-                <label for="jtv2"> <span class="button"></span> Computers<span class="count"></span> </label>
-              </li>
-              <li>
-                <input type="checkbox" id="jtv3" name="jtvc">
-                <label for="jtv3"> <span class="button"></span> Apple Store<span class="count"></span> </label>
-              </li>
-              <li>
-                <input type="checkbox" id="jtv4" name="jtvc">
-                <label for="jtv4"> <span class="button"></span> Car Electronic<span class="count"></span> </label>
-              </li>
-              <li>
-                <input type="checkbox" id="jtv5" name="jtvc">
-                <label for="jtv5"> <span class="button"></span> Accessories<span class="count"></span> </label>
-              </li>
-              <li>
-                <input type="checkbox" id="jtv7" name="jtvc">
-                <label for="jtv7"> <span class="button"></span> Game & Video<span class="count"></span> </label>
-              </li>
-              <li>
-                <input type="checkbox" id="jtv8" name="jtvc">
-                <label for="jtv8"> <span class="button"></span> Best selling<span class="count"></span> </label>
-              </li>
-            </ul>
+            <div id="collapse-category" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading-category">
+              <nav>
+                <ul>
+                  <li class="depth">
+                    <a class="slide header" href="#">Identity</a>  
+                    <ul class="slideContent" >
+                      <li class="depth is-child"><a href="#">Link</a></li>
+                    </ul>
+                  </li>
+                  <li class="depth">
+                    <a class="slide header is-top" href="#">Products</a>
+                    <ul class="slideContent">
+                      <li class="depth is-child">
+                        <a href="#">Widgets</a>
+                      </li>
+                      <li class="depth is-child">
+                        <a class="slide" href="#">Desktop Apps</a>
+                      </li>
+                      <li class="depth is-child">
+                        <a href="#">Mobile Apps</a>
+                      </li>
+                    </ul> 
+                  </li>
+                </ul>   
+              </nav>
+            </div>
           </div>
         </div>
         <div class="size-area">
@@ -107,3 +104,6 @@
     </div>
   </div>
 </aside>
+@section('scripts')
+  <script type="text/javascript" src="{{ asset('js/user/slideToggle.js') }}"></script>
+@endsection
