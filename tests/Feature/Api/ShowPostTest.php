@@ -17,7 +17,7 @@ class ShowPostTest extends TestCase
     use DatabaseMigrations;
     const NUMBER_RECORD_CREATE = 25;
     /**
-    * Override function setUp() for make product
+    * Override function setUp() for make post of product
     *
     * @return void
     */
@@ -25,9 +25,22 @@ class ShowPostTest extends TestCase
     {
         parent::setUp();
         factory(Category::class, 'parent')->create();
-        factory(Product::class)->create();
         factory(User::class, 'admin', 1)->create();
         factory(Product::class, self::NUMBER_RECORD_CREATE)->create();
+    }
+
+    /**
+    * Override function setUp() for post of product
+    *
+    * @return void
+    */
+    public function setUpNoData()
+    {
+        parent::setUp();
+        factory(Category::class, 'parent')->create();
+        factory(Product::class)->create();
+        factory(User::class, 'admin', 1)->create();
+        factory(Post::class, 0)->create();
     }
 
     /**
@@ -38,7 +51,7 @@ class ShowPostTest extends TestCase
     public function testStatusCodeSuccess()
     {
         $this->setUp();
-        $response = $this->json('GET','/api/products');
+        $response = $this->json('GET','/api/products/1/posts');
         $response->assertStatus(Response::HTTP_OK);
     }
     /**
@@ -46,42 +59,40 @@ class ShowPostTest extends TestCase
      *
      * @return array
      */
-    public function jsonStructureProductDetail()
+    public function jsonStructureShowPost()
     {
         return [
             'meta' => [
                 'status',
                 'code'
             ],
-            "data" => [
-                "current_page",
-                "data" => [
+            'data' => [
+                'current_page',
+                'data' => [
                     [
-                        "id",
-                        "name",
-                        "price",
-                        "quantity",
-                        "category_id",
-                        "preview",
-                        "description",
-                        "avg_rate",
-                        "sum_rate",
-                        "total_rate",
-                        "created_at",
-                        "updated_at",
-                        "deleted_at",
-                        "category" => [
-                            "id",
-                            "name",
-                            "parent_id",
-                            "created_at",
-                            "updated_at",
-                            "deleted_at",
-                            "level",
+                        'id',
+                        'user_id',
+                        'product_id',
+                        'content',
+                        'rate',
+                        'type',
+                        'created_at',
+                        'updated_at',
+                        'deleted_at',
+                        'status',
+                        'user' => [
+                            'id',
+                            'name',
+                            'email',
+                            'role',
+                            'parent_id',
+                            'created_at',
+                            'updated_at',
+                            'deleted_at',
+                            'user_info' => [
+
+                            ]
                         ],
-                        "images", [
-                            
-                        ]
                     ],
                 ],
                 'first_page_url',
@@ -96,5 +107,35 @@ class ShowPostTest extends TestCase
                 'total'
             ]
         ];
+    }
+
+    /**
+     * Test paginate
+     *
+     * @return void
+     */
+    public function testJsonPaginate()
+    {
+        $this->setUp();
+        $dataTest = [
+            'page' => 2
+        ];
+        $response = $this->json('GET', '/api/products/1/posts?page=' . $dataTest['page'] . '');
+        $data = json_decode($response->getContent());
+        $this->assertEquals($data->data->current_page, $dataTest['page']);
+        $this->assertEquals($data->data->per_page, 5);
+    }
+    /**
+     * Test structure of json when empty posts.
+     *
+     * @return void
+     */
+    public function testEmptyPosts()
+    {
+        $this->setUpNoData();
+        $response = $this->json('GET', '/api/products/1/posts');   
+        $response->assertJson([
+            'data' => []
+        ]);
     }
 }
