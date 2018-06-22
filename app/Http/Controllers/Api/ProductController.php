@@ -65,6 +65,7 @@ class ProductController extends ApiController
             $posts = $posts->where('type', $request->type);
         }
         $posts = $posts->sortable()->paginate(config('define.number_page_posts_user'));
+        $posts->appends(request()->query());
         return $this->successResponse($posts, Response::HTTP_OK);
     }
 }
