@@ -123,6 +123,17 @@ Register user
 |---|---|
 |Accept|application/json
 
+#### Parameter
+| Field | Type | Required | Description |
+|---|---|---|---|
+| name | string | required | User name |
+| email | string | required | User email |
+| user_info | int | required | User info |
+| address | string | optional | User address |
+| phone | int | optional | User phone |
+| avatar | string | optional | User avatar |
+
+
 #### Response - Success
 ``` json
 {
@@ -145,7 +156,7 @@ Register user
                 "avatar_url": "http://192.168.33.10/images/users/default-user-avatar.png"
             }
         }
-    },
+    }
 }
 ```
 #### Response - Fail
@@ -155,7 +166,7 @@ Register user
     "errors": {
         "email": [
             "The email has already been taken."
-        ],
+        ]
     },
     "code": 422,
     "request": {
@@ -164,7 +175,7 @@ Register user
         "role": 1,
         "password": "123456789",
         "address": "12 Da Nang",
-        "phone": "0913",
+        "phone": "0913"
     }
 }
 ```
