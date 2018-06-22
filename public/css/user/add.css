@@ -2,23 +2,23 @@
     width: 30px;
 }
 .display-inline {
-    display: inline-block;
+	display: inline-block;
 }
 .list-group-item a {
-    padding-left: 0px;
+	padding-left: 0px;
 }
 .is-current > a {
-    padding-left: 20px;
+	padding-left: 20px;
 }
 .is-child > a {
-    padding-left: 10px;
+	padding-left: 10px;
 }
 
 ul.slideContent {
-  display: none;
+	display: none;
 }
 
 a.header {
-    color: #4caf50 ;
-  }
-  
+	color: #4caf50 ;
+}
+
