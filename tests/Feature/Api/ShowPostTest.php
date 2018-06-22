@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Http\Response;
+use Faker\Generator as Faker;
 use App\Category;
 use App\Product;
 use App\User;
@@ -15,7 +16,7 @@ use App\Post;
 class ShowPostTest extends TestCase
 {
     use DatabaseMigrations;
-    const NUMBER_RECORD_CREATE = 25;
+    const NUMBER_RECORD_CREATE = 20;
 
     /**
     * Override function setUp() for make post of product
@@ -31,6 +32,9 @@ class ShowPostTest extends TestCase
         factory(Post::class)->create([
             'id' => 1,
             'type' => Post::COMMENT,
+        ]);
+        factory(Post::class, 6)->create([
+            'type' => Post::REVIEW,
         ]);
         factory(Post::class, self::NUMBER_RECORD_CREATE)->create();
     }
@@ -123,5 +127,42 @@ class ShowPostTest extends TestCase
         $response = $this->json('GET', '/api/products/1/posts?type=' . POST::COMMENT . '');
         $data = json_decode($response->getContent());
         $this->assertEquals($data->data->data[0]->type, 1);
+    }
+
+    /**
+     * Test type review
+     *
+     * @return void
+     */
+    public function testJsonReview()
+    {
+        $response = $this->json('GET', '/api/products/1/posts?type=' . POST::REVIEW . '');
+        $data = json_decode($response->getContent());
+        $this->assertEquals($data->data->data[1]->type, 2);
+    }
+
+    /**
+     * Test select all post
+     *
+     * @return void
+     */
+    public function testJsonAllPost()
+    {
+        $response = $this->json('GET', '/api/products/1/posts');
+        $data = json_decode($response->getContent());
+        $this->assertEquals($data->data->total, 27);
+    }
+
+    /**
+     * Test paginate review
+     *
+     * @return void
+     */
+    public function testJsonPaginateTypeReview()
+    {
+        $response = $this->json('GET', '/api/products/1/posts?type=' . POST::REVIEW . '&page=2');
+        $data = json_decode($response->getContent());
+        $this->assertEquals($data->data->prev_page_url, $data->data->path . '?type=' . POST::REVIEW . '&page=1');
+        $this->assertEquals($data->data->per_page, 5);
     }
 }
