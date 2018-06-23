@@ -31,6 +31,7 @@ Route::group(['namespace' => 'Api'], function () {
         Route::apiResource('posts', 'PostController')->only([
             'destroy'
         ]);
+        Route::post('products/{product}/posts', 'PostController@store');
     });
     Route::get('products/{product}/posts', 'ProductController@getPosts');
 });

@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
 Route::group(['namespace'=>'Admin','prefix'=>'admin','middleware' => 'admin'],function () {
     Route::get('',[
         'uses'=>'HomeController@index',
