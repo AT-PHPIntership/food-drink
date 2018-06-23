@@ -18,17 +18,20 @@ Get product
 | limit | number | Top Product |
 | category | int | Get Product By Category |
 | name | string | Get Product By Name Product |
-| price | int | Get Product By Price |
+| min_price | int | Get Product By Min Price |
+| max_price | int | Get Product By Max Price |
+| rate | int | Get Product By Rate |
 
 
-##### Example
+##### Example   
 | URL | Description |
 |---|---|
 | /api/products?sort=created_at&limit=10 | Get Top 10 New product |
 | /api/products?sort=avg_rate&limit=10 | Get Top 10 Rate product |
 | /api/products?category=1 | Get Product By Category Food |
 | /api/products?name=Dr. Jared Kris | Get Product By Name Product |
-| /api/products?price=120 | Get Product By Price Upwards |
+| /api/products?min_price=120&max_price=200 | Get Product By Min, Max Price Upwards |
+| /api/products?rate=4| Get Product By Rate Around 3.5 - 4.4 |
 
 
 #### Response
