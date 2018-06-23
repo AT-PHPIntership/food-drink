@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
 Route::group(['namespace'=>'Admin','prefix'=>'admin','middleware' => 'admin'],function () {
     Route::get('',[
         'uses'=>'HomeController@index',
@@ -77,5 +74,8 @@ Route::group(['namespace'=>'User','prefix'=>'/'],function () {
     Route::resource('profile', 'UserController')->only([
         'index'
     ]);
-    Route::get('filter', 'FilterController@index');
+    Route::get('product', 'ProductsController@index');
+    Route::resource('cart', 'CartController')->only([
+        'index'
+    ]);
 });

@@ -4,15 +4,15 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Response;
+use Illuminate\Auth\AuthenticationException;
 use App\Traits\ApiResponser;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Http\Response;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class Handler extends ExceptionHandler
 {
     use ApiResponser;
-
     /**
      * A list of the exception types that are not reported.
      *
@@ -63,6 +63,11 @@ class Handler extends ExceptionHandler
                     return $this->errorResponse($message, $code);
                 }
             }
+        }
+        if ($exception instanceof AuthenticationException) {
+            $code = Response::HTTP_UNAUTHORIZED;
+            $message = __('login.user.unauthorised');
+            return $this->errorResponse($message, $code);
         }
         return parent::render($request, $exception);
     }

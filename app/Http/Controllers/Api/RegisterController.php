@@ -7,10 +7,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Requests\StoreUsers;
-use function Symfony\Component\VarDumper\Tests\Fixtures\bar;
-use Symfony\Component\HttpFoundation\File;
-use Illuminate\Validation\ValidationException;
-use Validator;
 use App\User;
 use App\UserInfo;
 
@@ -50,11 +46,11 @@ class RegisterController extends ApiController
                         'avatar' => $image,
                     ]);
             }
-            $data['token'] =  $user->createToken('token')->accessToken;
-            $data['user'] =  $user->load('userInfo');
+            $data['token'] = $user->createToken('token')->accessToken;
+            $data['user'] = $user->load('userInfo');
             return $this->successResponse($data, Response::HTTP_OK);
-        } catch(Exception $e) {
-            return $this->errorResponse('The given data was invalid.', Response::HTTP_UNPROCESSABLE_ENTITY);
+        } catch (Exception $e) {
+            return $this->errorResponse(__('api.register.error.register'), Response::HTTP_UNPROCESSABLE_ENTITY);
         }
     }
 }
