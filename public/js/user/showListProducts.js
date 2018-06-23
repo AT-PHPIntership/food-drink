@@ -54,29 +54,27 @@ $(document).ready(function () {
   $.get(url, function(response) {
     appendHtml(response);
   });
-});
-$(document).ready(function () {
-$(".filter-price").on("click", function () {
-  from = $('#from').val();  
-  to = $('#to').val();
-  if(url.indexOf('?') > 0) {
-    url += '&min_price='+ from + '&max_price='+ to;
-  } else {
-    url += '?min_price='+ from + '&max_price='+ to;
-  } 
-  $.get(url, function(response) {
-    appendHtml(response);
+  $(".filter-price").on("click", function () {
+    from = $('#from').val();  
+    to = $('#to').val();
+    if(url.indexOf('?') > 0) {
+      url += '&min_price='+ from + '&max_price='+ to;
+    } else {
+      url += '?min_price='+ from + '&max_price='+ to;
+    } 
+    $.get(url, function(response) {
+      appendHtml(response);
     });
   });
-});
-$(".filter-rate").on("click", function (){
-  rate = $(this).val();
-  if(url.indexOf('?') > 0) {
-    url += '&rate='+ rate;
-  } else {
-    url += '?rate='+ rate;
-  }
-  $.get(url, function(response) {
-    appendHtml(response);
-  });  
+  $(".filter-rate").on("click", function (){
+    rate = $(this).val();
+    if(url.indexOf('?') > 0) {
+      url += '&rate='+ rate;
+    } else {
+      url += '?rate='+ rate;
+    }
+    $.get(url, function(response) {
+      appendHtml(response);
+    });  
+  });
 });
