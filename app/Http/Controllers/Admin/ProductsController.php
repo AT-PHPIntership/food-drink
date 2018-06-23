@@ -112,7 +112,7 @@ class ProductsController extends Controller
         DB::beginTransaction();
         try {
             $arrIdImage = preg_split("/[,]/", $request->delImg);
-            $product->update($request->all());
+            $product->update($request->except(['images']));
             if ($request->hasFile('images')) {
                 foreach (request()->file('images') as $image) {
                     $nameNew = time().'_'.md5(rand(0, 99999)).'.'.$image->getClientOriginalExtension();
@@ -124,9 +124,16 @@ class ProductsController extends Controller
                 }
             }
             if ($request->delImg != null) {
+                $countImageProduct = count($product->load('images')->images);
                 Image::whereIn('id', $arrIdImage)->where('product_id', $product->id)->delete();
+                if ($countImageProduct == count($arrIdImage)) {
+                    $image = 'default-product.jpg';
+                    Image::create([
+                        'product_id' => $product->id,
+                        'image' => $image
+                    ]);
+                }
             }
-            $product->update($request->all());
             DB::commit();
         } catch (Exception $e) {
             flash(trans('message.product.fail_update'))->error();
