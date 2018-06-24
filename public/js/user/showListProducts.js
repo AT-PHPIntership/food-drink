@@ -48,33 +48,42 @@ function appendHtml(response) {
               </div>\
             </li>';
           });
-  return $('#products').html(html);
+    $('#products').html(html);
 }
-$(document).ready(function () {
+function processAjax(){
   $.get(url, function(response) {
     appendHtml(response);
-  });
+  })
+  .fail(function(response) {
+    if (response.responseJSON.message) {
+      window.alert(response.responseJSON.message);
+    }
+    else {
+      window.alert(response.responseJSON);
+    }
+  })
+}
+$(document).ready(function () {
+  processAjax();
   $(".filter-price").on("click", function () {
     from = $('#from').val();  
     to = $('#to').val();
+    var url_price = 'min_price='+ from + '&max_price='+ to;
     if(url.indexOf('?') > 0) {
-      url += '&min_price='+ from + '&max_price='+ to;
+      url += '&'+ url_price;
     } else {
-      url += '?min_price='+ from + '&max_price='+ to;
-    } 
-    $.get(url, function(response) {
-      appendHtml(response);
-    });
+      url += '?'+ url_price;
+    }    
+    processAjax();
   });
   $(".filter-rate").on("click", function (){
     rate = $(this).val();
+    var url_rate = 'rate='+ rate;
     if(url.indexOf('?') > 0) {
-      url += '&rate='+ rate;
+      url += '&'+ url_rate;
     } else {
-      url += '?rate='+ rate;
+      url += '?'+ url_rate;
     }
-    $.get(url, function(response) {
-      appendHtml(response);
-    });  
+    processAjax(); 
   });
 });
