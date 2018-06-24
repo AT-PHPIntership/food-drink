@@ -81,6 +81,3 @@
     </div>
   </div>
 </aside>
-@section('scripts')
-  <script type="text/javascript" src="{{ asset('js/user/showListCategory.js') }}"></script>
-@endsection

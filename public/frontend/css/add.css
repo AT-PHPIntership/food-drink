@@ -42,3 +42,15 @@
   font: inherit;
   cursor: pointer;
 }
+.check-box-list input[type="checkbox"] span.button {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 6px;
+  background: url(../images/checkbox.png) no-repeat;
+  padding: 0;
+  border: none;
+}
+.check-box-list input[type="checkbox"]:checked span.button {
+  background: #4caf50 url(../images/checked.png) no-repeat center center;
+}
