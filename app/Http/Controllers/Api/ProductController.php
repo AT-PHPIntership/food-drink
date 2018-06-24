@@ -23,15 +23,19 @@ class ProductController extends ApiController
     public function index(SortApiProductRequest $request)
     {
         $products = Product::with('category', 'images')
-                    ->when(isset($request->price), function ($query) use ($request) {
-                        return $query->where('price', '>=', $request->price);
+                    ->when(isset($request->min_price) && isset($request->max_price), function ($query) use ($request) {
+                        $query->where('price', '>=', $request->min_price);
+                        $query->where('price', '<=', $request->max_price);
+                    })
+                    ->when(isset($request->rate), function ($query) use ($request) {
+                        return $query->whereBetween('avg_rate', [round($request->rate)-0.5, round($request->rate)+0.4]);
                     })
                     ->when(isset($request->name), function ($query) use ($request) {
                         return $query->where('name', 'like', $request->name);
                     })
                     ->when(isset($request->category), function ($query) use ($request) {
                         return $query->whereHas('category', function ($query) use ($request) {
-                                    $query->where('id', $request->category);
+                            $query->where('id', $request->category);
                         });
                     })->sortable()->paginate($request->limit);
         return $this->successResponse($products, Response::HTTP_OK);
