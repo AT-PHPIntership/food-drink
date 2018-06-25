@@ -33,6 +33,7 @@ Route::group(['namespace' => 'Api'], function () {
         ]);
         Route::get('checkAccessToken', 'LoginController@checkAccessToken');
         Route::post('products/{product}/posts', 'PostController@store');
+        
     });
     Route::get('products/{product}/posts', 'ProductController@getPosts');
 });

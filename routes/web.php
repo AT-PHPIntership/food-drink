@@ -78,4 +78,7 @@ Route::group(['namespace'=>'User','prefix'=>'/'],function () {
     Route::resource('cart', 'CartController')->only([
         'index'
     ]);
+    Route::group(['middleware'=>'checkLogin'], function () {
+        Route::post('products/{product}/posts', 'PostController@store');
+    });
 });
