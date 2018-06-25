@@ -34,4 +34,5 @@ Route::group(['namespace' => 'Api'], function () {
         Route::post('products/{product}/posts', 'PostController@store');
     });
     Route::get('products/{product}/posts', 'ProductController@getPosts');
+    Route::post('register', 'RegisterController@register');
 });

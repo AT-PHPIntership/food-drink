@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Auth\AuthenticationException;
 use App\Traits\ApiResponser;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Response;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
@@ -69,5 +70,23 @@ class Handler extends ExceptionHandler
             return $this->errorResponse($message, $code);
         }
         return parent::render($request, $exception);
+    }
+
+    /**
+     * Convert a validation exception into a JSON response.
+     *
+     * @param \Illuminate\Http\Request                   $request   request
+     * @param \Illuminate\Validation\ValidationException $exception validation exception
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function invalidJson($request, ValidationException $exception)
+    {
+        return response()->json([
+                        'message' => $exception->getMessage(),
+                        'errors' => $exception->errors(),
+                        'code' => $exception->status,
+                        'request' => $request->all(),
+                    ], $exception->status);
     }
 }

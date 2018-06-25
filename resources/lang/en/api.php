@@ -7,5 +7,10 @@
         'successfully' => 'Successfully',
         'error' => [
             'unauthorized' => 'Unauthorized',
-        ]
+        ],
+        'register' => [
+            'error' => [
+                'register' => 'The given data was invalid.',
+            ]
+        ],
     ];
