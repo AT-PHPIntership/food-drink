@@ -53,8 +53,7 @@ class PostController extends ApiController
         $input = $request->only('type', 'content');
         if ($input['type'] == Post::REVIEW) {
             if ($order->isEmpty()) {
-                $code = Response:: HTTP_METHOD_NOT_ALLOWED;
-                return $this->errorResponse(__('api.error_405'), $code);
+                return $this->errorResponse(__('api.error_405'), Response::HTTP_METHOD_NOT_ALLOWED);
             }
             $input['rate'] = $request->rating;
         }
