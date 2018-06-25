@@ -6,7 +6,7 @@ $(document).ready(function(){
     success: function(response) {
       buildNav(response.data.data, $jsBuildCategory);
       toggle();
-			$(".check-box-list input:checkbox").change(function(){
+			$(".check-box-list-categories input:checkbox").change(function(){
 				$("input:checkbox[name='"+$(this).attr("name")+"']").not(this).prop("checked",false);
       });
     }
@@ -20,14 +20,11 @@ function buildNav(data, container) {
     var newContainer = $(
 												'<li>\
 													<input type="checkbox" id="jtv'+ val.id +'" name="jtvc" class="filter-category" value="'+ val.id +'">\
-													<label for="jtv'+ val.id +'">\
-														<span class="button"></span>\
-														<a href="#">'+val.name+'</a>\
-													</label>\
+													<a href="#">'+val.name+'</a>\
 												</li>'
 											);
     container.children('ul').append(newContainer);
-    $('#js-build-category ul').addClass('check-box-list');
+    $('#js-build-category ul').addClass('check-box-list-categories');
     if (val.children) {
       buildNav(val.children, newContainer);
     }
@@ -35,7 +32,7 @@ function buildNav(data, container) {
 }
 
 function toggle() {
-  $('label a', $jsBuildCategory).click(function(e) {
+  $('a', $jsBuildCategory).click(function(e) {
     e.preventDefault();
     $(this).next().slideToggle(200);
   });
