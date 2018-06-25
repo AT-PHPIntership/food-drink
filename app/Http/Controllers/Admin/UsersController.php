@@ -66,12 +66,10 @@ class UsersController extends Controller
                     'avatar' => $newName,
                 ]);
         } else {
-            $image = 'default-user-avatar.png';
             UserInfo::create([
                 'user_id' => $data->id,
                 'address' => $request->address,
                 'phone' => $request->phone,
-                'avatar' => $image,
             ]);
         }
         $job = (new SendEmailJob($data));
@@ -114,11 +112,9 @@ class UsersController extends Controller
                 'avatar' => $nameNew,
             ]);
         } else {
-            $image = 'default-user-avatar.png';
             UserInfo::where('user_id', $user->id)->update([
                 'address' => $request->address,
                 'phone' => $request->phone,
-                'avatar' => $image,
             ]);
         }
         flash(trans('user.admin.message.success_update'))->success();
