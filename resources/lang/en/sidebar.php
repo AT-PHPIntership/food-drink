@@ -1,7 +1,7 @@
 <?php
     return [
         'shop_by' => 'Shop By',
-        'shop_option' => 'Shopping Options',
+        'all_product' => 'All Products',
         'categories' => 'Categories',
         'rate' => 'Rate',
         'price' => 'Price',

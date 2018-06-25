@@ -1,5 +1,5 @@
 
-.saider-bar-title .fa-star {
+.fa-star {
   color: #FC0;
 }
 .filter-rate {
@@ -15,7 +15,11 @@
   font-size: 17px !important;
 }
 .home-inline {
-  display: inline-block !important;
+  display: inline-block;
+  width: 100%;
+}
+.value-price {
+  margin-left: 15px;
 }
 .cart_summary {
   border-collapse: collapse;
@@ -42,15 +46,11 @@
   font: inherit;
   cursor: pointer;
 }
-.check-box-list input[type="checkbox"] span.button {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  margin-right: 6px;
-  background: url(../images/checkbox.png) no-repeat;
-  padding: 0;
-  border: none;
+.change-type {
+  -webkit-appearance: checkbox; /* Chrome, Safari, Opera */
+  -moz-appearance: checkbox;    /* Firefox */
+  -ms-appearance: checkbox;     /* not currently supported */
 }
-.check-box-list input[type="checkbox"]:checked span.button {
-  background: #4caf50 url(../images/checked.png) no-repeat center center;
+.block-subtitle {
+  cursor: pointer;
 }

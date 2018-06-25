@@ -6,9 +6,6 @@ $(document).ready(function(){
     success: function(response) {
       buildNav(response.data.data, $jsBuildCategory);
       toggle();
-			$(".check-box-list-categories input:checkbox").change(function(){
-				$("input:checkbox[name='"+$(this).attr("name")+"']").not(this).prop("checked",false);
-      });
     }
   });
 });
@@ -18,11 +15,11 @@ function buildNav(data, container) {
   container.append(ul);
   $.each(data, function(i, val) {
     var newContainer = $(
-												'<li>\
-													<input type="checkbox" id="jtv'+ val.id +'" name="jtvc" class="filter-category" value="'+ val.id +'">\
-													<a href="#">'+val.name+'</a>\
-												</li>'
-											);
+                        '<li>\
+                          <input type="radio" id="jtv'+ val.id +'" name="jtvc" class="filter-category change-type" value="'+ val.id +'">\
+                          <a href="#">'+val.name+'</a>\
+                        </li>'
+                      );
     container.children('ul').append(newContainer);
     $('#js-build-category ul').addClass('check-box-list-categories');
     if (val.children) {

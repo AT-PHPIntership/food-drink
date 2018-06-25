@@ -31,5 +31,5 @@
   </div>
 @endsection
 @section('scripts')
-  <script src="{{ asset('js/user/showListProducts.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/user/showListProducts.js') }}"></script>
 @endsection
