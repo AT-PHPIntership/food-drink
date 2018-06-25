@@ -212,18 +212,16 @@ Edit profile
         "code": 200
     },
     "data": {
-        "data": {
+        "id": 1,
+        "name": "abcxyz",
+        "email": "abcxyz@gmail.com",
+        "user_info": {
             "id": 1,
-            "name": "abcxyz",
-            "email": "abcxyz@gmail.com",
-            "user_info": {
-                "id": 1,
-                "user_id": 1,
-                "address": "12 DN",
-                "phone": "0913",
-                "avatar": "default-user-avatar.png",
-                "avatar_url": "http://192.168.33.10/images/users/default-user-avatar.png"
-            }
+            "user_id": 1,
+            "address": "12 DN",
+            "phone": "0913",
+            "avatar": "default-user-avatar.png",
+            "avatar_url": "http://192.168.33.10/images/users/default-user-avatar.png"
         }
     }
 }
