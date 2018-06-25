@@ -1,5 +1,5 @@
 
-.saider-bar-title .fa-star {
+.fa-star {
   color: #FC0;
 }
 .filter-rate {
@@ -15,7 +15,11 @@
   font-size: 17px !important;
 }
 .home-inline {
-  display: inline-block !important;
+  display: inline-block;
+  width: 100%;
+}
+.value-price {
+  margin-left: 15px;
 }
 .cart_summary {
   border-collapse: collapse;
