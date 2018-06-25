@@ -43,6 +43,8 @@
                 'drink' => 'Drink',
                 'add_to_cart' => 'Add to Cart',
                 'money' => '$',
+                'view_more_food' => 'Get more products by categoty Food',
+                'view_more_drink' => 'Get more products by categoty Drink',
             ],
         ]
     ];

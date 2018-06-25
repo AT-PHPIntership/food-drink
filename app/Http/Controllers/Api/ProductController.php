@@ -38,6 +38,7 @@ class ProductController extends ApiController
                             $query->where('id', $request->category);
                         });
                     })->sortable()->paginate($request->limit);
+        $products->appends(request()->query());
         return $this->successResponse($products, Response::HTTP_OK);
     }
     
