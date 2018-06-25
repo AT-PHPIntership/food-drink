@@ -38,12 +38,10 @@ class RegisterController extends ApiController
                         'avatar' => $newName,
                     ]);
             } else {
-                $image = 'default-user-avatar.png';
                 UserInfo::create([
                         'user_id' =>$user->id,
                         'address' => $request->address,
                         'phone' => $request->phone,
-                        'avatar' => $image,
                     ]);
             }
             $data['token'] = $user->createToken('token')->accessToken;
