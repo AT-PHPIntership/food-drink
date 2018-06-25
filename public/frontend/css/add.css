@@ -46,3 +46,11 @@
   font: inherit;
   cursor: pointer;
 }
+.change-type {
+  -webkit-appearance: checkbox; /* Chrome, Safari, Opera */
+  -moz-appearance: checkbox;    /* Firefox */
+  -ms-appearance: checkbox;     /* not currently supported */
+}
+.block-subtitle {
+  cursor: pointer;
+}

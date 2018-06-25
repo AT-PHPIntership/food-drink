@@ -4,11 +4,11 @@ function appendHtml(response) {
   response.data.data.forEach(element => {
     var stars = '';
     var rate = 0;
-		img_url = 'https://image.ibb.co/dqd4QJ/default_product.jpg';		
+    img_url = 'https://image.ibb.co/dqd4QJ/default_product.jpg';    
     if (typeof element.images[0] !== 'undefined') {
       img_url = element.images[0].image_url;
-		}
-		rate = Math.round(element.avg_rate);
+    }
+    rate = Math.round(element.avg_rate);
     for (i = 1; i <= 5 ; i++) {
       if (i <= rate) {
         stars += '<i class="fa fa-star"></i>';
@@ -27,7 +27,7 @@ function appendHtml(response) {
                         <img class="hover-img" src="'+ img_url +'" alt="">\
                       </figure>\
                     </a>\
-                    <button type="button" class="add-to-cart-mt">\
+                    <button type="button" class="add-to-cart-mt" onclick="addCart('+ element.id +', \''+element.name +'\', \''+element.price +'\', '+element.quantity +', \''+ img_url +'\')">\
                       <i class="fa fa-shopping-cart"></i>\
                       <span>'+Lang.get('home.user.main.add_to_cart')+'</span>\
                     </button>\
@@ -85,5 +85,22 @@ $(document).ready(function () {
       url += '?'+ url_rate;
     }
     processAjax(); 
+  });
+  // filter by category
+  $(document).on('click', '.filter-category', function() {
+    var id = $(this).val();
+    if(url.indexOf('?') > 0) {
+      url += '&category='+ id;
+    } else {
+      url += '?category='+ id;
+    }
+    processAjax();
+  });
+  // all products
+  $('#all-products').on('click', function() {
+    if(url.indexOf('?') > 0) {
+      url = '/api/products';
+    }
+    processAjax();
   });
 });

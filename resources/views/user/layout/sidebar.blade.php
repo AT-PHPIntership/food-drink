@@ -4,7 +4,7 @@
       <h3>{{__('sidebar.shop_by')}}</h3>
     </div>
     <div class="block-content">
-      <p class="block-subtitle">{{__('sidebar.shop_option')}}</p>
+      <p id="all-products" class="block-subtitle">{{__('sidebar.all_product')}}</p>
       <form action="">
         <div class="layered-Category">
           <h2 class="saider-bar-title">{{__('sidebar.categories')}}</h2>
@@ -19,29 +19,29 @@
           <h2 class="saider-bar-title">{{__('sidebar.rate')}} (<i class="fa fa-star"></i>)</h2>
           <ul>
             <li>
-              <input type="radio" name="rate" class="filter-rate" value="1">
+              <input type="radio" name="rate" class="filter-rate change-type" value="1">
               <i class="fa fa-star"></i>
             </li>
             <li>
-              <input type="radio" name="rate" class="filter-rate" value="2">
+              <input type="radio" name="rate" class="filter-rate change-type" value="2">
               <i class="fa fa-star"></i>
               <i class="fa fa-star"></i>
             </li>
             <li>
-              <input type="radio" name="rate" class="filter-rate" value="3">
+              <input type="radio" name="rate" class="filter-rate change-type" value="3">
               <i class="fa fa-star blue-star"></i>
               <i class="fa fa-star blue-star"></i>
               <i class="fa fa-star blue-star"></i>
             </li>
             <li>
-              <input type="radio" name="rate" class="filter-rate" value="4">
+              <input type="radio" name="rate" class="filter-rate change-type" value="4">
               <i class="fa fa-star blue-star"></i>
               <i class="fa fa-star blue-star"></i>
               <i class="fa fa-star blue-star"></i>
               <i class="fa fa-star blue-star"></i>
             </li>
             <li>
-              <input type="radio" name="rate" class="filter-rate" value="5">
+              <input type="radio" name="rate" class="filter-rate change-type" value="5">
               <i class="fa fa-star blue-star"></i>
               <i class="fa fa-star blue-star"></i>
               <i class="fa fa-star blue-star"></i>
