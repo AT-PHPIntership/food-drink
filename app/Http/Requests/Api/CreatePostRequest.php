@@ -26,7 +26,7 @@ class CreatePostRequest extends FormRequest
         return [
             'type' => 'in:' . Post::COMMENT . ',' . Post::REVIEW,
             'rate'           => 'integer|min:1|max:5',
-            'content'          => 'required|string',
+            'content'          => 'string',
         ];
     }
 }
