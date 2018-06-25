@@ -132,7 +132,7 @@ Register user
 | email | string | required | User email |
 | user_info | int | required | User info |
 | address | string | optional | User address |
-| phone | int | optional | User phone |
+| phone | int | required | User phone |
 | avatar | string | optional | User avatar |
 
 
@@ -157,6 +157,71 @@ Register user
                 "avatar": "default-user-avatar.png",
                 "avatar_url": "http://192.168.33.10/images/users/default-user-avatar.png"
             }
+        }
+    }
+}
+```
+#### Response - Fail
+``` json
+{
+    "message": "The given data was invalid.",
+    "errors": {
+        "email": [
+            "The email has already been taken."
+        ]
+    },
+    "code": 422,
+    "request": {
+        "name": "abcxyz",
+        "email": "abcxyz@gmail.com",
+        "role": 1,
+        "password": "123456789",
+        "address": "12 Da Nang",
+        "phone": "0913"
+    }
+}
+```
+
+ ### `PUT` Edit Profile
+```
+/api/profile
+```
+Edit profile
+
+#### Request Headers
+| Key | Value |
+|---|---|
+|Accept|application/json
+
+#### Parameter
+| Field | Type | Required | Description |
+|---|---|---|---|
+| name | string | required | User name |
+| email | string | required | User email |
+| user_info | int | required | User info |
+| address | string | optional | User address |
+| phone | int | required | User phone |
+| avatar | string | optional | User avatar |
+
+
+#### Response - Success
+``` json
+{
+    "meta": {
+        "status": "Successfully",
+        "code": 200
+    },
+    "data": {
+        "id": 1,
+        "name": "abcxyz",
+        "email": "abcxyz@gmail.com",
+        "user_info": {
+            "id": 1,
+            "user_id": 1,
+            "address": "12 DN",
+            "phone": "0913",
+            "avatar": "default-user-avatar.png",
+            "avatar_url": "http://192.168.33.10/images/users/default-user-avatar.png"
         }
     }
 }
