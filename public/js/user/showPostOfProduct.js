@@ -1,5 +1,6 @@
 var $url = document.location.pathname;
-getData('/api' + $url + '/posts');
+const ENABLE = 1;
+getData('/api' + $url + '/posts?status=' + ENABLE);
 // get data api show post of product
 function getData(url) {
     $.ajax({
