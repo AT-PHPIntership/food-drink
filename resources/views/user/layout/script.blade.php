@@ -22,3 +22,6 @@
 
 <!-- hiden links login and myaccount user js --> 
 <script type="text/javascript" src="{{ asset('js/user/hidenLoginAndProfile.js') }} "></script>
+
+<!-- show list categories -->
+<script type="text/javascript" src="{{ asset('js/user/showListCategory.js') }}"></script>

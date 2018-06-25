@@ -1,26 +1,54 @@
 var idCategoryFood = 1;
 var idCategoryDrink = 2;
-var limit = 8;
+var limitTop = 8;
+var limitCategory = 4;
 var rate = 0;
 
 $(document).ready(function () {
   //Top 8 New Product
-  $.get('api/products?sort=created_at&order=desc&limit=' + limit, function(response){
+  $.get('api/products?sort=created_at&order=desc&limit=' + limitTop, function(response){
     appendHtml('new-product', response);
   });
+
   //Top 8 Rate Product
-  $.get('api/products?sort=avg_rate&order=desc&limit=' + limit, function(response){
+  $.get('api/products?sort=avg_rate&order=desc&limit=' + limitTop, function(response){
     appendHtml('rate-product', response);
   });
   //show product by category food
-  $.get('/api/products?category=' + idCategoryFood, function(response){
-    appendHtml('food-product', response);
+  $.get('/api/products?category='+ idCategoryFood +'&limit='+ limitCategory, function(response){
+    getProductList('food-product', 'view-more-food', response);
   });
+  viewMore('view-more-food', 'food-product');
+  
   //show product by category drink
-  $.get('/api/products?category=' + idCategoryDrink, function(response){
-    appendHtml('drink-product', response);
+  $.get('/api/products?category='+ idCategoryDrink +'&limit='+ limitCategory, function(response){
+    getProductList('drink-product', 'view-more-drink', response);
   });
+  viewMore('view-more-drink', 'drink-product');
 });
+
+// next
+function viewMore(idNext, id) {
+  $('#'+idNext).click(function (event) {
+    event.preventDefault();
+    url_next = $('#'+idNext).attr('href');
+    $.get(url_next, function(response){
+      getProductList(id, idNext, response);
+    });
+  })
+}
+
+// get list product
+function getProductList(id, idNext, response) {
+  if (response.data['next_page_url'] != null) {
+    $('#'+idNext).show();
+    $('#'+idNext).attr('href', response.data['next_page_url']);
+  }
+  else {
+    $('#'+idNext).hide();
+  }
+  appendHtml(id, response);
+}
 
 //append Html
 function appendHtml(id, response) {

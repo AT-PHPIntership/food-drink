@@ -22,3 +22,12 @@ a.header {
   color: #4caf50 ;
 }
 
+.category-collaps ul ul {
+  display: none;
+  padding-left: 20px;
+}
+.category-collaps ul li {
+  color: #4caf50 ;
+  text-transform: capitalize;
+  font-size: 14px;
+}
