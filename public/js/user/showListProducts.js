@@ -1,12 +1,9 @@
-$(document).ready(function () {
-  $.get('/api/products', function(response) {
-		appendHtml(response);
-  });
-});
+var url = '/api/products';
 function appendHtml(response) {
+  let html = '';
   response.data.data.forEach(element => {
     var stars = '';
-    var rate = 0; 
+    var rate = 0;
 		img_url = 'https://image.ibb.co/dqd4QJ/default_product.jpg';		
     if (typeof element.images[0] !== 'undefined') {
       img_url = element.images[0].image_url;
@@ -19,8 +16,7 @@ function appendHtml(response) {
         stars += '<i class="fa fa-star-o"></i>';
       }
     }
-    $('#products').append(
-    '<li class="item col-lg-4 col-md-4 col-sm-6 col-xs-6 ">\
+    html += '<li class="item col-lg-4 col-md-4 col-sm-6 col-xs-6 ">\
             <div class="product-item">\
               <div class="item-inner">\
                 <div class="product-thumbnail">\
@@ -50,7 +46,44 @@ function appendHtml(response) {
                   </div>\
                 </div>\
               </div>\
-            </li>'   
-    );
-  });
+            </li>';
+          });
+    $('#products').html(html);
 }
+function processAjax(){
+  $.get(url, function(response) {
+    appendHtml(response);
+  })
+  .fail(function(response) {
+    if (response.responseJSON.message) {
+      window.alert(response.responseJSON.message);
+    }
+    else {
+      window.alert(response.responseJSON);
+    }
+  })
+}
+$(document).ready(function () {
+  processAjax();
+  $(".filter-price").on("click", function () {
+    from = $('#from').val();  
+    to = $('#to').val();
+    var url_price = 'min_price='+ from + '&max_price='+ to;
+    if(url.indexOf('?') > 0) {
+      url += '&'+ url_price;
+    } else {
+      url += '?'+ url_price;
+    }    
+    processAjax();
+  });
+  $(".filter-rate").on("click", function (){
+    rate = $(this).val();
+    var url_rate = 'rate='+ rate;
+    if(url.indexOf('?') > 0) {
+      url += '&'+ url_rate;
+    } else {
+      url += '?'+ url_rate;
+    }
+    processAjax(); 
+  });
+});
