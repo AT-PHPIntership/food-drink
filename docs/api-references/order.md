@@ -11,20 +11,6 @@ Get list all order
 |Accept|application\json|
 |Authorization|{token_type} {access_token}|
 
-#### Parameters
-| Field | Type | Required | Description |
-|---|---|---|---|
-| id | int | required | Order's id |
-| user_id | int | required | Order's id user|
-| total | double | required | Order's total |
-| status | tinyint | required | Order's status |
-| product_id | int | required | Order_detail's id product |
-| quantity | int | required | Order_detail's quantity |
-| price | decimal | required | Order_detail's price |
-| preview | string | required | Order_detail's preview |
-| name_product | string | required | Order_detail's name product|
-| image | string | required | Order_detail's image |
-
 #### Response
 ```json
 {
