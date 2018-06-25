@@ -46,7 +46,7 @@ class PostController extends ApiController
     {
         $user = Auth::user();
         $order = Order::where('user_id', $user->id)
-                        ->where('status', Order::ACCEPTED)
+                        ->where('status', Order::RECEIVED)
                         ->whereHas('orderDetails', function ($query) use ($product) {
                             $query->where('product_id', $product->id);
                         })->get();
@@ -54,8 +54,7 @@ class PostController extends ApiController
         if ($input['type'] == Post::REVIEW) {
             if ($order->isEmpty()) {
                 $code = Response:: HTTP_METHOD_NOT_ALLOWED;
-                $message = __('api.error_405');
-                return $this->errorResponse($message, $code);
+                return $this->errorResponse(__('api.error_405'), $code);
             }
             $input['rate'] = $request->rating;
         }

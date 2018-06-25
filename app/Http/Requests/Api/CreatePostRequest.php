@@ -25,8 +25,8 @@ class CreatePostRequest extends FormRequest
     {
         return [
             'type' => 'in:' . Post::COMMENT . ',' . Post::REVIEW,
-            'rate'           => 'integer|min:1|max:5',
-            'content'          => 'string',
+            'rate' => ($this->type == Post::REVIEW) ? 'required' : '' . 'integer|min:1|max:5',
+            'content' => ($this->type == Post::COMMENT) ? 'required' : '' . 'string',
         ];
     }
 }
