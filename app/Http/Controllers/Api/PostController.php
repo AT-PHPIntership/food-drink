@@ -55,7 +55,7 @@ class PostController extends ApiController
             if ($order->isEmpty()) {
                 return $this->errorResponse(__('api.error_405'), Response::HTTP_METHOD_NOT_ALLOWED);
             }
-            $input['rate'] = $request->rating;
+            $input['rate'] = $request->rate;
         }
         $input['user_id'] = $user->id;
         $input['product_id'] = $product->id;

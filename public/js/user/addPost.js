@@ -8,11 +8,12 @@ $(document).ready(function() {
   });
   $('#add-review').click(function(event) {
     event.preventDefault();
-    submitPost(pathName, TYPE_REVIEW);
+		submitPost(pathName, TYPE_REVIEW);
   });
 });
 
 function submitPost(pathName, TYPE) {
+
   $.ajax({
 		url: '/api' + pathName + '/posts',
 		type: 'POST',
@@ -22,13 +23,15 @@ function submitPost(pathName, TYPE) {
 		},
 		data: {
 			type: TYPE,
-		//   rate: $('#content-comment').val(),
-			content: $('#content-comment').val(),
+			rate: $('.reviews-table [name="rate"]:radio:checked').val(),
+			content: $('#content-post' + TYPE).val(),
 		},
 		success: function(response) {
-			$('.alert-post').show();
+			$('.alert-post'+ TYPE).show();
 		},
 		error: function(response) {
+			console.log(response.responseJSON.error);
+			
 			errorMessage = response.responseJSON.message + '<br/>';
 			if (response.responseJSON.errors) {
 				errors = Object.keys(response.responseJSON.errors);
@@ -36,8 +39,11 @@ function submitPost(pathName, TYPE) {
 					errorMessage += response.responseJSON.errors[error] + '<br/>';
 				});
 			}
+			if (response.responseJSON.code) {
+				errorMessage = Lang.get('product.user.detail.purchase');
+			}
 			$('.reviews-content-right .alert-danger').html(errorMessage);
-			$('.reviews-content-right .alert-danger').show();
+			$('.reviews-content-right .danger'+ TYPE).show();
 		}
   });
 }

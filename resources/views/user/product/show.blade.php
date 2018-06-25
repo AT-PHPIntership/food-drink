@@ -63,9 +63,9 @@
                           <div class="form-area">
                             <div class="form-element">
                               <label>{{ __('product.user.detail.review.review') }} <em>*</em></label>
-                              <textarea id="content-review"></textarea>
-                              <p class="alert-post alert-info" hidden>Your review sended and please admin active</p>
-                              <div class="alert-danger" hidden></div>
+                              <textarea id="content-post2"></textarea>
+                              <p class="alert-post2 alert-info" hidden>{{ __('product.user.detail.comment.comment_active') }}</p>
+                              <div class="alert-danger danger2" hidden></div>
                             </div>
                             <div class="buttons-set">
                               <button class="button submit" id="add-review" title="Submit Review" type="submit"><span><i class="fa fa-thumbs-up"></i> &nbsp;{{ __('product.user.detail.review.review') }}</span></button>
@@ -87,9 +87,9 @@
                           <div class="form-area">
                             <div class="form-element">
                               <label>{{ __('product.user.detail.comment.comment') }} <em>*</em></label>
-                              <textarea id="content-comment"></textarea>
-                              <p class="alert-post alert-info" hidden>Your comment sended and please admin active</p>
-                              <div class="alert-danger" hidden></div>
+                              <textarea id="content-post1"></textarea>
+                              <p class="alert-post1 alert-info" hidden>{{ __('product.user.detail.comment.comment_active') }}</p>
+                              <div class="alert-danger danger1" hidden></div>
                             </div>
                             <div class="buttons-set">
                               <button class="button submit" id="add-comment" title="Submit Comment" type="submit"><span><i class="fa fa-thumbs-up"></i> &nbsp;{{ __('product.user.detail.comment.comment') }}</span></button>

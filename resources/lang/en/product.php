@@ -72,17 +72,20 @@
             ],
             'detail' => [
                 'description' => 'Description',
+                'purchase' => 'You need to purchase to review',
                 'comment' => [
                     'comments' => 'Comments',
                     'comment' => 'Comment',
                     'write_your_comment' => 'Write Your Own Comment',
+                    'comment_active' => 'Your comment sended and please admin active',
                 ],
                 'review' => [
                     'reviews' => 'Reviews',
                     'review' => 'Review',
                     'write_your_review' => 'Write Your Own Review',
                     'star' => 'star',
-                    'stars' => 'stars'
+                    'stars' => 'stars',
+                    'review_active' => 'Your review sended and please admin active',
                 ]
             ]
         ]
