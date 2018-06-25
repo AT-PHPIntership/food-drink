@@ -65,6 +65,5 @@ class PostController extends ApiController
         $post = Post::create($input);
         $post = $post->load('user.userInfo');
         return $this->showOne($post, Response::HTTP_OK);
-        
     }
 }
