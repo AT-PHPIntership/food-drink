@@ -69,6 +69,21 @@
             'filter' => [
                 'title' => 'Filter Product',
                 'list_product' => 'List Product',
+            ],
+            'detail' => [
+                'description' => 'Description',
+                'comment' => [
+                    'comments' => 'Comments',
+                    'comment' => 'Comment',
+                    'write_your_comment' => 'Write Your Own Comment',
+                ],
+                'review' => [
+                    'reviews' => 'Reviews',
+                    'review' => 'Review',
+                    'write_your_review' => 'Write Your Own Review',
+                    'star' => 'star',
+                    'stars' => 'stars'
+                ]
             ]
         ]
     ];
