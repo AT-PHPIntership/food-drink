@@ -10,7 +10,7 @@ use App\User;
 use App\UserInfo;
 use Illuminate\Support\Facades\Auth;
 
-class UserController extends ApiController
+class ProfileController extends ApiController
 {
      /**
      * Get user details

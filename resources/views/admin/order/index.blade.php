@@ -11,7 +11,7 @@
       </ol>
     </section>
 
-    @include('admin.layout.message');
+    @include('admin.layout.message')
     <!-- Main content -->
     <section class="content">
       <div class="row">

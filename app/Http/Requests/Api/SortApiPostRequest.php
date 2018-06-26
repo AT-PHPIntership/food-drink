@@ -25,6 +25,7 @@ class SortApiPostRequest extends FormRequest
     public function rules()
     {
         return [
+            'status' => 'in:' . Post::DISABLE . ',' . Post::ENABLE,
             'type' => 'in:' . Post::COMMENT . ',' . Post::REVIEW,
         ];
     }

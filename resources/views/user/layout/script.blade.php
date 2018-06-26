@@ -4,6 +4,10 @@
 <!-- bootstrap js --> 
 <script type="text/javascript" src="{{ asset('frontend/js/bootstrap.min.js')}} "></script> 
 
+<script src="{{ asset('js/messages.js') }}"></script>
+<!-- add to cart -->
+<script src="{{ asset('js/user/addCart.js') }}"></script>
+
 <!-- owl.carousel.min js --> 
 <script type="text/javascript" src="{{ asset('frontend/js/owl.carousel.min.js')}} "></script> 
 
@@ -15,3 +19,12 @@
 
 <!-- login user js --> 
 <script type="text/javascript" src="{{ asset('js/user/userLogin.js')}} "></script> 
+
+<!-- hiden links login and myaccount user js --> 
+<script type="text/javascript" src="{{ asset('js/user/hidenLoginAndProfile.js') }} "></script>
+
+<!-- show list categories -->
+<script type="text/javascript" src="{{ asset('js/user/showListCategory.js') }}"></script>
+
+<!-- show all product -->
+<script type="text/javascript" src="{{ asset('js/user/showListProducts.js') }}"></script>

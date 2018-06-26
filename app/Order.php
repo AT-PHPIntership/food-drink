@@ -8,7 +8,7 @@ use Kyslik\ColumnSortable\Sortable;
 class Order extends Model
 {
     use Sortable;
-    const ACCEPTED = 2;
+    const ACCEPTED = 2, RECEIVED = 5;
     const PENDING = 1;
     const REJECTED = 3;
     const LATEST_ORDERS = 7;
@@ -16,7 +16,8 @@ class Order extends Model
     public $sortable = [
         'id',
         'total',
-        'updated_at'
+        'updated_at',
+        'created_at'
     ];
     
     protected $fillable=[

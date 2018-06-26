@@ -40,7 +40,7 @@ class ListPostTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs(User::find(1))
                     ->visit('/admin/post')
-                    ->assertSee('Show List Review');
+                    ->assertSee('Show List Post');
         $elements = $browser->elements('.table tbody tr');
         $this->assertCount(11, $elements);
         });

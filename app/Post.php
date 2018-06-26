@@ -29,6 +29,7 @@ class Post extends Model
         'id',
         'rate',
         'updated_at',
+        'content',
     ];
 
     /**

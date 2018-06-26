@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
 Route::group(['namespace'=>'Admin','prefix'=>'admin','middleware' => 'admin'],function () {
     Route::get('',[
         'uses'=>'HomeController@index',
@@ -69,7 +66,7 @@ Route::group(['namespace' => 'Home','prefix' => 'user'], function (){
     ]);
 });
 //frontend
-Route::group(['namespace'=>'User','prefix'=>'user'],function () {
+Route::group(['namespace'=>'User','prefix'=>'/'],function () {
     Route::get('',[
         'uses'=>'HomeController@index',
         'as'=>'user'
@@ -77,5 +74,10 @@ Route::group(['namespace'=>'User','prefix'=>'user'],function () {
     Route::resource('profile', 'UserController')->only([
         'index'
     ]);
-    Route::get('filter', 'FilterController@index');
+    Route::resource('products', 'ProductController')->only([
+        'index', 'show'
+    ]);
+    Route::resource('cart', 'CartController')->only([
+        'index'
+    ]);
 });

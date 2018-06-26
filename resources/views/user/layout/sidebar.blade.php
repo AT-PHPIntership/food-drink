@@ -4,64 +4,74 @@
       <h3>{{__('sidebar.shop_by')}}</h3>
     </div>
     <div class="block-content">
-      <p class="block-subtitle">{{__('sidebar.shop_option')}}</p>
-      <form action="">
-        <div class="layered-Category">
-          <h2 class="saider-bar-title">{{__('sidebar.categories')}}</h2>
-          <div class="layered-content">
-            <ul class="check-box-list">
-              <li>
-                <input type="checkbox" id="jtv1" name="jtvc">
-                <label for="jtv1"> <span class="button"></span> Camera & Photo<span class="count"></span> </label>
-              </li>
-              <li>
-                <input type="checkbox" id="jtv2" name="jtvc">
-                <label for="jtv2"> <span class="button"></span> Computers<span class="count"></span> </label>
-              </li>
-              <li>
-                <input type="checkbox" id="jtv3" name="jtvc">
-                <label for="jtv3"> <span class="button"></span> Apple Store<span class="count"></span> </label>
-              </li>
-              <li>
-                <input type="checkbox" id="jtv4" name="jtvc">
-                <label for="jtv4"> <span class="button"></span> Car Electronic<span class="count"></span> </label>
-              </li>
-              <li>
-                <input type="checkbox" id="jtv5" name="jtvc">
-                <label for="jtv5"> <span class="button"></span> Accessories<span class="count"></span> </label>
-              </li>
-              <li>
-                <input type="checkbox" id="jtv7" name="jtvc">
-                <label for="jtv7"> <span class="button"></span> Game & Video<span class="count"></span> </label>
-              </li>
-              <li>
-                <input type="checkbox" id="jtv8" name="jtvc">
-                <label for="jtv8"> <span class="button"></span> Best selling<span class="count"></span> </label>
-              </li>
-            </ul>
+      <span class="block-subtitle"><i class="glyphicon glyphicon-refresh"></i> {{__('sidebar.refresh_filter')}}</span>
+      <div class="layered-Category">
+        <h2 class="saider-bar-title">{{__('sidebar.categories')}}</h2>
+        <!-- list category -->
+        <div class="layered-content">
+          <div id="js-build-category" class="category-collaps">
+    
           </div>
         </div>
-        <div class="size-area">
-          <h2 class="saider-bar-title">{{__('sidebar.rate')}} (<i class="fa fa-star"></i>)</h2>
-          <div class="slider-range">
-            <ul class="check-box-list">
-              <li>
-                <input type="number" class="filter-rate" name="rate" />
-              </li>
-            </ul>
+      </div>
+      <div class="size-area">
+        <h2 class="saider-bar-title">{{__('sidebar.rate')}} (<i class="fa fa-star"></i>)</h2>
+        <ul>
+          <li>
+            <input type="radio" name="rate" class="filter-rate change-type" value="1">
+            <i class="fa fa-star"></i>
+          </li>
+          <li>
+            <input type="radio" name="rate" class="filter-rate change-type" value="2">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+          </li>
+          <li>
+            <input type="radio" name="rate" class="filter-rate change-type" value="3">
+            <i class="fa fa-star blue-star"></i>
+            <i class="fa fa-star blue-star"></i>
+            <i class="fa fa-star blue-star"></i>
+          </li>
+          <li>
+            <input type="radio" name="rate" class="filter-rate change-type" value="4">
+            <i class="fa fa-star blue-star"></i>
+            <i class="fa fa-star blue-star"></i>
+            <i class="fa fa-star blue-star"></i>
+            <i class="fa fa-star blue-star"></i>
+          </li>
+          <li>
+            <input type="radio" name="rate" class="filter-rate change-type" value="5">
+            <i class="fa fa-star blue-star"></i>
+            <i class="fa fa-star blue-star"></i>
+            <i class="fa fa-star blue-star"></i>
+            <i class="fa fa-star blue-star"></i>
+            <i class="fa fa-star blue-star"></i>
+          </li>
+        </ul>
+      </div>
+      <div class="size-area">
+        <h2 class="saider-bar-title">{{__('sidebar.price')}} ({{__('sidebar.money')}})</h2>
+        <div class="cart-plus-minus">
+          <div class="numbers-row">
+              <span class="value-price">Min Price</span>
+              <select id="from" class="form-control filter-price">
+                <option value="1">1</option>
+                <option value="20">20</option>
+                <option value="40">40</option>
+                <option value="60">60</option>
+                <option value="80">80</option>
+              </select>
+              <span class="value-price">Max Price</span>
+              <select id="to" class="form-control filter-price">
+                <option value="100">100</option>
+                <option value="120">120</option>
+                <option value="160">160</option>
+                <option value="180">180</option>
+                <option value="250">250</option>
+              </select>
           </div>
         </div>
-        <div class="size-area">
-          <h2 class="saider-bar-title">{{__('sidebar.price')}} ({{__('sidebar.money')}})</h2>
-          <div class="cart-plus-minus">
-            <div class="numbers-row">
-            <input type="number" step="any" name="min_price" class="input-sm col-sm-6" name="price" placeholder="{{__('sidebar.min_price')}}" />
-            <input type="number" step="any" name="max_price" class="input-sm col-sm-6" name="price" placeholder="{{__('sidebar.max_price')}}" />
-            </div>
-          </div>
-        </div>
-        <button class="button button-filter"><span>{{__('sidebar.search')}}</span></button>
-      </form>
+      </div>
     </div>
   </div>
   <div class="block sidebar-cart">

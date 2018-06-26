@@ -1,4 +1,4 @@
-## Post - API
+## POST - API
 ### `GET` Post
 ```
 /api/products/{product}/posts
@@ -13,14 +13,16 @@ Get product
 | Param | Type | Required | Description |
 |---|---|---|---|
 | product | int | required | Product's id |
-| sort | string | optional | Sort Product |
+| sort | string | required | Sort Product |
+| status | int | required | Post's status |
 | order | string | optional | Type Sort Product |
-| type | int | optional | Get Product By Type |
+| type | int | required | Get Product By Type |
 
 ##### Example
 | URL | Description |
 |---|---|
 | /api/products/{product}/posts?type=2&sort=updated_at | Get Post by type review and sort by updated_at |
+| /api/products/{product}/posts?status=1&type=2 | Get Post by type review with status 1 |
 
 #### Response
 ```json
@@ -197,3 +199,4 @@ Create New Post
         }
     }
 }
+```

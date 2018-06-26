@@ -1,0 +1,33 @@
+.avatar-user-post {
+    width: 30px;
+}
+.display-inline {
+  display: inline-block;
+}
+.list-group-item a {
+  padding-left: 0px;
+}
+.is-current > a {
+  padding-left: 20px;
+}
+.is-child > a {
+  padding-left: 10px;
+}
+
+ul.slideContent {
+  display: none;
+}
+
+a.header {
+  color: #4caf50 ;
+}
+
+.category-collaps ul ul {
+  display: none;
+  padding-left: 20px;
+}
+.category-collaps ul li {
+  color: #4caf50 ;
+  text-transform: capitalize;
+  font-size: 14px;
+}
