@@ -63,10 +63,12 @@
                           <div class="form-area">
                             <div class="form-element">
                               <label>{{ __('product.user.detail.review.review') }} <em>*</em></label>
-                              <textarea></textarea>
+                              <textarea id="content-post2"></textarea>
+                              <p class="alert-post2 alert-info" hidden>{{ __('product.user.detail.comment.comment_active') }}</p>
+                              <div class="alert-danger danger2" hidden></div>
                             </div>
                             <div class="buttons-set">
-                              <button class="button submit" title="Submit Review" type="submit"><span><i class="fa fa-thumbs-up"></i> &nbsp;{{ __('product.user.detail.review.review') }}</span></button>
+                              <button class="button submit" id="add-review" title="Submit Review" type="submit"><span><i class="fa fa-thumbs-up"></i> &nbsp;{{ __('product.user.detail.review.review') }}</span></button>
                             </div>
                           </div>
                         </form>
@@ -85,10 +87,12 @@
                           <div class="form-area">
                             <div class="form-element">
                               <label>{{ __('product.user.detail.comment.comment') }} <em>*</em></label>
-                              <textarea></textarea>
+                              <textarea id="content-post1"></textarea>
+                              <p class="alert-post1 alert-info" hidden>{{ __('product.user.detail.comment.comment_active') }}</p>
+                              <div class="alert-danger danger1" hidden></div>
                             </div>
                             <div class="buttons-set">
-                              <button class="button submit" title="Submit Comment" type="submit"><span><i class="fa fa-thumbs-up"></i> &nbsp;{{ __('product.user.detail.comment.comment') }}</span></button>
+                              <button class="button submit" id="add-comment" title="Submit Comment" type="submit"><span><i class="fa fa-thumbs-up"></i> &nbsp;{{ __('product.user.detail.comment.comment') }}</span></button>
                             </div>
                           </div>
                         </form>
@@ -107,4 +111,5 @@
 @endsection
 @section('scripts')
   <script src="{{ asset('js/user/showPostOfProduct.js') }}"></script>
+  <script src="{{ asset('js/user/addPost.js') }}"></script>
 @endsection
