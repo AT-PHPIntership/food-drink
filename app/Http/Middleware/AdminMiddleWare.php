@@ -22,6 +22,6 @@ class AdminMiddleWare
         if (Auth::check() && Auth::user()->role == User::ROLE_ADMIN) {
             return $next($request);
         }
-        // return redirect()->route('user');
+        return redirect()->route('user');
     }
 }

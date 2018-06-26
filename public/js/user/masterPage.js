@@ -7,24 +7,24 @@ $( document ).ready(function() {
     $('.links .logout').hide();
     window.location.host;
   }
-
+  
   $('#logout').on('click', function (event) {
     event.preventDefault();
     if (accessToken) {
       $.ajax({
-        url: "/api/logout",
+        url: '/api/logout',
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + accessToken
         },
-        type: "post",
+        type: 'POST',
         success: function (response) {
           localStorage.removeItem('login-token');
           window.location.href = 'http://' + window.location.hostname + '/';
         }
       });
     }
-  })
+  });
 });
 
 function checkLogin() {

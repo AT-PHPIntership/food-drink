@@ -43,17 +43,4 @@ class LoginController extends ApiController
         $accessToken->revoke();
         return $this->successResponse(null, Response::HTTP_NO_CONTENT);
     }
-
-    /**
-     * Check access token api
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function checkAccessToken()
-    {
-        if (Auth::user()) {
-            $user = Auth::user();
-            return $this->successResponse($user, Response::HTTP_OK);
-        }
-    }
 }
