@@ -53,4 +53,10 @@
 }
 .block-subtitle {
   cursor: pointer;
+  border: 2px solid #ddd;
+  padding: 5px;
+  background: #ddd
+}
+.layered-Category {
+  margin-top: 15px;
 }

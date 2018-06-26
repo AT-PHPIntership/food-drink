@@ -29,7 +29,7 @@
             ],
             'nav' => [
                 'shop_food_drink' => 'Shop Foods and Drinks',
-                'search' => 'Search',
+                'all_product' => 'All Products',
             ],
             'footer' => [
                 'copyright' => 'Copyright © 2018',

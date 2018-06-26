@@ -25,3 +25,6 @@
 
 <!-- show list categories -->
 <script type="text/javascript" src="{{ asset('js/user/showListCategory.js') }}"></script>
+
+<!-- show all product -->
+<script type="text/javascript" src="{{ asset('js/user/showListProducts.js') }}"></script>

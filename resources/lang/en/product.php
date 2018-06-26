@@ -67,7 +67,7 @@
             'add_to_cart' => 'Add to Cart',
             'money' => '$',
             'filter' => [
-                'title' => 'Filter Product',
+                'title' => 'Show All Product',
                 'list_product' => 'List Product',
             ],
             'detail' => [
