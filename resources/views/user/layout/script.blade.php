@@ -23,6 +23,8 @@
 <!-- hiden links login and myaccount user js --> 
 <script type="text/javascript" src="{{ asset('js/user/masterPage.js') }} "></script>
 
-<!-- show post of product js --> 
-<script type="text/javascript" src="{{ asset('js/user/showPostOfProduct.js')}} "></script>
+<!-- show list categories -->
+<script type="text/javascript" src="{{ asset('js/user/showListCategory.js') }}"></script>
 
+<!-- show all product -->
+<script type="text/javascript" src="{{ asset('js/user/showListProducts.js') }}"></script>

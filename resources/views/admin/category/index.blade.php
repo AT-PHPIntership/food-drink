@@ -10,7 +10,7 @@
         <li class="active">{{__('category.admin.index.categories')}}</li>
       </ol>
     </section>
-    @include('admin.layout.message');
+    @include('admin.layout.message')
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -40,14 +40,15 @@
                 @foreach($categories as $category)
                 <tr>
                   <td>{{ $category->id }}</td>
-                  <td><a href="">{{ $category->name }}</a></td> 
+                  <td>{{ $category->name }}</td> 
                   <td>
                   @foreach($category->parentCategories as $parentCategory)
                     {{ $parentCategory->name }}
                   @endforeach
                   </td>
                   <td>
-                    <a href="{{route('category.edit', ['category' => $category->id])}}"><i class="fa fa-edit"></i></a>
+                    <a href="{{route('category.edit', ['category' => $category->id])}}"><i class="fa fa-edit"></i></a> |
+                    <a href=""><i class="fa fa-info"></i></a>
                     @if($category->id !== App\Category::DEFAULT_CATEGORY_FOOD && $category->id !== App\Category::DEFAULT_CATEGORY_DRINK)
                       <form method="POST" action="{{route('category.destroy', ['category' => $category->id])}}" class="form-trash" onsubmit="return confirmDelete()">
                         @csrf

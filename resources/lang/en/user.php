@@ -48,7 +48,8 @@
                 'enter_password' => 'Enter Password',
                 'enter_address' => 'Enter Address',
                 'enter_phone' => 'Enter Phone',
-                'enter_avatar' => 'Enter Avatar'
+                'enter_avatar' => 'Enter Avatar',
+                'create_user' => 'Create User',
             ],
             'message' => [
                 'success' => 'Successfully deleted the user!',
