@@ -14,9 +14,9 @@
         <div class="mtmegamenu">
           <ul>
             <li class="mt-root">
-              <a href="">
+              <a href="{{ route('products.index') }}">
                 <div class="mt-root-item">
-                  <div class="title title_font"><span class="title-text">{{ __('home.user.nav.search' )}}</span></div>
+                  <div class="title title_font"><span class="title-text">{{ __('home.user.nav.all_product' )}}</span></div>
                 </div>
               </a>
             </li>

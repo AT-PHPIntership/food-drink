@@ -21,7 +21,7 @@ function appendHtml(response) {
               <div class="item-inner">\
                 <div class="product-thumbnail">\
                   <div class="pr-img-area">\
-                    <a title="Ipsums Dolors Untra" href="single_product.html">\
+                    <a title="Ipsums Dolors Untra" href="products/'+ element.id +'">\
                       <figure>\
                         <img class="first-img" src="'+ img_url +'" alt="">\
                         <img class="hover-img" src="'+ img_url +'" alt="">\
@@ -35,7 +35,7 @@ function appendHtml(response) {
                   </div>\
                   <div class="item-info">\
                     <div class="info-inner">\
-                      <div class="item-title"> <a title="Ipsums Dolors Untra" href="single_product.html">'+element.name+'</a> </div>\
+                      <div class="item-title"> <a title="Ipsums Dolors Untra" href="products/'+ element.id +'">'+element.name+'</a> </div>\
                         <div class="item-content">\
                           <div class="rating">'+ stars +'<span>('+ element.avg_rate +')</span></div>\
                         <div class="item-price">\
@@ -96,11 +96,8 @@ $(document).ready(function () {
     }
     processAjax();
   });
-  // all products
-  $('#all-products').on('click', function() {
-    if(url.indexOf('?') > 0) {
-      url = '/api/products';
-    }
-    processAjax();
+  //refresh filter
+  $('.block-subtitle').on('click', function() {
+    location.reload();
   });
 });
