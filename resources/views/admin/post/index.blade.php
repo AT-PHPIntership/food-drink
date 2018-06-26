@@ -31,9 +31,9 @@
               <table class="table table-hover">
                 <tr>
                   <th>@sortablelink('id', __('post.index.id'))</th>
-                  <th>{{__('post.index.user_name')}}</th>
+                  <th>@sortablelink('user.name', __('post.index.user_name'))</th>
                   <th>@sortablelink('product.name', __('post.index.product_name'))</th>
-                  <th>{{__('post.index.review')}}</th>
+                  <th>@sortablelink('content', __('post.index.review'))</th>
                   <th>@sortablelink('rate', __('post.index.rate'))</th>
                   <th>{{__('post.index.type')}}</th>
                   <th>{{__('post.index.status')}}</th>

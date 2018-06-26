@@ -27,7 +27,6 @@
                   <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
                   </div>
                 </form>
-                </div>
               </div>
             </div>
             <!-- /.box-header -->
@@ -36,29 +35,29 @@
                 <tr>
                   <th>@sortablelink('id', __('product.admin.index.id'))</th>
                   <th>@sortablelink('name', __('product.admin.index.name'))</th>
+                  <th>@sortablelink('category.name', __('product.admin.index.category'))</th>
                   <th>@sortablelink('price', __('product.admin.index.price'))</th>
-                  <th>{{__('product.admin.index.image')}}</th>
                   <th>@sortablelink('quantity', __('product.admin.index.quantity'))</th>
-                  <th>{{__('product.admin.index.category')}}</th>
                   <th>@sortablelink('avg_rate', __('product.admin.index.rate_avg'))</th>
+                  <th>{{__('product.admin.index.image')}}</th>
                   <th>{{__('product.admin.index.action')}}</th>
                 </tr>
                 @foreach($product as $item)
                 <tr>
                   <td>{{ $item->id }}</td>
                   <td>{{ $item->name }}</td>
+                  <td>{{ $item->category->name }}</td>
                   <td>{{ $item->price }} &dollar;</td>
+                  <td>{{ $item->quantity }}</td>
+                  <td>{{ $item->avg_rate }}</td>
                   @if ($item->images->first())
                     <td><img src="{{ asset('images/products/'.$item->images->first()['image']) }}" alt="{{ $item->name }}" class="avatar"/></td>
                   @else
                     <td><img src="{{ asset('images/products/default-product.jpg') }}" alt="{{ $item->name }}" class="avatar"/></td>
                   @endif
-                  <td>{{ $item->quantity }}</td>
-                  <td>{{ $item->category->name }}</td>
-                  <td>{{ $item->avg_rate }}</td>
                   <td>
                     <a href="{{route('product.edit', ['product' => $item->id])}}"><i class="fa fa-edit"></i></a> |
-                    <a href="{{route('product.show', ['product' => $item->id])}}"><i class="fa fa-info"></i></i></a> |
+                    <a href="{{ route('product.show', ['product' => $item->id]) }}"><i class="fa fa-info"></i></i></a> |
                     <form method="POST" action="{{route('product.destroy', ['product' => $item->id])}}" class="form-trash" onsubmit="return confirmDelete()">
                       @csrf
                       {{ method_field('DELETE') }}

@@ -10,7 +10,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="{{ route('admin') }}"><i class="fa fa-dashboard"></i>{{__('user.admin.create.create')}}</a></li>
-        <li><a href="{{route('user.index')}}">{{__('admin.manage_user')}}</a></li>
+        <li><a href="{{ route('user.index') }}">{{__('admin.manage_user')}}</a></li>
         <li class="active">{{__('user.admin.create.create_user')}}</li>
       </ol>
     </section>
