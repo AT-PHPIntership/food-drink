@@ -11,7 +11,7 @@
       </ol>
     </section>
 
-    @include('admin.layout.message');
+    @include('admin.layout.message')
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -46,20 +46,25 @@
                 @foreach($product as $item)
                 <tr>
                   <td>{{ $item->id }}</td>
-                  <td><a href="{{route('product.show', ['product' => $item->id])}}">{{ $item->name }}</a></td>
+                  <td>{{ $item->name }}</td>
                   <td>{{ $item->price }} &dollar;</td>
-                  <td><img src="{{ asset('images/products/'.$item->images->first()['image']) }}" alt="{{ $item->name }}" class="avatar"/></td>
+                  @if ($item->images->first())
+                    <td><img src="{{ asset('images/products/'.$item->images->first()['image']) }}" alt="{{ $item->name }}" class="avatar"/></td>
+                  @else
+                    <td><img src="{{ asset('images/products/default-product.jpg') }}" alt="{{ $item->name }}" class="avatar"/></td>
+                  @endif
                   <td>{{ $item->quantity }}</td>
                   <td>{{ $item->category->name }}</td>
                   <td>{{ $item->avg_rate }}</td>
                   <td>
                     <a href="{{route('product.edit', ['product' => $item->id])}}"><i class="fa fa-edit"></i></a> |
+                    <a href="{{route('product.show', ['product' => $item->id])}}"><i class="fa fa-info"></i></i></a> |
                     <form method="POST" action="{{route('product.destroy', ['product' => $item->id])}}" class="form-trash" onsubmit="return confirmDelete()">
                       @csrf
                       {{ method_field('DELETE') }}
-                      <button type="submit" class="but-trash"><i class="fa fa-trash"></i></button> |
+                      <button type="submit" class="but-trash"><i class="fa fa-trash"></i></button>
                     </form>
-                    <a href="{{route('product.show', ['product' => $item->id])}}"><i class="fa fa-info"></i></i></a>
+                    
                   </td>
                 </tr>
                 @endforeach

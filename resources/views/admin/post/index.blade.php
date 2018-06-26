@@ -4,10 +4,10 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>{{__('post.index.list_review')}}</h1>
+      <h1>{{__('post.index.list_post')}}</h1>
       <ol class="breadcrumb">
-        <li><a href=""><i class="fa fa-dashboard"></i></a></li>
-        <li class="active">{{__('post.index.review')}}</li>
+        <li><a href="{{ route('admin') }}"><i class="fa fa-dashboard"></i>{{ __('admin.dashboard') }}</a></li>
+        <li class="active">{{__('post.index.posts')}}</li>
       </ol>
     </section>
     <!-- Main content -->
@@ -16,7 +16,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">{{__('post.index.show_list_review')}}</h3>
+              <h3 class="box-title">{{__('post.index.show_list_post')}}</h3>
               <div class="box-tools">
                 <form class="input-group input-group-sm" style="width: 150px;" action="" method="GET">
                   <input type="text" name="search" class="form-control pull-right" placeholder="{{__('user.admin.index.search')}}">
@@ -30,8 +30,8 @@
             <div class="box-body table-responsive no-padding">
               <table class="table table-hover">
                 <tr>
-                  <th>@sortablelink('id', __('post.index.post_id'))</th>
-                  <th>{{__('post.index.user_id')}}</th>
+                  <th>@sortablelink('id', __('post.index.id'))</th>
+                  <th>{{__('post.index.user_name')}}</th>
                   <th>@sortablelink('product.name', __('post.index.product_name'))</th>
                   <th>{{__('post.index.review')}}</th>
                   <th>@sortablelink('rate', __('post.index.rate'))</th>
@@ -42,11 +42,15 @@
                 @foreach($posts as $post)
                   <tr>
                     <td>{{ $post->id }}</td>
-                    <td>{{ $post->user_id }}</td>
+                    <td>{{ $post->user->name }}</td>
                     <td>{{ $post->product->name }}</td>
                     <td>{{ $post->content }}</td>
                     <td>{{ $post->rate }}</td>
-                    <td>{{ $post->type }}</td>
+                    @if($post->type == App\Post::COMMENT)
+                      <td>{{ __('post.index.comment') }}</td>
+                    @elseif($post->type == App\Post::REVIEW)
+                      <td>{{ __('post.index.review') }}</td>
+                    @endif
                     <td>
                     @if($post->status == $status['enable'])
                       <a href="{{ route('admin.post.active',['id'=> $post->id]) }}" id="{{ $post->id }}">
@@ -62,7 +66,7 @@
                       <form method="post" action="{{ route('admin.post.delete', $post->id) }}">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" id="post_{{ $post->id }}" class="btn btn-danger" name="submit">
+                        <button id="post_{{ $post->id }}" type="submit" class="but-trash"name="submit">
                           <i class="fa fa-trash"></i>
                          </button>
                        </form>
