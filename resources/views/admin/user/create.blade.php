@@ -9,9 +9,9 @@
         <small>{{__('user.admin.create.user')}}</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i>{{__('user.admin.create.create')}}</a></li>
-        <li><a href="#">{{__('user.admin.create.form')}}</a></li>
-        <li class="active">{{__('user.admin.create.user')}}</li>
+        <li><a href="{{ route('admin') }}"><i class="fa fa-dashboard"></i>{{__('user.admin.create.create')}}</a></li>
+        <li><a href="{{ route('user.index') }}">{{__('admin.manage_user')}}</a></li>
+        <li class="active">{{__('user.admin.create.create_user')}}</li>
       </ol>
     </section>
     <!-- Main content -->
