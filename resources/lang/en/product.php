@@ -70,6 +70,13 @@
                 'title' => 'Filter Product',
                 'list_product' => 'List Product',
             ],
+            'product' => [
+                'list_product' => 'List Product',
+                'product_detail' => 'Product Detail',
+                'rate' => 'Rate',
+                'quick_view' => 'QUICK OVERVIEW',
+                'quantity' => 'Quantity',
+            ],
             'detail' => [
                 'description' => 'Description',
                 'comment' => [
