@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Post;
+use App\User;
 
 class PostsController extends Controller
 {
@@ -19,13 +20,13 @@ class PostsController extends Controller
     {
         $search = $request->search;
         if ($search != '') {
-            $posts = Post::with('product')->whereHas('product', function ($query) use ($search) {
+            $posts = Post::with('product', 'user')->whereHas('product', function ($query) use ($search) {
                 return $query->where('name', 'Like', "%$search%")
                             ->orWhere("content", 'Like', "%$search%");
             });
             $posts = $posts->sortable()->paginate(Post::PAGINATE)->appends(['search' => $search]);
         } else {
-            $posts = Post::with('product')->sortable()->paginate(Post::PAGINATE);
+            $posts = Post::with('product', 'user')->sortable()->paginate(Post::PAGINATE);
         }
         $status = Post::$listStatus;
         return view('admin.post.index', ['posts' => $posts, 'status' => $status]);

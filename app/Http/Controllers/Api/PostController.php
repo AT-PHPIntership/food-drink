@@ -10,6 +10,8 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use App\Product;
 use App\Http\Requests\Api\CreatePostRequest;
+use App\Order;
+use App\OrderDetail;
 
 class PostController extends ApiController
 {
@@ -43,9 +45,17 @@ class PostController extends ApiController
     public function store(Product $product, CreatePostRequest $request)
     {
         $user = Auth::user();
+        $order = Order::where('user_id', $user->id)
+                        ->where('status', Order::RECEIVED)
+                        ->whereHas('orderDetails', function ($query) use ($product) {
+                            $query->where('product_id', $product->id);
+                        })->get();
         $input = $request->only('type', 'content');
         if ($input['type'] == Post::REVIEW) {
-            $input['rate'] = $request->rating;
+            if ($order->isEmpty()) {
+                return $this->errorResponse(__('api.error_405'), Response::HTTP_METHOD_NOT_ALLOWED);
+            }
+            $input['rate'] = $request->rate;
         }
         $input['user_id'] = $user->id;
         $input['product_id'] = $product->id;

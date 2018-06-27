@@ -46,3 +46,17 @@
   font: inherit;
   cursor: pointer;
 }
+.change-type {
+  -webkit-appearance: checkbox; /* Chrome, Safari, Opera */
+  -moz-appearance: checkbox;    /* Firefox */
+  -ms-appearance: checkbox;     /* not currently supported */
+}
+.block-subtitle {
+  cursor: pointer;
+  border: 2px solid #ddd;
+  padding: 5px;
+  background: #ddd
+}
+.layered-Category {
+  margin-top: 15px;
+}

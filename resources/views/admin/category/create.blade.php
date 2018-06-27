@@ -9,8 +9,8 @@
         <small>{{__('category.admin.create.category')}}</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i>{{__('admin.dashboard')}}</a></li>
-        <li><a href="#">{{__('category.admin.create.manage_category')}}</a></li>
+        <li><a href="{{ route('admin') }}"><i class="fa fa-dashboard"></i>{{__('admin.dashboard')}}</a></li>
+        <li><a href="{{ route('category.index') }}">{{__('category.admin.create.manage_category')}}</a></li>
         <li class="active">{{__('category.admin.create.form_title')}}</li>
       </ol>
     </section>

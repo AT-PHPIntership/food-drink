@@ -4,11 +4,11 @@ function appendHtml(response) {
   response.data.data.forEach(element => {
     var stars = '';
     var rate = 0;
-		img_url = 'https://image.ibb.co/dqd4QJ/default_product.jpg';		
+    img_url = 'https://image.ibb.co/dqd4QJ/default_product.jpg';    
     if (typeof element.images[0] !== 'undefined') {
       img_url = element.images[0].image_url;
-		}
-		rate = Math.round(element.avg_rate);
+    }
+    rate = Math.round(element.avg_rate);
     for (i = 1; i <= 5 ; i++) {
       if (i <= rate) {
         stars += '<i class="fa fa-star"></i>';
@@ -21,13 +21,13 @@ function appendHtml(response) {
               <div class="item-inner">\
                 <div class="product-thumbnail">\
                   <div class="pr-img-area">\
-                    <a title="Ipsums Dolors Untra" href="single_product.html">\
+                    <a title="Ipsums Dolors Untra" href="products/'+ element.id +'">\
                       <figure>\
                         <img class="first-img" src="'+ img_url +'" alt="">\
                         <img class="hover-img" src="'+ img_url +'" alt="">\
                       </figure>\
                     </a>\
-                    <button type="button" class="add-to-cart-mt">\
+                    <button type="button" class="add-to-cart-mt" onclick="addCart('+ element.id +', \''+element.name +'\', \''+element.price +'\', '+element.quantity +', \''+ img_url +'\')">\
                       <i class="fa fa-shopping-cart"></i>\
                       <span>'+Lang.get('home.user.main.add_to_cart')+'</span>\
                     </button>\
@@ -35,7 +35,7 @@ function appendHtml(response) {
                   </div>\
                   <div class="item-info">\
                     <div class="info-inner">\
-                      <div class="item-title"> <a title="Ipsums Dolors Untra" href="single_product.html">'+element.name+'</a> </div>\
+                      <div class="item-title"> <a title="Ipsums Dolors Untra" href="products/'+ element.id +'">'+element.name+'</a> </div>\
                         <div class="item-content">\
                           <div class="rating">'+ stars +'<span>('+ element.avg_rate +')</span></div>\
                         <div class="item-price">\
@@ -85,5 +85,19 @@ $(document).ready(function () {
       url += '?'+ url_rate;
     }
     processAjax(); 
+  });
+  // filter by category
+  $(document).on('click', '.filter-category', function() {
+    var id = $(this).val();
+    if(url.indexOf('?') > 0) {
+      url += '&category='+ id;
+    } else {
+      url += '?category='+ id;
+    }
+    processAjax();
+  });
+  //refresh filter
+  $('.block-subtitle').on('click', function() {
+    location.reload();
   });
 });

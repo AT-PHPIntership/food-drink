@@ -3,9 +3,8 @@
 namespace App\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Post;
 
-class CreatePostRequest extends FormRequest
+class UpdateProfileRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +23,11 @@ class CreatePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'type' => 'in:' . Post::COMMENT . ',' . Post::REVIEW,
-            'rate' => ($this->type == Post::REVIEW) ? 'required' : "" . 'integer|min:1|max:5',
-            'content' => ($this->type == Post::COMMENT) ? 'required' : "" . 'string',
+            'name' => 'required|string|max:50',
+            'email' => 'required|unique:users|email',
+            'address'        => 'string|max:255',
+            'phone' => 'required|min:10|numeric',
+            'avatar' => 'image|mimes:png,jpg,jpeg',
         ];
     }
 }
