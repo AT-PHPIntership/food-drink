@@ -13,6 +13,7 @@ $(document).ready(function() {
 });
 
 function submitPost(pathName, TYPE) {
+  $('.reviews-content-right .alert-danger').html('');
   $.ajax({
     url: '/api' + pathName + '/posts',
     type: 'POST',
@@ -36,10 +37,13 @@ function submitPost(pathName, TYPE) {
           errorMessage += response.responseJSON.errors[error] + '<br/>';
         });
       }
-      if (response.responseJSON.code) {
+      if (response.responseJSON.code == 405) {
         errorMessage = Lang.get('product.user.detail.purchase');
       }
-      $('.reviews-content-right .alert-danger').html(errorMessage);
+      if (response.responseJSON.code == 401) {
+        errorMessage = Lang.get('product.user.detail.need_login');
+      }
+      $('.reviews-content-right .danger'+ TYPE).html(errorMessage);
       $('.reviews-content-right .danger'+ TYPE).show();
     }
   });

@@ -80,6 +80,7 @@
             'detail' => [
                 'description' => 'Description',
                 'purchase' => 'You need to purchase to review',
+                'need_login' => 'You need login to continue',
                 'comment' => [
                     'comments' => 'Comments',
                     'comment' => 'Comment',
