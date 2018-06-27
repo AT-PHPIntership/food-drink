@@ -1,5 +1,5 @@
 @extends('user.layout.master')
-@section('title', __('product.user.filter.title'))
+@section('title', __('product.user.product.list_product'))
 @section('content')
   <!-- Main Container -->
   <div class="main-container col2-left-layout">
