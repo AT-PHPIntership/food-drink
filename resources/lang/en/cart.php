@@ -15,4 +15,5 @@
         'quantity_greater' => 'Quantity must be greater than zero.',
         'not_exceed' => 'Do not exceed product quantity in stock (',
         'close' => ').',
+        'ago' => 'ago',
     ];

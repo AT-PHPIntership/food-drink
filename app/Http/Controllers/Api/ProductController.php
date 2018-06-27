@@ -10,7 +10,6 @@ use App\Http\Requests\Api\SortApiProductRequest;
 use App\Http\Requests\Api\SortApiPostRequest;
 use Symfony\Component\HttpFoundation\Response;
 use App\Post;
-use Carbon\Carbon;
 
 class ProductController extends ApiController
 {
@@ -74,9 +73,6 @@ class ProductController extends ApiController
                     return $query->where('type', '=', $request->type);
                 })
                 ->sortable()->paginate(config('define.number_page_posts_user'));
-        foreach ($posts as $post) {
-            $post['time'] = $post->updated_at->diffForHumans(now());
-        }
         $posts->appends(request()->query());
         return $this->successResponse($posts, Response::HTTP_OK);
     }
