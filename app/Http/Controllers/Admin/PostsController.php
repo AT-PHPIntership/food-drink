@@ -47,15 +47,15 @@ class PostsController extends Controller
         $post->update(['status' => !$post->status]);
         if ($post->status == Post::ENABLE) {
             $product->update([
-                "avg_rate" => ($post->rate + $product->total_rate)/($product->sum_rate + 1),
+                "avg_rate" => ($post->rate + $product->total_rate) / ($product->sum_rate + 1),
                 "sum_rate" => $product->sum_rate + 1,
-                "total_rate" => $post->rate + $product->total_rate,     
+                "total_rate" => $post->rate + $product->total_rate,
             ]);
         } elseif ($post->status == Post::DISABLE) {
             $product->update([
-               "avg_rate" => ($product->total_rate - $post->rate)/($product->sum_rate - 1),
+               "avg_rate" => ($product->total_rate - $post->rate) / ($product->sum_rate - 1),
                 "sum_rate" => $product->sum_rate - 1,
-                "total_rate" => $product->total_rate - $post->rate,     
+                "total_rate" => $product->total_rate - $post->rate,
             ]);
         }
         return response()->json($post);
