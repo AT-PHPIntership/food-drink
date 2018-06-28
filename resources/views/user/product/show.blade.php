@@ -1,9 +1,14 @@
 @extends('user.layout.master')
-@section('title', __('product.user.filter.title'))
+@section('title', __('product.user.product.product_detail'))
 @section('content')
 <div class="main-container col1-layout">
   <div class="container">
     <div class="row">
+      <div class="col-main">
+        <div class="product-view-area">
+          
+        </div>
+      </div>
       <div class="product-overview-tab">
         <div class="container">
           <div class="row">
@@ -16,27 +21,14 @@
                 </ul>
                 <div id="productTabContent" class="tab-content">
                   <div class="tab-pane fade in active" id="description">
-                    <div class="std">
-                      <p>Proin lectus ipsum, gravida et mattis vulputate, 
-                        tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in 
-                        faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend 
-                        laoreet congue. Vivamus adipiscing nisl ut dolor dignissim semper. Nulla
-                        luctus malesuada tincidunt. Nunc facilisis sagittis ullamcorper. Proin 
-                        lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et 
-                        lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et 
-                        ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus 
-                        adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada 
-                        tincidunt. Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, 
-                        gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. 
-                        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
-                        cubilia Curae; Aenean eleifend laoreet congue. Vivamus adipiscing nisl 
-                        ut dolor dignissim semper. Nulla luctus malesuada tincidunt.</p>
-                    </div>
+      
                   </div>
                   <!-- review -->
                   <div id="reviews" class="tab-pane fade">
                     <div class="col-sm-5 col-lg-5 col-md-5">
-                      @include('user.post.postOfProduct')
+                      <div id="contain-posts2">
+
+                      </div>
                     </div>
                     <div class="col-sm-7 col-lg-7 col-md-7">
                       <div class="reviews-content-right">
@@ -78,7 +70,9 @@
                   <!-- comment -->
                   <div id="product_tags" class="tab-pane fade">
                     <div class="col-sm-5 col-lg-5 col-md-5">
-                      @include('user.post.postOfProduct')
+                      <div id="contain-posts1">
+
+                      </div>
                     </div>
                     <div class="col-sm-7 col-lg-7 col-md-7">
                       <div class="reviews-content-right">
@@ -110,6 +104,7 @@
 </div>
 @endsection
 @section('scripts')
+  <script src="{{ asset('js/user/showProductDetail.js') }}"></script>
   <script src="{{ asset('js/user/showPostOfProduct.js') }}"></script>
   <script src="{{ asset('js/user/addPost.js') }}"></script>
 @endsection

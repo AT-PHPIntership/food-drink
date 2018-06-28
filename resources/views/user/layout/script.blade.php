@@ -1,3 +1,4 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <!-- jquery js --> 
 <script type="text/javascript" src="{{ asset('frontend/js/jquery.min.js')}} "></script> 
 

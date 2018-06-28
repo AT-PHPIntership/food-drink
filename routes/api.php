@@ -35,7 +35,8 @@ Route::group(['namespace' => 'Api'], function () {
             'destroy'
         ]);
         Route::post('products/{product}/posts', 'PostController@store');
+        Route::put('profile', 'ProfileController@update');
     });
     Route::get('products/{product}/posts', 'ProductController@getPosts');
-    Route::post('register', 'RegisterController@register');
+    Route::post('register', 'RegisterController@register');    
 });

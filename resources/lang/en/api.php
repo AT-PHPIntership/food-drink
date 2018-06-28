@@ -13,4 +13,9 @@
                 'register' => 'The given data was invalid.',
             ]
         ],
+        'update' => [
+            'error' => [
+                'update' => 'The given data was invalid.',
+            ]
+        ],
     ];
