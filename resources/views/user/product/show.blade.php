@@ -6,40 +6,7 @@
     <div class="row">
       <div class="col-main">
         <div class="product-view-area">
-          <div class="product-big-image col-xs-12 col-sm-5 col-lg-5 col-md-5">
-            <div class="large-image"> 
-                <img class="zoom-img" src="{{ asset('images/products/default-product.jpg') }}" alt="products"> 
-            </div>     
-          </div>
-          <div class="col-xs-12 col-sm-7 col-lg-7 col-md-7 product-details-area">
-              <div class="product-name">
-                <h1>Lorem Ipsum is simply</h1>
-              </div>
-              <div class="price-box">
-                <p class="special-price"><span class="price">{{ __('product.user.money') }}</span> </p>
-              </div>
-              <div class="ratings">
-                <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                <p class="rating-links"> <span class="separator">{{ __('product.user.product.rate') }}</span> </p>
-              </div>
-              <div class="short-description">
-                <h2>{{ __('product.user.product.quick_view') }}</h2>
-                <p>Accusamus repellat quo commodi earum quia quos. Qui recusandae porro incidunt aspernatur repellat eveniet recusandae odio. Dolor esse consequuntur nobis laudantium qui et.</p>
-              </div>
-              <div class="product-variation">
-                <form action="#" method="post">
-                  <div class="cart-plus-minus">
-                    <label for="qty">{{ __('product.user.product.quantity') }} :</label>
-                    <div class="numbers-row">
-                      <div class="dec qtybutton"><i class="fa fa-minus"></i></div>
-                      <input type="text" class="qty" title="Qty" value="1" id="qty" name="qty">
-                      <div class="inc qtybutton"><i class="fa fa-plus"></i></div>
-                    </div>
-                  </div>
-                  <button class="button pro-add-to-cart" title="Add to Cart" type="button"><span><i class="fa fa-shopping-cart"></i> Add to Cart</span></button>
-                </form>
-              </div>
-          </div>
+          
         </div>
       </div>
       <div class="product-overview-tab">
@@ -54,9 +21,7 @@
                 </ul>
                 <div id="productTabContent" class="tab-content">
                   <div class="tab-pane fade in active" id="description">
-                    <div class="std">
-                      <p></p>
-                    </div>
+      
                   </div>
                   <!-- review -->
                   <div id="reviews" class="tab-pane fade">
@@ -139,6 +104,7 @@
 </div>
 @endsection
 @section('scripts')
+  <script src="{{ asset('js/user/showProductDetail.js') }}"></script>
   <script src="{{ asset('js/user/showPostOfProduct.js') }}"></script>
   <script src="{{ asset('js/user/addPost.js') }}"></script>
 @endsection

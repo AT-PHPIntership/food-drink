@@ -84,45 +84,43 @@ Show order detail
         "code": 200
     },
     "data": {
-        "id": 3,
-        "user_id": 31,
-        "total": 1000,
-        "status": 3,
-        "created_at": "1982-07-04 21:11:53",
-        "updated_at": "2013-06-15 18:30:21",
-        "deleted_at": null,
-        "order_details": [
+        "current_page": 1,
+        "data": [
             {
-                "id": 6,
-                "order_id": 3,
-                "product_id": 9,
-                "quantity": 5,
-                "price": "199.00",
-                "preview": "Maiores eos eaque mollitia repellendus nihil nam iure. Voluptas qui consequatur ea et voluptatum. Molestiae eligendi qui quaerat maiores nesciunt. Fugit aut dolorem nobis mollitia at.",
-                "address": "796 Alysha Stravenue Suite 924\nLake Norbertstad, IN 80794-6694",
-                "name_product": "Bernie Mayert",
+                "id": 3,
+                "order_id": 5,
+                "product_id": 13,
+                "quantity": 4,
+                "price": "49.00",
+                "preview": "Quam fugit ratione ut ullam autem doloribus. Quis inventore saepe aut aut porro corrupti quam.",
+                "address": "70813 Upton Rue\nWillytown, KS 95823-6140",
+                "name_product": "Loy Kris",
                 "image": "default-product.jpg",
-                "created_at": "1972-04-22 19:16:21",
-                "updated_at": "1993-04-28 19:22:28",
-                "deleted_at": null,
-                "image_url": "http://192.168.33.10/images/products/default-product.jpg"
+                "image_product_url": "http://192.168.33.10/images/products/default-product.jpg"
             },
             {
-                "id": 28,
-                "order_id": 3,
-                "product_id": 10,
-                "quantity": 10,
-                "price": "178.00",
-                "preview": "Corporis perspiciatis dolore libero sint laborum. In inventore qui minima sunt dolorem laborum. Dolorem et repudiandae non dolor sunt.",
-                "address": "3386 Theodora Drive\nGuyview, WY 35416",
-                "name_product": "Sarina Satterfield",
+                "id": 7,
+                "order_id": 5,
+                "product_id": 11,
+                "quantity": 4,
+                "price": "45.00",
+                "preview": "Ducimus natus est maxime dolor enim voluptatibus hic. Deserunt qui non delectus et. Autem reprehenderit molestias itaque enim est eum. Molestiae possimus suscipit eaque ea.",
+                "address": "16207 Littel Plain Apt. 222\nLake Kennedi, AK 88921-5425",
+                "name_product": "Carole Rohan",
                 "image": "default-product.jpg",
-                "created_at": "1974-10-26 22:54:26",
-                "updated_at": "1992-07-15 05:44:16",
-                "deleted_at": null,
-                "image_url": "http://192.168.33.10/images/products/default-product.jpg"
+                "image_product_url": "http://192.168.33.10/images/products/default-product.jpg"
             }
-        ]
+        ],
+        "first_page_url": "http://192.168.33.10/api/orders/5?unit=2&page=1",
+        "from": 1,
+        "last_page": 4,
+        "last_page_url": "http://192.168.33.10/api/orders/5?unit=2&page=4",
+        "next_page_url": "http://192.168.33.10/api/orders/5?unit=2&page=2",
+        "path": "http://192.168.33.10/api/orders/5",
+        "per_page": "2",
+        "prev_page_url": null,
+        "to": 2,
+        "total": 8
     }
 }
 ```
