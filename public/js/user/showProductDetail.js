@@ -5,7 +5,7 @@ var n = 0;
 
 function appendHtml(response) {
   var rateStar = '';
-  img_url = 'https://image.ibb.co/dqd4QJ/default_product.jpg';
+  img_url = '../images/products/default-product.jpg';
   if (typeof response.data.images[0] !== 'undefined') {
     img_url = response.data.images[0].image_url;
   }
