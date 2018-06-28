@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Post;
 use App\User;
+use App\Product;
 
 class PostsController extends Controller
 {
@@ -42,7 +43,21 @@ class PostsController extends Controller
     public function active(Request $request)
     {
         $post = Post::findOrFail($request->id);
+        $product = Product::find($post->product_id);
         $post->update(['status' => !$post->status]);
+        if ($post->status == Post::ENABLE) {
+            $product->update([
+                "avg_rate" => ($post->rate + $product->total_rate)/($product->sum_rate + 1),
+                "sum_rate" => $product->sum_rate + 1,
+                "total_rate" => $post->rate + $product->total_rate,     
+            ]);
+        } elseif ($post->status == Post::DISABLE) {
+            $product->update([
+               "avg_rate" => ($product->total_rate - $post->rate)/($product->sum_rate - 1),
+                "sum_rate" => $product->sum_rate - 1,
+                "total_rate" => $product->total_rate - $post->rate,     
+            ]);
+        }
         return response()->json($post);
     }
     
