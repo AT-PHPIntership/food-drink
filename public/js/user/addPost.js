@@ -13,6 +13,7 @@ $(document).ready(function() {
 });
 
 function submitPost(pathName, TYPE) {
+  $('.reviews-content-right .alert-danger').html('');
   $.ajax({
     url: '/api' + pathName + '/posts',
     type: 'POST',
@@ -29,17 +30,17 @@ function submitPost(pathName, TYPE) {
       $('.alert-post'+ TYPE).show();
     },
     error: function(response) {
-      errorMessage = response.responseJSON.message + '<br/>';
+      errorMessage = response.responseJSON.message;
+      errorCode = response.responseJSON.code;
       if (response.responseJSON.errors) {
         errors = Object.keys(response.responseJSON.errors);
         errors.forEach(error => {
           errorMessage += response.responseJSON.errors[error] + '<br/>';
         });
+      } else {
+        errorMessage = Lang.get('product.user.detail.error_message.'+ errorCode);
       }
-      if (response.responseJSON.code) {
-        errorMessage = Lang.get('product.user.detail.purchase');
-      }
-      $('.reviews-content-right .alert-danger').html(errorMessage);
+      $('.reviews-content-right .danger'+ TYPE).html(errorMessage);
       $('.reviews-content-right .danger'+ TYPE).show();
     }
   });

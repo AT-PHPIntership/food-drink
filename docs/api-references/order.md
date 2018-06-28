@@ -11,45 +11,95 @@ Get list all order
 |Accept|application\json|
 |Authorization|{token_type} {access_token}|
 
+#### Query Param
+| Param | Type | Description |
+|---|---|---|
+| sort | string | Sort Product |
+| order | string | Type Sort Product |
+
+##### Example   
+| URL | Description |
+|---|---|
+| /api/orders?sort=created_at&order=asc | Get order and sort order by create |
 #### Response
+
 ```json
 {
     "meta": {
-        "status": "Successfully",
-        "code": 200
-    },
-    "data": {
-        "id": 3,
-        "user_id": 31,
-        "total": 1000,
-        "status": 3,
-        "order_details": [
-            {
-                "id": 6,
-                "order_id": 3,
-                "product_id": 9,
-                "quantity": 5,
-                "price": "199.00",
-                "preview": "Maiores eos eaque mollitia repellendus nihil nam iure. Voluptas qui consequatur ea et voluptatum. Molestiae eligendi qui quaerat maiores nesciunt. Fugit aut dolorem nobis mollitia at.",
-                "address": "796 Alysha Stravenue Suite 924\nLake Norbertstad, IN 80794-6694",
-                "name_product": "Bernie Mayert",
-                "image": "default-product.jpg",
-                "image_url": "http://192.168.33.10/images/products/default-product.jpg"
-            },
-            {
-                "id": 28,
-                "order_id": 3,
-                "product_id": 10,
-                "quantity": 10,
-                "price": "178.00",
-                "preview": "Corporis perspiciatis dolore libero sint laborum. In inventore qui minima sunt dolorem laborum. Dolorem et repudiandae non dolor sunt.",
-                "address": "3386 Theodora Drive\nGuyview, WY 35416",
-                "name_product": "Sarina Satterfield",
-                "image": "default-product.jpg",
-                "image_url": "http://192.168.33.10/images/products/default-product.jpg"
-            }
-        ]
-    }
+       "status": "Successfully",
+       "code": 200
+   },
+   "data": {
+       "current_page": 1,
+       "data": [
+           {
+               "id": 2,
+               "user_id": 1,
+               "total": 1000,
+               "status": 3,
+               "created_at": "2007-08-12 07:34:21",
+               "updated_at": "1979-06-11 13:27:46",
+           },
+           {
+               "id": 3,
+               "user_id": 1,
+               "total": 1000,
+               "status": 2,
+               "created_at": "1989-09-05 00:16:59",
+               "updated_at": "1988-07-20 16:34:45",
+           },
+           {
+               "id": 4,
+               "user_id": 1,
+               "total": 1000,
+               "status": 3,
+               "created_at": "1971-03-24 07:25:51",
+               "updated_at": "1997-10-14 17:56:36",
+           },
+           {
+               "id": 5,
+               "user_id": 1,
+               "total": 1000,
+               "status": 3,
+               "created_at": "1983-04-19 01:12:45",
+               "updated_at": "2017-08-14 03:12:07",
+           },
+           {
+               "id": 6,
+               "user_id": 1,
+               "total": 1000,
+               "status": 1,
+               "created_at": "2000-11-03 10:35:09",
+               "updated_at": "1986-03-24 17:46:27",
+           },
+           {
+               "id": 7,
+               "user_id": 1,
+               "total": 1000,
+               "status": 1,
+               "created_at": "2005-12-24 19:03:09",
+               "updated_at": "1999-07-05 22:22:12",
+           },
+           {
+               "id": 15,
+               "user_id": 1,
+               "total": 1000,
+               "status": 1,
+               "created_at": "2001-07-02 07:49:49",
+               "updated_at": "2004-02-21 15:42:07",
+           }
+       ],
+       "first_page_url": "http://192.168.33.10/api/orders?page=1",
+       "from": 1,
+       "last_page": 1,
+       "last_page_url": "http://192.168.33.10/api/orders?page=1",
+       "next_page_url": null,
+       "path": "http://192.168.33.10/api/orders",
+       "per_page": 20,
+       "prev_page_url": null,
+       "to": 7,
+       "total": 7
+   }
 }
 ```
 #### Response - Fail
