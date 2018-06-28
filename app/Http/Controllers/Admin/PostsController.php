@@ -43,21 +43,21 @@ class PostsController extends Controller
     public function active(Request $request)
     {
         $post = Post::findOrFail($request->id);
-        $product = Product::find($post->product_id);
+        $product = Product::findOrFail($post->product_id);
         $post->update(['status' => !$post->status]);
+        $data = [
+            "avg_rate" => ($product->total_rate - $post->rate) / ($product->sum_rate - 1),
+            "sum_rate" => $product->sum_rate - 1,
+            "total_rate" => $product->total_rate - $post->rate,
+        ];
         if ($post->status == Post::ENABLE) {
-            $product->update([
+            $data = [
                 "avg_rate" => ($post->rate + $product->total_rate) / ($product->sum_rate + 1),
                 "sum_rate" => $product->sum_rate + 1,
                 "total_rate" => $post->rate + $product->total_rate,
-            ]);
-        } elseif ($post->status == Post::DISABLE) {
-            $product->update([
-               "avg_rate" => ($product->total_rate - $post->rate) / ($product->sum_rate - 1),
-                "sum_rate" => $product->sum_rate - 1,
-                "total_rate" => $product->total_rate - $post->rate,
-            ]);
+            ];
         }
+        $product->update($data);
         return response()->json($post);
     }
     
@@ -72,7 +72,7 @@ class PostsController extends Controller
     {
         try {
             $post->delete();
-            $product = Product::find($post->product_id);
+            $product = Product::findOrFail($post->product_id);
             $product->update([
                 "avg_rate" => ($product->total_rate - $post->rate) / ($product->sum_rate - 1),
                  "sum_rate" => $product->sum_rate - 1,
