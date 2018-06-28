@@ -79,8 +79,10 @@
             ],
             'detail' => [
                 'description' => 'Description',
-                'purchase' => 'You need to purchase to review',
-                'need_login' => 'You need login to continue',
+                'error_message' => [
+                    401 => 'You need login to continue',
+                    405 => 'You need to purchase to review',
+                ],
                 'comment' => [
                     'comments' => 'Comments',
                     'comment' => 'Comment',

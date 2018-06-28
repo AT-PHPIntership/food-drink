@@ -30,18 +30,15 @@ function submitPost(pathName, TYPE) {
       $('.alert-post'+ TYPE).show();
     },
     error: function(response) {
-      errorMessage = response.responseJSON.message + '<br/>';
+      errorMessage = response.responseJSON.message;
+      errorCode = response.responseJSON.code;
       if (response.responseJSON.errors) {
         errors = Object.keys(response.responseJSON.errors);
         errors.forEach(error => {
           errorMessage += response.responseJSON.errors[error] + '<br/>';
         });
-      }
-      if (response.responseJSON.code == 405) {
-        errorMessage = Lang.get('product.user.detail.purchase');
-      }
-      if (response.responseJSON.code == 401) {
-        errorMessage = Lang.get('product.user.detail.need_login');
+      } else {
+        errorMessage = Lang.get('product.user.detail.error_message.'+ errorCode);
       }
       $('.reviews-content-right .danger'+ TYPE).html(errorMessage);
       $('.reviews-content-right .danger'+ TYPE).show();
