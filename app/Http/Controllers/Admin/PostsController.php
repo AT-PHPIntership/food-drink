@@ -72,6 +72,12 @@ class PostsController extends Controller
     {
         try {
             $post->delete();
+            $product = Product::find($post->product_id);
+            $product->update([
+                "avg_rate" => ($product->total_rate - $post->rate) / ($product->sum_rate - 1),
+                 "sum_rate" => $product->sum_rate - 1,
+                 "total_rate" => $product->total_rate - $post->rate,
+            ]);
             flash(trans('message.post.success_delete'))->success();
         } catch (Exception $e) {
             flash(trans('message.post.fail_delete'))->error();
