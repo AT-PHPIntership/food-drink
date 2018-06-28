@@ -1,7 +1,7 @@
 $( document ).ready(function() {
   accessToken = localStorage.getItem('access_token');
   if (accessToken) {
-    checkLogin();
+    $('.links .login').hide();
   } else {
     $('.links .myaccount').hide();
     $('.links .logout').hide();
@@ -19,29 +19,10 @@ $( document ).ready(function() {
         },
         type: 'POST',
         success: function (response) {
-          localStorage.removeItem('login-token');
+          localStorage.removeItem('access_token');
           window.location.href = 'http://' + window.location.hostname + '/';
         }
       });
     }
   });
 });
-
-function checkLogin() {
-  $.ajax({
-    type: 'GET',
-    url: '/api/checkAccessToken',
-    headers: ({
-      Accept: 'application/json',
-      Authorization: 'Bearer ' + accessToken,
-    }),
-    success: function (response){
-      $('.links .login').hide();
-    },
-    error: function () {
-      window.localStorage.removeItem('access_token');
-      $('.links .myaccount').hide();
-      $('.links .logout').hide();
-    }
-  });
-}
