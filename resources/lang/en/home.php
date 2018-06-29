@@ -27,6 +27,7 @@
                 'checkout' => 'Checkout',
                 'view_cart' => 'View Cart',
                 'register' => 'Register',
+                'log_out' => 'Log Out',
             ],
             'nav' => [
                 'shop_food_drink' => 'Shop Foods and Drinks',

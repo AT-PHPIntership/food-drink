@@ -44,4 +44,14 @@ class Order extends Model
     {
         return $this->hasMany('App\OrderDetail');
     }
+
+    /**
+     * Order Belong To Note
+     *
+     * @return mixed
+     */
+    public function note()
+    {
+        return $this->hasOne('App\Note');
+    }
 }
