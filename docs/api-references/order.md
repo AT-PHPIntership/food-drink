@@ -183,3 +183,51 @@ Show order detail
     "code" : 404
 }
 ```
+
+### `POST` Orders
+```
+/api/orders
+```
+Create new order
+#### Request Headers
+| Key | Value |
+|---|---|
+|Accept|application\json|
+|Authorization|{token_type} {access_token}|
+
+#### Query Param
+| Param | Type | Description |
+|---|---|---|
+| user_id | string | Id Of User |
+| Total | number | total order |
+
+#### Response - Success
+```json
+{
+    "meta": {
+        "status": "Successfully",
+        "code": 200
+    },
+    "data": {
+        "id": 26,        
+        "user_id": 1,
+        "total": 6,
+        "order_details": [
+            {
+                "id": 18,
+                "product_id": 1,
+                "order_id": 26,
+                "quantity": 3,
+                "product_price": 2,
+            },
+            {
+                "id": 19,
+                "product_id": 1,
+                "order_id": 26,
+                "quantity": 3,
+                "product_price": 2,
+            }
+        ]
+    }
+}
+```
