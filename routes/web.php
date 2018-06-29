@@ -64,6 +64,9 @@ Route::group(['namespace' => 'Home','prefix' => 'user'], function (){
         'uses' => 'LoginController@index',
         'as' => 'user.login'
     ]);
+    Route::resource('register', 'RegisterController')->only([
+        'index'
+    ]);
 });
 //frontend
 Route::group(['namespace'=>'User','prefix'=>'/'],function () {
