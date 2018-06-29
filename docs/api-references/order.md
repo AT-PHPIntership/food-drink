@@ -218,14 +218,24 @@ Create new order
                 "product_id": 1,
                 "order_id": 26,
                 "quantity": 3,
-                "product_price": 2,
+                "price": 2,
+                "preview": "Quam fugit ratione ut ullam autem doloribus. Quis inventore saepe aut aut porro corrupti quam.",
+                "address": "70813 Upton Rue\nWillytown, KS 95823-6140",
+                "name_product": "Loy Kris",
+                "image": "default-product.jpg",
+                "image_product_url": "http://192.168.33.10/images/products/default-product.jpg"
             },
             {
                 "id": 19,
                 "product_id": 1,
                 "order_id": 26,
                 "quantity": 3,
-                "product_price": 2,
+                "price": 2,
+                "preview": "Quam fugit ratione ut ullam autem doloribus. Quis inventore saepe aut aut porro corrupti quam.",
+                "address": "70813 Upton Rue\nWillytown, KS 95823-6140",
+                "name_product": "Loy Kris",
+                "image": "default-product.jpg",
+                "image_product_url": "http://192.168.33.10/images/products/default-product.jpg"
             }
         ]
     }
