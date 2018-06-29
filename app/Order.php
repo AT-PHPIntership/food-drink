@@ -46,12 +46,12 @@ class Order extends Model
     }
 
     /**
-     * Order Has Many Notes
+     * Order Belong To Note
      *
      * @return mixed
      */
-    public function notes()
+    public function note()
     {
-        return $this->hasMany('App\Note');
+        return $this->hasOne('App\Note');
     }
 }
