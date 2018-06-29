@@ -19,7 +19,6 @@ $(document).ready(function() {
                     $('#register-form-data #'+ error + '_error strong' ).html(response.responseJSON.errors[error]) ;
                     $('#register-form-data #'+ error + '_error' ).show();
                 });
-                
             }
         });
     });

@@ -12,45 +12,45 @@
           {{csrf_field()}}
           <div class="box-body">
             <div class="form-group">
-							<label for="InputName">{{ __('user.admin.create.name') }}</label>
-							<input type="text" class="form-control" id="InputName" name="name" placeholder="{{__('user.admin.create.enter_name')}}">
+              <label for="InputName">{{ __('user.admin.create.name') }}</label>
+              <input type="text" class="form-control" id="InputName" name="name" placeholder="{{ __('user.admin.create.enter_name') }}">
               <span id="name_error" class="help-block" hidden>
                 <strong class="text-danger"></strong>
               </span>
             </div>
             <div class="form-group">
-							<label for="InputEmail">{{ __('user.admin.create.email') }}</label>
-							<input type="text" class="form-control" id="InputEmail" name="email" placeholder="{{__('user.admin.create.enter_email')}}">
+              <label for="InputEmail">{{ __('user.admin.create.email') }}</label>
+              <input type="text" class="form-control" id="InputEmail" name="email" placeholder="{{ __('user.admin.create.enter_email') }}">
               <span id="email_error" class="help-block" hidden>
                 <strong class="text-danger"></strong>
               </span>
             </div>
             <div class="form-group">
-							<label for="InputPassword">{{ __('user.admin.create.password') }}</label>
-							<input type="password" class="form-control" id="InputPassword" name="password" placeholder="{{__('user.admin.create.enter_password')}}">
+              <label for="InputPassword">{{ __('user.admin.create.password') }}</label>
+              <input type="password" class="form-control" id="InputPassword" name="password" placeholder="{{ __('user.admin.create.enter_password') }}">
               <span id="password_error" class="help-block" hidden>
                 <strong class="text-danger"></strong>
               </span>
             </div>
             <div class="form-group">
-							<label for="InputAddress">{{ __('user.admin.create.address') }}</label> <br>
-							<span>{{ __('user.admin.register.ship') }}</span>
-							<input type="text" class="form-control" id="InputAddress" name="address" placeholder="{{__('user.admin.create.enter_address')}}">
+              <label for="InputAddress">{{ __('user.admin.create.address') }}</label> <br>
+              <span>{{ __('user.admin.register.ship') }}</span>
+              <input type="text" class="form-control" id="InputAddress" name="address" placeholder="{{ __('user.admin.create.enter_address') }}">
               <span id="address_error" class="help-block" hidden>
                 <strong class="text-danger"></strong>
               </span>
             </div>
             <div class="form-group">
-							<label for="InputPhone">{{ __('user.admin.create.phone') }}</label>
-							<input type="text" class="form-control" id="InputPhone" name="phone" placeholder="{{__('user.admin.create.enter_phone')}}">
+              <label for="InputPhone">{{ __('user.admin.create.phone') }}</label>
+              <input type="text" class="form-control" id="InputPhone" name="phone" placeholder="{{ __('user.admin.create.enter_phone') }}">
               <span id="phone_error" class="help-block" hidden>
                 <strong class="text-danger"></strong>
               </span>
             </div>
             <div class="form-group">
-							<label for="InputAvatar">{{ __('user.admin.create.avatar') }}</label> <br>
-							<span>{{ __('user.admin.register.ship') }}</span>
-							<input type="file" class="form-control" id="InputAvatar" name="avatar" placeholder="{{__('user.admin.create.enter_avatar')}}">
+              <label for="InputAvatar">{{ __('user.admin.create.avatar') }}</label> <br>
+              <span>{{ __('user.admin.register.ship') }}</span>
+              <input type="file" class="form-control" id="InputAvatar" name="avatar" placeholder="{{ __('user.admin.create.enter_avatar') }}">
               <span id="avatar_error" class="help-block" hidden>
                 <strong class="text-danger"></strong>
               </span>
