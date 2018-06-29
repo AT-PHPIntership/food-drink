@@ -38,5 +38,17 @@ $(document).ready(function () {
         }
       });
     }
+    if (status == 3) {
+      var person = prompt("Please enter your reason");
+      $.ajax({
+        url: 'order/'+id+'/addNote',
+        type: 'POST',
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        dataType: 'json',
+        data: {
+          "content": person
+        }
+      });
+    }
   })
 })
