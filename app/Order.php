@@ -16,7 +16,8 @@ class Order extends Model
     public $sortable = [
         'id',
         'total',
-        'updated_at'
+        'updated_at',
+        'created_at'
     ];
     
     protected $fillable=[
