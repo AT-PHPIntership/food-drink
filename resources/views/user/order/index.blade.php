@@ -20,17 +20,8 @@
                     <th>{{ __('order.user.index.function') }}</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td class="cart_product">1</td>
-                    <td class="cart_description">2018-05-29 08:56:12</td>
-                    <td class="price">$ 210000.0</td>
-                    <td class="qty">Pending</td>
-                    <th class="qty function">
-                      <a href="">Detail</a>
-                      <a href="">Delete</a>
-                    </th>
-                  </tr>
+                <tbody id="show-orders">
+                  
                 </tbody>
               </table>
             </div>
@@ -40,4 +31,7 @@
     </div>
   </div>
 </section>
+@endsection
+@section('scripts')
+  <script src="{{ asset('js/user/showHistoryOrders.js') }}"></script>
 @endsection
