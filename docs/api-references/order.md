@@ -14,13 +14,14 @@ Get list all order
 #### Query Param
 | Param | Type | Description |
 |---|---|---|
-| sort | string | Sort Product |
-| order | string | Type Sort Product |
+| sort | string | Sort Order |
+| order | string | Type Sort Order |
+| limit | number | Top Order |
 
 ##### Example   
 | URL | Description |
 |---|---|
-| /api/orders?sort=created_at&order=asc | Get order and sort order by create |
+| /api/orders?sort=created_at&order=asc&limit=5 | Sort order by create and get top 5 order |
 #### Response
 
 ```json
