@@ -15,6 +15,7 @@
             <div class="links">
               <div class="myaccount"><a title="My Account" href="{{ route('profile.index') }}"><i class="fa fa-user"></i><span class="hidden-xs">{{ __('home.user.header.my_account' ) }}</span></a></div>
               <div class="login"><a href="{{ route('user.login') }}"><i class="fa fa-unlock-alt"></i><span class="hidden-xs">{{ __('home.user.header.log_in' ) }}</span></a></div>
+              <div class="register"><a href="{{ route('register.index') }}"><i class="fa fa-user-plus"></i><span class="hidden-xs">{{ __('home.user.header.register' ) }}</span></a></div>              
               <div id="logout" class="logout"><a href=""><i class="fa fa-sign-out"></i><span class="hidden-xs">{{ __('home.user.header.log_out' ) }}</span></a></div>
             </div>
           </div>

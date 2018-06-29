@@ -26,6 +26,7 @@
                 'subtotal' => 'Subtotal: ',
                 'checkout' => 'Checkout',
                 'view_cart' => 'View Cart',
+                'register' => 'Register',
                 'log_out' => 'Log Out',
             ],
             'nav' => [
