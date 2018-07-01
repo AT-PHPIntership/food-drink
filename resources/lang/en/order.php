@@ -67,8 +67,17 @@
                 'no' => 'No.',
                 'date' => 'Ordered date',
                 'total_price' => 'Total Price',
+                'note' => 'Note',
                 'status' => 'Status',
                 'function' => 'Function',
+                'detail' => 'Detail',
+                'cancel' => 'Cancel',
+                'pending' => 'Pending',
+                'accepted' => 'Accepted',
+                'rejected' => 'Rejected',
+                'received' => 'Received',
+                'detail' => 'Detail',
+                'cancel' => 'Cancel',
             ]
         ]
     ];

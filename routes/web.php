@@ -83,7 +83,7 @@ Route::group(['namespace'=>'User','prefix'=>'/'],function () {
     Route::resource('cart', 'CartController')->only([
         'index'
     ]);
-    Route::resource('order', 'OrderController')->only([
+    Route::resource('orderUser', 'OrderController')->only([
         'index'
     ]);
 });
