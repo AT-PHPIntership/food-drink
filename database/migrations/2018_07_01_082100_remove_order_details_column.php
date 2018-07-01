@@ -26,7 +26,7 @@ class RemoveOrderDetailsColumn extends Migration
     public function down()
     {
         Schema::table('order_details', function($table) {
-            $table->integer('address');
+            $table->string('address');
          });
     }
 }
