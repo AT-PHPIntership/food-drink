@@ -26,6 +26,7 @@ class OrdersTableSeeder extends Seeder
                 'user_id' => $faker->randomElement(User::pluck('id')->toArray()),
                 'total' => 1000,
                 'status' => random_int(1, 3),
+                'address' => $faker->address,
                 'created_at' => $faker->dateTime,
                 'updated_at' => $faker->dateTime,
             ]);

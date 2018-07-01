@@ -38,7 +38,7 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputRole">{{__('order.admin.show.address')}}</label>
-                  <input type="text" class="form-control" disabled name="address" value="{{ $order->orderDetails->first()->address }}">
+                  <input type="text" class="form-control" disabled name="address" value="{{ $order->address }}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputRole">{{__('order.admin.show.phone')}}</label>
@@ -65,7 +65,7 @@
                     <td>{{ $orderDetail->name_product }}</td>
                     <td>{{ $orderDetail->quantity }}</td>
                     <td>{{ $orderDetail->price }} &dollar;</td>
-                    <td><img src="{{ $orderDetail->image_url }}" alt="{{ $orderDetail->name_product }}"></td>
+                    <td><img src="{{ $orderDetail->image_url }}" alt="{{ $orderDetail->name_product }}" style="width:100px"></td>
                     <td>{{ $orderDetail->preview }}</td>
                     <td>{{ $orderDetail->updated_at }}</td>
                   </tr>
