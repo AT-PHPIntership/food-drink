@@ -48,7 +48,6 @@
                   </td>
                   <td>
                     <a href="{{route('category.edit', ['category' => $category->id])}}"><i class="fa fa-edit"></i></a> |
-                    <a href=""><i class="fa fa-info"></i></a>
                     @if($category->id !== App\Category::DEFAULT_CATEGORY_FOOD && $category->id !== App\Category::DEFAULT_CATEGORY_DRINK)
                       <form method="POST" action="{{route('category.destroy', ['category' => $category->id])}}" class="form-trash" onsubmit="return confirmDelete()">
                         @csrf

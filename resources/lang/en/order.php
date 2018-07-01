@@ -70,14 +70,14 @@
                 'note' => 'Note',
                 'status' => 'Status',
                 'function' => 'Function',
+                'address' => 'Address',
                 'detail' => 'Detail',
                 'cancel' => 'Cancel',
                 'pending' => 'Pending',
                 'accepted' => 'Accepted',
                 'rejected' => 'Rejected',
                 'received' => 'Received',
-                'detail' => 'Detail',
-                'cancel' => 'Cancel',
+                'edit' => 'Edit',
             ]
         ]
     ];

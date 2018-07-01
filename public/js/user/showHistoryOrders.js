@@ -16,6 +16,7 @@ $(document).ready(function () {
 function getListOrder(response) {
   var html;
   $.each(response.data.data, function (index, order) {
+    var content = '';
     switch (order.status) {
       case PENDING :
         statusOrder = Lang.get('order.user.index.pending');
@@ -36,17 +37,22 @@ function getListOrder(response) {
     no = '<td class="cart_product">'+ (index + 1) +'</td>';
     time = '<td class="cart_description">'+ order.created_at +'</td>';
     total = '<td class="price">'+ Lang.get('product.user.money') + order.total +'</td>';
-    note = '<td class=cart_description">No</td>';
+    if (order.note) {
+      content = order.note.content;
+    }
+    note = '<td class=cart_description">'+ content +'</td>';
     status = '<td class="qty">'+ statusOrder +'</td>';
+    address = '<td>'+ order.address +'</td>'
     if (order.status == PENDING) {
       action = '<td class="qty function">\
                   <a href="">'+ Lang.get('order.user.index.detail') +'</a>\
+                  <a href="">'+ Lang.get('order.user.index.edit') +'</a>\
                   <a href="">'+ Lang.get('order.user.index.cancel') +'</a>\
                 </td>';
     } else {
       action = '<td class="qty function"><a href="">'+ Lang.get('order.user.index.detail') +'</a></td>';
     }
-    html += '<tr>'+ no + time + total + note + status + action +'</tr>';
+    html += '<tr>'+ no + time + total + note + status + address + action +'</tr>';
   });
   $('#show-orders').append(html);
 }
