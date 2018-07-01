@@ -15,4 +15,5 @@
         'min_price' => 'Min price',
         'max_price' => 'Max price',
         'refresh_filter' => 'Refresh filter',
+        'name_product' => 'Name product'
     ];
