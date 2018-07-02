@@ -72,6 +72,17 @@
                 'function' => 'Function',
                 'detail' => 'Detail',
                 'cancel' => 'Cancel',
+            ],
+            'create' => [
+                'title' => 'Create Order',
+                'checkout' => 'Checkout',
+                'your_name' => 'Your Name: ',
+                'your_email' => 'Your Email: ',
+                'your_phone' => 'Your Phone: ',
+                'address' => 'Shipping Address',
+                'complete' => 'Complete',
+                'your_checkout' => 'Your checkout',
+                'checkout' => 'Checkout',
             ]
         ]
     ];

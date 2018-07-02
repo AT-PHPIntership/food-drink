@@ -16,4 +16,14 @@ class OrderController extends Controller
     {
         return view('user.order.index');
     }
+
+    /**
+     * Show the form for creating a new data.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('user.order.create');
+    }
 }
