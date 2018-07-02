@@ -212,6 +212,8 @@ Create new order
         "id": 26,        
         "user_id": 1,
         "total": 6,
+        "status": 1,
+        "address": "70813 Upton Rue\nWillytown, KS 95823-6140",
         "order_details": [
             {
                 "id": 18,
@@ -220,7 +222,6 @@ Create new order
                 "quantity": 3,
                 "price": 2,
                 "preview": "Quam fugit ratione ut ullam autem doloribus. Quis inventore saepe aut aut porro corrupti quam.",
-                "address": "70813 Upton Rue\nWillytown, KS 95823-6140",
                 "name_product": "Loy Kris",
                 "image": "default-product.jpg",
                 "image_product_url": "http://192.168.33.10/images/products/default-product.jpg"
@@ -232,7 +233,6 @@ Create new order
                 "quantity": 3,
                 "price": 2,
                 "preview": "Quam fugit ratione ut ullam autem doloribus. Quis inventore saepe aut aut porro corrupti quam.",
-                "address": "70813 Upton Rue\nWillytown, KS 95823-6140",
                 "name_product": "Loy Kris",
                 "image": "default-product.jpg",
                 "image_product_url": "http://192.168.33.10/images/products/default-product.jpg"
