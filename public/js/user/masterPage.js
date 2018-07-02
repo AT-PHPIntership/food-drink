@@ -5,6 +5,7 @@ $( document ).ready(function() {
   } else {
     $('.links .myaccount').hide();
     $('.links .logout').hide();
+    $('.links .history-order').hide();
     window.location.host;
   }
   

@@ -73,3 +73,7 @@
   border-left: 1px #e8e6e2 solid;
   border-right: 1px #e8e6e2 solid;
 }
+.fa.fa-trash {
+  float: right;
+  margin-right: 20px;
+}

@@ -14,7 +14,6 @@ class OrderDetail extends Model
         'name_product',
         'image',
         'preview',
-        'address',
     ];
     
     /**
@@ -35,5 +34,15 @@ class OrderDetail extends Model
     public function product()
     {
         return $this->belongsTo('App\Product', 'product_id', 'id');
+    }
+
+    /**
+    * Get the product's image.
+    *
+    * @return string
+    */
+    public function getImageUrlAttribute()
+    {
+        return asset(config('define.images_path_products') . $this->image);
     }
 }
