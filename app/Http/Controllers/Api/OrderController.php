@@ -27,4 +27,22 @@ class OrderController extends ApiController
         $orders->appends(request()->query());
         return $this->successResponse($orders, Response::HTTP_OK);
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Order $order order object
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function show(Order $order)
+    {
+        $user = Auth::user();
+        $order = $order->load('orderDetails');
+        $orderDetails = [];
+        if ($order->user_id == $user->id) {
+            $orderDetails = $order->orderDetails;
+        }
+        return $this->showAll($orderDetails, Response::HTTP_OK);
+    }
 }
