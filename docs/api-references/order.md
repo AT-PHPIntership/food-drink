@@ -69,7 +69,7 @@ Get list all order
                 "id": 6,
                 "user_id": 1,
                 "total": 1000,
-                "status": "pendding",
+                "status": "pending",
                 "created_at": "2000-11-03 10:35:09",
                 "updated_at": "1986-03-24 17:46:27"
            },
@@ -77,7 +77,7 @@ Get list all order
                 "id": 7,
                 "user_id": 1,
                 "total": 1000,
-                "status": "pendding",
+                "status": "pending",
                 "created_at": "2005-12-24 19:03:09",
                 "updated_at": "1999-07-05 22:22:12"
            },
@@ -85,7 +85,7 @@ Get list all order
                 "id": 15,
                 "user_id": 1,
                 "total": 1000,
-                "status": "pendding",
+                "status": "pending",
                 "created_at": "2001-07-02 07:49:49",
                 "updated_at": "2004-02-21 15:42:07"
            }
@@ -212,7 +212,7 @@ Create new order
         "id": 26,        
         "user_id": 1,
         "total": 6,
-        "status": "pendding",
+        "status": "pending",
         "address": "70813 Upton Rue\nWillytown, KS 95823-6140",
         "order_details": [
             {

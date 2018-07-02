@@ -70,8 +70,10 @@
                 'note' => 'Note',
                 'status' => 'Status',
                 'function' => 'Function',
+                'address' => 'Address',
                 'detail' => 'Detail',
                 'cancel' => 'Cancel',
+                'edit' => 'Edit',
             ]
-        ]
+        ],
     ];

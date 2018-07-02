@@ -18,21 +18,12 @@
                     <th>{{ __('order.user.index.total_price') }}</th>
                     <th>{{ __('order.user.index.note') }}</th>
                     <th>{{ __('order.user.index.status') }}</th>
+                    <th>{{ __('order.user.index.address') }}</th>
                     <th>{{ __('order.user.index.function') }}</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td class="cart_product">1</td>
-                    <td class="cart_description">2018-05-29 08:56:12</td>
-                    <td class="price">{{ __('product.user.money') }}210000.0</td>
-                    <td class="cart_description"><span>no</span></td>
-                    <td class="qty">Pending</td>
-                    <th class="qty function">
-                      <a href="">{{ __('order.user.index.detail') }}</a>
-                      <a href="">{{ __('order.user.index.cancel') }}</a>
-                    </th>
-                  </tr>
+                <tbody id="show-orders">
+                  
                 </tbody>
               </table>
             </div>
@@ -42,4 +33,7 @@
     </div>
   </div>
 </section>
+@endsection
+@section('scripts')
+  <script src="{{ asset('js/user/showHistoryOrders.js') }}"></script>
 @endsection

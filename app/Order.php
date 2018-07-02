@@ -28,7 +28,7 @@ class Order extends Model
     ];
 
     protected $statusOrder = [
-        self::PENDING => 'pendding',
+        self::PENDING => 'pending',
         self::ACCEPTED =>'accepted',
         self::REJECTED =>'rejected',
         self::RECEIVED => 'received',
