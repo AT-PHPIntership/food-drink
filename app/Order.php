@@ -26,6 +26,23 @@ class Order extends Model
         'status',
     ];
 
+    protected $statusOrder = [
+        1 => 'pendding',
+        2 =>'accepted',
+        3 =>'rejected',
+        5 => 'received',
+    ];
+
+    /**
+     * Get the order's status.
+     *
+     * @return string
+     */
+    public function getStatusAttribute($status)
+    {
+        return $this->statusOrder[$status];
+    }
+
     /**
      * Order Belong To User
      *
