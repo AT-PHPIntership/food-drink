@@ -93,9 +93,9 @@ class CreateProductTest extends DuskTestCase
                     ->type('quantity', '20')
                     ->select('category_id', '2')
                     ->type('preview', 'aaa')
-                    ->type('description', 'aaa')
-                    ->attach('images[]', 'public/images/products/default-product.jpg')
-                    ->press('submit')
+                    ->attach('images[]', 'public/images/products/default-product.jpg');
+                    $this->typeInCKEditor($browser, '#cke_description iframe', 'Food drink');
+                    $browser->press('submit')
                     ->assertSee('Successfully Created Product!')
                     ->assertPathIs('/admin/product');
             });
@@ -105,7 +105,6 @@ class CreateProductTest extends DuskTestCase
                 'quantity' => '20',
                 'category_id' => '2',
                 'preview' => 'aaa',
-                'description' => 'aaa',
                 ]);
             $this->assertDatabaseHas('images', [
                 'id' => '1',
