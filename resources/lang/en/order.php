@@ -79,5 +79,11 @@
                 'received' => 'Received',
                 'edit' => 'Edit',
             ]
-        ]
+        ],
+        'status' => [
+            1 => 'order.user.index.pending',
+            2 => 'Accepted',
+            \App\Order::REJECTED => 'Rejected',
+            \App\Order::RECEIVED => 'order.user.index.received',
+            ]
     ];
