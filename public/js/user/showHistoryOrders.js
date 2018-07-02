@@ -14,8 +14,6 @@ function getListOrder(response) {
   var html;
   $.each(response.data.data, function (index, order) {
     var content = '';
-    console.log(Lang.get('order.status')[order.status]);
-    
     no = '<td class="cart_product">'+ (index + 1) +'</td>';
     time = '<td class="cart_description">'+ order.created_at +'</td>';
     total = '<td class="price">'+ Lang.get('product.user.money') + order.total +'</td>';
@@ -23,7 +21,7 @@ function getListOrder(response) {
       content = order.note.content;
     }
     note = '<td class=cart_description">'+ content +'</td>';
-    status = '<td class="qty">'+ Lang.get('order.status')[order.status]; +'</td>';
+    status = '<td class="qty">'+ order.status +'</td>';
     address = '<td>'+ order.address +'</td>'
     if (order.status == PENDING) {
       action = '<td class="qty function">\
