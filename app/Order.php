@@ -24,17 +24,20 @@ class Order extends Model
         'user_id',
         'total',
         'status',
+        'address',
     ];
 
     protected $statusOrder = [
-        1 => 'pendding',
-        2 =>'accepted',
-        3 =>'rejected',
-        5 => 'received',
+        self::PENDING => 'pendding',
+        self::ACCEPTED =>'accepted',
+        self::REJECTED =>'rejected',
+        self::RECEIVED => 'received',
     ];
 
     /**
      * Get the order's status.
+     *
+     * @param string $status order's status
      *
      * @return string
      */

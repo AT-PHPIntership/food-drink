@@ -59,5 +59,19 @@
                 'date' => 'Date',
                 'list_product' => 'List Product'
             ],
+        ],
+        'user' => [
+            'index' => [
+                'title' => 'List Order',
+                'show_order' => 'Show list orders',
+                'no' => 'No.',
+                'date' => 'Ordered date',
+                'total_price' => 'Total Price',
+                'note' => 'Note',
+                'status' => 'Status',
+                'function' => 'Function',
+                'detail' => 'Detail',
+                'cancel' => 'Cancel',
+            ]
         ]
     ];

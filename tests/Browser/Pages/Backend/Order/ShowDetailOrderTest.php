@@ -54,7 +54,7 @@ class ShowDetailOrderTest extends DuskTestCase
                         'List Product',
                         'Name Product',
                         $order->user->name,
-                        $order->orderDetails->first()->address,
+                        $order->address,
                         $order->user->userInfo->phone,
                         $order->orderDetails->first()->name_product,
                         $order->orderDetails->first()->price
