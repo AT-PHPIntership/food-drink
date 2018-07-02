@@ -34,56 +34,61 @@ Get list all order
        "current_page": 1,
        "data": [
            {
-               "id": 2,
-               "user_id": 1,
-               "total": 1000,
-               "status": 3,
-               "address": "5125 Delbert LocksShaniefort, NY 03740-0073",
-               "created_at": "2007-08-12 07:34:21",
-               "updated_at": "1979-06-11 13:27:46",
+                "id": 2,
+                "user_id": 1,
+                "total": 1000,
+                "status": "rejected",
+                "created_at": "2007-08-12 07:34:21",
+                "updated_at": "1979-06-11 13:27:46"
            },
            {
-               "id": 3,
-               "user_id": 1,
-               "total": 1000,
-               "status": 2,
-               "address": "5125 Delbert LocksShaniefort, NY 03740-0073",
-               "created_at": "1989-09-05 00:16:59",
-               "updated_at": "1988-07-20 16:34:45",
+                "id": 3,
+                "user_id": 1,
+                "total": 1000,
+                "status": "accepted",
+                "created_at": "1989-09-05 00:16:59",
+                "updated_at": "1988-07-20 16:34:45"
            },
            {
-               "id": 4,
-               "user_id": 1,
-               "total": 1000,
-               "status": 3,
-               "address": "5125 Delbert LocksShaniefort, NY 03740-0073",
-               "created_at": "1971-03-24 07:25:51",
-               "updated_at": "1997-10-14 17:56:36",
+                "id": 4,
+                "user_id": 1,
+                "total": 1000,
+                "status": "rejected",
+                "created_at": "1971-03-24 07:25:51",
+                "updated_at": "1997-10-14 17:56:36"
            },
            {
-               "id": 5,
-               "user_id": 1,
-               "total": 1000,
-               "status": 3,
-               "address": "5125 Delbert LocksShaniefort, NY 03740-0073",
-               "created_at": "1983-04-19 01:12:45",
-               "updated_at": "2017-08-14 03:12:07",
+                "id": 5,
+                "user_id": 1,
+                "total": 1000,
+                "status": "rejected",
+                "created_at": "1983-04-19 01:12:45",
+                "updated_at": "2017-08-14 03:12:07"
            },
            {
-               "id": 6,
-               "user_id": 1,
-               "total": 1000,
-               "status": 1,
-               "address": "5125 Delbert LocksShaniefort, NY 03740-0073",
-               "created_at": "2000-11-03 10:35:09",
-               "updated_at": "1986-03-24 17:46:27",
-               "note": {
-                    "id": 1,
-                    "user_id": 1,
-                    "order_id": 3,
-                    "content": "a",
-                }
+                "id": 6,
+                "user_id": 1,
+                "total": 1000,
+                "status": "pendding",
+                "created_at": "2000-11-03 10:35:09",
+                "updated_at": "1986-03-24 17:46:27"
            },
+           {
+                "id": 7,
+                "user_id": 1,
+                "total": 1000,
+                "status": "pendding",
+                "created_at": "2005-12-24 19:03:09",
+                "updated_at": "1999-07-05 22:22:12"
+           },
+           {
+                "id": 15,
+                "user_id": 1,
+                "total": 1000,
+                "status": "pendding",
+                "created_at": "2001-07-02 07:49:49",
+                "updated_at": "2004-02-21 15:42:07"
+           }
        ],
        "first_page_url": "http://192.168.33.10/api/orders?page=1",
        "from": 1,
@@ -176,5 +181,63 @@ Show order detail
 {
     "error" : "Page not found",
     "code" : 404
+}
+```
+
+### `POST` Orders
+```
+/api/orders
+```
+Create new order
+#### Request Headers
+| Key | Value |
+|---|---|
+|Accept|application\json|
+|Authorization|{token_type} {access_token}|
+
+#### Query Param
+| Param | Type | Description |
+|---|---|---|
+| user_id | string | Id Of User |
+| Total | number | total order |
+
+#### Response - Success
+```json
+{
+    "meta": {
+        "status": "Successfully",
+        "code": 201
+    },
+    "data": {
+        "id": 26,        
+        "user_id": 1,
+        "total": 6,
+        "status": "pendding",
+        "address": "70813 Upton Rue\nWillytown, KS 95823-6140",
+        "order_details": [
+            {
+                "id": 18,
+                "product_id": 1,
+                "order_id": 26,
+                "quantity": 3,
+                "price": 2,
+                "preview": "Quam fugit ratione ut ullam autem doloribus. Quis inventore saepe aut aut porro corrupti quam.",
+                "name_product": "Loy Kris",
+                "image": "default-product.jpg",
+                "image_product_url": "http://192.168.33.10/images/products/default-product.jpg"
+            },
+            {
+                "id": 19,
+                "product_id": 1,
+                "order_id": 26,
+                "quantity": 3,
+                "price": 2,
+                "preview": "Quam fugit ratione ut ullam autem doloribus. Quis inventore saepe aut aut porro corrupti quam.",
+                "name_product": "Loy Kris",
+                "image": "default-product.jpg",
+                "image_product_url": "http://192.168.33.10/images/products/default-product.jpg"
+            }
+        ]
+    }
 }
 ```

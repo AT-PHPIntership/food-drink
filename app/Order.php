@@ -27,6 +27,25 @@ class Order extends Model
         'address',
     ];
 
+    protected $statusOrder = [
+        self::PENDING => 'pendding',
+        self::ACCEPTED =>'accepted',
+        self::REJECTED =>'rejected',
+        self::RECEIVED => 'received',
+    ];
+
+    /**
+     * Get the order's status.
+     *
+     * @param string $status order's status
+     *
+     * @return string
+     */
+    public function getStatusAttribute($status)
+    {
+        return $this->statusOrder[$status];
+    }
+
     /**
      * Order Belong To User
      *
