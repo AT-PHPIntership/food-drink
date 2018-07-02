@@ -70,8 +70,10 @@
                 'note' => 'Note',
                 'status' => 'Status',
                 'function' => 'Function',
+                'address' => 'Address',
                 'detail' => 'Detail',
                 'cancel' => 'Cancel',
+                'edit' => 'Edit',
             ],
             'create' => [
                 'title' => 'Create Order',
@@ -84,5 +86,5 @@
                 'your_checkout' => 'Your checkout',
                 'checkout' => 'Checkout',
             ]
-        ]
+        ],
     ];
