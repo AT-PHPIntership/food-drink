@@ -32,5 +32,7 @@
 <script src="/bower_components/admin-lte/dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/bower_components/admin-lte/dist/js/demo.js"></script>
+<!-- ckeditor -->
+<script src="/bower_components/ckeditor/ckeditor.js"></script>
 </body>
 </html>

@@ -96,9 +96,9 @@ class EditProductTest extends DuskTestCase
                     ->type('quantity', '20')
                     ->select('category_id', '2')
                     ->type('preview', 'test preview')
-                    ->type('description', 'test description')
-                    ->attach('images[]', 'public/images/products/default-product.jpg')
-                    ->press('submit')
+                    ->attach('images[]', 'public/images/products/default-product.jpg');
+                    $this->typeInCKEditor($browser, '#cke_description iframe', 'aaa');
+                    $browser->press('submit')
                     ->assertPathIs('/admin/product')
                     ->assertSee('Successfully Updated Product!');
             $this->assertDatabaseHas('products', [
@@ -108,7 +108,6 @@ class EditProductTest extends DuskTestCase
                 'quantity' => '20',
                 'category_id' => '2',
                 'preview' => 'test preview',
-                'description' => 'test description',
             ]);
             $this->assertDatabaseHas('images', [
                 'id' => '1',
