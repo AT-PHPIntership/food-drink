@@ -69,7 +69,7 @@
                 </div>
                 <div class="form-group">
                   <label>{{__('product.admin.create.preview')}}</label>
-                  <textarea class="form-control" name="preview" id="description" rows="3" placeholder="{{__('product.admin.create.preview')}}"></textarea>
+                  <textarea class="form-control" name="preview" rows="3" placeholder="{{__('product.admin.create.preview')}}"></textarea>
                   @if($errors->first('preview')) 
                     <span class="help-block">
                       <strong class="text-danger">{{ $errors->first('preview') }}</strong>
