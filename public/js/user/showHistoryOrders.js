@@ -23,7 +23,7 @@ function getListOrder(response) {
     note = '<td class=cart_description">'+ content +'</td>';
     status = '<td class="qty">'+ order.status +'</td>';
     address = '<td>'+ order.address +'</td>'
-    if (order.status == PENDING) {
+    if (order.status == "pending") {
       action = '<td class="qty function">\
                   <a href="">'+ Lang.get('order.user.index.detail') +'</a>\
                   <a href="">'+ Lang.get('order.user.index.edit') +'</a>\
