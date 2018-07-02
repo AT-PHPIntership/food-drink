@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Order;
 
 class OrderController extends Controller
 {
@@ -25,5 +26,17 @@ class OrderController extends Controller
     public function create()
     {
         return view('user.order.create');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Order $order order object
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function show(Order $order)
+    {
+        return view('user.order.show', $order);
     }
 }

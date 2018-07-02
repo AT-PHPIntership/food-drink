@@ -84,6 +84,6 @@ Route::group(['namespace'=>'User','prefix'=>'/'],function () {
         'index'
     ]);
     Route::resource('orderUser', 'OrderController')->only([
-        'index', 'create'
+        'index', 'create', 'show'
     ]);
 });

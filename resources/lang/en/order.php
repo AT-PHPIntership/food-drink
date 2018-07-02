@@ -85,6 +85,11 @@
                 'complete' => 'Complete',
                 'your_checkout' => 'Your checkout',
                 'checkout' => 'Checkout',
+            ],
+            'show' => [
+                'title' => 'Show Order Detail',
+                'order_detail' => 'Order Detail',
+                'description' => 'Description',
             ]
         ],
     ];
