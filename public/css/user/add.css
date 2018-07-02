@@ -35,3 +35,16 @@ a.header {
   display: block;
   background: #4caf50;
 }
+.please-login {
+  float: right;
+  background: #4caf50;
+  color: #fff;
+  border: 2px solid #4caf50;
+  font-size: 16px;
+  font-weight: 900;
+  text-transform: uppercase;
+  padding: 10px 30px;
+}
+.pr-img-area {
+  height: 250px !important;
+}

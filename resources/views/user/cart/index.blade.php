@@ -36,7 +36,9 @@
             </div>
             <div class="cart_navigation"> 
               <a class="continue-btn" onclick="window.history.go(-1);"><i class="fa fa-arrow-left"> </i>&nbsp; {{ __('cart.continue') }}</a> 
-              <a class="checkout-btn" href="{{ route('orderUser.create') }}"><i class="fa fa-check"></i> {{ __('cart.checkout') }}</a> </div>
+              <a class="checkout-btn" href="{{ route('orderUser.create') }}"><i class="fa fa-check"></i> {{ __('cart.checkout') }}</a> 
+              <a class="please-login" href="{{ route('user.login') }}"><i class="fa fa-sign-in"></i> <span>{{ __('cart.please_login') }}</span></a>
+            </div>
           </div>
         </div>
       </div>

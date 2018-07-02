@@ -2,10 +2,13 @@ $( document ).ready(function() {
   accessToken = localStorage.getItem('access_token');
   if (accessToken) {
     $('.links .login').hide();
+    $('.links .register').hide();
+    $('.cart_navigation .please-login').hide();
   } else {
     $('.links .myaccount').hide();
     $('.links .logout').hide();
     $('.links .history-order').hide();
+    $('.cart_navigation .checkout-btn').hide();
     window.location.host;
   }
   
