@@ -241,3 +241,27 @@ Create new order
     }
 }
 ```
+
+### `DELETE` Orders
+```
+/api/orders/{order}
+```
+Delete order
+#### Request Headers
+| Key | Value |
+|---|---|
+|Accept|application\json|
+|Authorization|{token_type} {access_token}|
+
+#### Query Param
+| Param | Type | Description |
+|---|---|---|
+| user_id | string | order's id |
+
+#### Response - Success
+```json
+    "meta": {
+        "status": "Successfully",
+        "code": 200
+    },
+```
