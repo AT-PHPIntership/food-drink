@@ -71,11 +71,11 @@ function delPost() {
         'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
       },
       success: function(data) {
-        $('#post-'+postId+'').remove();
+        $('#post-'+postId).remove();
       },
       error: function(data) {
         alert(data.responseJSON.error);
-        }
+      }
     })
   })
 }
