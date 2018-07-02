@@ -11,6 +11,7 @@ $( document ).ready(function() {
             }),
             success: function (data){
                 window.localStorage.setItem('access_token', data.data.token);
+                window.localStorage.setItem('data', JSON.stringify(data.data.user));
                 window.location.href = 'http://' + window.location.hostname + '/';
             },
             error: function (data) {

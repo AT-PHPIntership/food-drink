@@ -60,3 +60,7 @@
 .layered-Category {
   margin-top: 15px;
 }
+.fa.fa-trash {
+  float: right;
+  margin-right: 20px;
+}
