@@ -16,6 +16,8 @@
               </ul>
             </div>
             <div class="pagination-area">
+              <a id="next"><span>Next <i class="fa fa-forward"></i></span></a>
+              <a id="prev"><span> <i class="fa fa-backward"></i> Prev</span></a>
             </div>
           </div>
         </div>
