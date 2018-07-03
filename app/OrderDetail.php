@@ -9,13 +9,19 @@ class OrderDetail extends Model
     protected $fillable=[
         'order_id',
         'product_id',
-        'quantily',
+        'quantity',
         'price',
         'name_product',
         'image',
-        'preview',
     ];
     
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['image_url'];
+
     /**
      * Order Belong To OrderDetail
      *
