@@ -27,7 +27,7 @@ class CreateOrderRequest extends FormRequest
     {
         $index = 0;
         $rules = [];
-        foreach(request('product') as $input) {
+        foreach (request('product') as $input) {
             $product = Product::find($input['id']);
             $rules['product.'.$index.'.quantity'] = 'numeric|max:'.$product->quantity;
             $index++;

@@ -4,7 +4,7 @@ var products = JSON.parse(localStorage.getItem('carts'));
   products.forEach(function (product) {
     product_data = {};
     product_data.id = product.id;
-    product_data.name = product.name;
+    product_data.name_product = product.name;
     product_data.image = product.image;
     product_data.quantity = product.count;
     product_data.price = product.price;
@@ -23,12 +23,13 @@ function itemCart(cartProduct) {
     html += '<tr>\
       <td class="cart_product"><img src="'+value.img_url+'" alt="Product"></td>\
       <td class="cart_description">'+value.name+'</td>\
-      <td class="price">'+ Lang.get('product.user.money') +''+value.price+'</td>\
+      <td class="price" value="22">'+ Lang.get('product.user.money') +''+value.price+'</td>\
       <td class="qty">'+value.count+'</td>\
       <td class="total" value="'+total+'">'+ Lang.get('product.user.money') +''+total+'</td>\
     </tr>';
   })
   $('#show-cart').html(html);
+  $('.sub-total').attr('value',subTotal);
   $('.sub-total').html(subTotal);
   htmlUser += '<div class="col-sm-12">\
     <p><i class="fa fa-check-circle text-primary"></i>'+Lang.get('order.user.create.your_name')+'<span>'+data_user.name+'</span></p>\
@@ -44,7 +45,6 @@ function itemCart(cartProduct) {
 }
 function addOrder() {
   $(document).on('click', '#add-order', function (event) {
-    // alert('hello');
     event.preventDefault();
     $.ajax({
       type: 'POST',
@@ -54,12 +54,14 @@ function addOrder() {
         Authorization: 'Bearer ' +localStorage.getItem('access_token'),
       },
       data: {
-        total: 200,
+        total: $('.sub-total').attr('value'),
         address: $('#address').val(),
         product: order,
       },
       success: function() {
-        window.location.reload();
+        localStorage.removeItem('carts');
+        localStorage.removeItem('count');
+        window.location.href='/';
       },
       error: function(data) {
         alert(data.responseJSON.message);

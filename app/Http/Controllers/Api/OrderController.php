@@ -46,7 +46,7 @@ class OrderController extends ApiController
         if ($order->user_id == $user->id) {
             $orderDetails = $order->orderDetails;
         }
-        return $this->showAll($orderDetails, Response::HTTP_OK);  
+        return $this->showAll($orderDetails, Response::HTTP_OK);
     }
     /**
      * Api create order.
@@ -61,7 +61,7 @@ class OrderController extends ApiController
         $input['status'] = Order::PENDING;
         $input['user_id'] = Auth::user()->id;
         $order = Order::create($input);
-        foreach($request->product as $product) {
+        foreach ($request->product as $product) {
             OrderDetail::create([
                 'order_id' => $order->id,
                 'product_id' => $product['id'],

@@ -23,13 +23,6 @@ class OrderDetail extends Model
     protected $appends = ['image_url'];
     
     /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
-    protected $appends = ['image_url'];
-
-    /**
      * Order Belong To OrderDetail
      *
      * @return mixed
