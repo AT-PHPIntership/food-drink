@@ -96,6 +96,17 @@ $(document).ready(function () {
     }
     processAjax();
   });
+  // filter name product
+  $('#filter-name').submit(function () {
+    event.preventDefault();
+    name = $('#name').val();
+    if(url.indexOf('?') > 0) {
+      url += '&name='+ name;
+    } else {
+      url += '?name='+ name;
+    }
+    processAjax();
+  });
   //refresh filter
   $('.block-subtitle').on('click', function() {
     location.reload();
