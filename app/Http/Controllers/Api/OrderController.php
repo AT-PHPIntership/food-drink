@@ -8,8 +8,11 @@ use App\Http\Controllers\Api\ApiController;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 use App\Order;
+use App\OrderDetail;
+use App\Product;
 use PHPUnit\Framework\MockObject\Stub\Exception;
 use App\Http\Requests\Api\SortOrderRequest;
+use App\Http\Requests\Api\CreateOrderRequest;
 
 class OrderController extends ApiController
 {
@@ -43,6 +46,30 @@ class OrderController extends ApiController
         if ($order->user_id == $user->id) {
             $orderDetails = $order->orderDetails;
         }
-        return $this->showAll($orderDetails, Response::HTTP_OK);
+        return $this->showAll($orderDetails, Response::HTTP_OK);  
+    }
+    /**
+     * Api create order.
+     *
+     * @param \Illuminate\Http\Request $request request
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function store(CreateOrderRequest $request)
+    {
+        $input = $request->all();
+        $input['user_id'] = Auth::user()->id;
+        $order = Order::create($input);
+        foreach($request->product as $product) {
+            OrderDetail::create([
+                'order_id' => $order->id,
+                'product_id' => $product['id'],
+                'quantity' => $product['quantity'],
+                'price' => $product['price'],
+                'name_product' => $product['name_product'],
+                'image' => $product['image']
+            ]);
+        }
+        return $this->showOne($order->load('orderDetails'), Response::HTTP_OK);
     }
 }
