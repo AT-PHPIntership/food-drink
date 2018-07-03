@@ -24,7 +24,7 @@ function viewCart() {
         total = value.count*value.price;
         subTotal = subTotal + total;
         html += '<li class="item">\
-                  <a href="products/'+ value.id +'" title="Ipsums Dolors Untra" class="product-image"><img src="'+ value.img_url +'" alt="'+ value.name +'" width="65"></a>\
+                  <a href="products/'+ value.id +'" title="'+ value.name +'" class="product-image"><img src="'+ value.img_url +'" alt="'+ value.name +'" width="65"></a>\
                   <div class="product-details">\
                     <p class="product-name"><a href="products/'+ value.id +'">'+ value.name +'</a> </p>\
                     <strong>'+ value.count +'</strong> x <span class="price">'+ Lang.get('product.user.money')+ value.price +'</span>\
