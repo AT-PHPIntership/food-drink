@@ -57,5 +57,10 @@
                 'success_update' => 'Successfully updated the user!',
                 'cancel' => 'can not delete admin',
             ],
+            'register' => [
+                'register' => 'Register',
+                'label_register' => 'Create your very own account',
+                'ship' => 'Can Be Overlooked',
+            ],
         ]
     ];

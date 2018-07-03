@@ -31,7 +31,7 @@ class ProductController extends ApiController
                         return $query->whereBetween('avg_rate', [round($request->rate)-0.5, round($request->rate)+0.4]);
                     })
                     ->when(isset($request->name), function ($query) use ($request) {
-                        return $query->where('name', 'like', $request->name);
+                        return $query->where('name', 'like', '%'.$request->name.'%');
                     })
                     ->when(isset($request->category), function ($query) use ($request) {
                         return $query->whereHas('category', function ($query) use ($request) {

@@ -28,6 +28,9 @@ Route::group(['namespace' => 'Api'], function () {
     Route::group(['middleware'=>'auth:api'], function () {
         Route::get('profile', 'ProfileController@show');
         Route::post('logout', 'LoginController@logout');
+        Route::apiResource('orders', 'OrderController')->only([
+            'index', 'show'
+        ]);
         Route::apiResource('posts', 'PostController')->only([
             'destroy'
         ]);

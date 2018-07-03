@@ -50,7 +50,7 @@
                 </div>
                 <div class="form-group">
                   <label>{{__('product.admin.create.description')}}</label>
-                  <textarea class="form-control" name="description" rows="3" disabled placeholder="{{ $product->description }}"></textarea>
+                  <textarea class="ckeditor form-control" name="description" rows="3" disabled placeholder="{{ $product->description }}">{!! $product->description !!}</textarea>
                 </div>
                 <div class="form-group">
                 <label for="exampleInputFile" class="label-inline">{{__('product.admin.create.image')}}</label>

@@ -9,7 +9,8 @@
 <body>
     <div>
         <h1>Welcome To The Website Food-Drink</h1>
-        <p>Hello {{$name}} <span>(email:{{$email}})</span><p>
+        <p>Hello {{$name}}<p>
+        <p>Your email: {{$email}}</p>
     </div>
 </body>
 </html>
