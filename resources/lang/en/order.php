@@ -81,7 +81,7 @@
                 'your_name' => 'Your Name: ',
                 'your_email' => 'Your Email: ',
                 'your_phone' => 'Your Phone: ',
-                'address' => 'Shipping Address',
+                'your_address' => 'Your Address: ',
                 'complete' => 'Complete',
                 'your_checkout' => 'Your checkout',
                 'checkout' => 'Checkout',
