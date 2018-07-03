@@ -12,6 +12,7 @@ use PHPUnit\Framework\MockObject\Stub\Exception;
 use App\Http\Requests\Api\SortOrderRequest;
 use App\Http\Requests\Api\CreateNoteRequest;
 use App\Note;
+use DB;
 
 class OrderController extends ApiController
 {
@@ -51,26 +52,32 @@ class OrderController extends ApiController
     /**
      * Update the specified resource in storage.
      *
+     * @param \App\Order                          $order   order
      * @param App\Http\Requests\CreateNoteRequest $request request
      *
      * @return \Illuminate\Http\Response
     */
     public function update(Order $order, CreateNoteRequest $request)
     {
-        if ($order->user_id == Auth::id()) {
+        $userId = Auth::id();
+        if ($order->user_id == $userId) {
+            DB::beginTransaction();
             try {
                 $order->update([
                     'status' => Order::REJECTED,
                 ]);
-                $input['user_id'] = Auth::id();
+                $input['user_id'] = $userId;
                 $input['order_id'] = $order->id;
                 $input['content'] = $request->content;
                 Note::create($input);
-                return $this->responseDeleteSuccess(Response::HTTP_OK);
+                $order->load('note');
+                return $this->successResponse($order, Response::HTTP_OK);
+                DB::commit();
             } catch (Exception $e) {
+                DB::rollBack();
                 return response()->json();
             }
         }
-        return $this->errorResponse(trans('login.user.unauthorised'), Response::HTTP_UNAUTHORIZED);        
+        return $this->errorResponse(trans('login.user.unauthorised'), Response::HTTP_UNAUTHORIZED);
     }
 }
