@@ -9,7 +9,7 @@ function numberItem() {
 }
 numberItem();
 
-function addCart(idProduct, nameProduct, priceProduct, quantityProduct, imgProduct) {
+function addCart(idProduct, nameProduct, priceProduct, quantityProduct, imgProduct,img) {
   var exists = false;
   item = {
     id: idProduct,
@@ -17,6 +17,7 @@ function addCart(idProduct, nameProduct, priceProduct, quantityProduct, imgProdu
     price: priceProduct,
     quantity: quantityProduct,
     img_url: imgProduct,
+    image: img,
     count: 1
   };
   if (typeof(Storage) !== 'undefined') {

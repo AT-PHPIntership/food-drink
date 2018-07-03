@@ -4,8 +4,10 @@ function appendHtml(response) {
   response.data.data.forEach(element => {
     var stars = '';
     var rate = 0;
-    img_url = 'https://image.ibb.co/dqd4QJ/default_product.jpg';    
+    img_url = 'https://image.ibb.co/dqd4QJ/default_product.jpg';
+    img = 'default_product.jpg'; 
     if (typeof element.images[0] !== 'undefined') {
+      img = element.images[0].image;
       img_url = element.images[0].image_url;
     }
     rate = Math.round(element.avg_rate);
@@ -27,7 +29,7 @@ function appendHtml(response) {
                         <img class="hover-img" src="'+ img_url +'" alt="">\
                       </figure>\
                     </a>\
-                    <button type="button" class="add-to-cart-mt" onclick="addCart('+ element.id +', \''+element.name +'\', \''+element.price +'\', '+element.quantity +', \''+ img_url +'\')">\
+                    <button type="button" class="add-to-cart-mt" onclick="addCart('+ element.id +', \''+element.name +'\', \''+element.price +'\', '+element.quantity +', \''+ img_url +'\',\''+ img +'\')">\
                       <i class="fa fa-shopping-cart"></i>\
                       <span>'+Lang.get('home.user.main.add_to_cart')+'</span>\
                     </button>\

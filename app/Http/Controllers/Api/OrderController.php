@@ -58,6 +58,7 @@ class OrderController extends ApiController
     public function store(CreateOrderRequest $request)
     {
         $input = $request->all();
+        $input['status'] = Order::PENDING;
         $input['user_id'] = Auth::user()->id;
         $order = Order::create($input);
         foreach($request->product as $product) {
