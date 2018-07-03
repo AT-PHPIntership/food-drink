@@ -18,7 +18,6 @@
                     <th>{{ __('cart.name') }}</th>
                     <th>{{ __('cart.price') }}</th>
                     <th>{{ __('cart.qty') }}</th>
-                    <th>{{ __('cart.total') }}</th>
                     <th>{{ __('order.user.show.description') }}</th>
                   </tr>
                 </thead>
