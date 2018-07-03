@@ -14,6 +14,13 @@ class OrderDetail extends Model
         'name_product',
         'image',
     ];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['image_url'];
     
     /**
      * The accessors to append to the model's array form.

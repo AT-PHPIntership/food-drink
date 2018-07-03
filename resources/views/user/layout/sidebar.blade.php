@@ -72,6 +72,17 @@
           </div>
         </div>
       </div>
+      <div class="size-area">
+        <h2 class="saider-bar-title">{{__('sidebar.name_product')}}</h2>
+        <div class="cart-plus-minus">
+          <div class="numbers-row">
+            <form method="post" id="filter-name">
+              <input type="text" id="name" class="form-control" placeholder="{{ __('sidebar.name_product') }}" name="search">
+              <button class="btn-search submit-filter" type="submit"><i class="fa fa-search"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="block sidebar-cart">
