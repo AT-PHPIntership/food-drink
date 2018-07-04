@@ -51,16 +51,28 @@
         <div class="col-lg-2 col-xs-3 top-cart">
           <div class="top-cart-contain">
             <div class="mini-cart">
-              <div class="basket dropdown-toggle"> 
-                <a href="{{ route('cart.index') }}">
-                  <div class="cart-icon"><i class="fa fa-shopping-cart"></i></div>
-                  <div class="shoppingcart-inner hidden-xs">
-                    <span class="cart-title">{{ __('home.user.header.cart') }}</span>
-                    <span id="number-item">0</span>
-                    <span class="cart-total">{{ __('home.user.header.items') }}</span>
-                  </div>
+              <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"> <a href="#">
+                <div class="cart-icon"><i class="fa fa-shopping-cart"></i></div>
+                <div class="shoppingcart-inner hidden-xs">
+                  <span class="cart-title">{{ __('home.user.header.cart') }}</span>
+                  <span id="number-item">0</span>
+                  <span class="cart-total">{{ __('home.user.header.items') }}</span>
+                </div>
                 </a>
-              <!-- </div> -->
+              </div>
+              <div>
+                <div class="top-cart-content">
+                  <div class="block-subtitle hidden-xs">{{ __('home.user.header.recently_added') }}</div>
+                    <ul id="cart-sidebar" class="mini-products-list">
+                      
+                    </ul>
+                  <div class="top-subtotal">{{ __('home.user.header.subtotal') }}<span class="price">{{ __('product.user.money') }}<span class="sub-total">0</span></span></div>
+                  <div class="actions">
+                    <a href="{{ route('cart.index') }}" class="view-cart"><i class="fa fa-shopping-cart"></i> <span>{{ __('home.user.header.view_cart') }}</span></a>
+                    <a href="{{ route('orders.create') }}" class="btn-checkout" ><i class="fa fa-check"></i><span>{{ __('home.user.header.checkout') }}</span></a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

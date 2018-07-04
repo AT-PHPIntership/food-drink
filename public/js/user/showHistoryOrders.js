@@ -1,5 +1,6 @@
 const PENDING = 1;
-var url = '/api/orders?limit=5';
+const limit = 5;
+var url = '/api/orders?limit=' + limit;
 $(document).ready(function () {
   getListOrder(url);
   //next
@@ -43,7 +44,7 @@ function appendOrder(response) {
   var html;
   $.each(response.data.data, function (index, order) {
     var content = '';
-    var number = 5 * (response.data.current_page - 1);
+    var number = limit * (response.data.current_page - 1);
     no = '<td class="cart_product">'+ (index + number + 1) +'</td>';
     time = '<td class="cart_description">'+ order.created_at +'</td>';
     total = '<td class="price">'+ Lang.get('product.user.money') + order.total +'</td>';
