@@ -6,56 +6,55 @@ var data_user = JSON.parse(localStorage.getItem('data'));
 var url_delete = '/api/posts/';
 
 $(document).ready(function () {
-  const ENABLE = 1;
   // show review
-  $.get('/api' + path + '/posts?type='+ TYPE_REVIEW +'&status=' + ENABLE +'&sort=updated_at&order=desc', function(response) {
-    getData(response, TYPE_REVIEW);
-  });
-  next(1);
-  // getData('/api' + path + '/posts?type='+ TYPE_REVIEW +'&status=' + ENABLE +'&sort=updated_at&order=desc', TYPE_REVIEW);
+  getData('/api' + path + '/posts?type='+ TYPE_REVIEW +'&status=' + ENABLE +'&sort=updated_at&order=desc', TYPE_REVIEW);
+  next(TYPE_REVIEW);
+  prev(TYPE_REVIEW);
   // show comment
-  $.get('/api' + path + '/posts?type='+ TYPE_COMMENT +'&status=' + ENABLE +'&sort=updated_at&order=desc', function(response) {
-    getData(response, TYPE_COMMENT);
-  });
-  // getData('/api' + path + '/posts?type='+ TYPE_COMMENT +'&status=' + ENABLE +'&sort=updated_at&order=desc', TYPE_COMMENT);
+  getData('/api' + path + '/posts?type='+ TYPE_COMMENT +'&status=' + ENABLE +'&sort=updated_at&order=desc', TYPE_COMMENT);
+  next(TYPE_COMMENT);
+  prev(TYPE_COMMENT);
+  //delete post
   delPost();
-  //next
-  next(2);
-  //prev
-  $('#prev-post').click(function (event) {
-    event.preventDefault();
-    url_prev = $('#prev-post').attr('href');
-    getData(url_prev);
-  });
 });
 
 function next(typePost) {
   $('#next-post'+ typePost).click(function (event) {
     event.preventDefault();
     url_next = $('#next-post'+ typePost).attr('href');
-    $.get(url_next, function(response){
-      getData(response, typePost);
-    });
+    getData(url_next, typePost);
   });
 }
 
-function getData(response, typePost) {
-  console.log(response);
-  
-  if (response.data['next_page_url'] != null) {
-    $('#next-post'+ typePost).show();
-    $('#next-post'+ typePost).attr('href', response.data['next_page_url']);
-  } else {
-    $('#next-post'+ typePost).hide();
-  }
-  // if (response.data['prev_page_url'] != null) {
-  //   $('#prev-order').show();
-  //   $('#prev-order').attr('href', response.data['prev_page_url']);
-  // } else {
-  //   $('#prev-order').hide();
-  // }
-  appendPost(response, typePost);
-};
+function prev(typePost) {
+  $('#prev-post'+ typePost).click(function (event) {
+    event.preventDefault();
+    url_prev = $('#prev-post'+ typePost).attr('href');
+    getData(url_prev, typePost);
+  });
+}
+
+function getData(url, typePost) {
+  $.ajax({
+    url: url,
+    type: "GET",
+    success: function(response) {
+      if (response.data['next_page_url'] != null) {
+        $('#next-post'+ typePost).show();
+        $('#next-post'+ typePost).attr('href', response.data['next_page_url']);
+      } else {
+        $('#next-post'+ typePost).hide();
+      }
+      if (response.data['prev_page_url'] != null) {
+        $('#prev-post'+ typePost).show();
+        $('#prev-post'+ typePost).attr('href', response.data['prev_page_url']);
+      } else {
+        $('#prev-post'+ typePost).hide();
+      }
+      appendPost(response, typePost);
+    }
+  });
+}
 
 function appendPost(response, typePost) {
   var html = '';
@@ -73,8 +72,10 @@ function appendPost(response, typePost) {
       }
     }
     var showAction = '';
-    if(data_user.id == post.user_id){
-      showAction =  '<a  class="delete-post" id="'+post.id+'"><i class="fa fa-trash"></i></a>'
+    if (localStorage.getItem('access_token')) {
+      if(data_user.id == post.user_id){
+        showAction =  '<a  class="delete-post" id="'+post.id+'"><i class="fa fa-trash"></i></a>'
+      }
     }
     html+='<div class="review-ratting" id="post-'+post.id+'">\
             <img class="avatar-user-post" src="'+ post.user.user_info.avatar_url +'" >\

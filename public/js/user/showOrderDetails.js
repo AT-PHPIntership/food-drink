@@ -1,6 +1,9 @@
 const LIMIT = 5;
 var url = '/api'+ window.location.pathname +'?unit='+ LIMIT;
 $(document).ready(function () {
+  if (!localStorage.getItem('access_token')) {
+    window.location.href = '/';
+  }
   getListOrderDetail(url);
   //next
   $('#next-order-detail').click(function (event) {

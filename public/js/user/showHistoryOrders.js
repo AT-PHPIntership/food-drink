@@ -2,6 +2,9 @@ const PENDING = 1;
 const limit = 5;
 var url = '/api/orders?limit=' + limit;
 $(document).ready(function () {
+  if (!localStorage.getItem('access_token')) {
+    window.location.href = '/';
+  }
   getListOrder(url);
   //next
   $('#next-order').click(function (event) {
@@ -52,9 +55,9 @@ function appendOrder(response) {
       content = order.note.content;
     }
     note = '<td class=cart_description">'+ content +'</td>';
-    status = '<td class="qty">'+ order.status +'</td>';
+    status = '<td class="qty">'+ order.status_order +'</td>';
     address = '<td>'+ order.address +'</td>'
-    if (order.status == "pending") {
+    if (order.status_order == "pending") {
       action = '<td class="qty function">\
                   <a href="/orders/'+ order.id +'">'+ Lang.get('order.user.index.detail') +'</a>\
                   <a href="">'+ Lang.get('order.user.index.edit') +'</a>\
