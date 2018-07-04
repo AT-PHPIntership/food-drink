@@ -78,7 +78,7 @@ class OrderController extends ApiController
                 DB::commit();
             } catch (Exception $e) {
                 DB::rollBack();
-                return $this->errorResponse($e, Response::HTTP_UNPROCESSABLE_ENTITY);
+                return $this->errorResponse(trans('errors.update_fail'), Response::HTTP_UNPROCESSABLE_ENTITY);
             }
         }
         return $this->errorResponse(trans('login.user.unauthorised'), Response::HTTP_UNAUTHORIZED);
