@@ -77,6 +77,7 @@ Route::group(['namespace'=>'User','prefix'=>'/'],function () {
     Route::resource('profile', 'UserController')->only([
         'index'
     ]);
+    Route::get('profile/edit', 'UserController@edit')->name('profile.edit');
     Route::resource('products', 'ProductController')->only([
         'index', 'show'
     ]);
