@@ -1,5 +1,5 @@
-const limit = 5;
-var url = '/api'+ window.location.pathname +'?unit='+ limit;
+const LIMIT = 5;
+var url = '/api'+ window.location.pathname +'?unit='+ LIMIT;
 $(document).ready(function () {
   getListOrderDetail(url);
   //next
@@ -17,8 +17,6 @@ $(document).ready(function () {
 });
 
 function getListOrderDetail(url) {
-  console.log(url);
-  
   $.ajax({
     type: 'GET',
     url: url,

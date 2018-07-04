@@ -21,7 +21,6 @@ class OrderDetail extends Model
      * @var array
      */
     protected $appends = ['image_url'];
-
     /**
      * Order Belong To OrderDetail
      *
