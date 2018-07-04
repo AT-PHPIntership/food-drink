@@ -18,13 +18,16 @@
                     <th>{{ __('cart.name') }}</th>
                     <th>{{ __('cart.price') }}</th>
                     <th>{{ __('cart.qty') }}</th>
-                    <th>{{ __('order.user.show.description') }}</th>
                   </tr>
                 </thead>
                 <tbody id="show-order-detail">
                   
                 </tbody>
               </table>
+              <div class="pagination-area">
+                <a id="next-order-detail"><span>{{ __('product.user.next') }} <i class="fa fa-forward"></i></span></a>
+                <a id="prev-order-detail"><span> <i class="fa fa-backward"></i> {{ __('product.user.prev') }}</span></a>
+              </div>
             </div>
           </div>
         </div>

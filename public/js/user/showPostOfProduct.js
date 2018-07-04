@@ -9,49 +9,52 @@ $(document).ready(function () {
   const ENABLE = 1;
   // show review
   $.get('/api' + path + '/posts?type='+ TYPE_REVIEW +'&status=' + ENABLE +'&sort=updated_at&order=desc', function(response) {
-    appendPost(response, TYPE_REVIEW);
+    getData(response, TYPE_REVIEW);
   });
+  next(1);
   // getData('/api' + path + '/posts?type='+ TYPE_REVIEW +'&status=' + ENABLE +'&sort=updated_at&order=desc', TYPE_REVIEW);
   // show comment
   $.get('/api' + path + '/posts?type='+ TYPE_COMMENT +'&status=' + ENABLE +'&sort=updated_at&order=desc', function(response) {
-    appendPost(response, TYPE_COMMENT);
+    getData(response, TYPE_COMMENT);
   });
   // getData('/api' + path + '/posts?type='+ TYPE_COMMENT +'&status=' + ENABLE +'&sort=updated_at&order=desc', TYPE_COMMENT);
   delPost();
   //next
-  $('#next-order').click(function (event) {
-    event.preventDefault();
-    url_next = $('#next-order').attr('href');
-    getListOrder(url_next);
-  });
+  next(2);
   //prev
-  $('#prev-order').click(function (event) {
+  $('#prev-post').click(function (event) {
     event.preventDefault();
-    url_prev = $('#prev-order').attr('href');
-    getListOrder(url_prev);
+    url_prev = $('#prev-post').attr('href');
+    getData(url_prev);
   });
 });
 
-function getData(url, typePost) {
-  $.ajax({
-    url: url,
-    type: "GET",
-    success: function(response) {
-      if (response.data['next_page_url'] != null) {
-        $('#next-order').show();
-        $('#next-order').attr('href', response.data['next_page_url']);
-      } else {
-        $('#next-order').hide();
-      }
-      if (response.data['prev_page_url'] != null) {
-        $('#prev-order').show();
-        $('#prev-order').attr('href', response.data['prev_page_url']);
-      } else {
-        $('#prev-order').hide();
-      }
-      appendPost(response, typePost);
-    }
+function next(typePost) {
+  $('#next-post'+ typePost).click(function (event) {
+    event.preventDefault();
+    url_next = $('#next-post'+ typePost).attr('href');
+    $.get(url_next, function(response){
+      getData(response, typePost);
+    });
   });
+}
+
+function getData(response, typePost) {
+  console.log(response);
+  
+  if (response.data['next_page_url'] != null) {
+    $('#next-post'+ typePost).show();
+    $('#next-post'+ typePost).attr('href', response.data['next_page_url']);
+  } else {
+    $('#next-post'+ typePost).hide();
+  }
+  // if (response.data['prev_page_url'] != null) {
+  //   $('#prev-order').show();
+  //   $('#prev-order').attr('href', response.data['prev_page_url']);
+  // } else {
+  //   $('#prev-order').hide();
+  // }
+  appendPost(response, typePost);
 };
 
 function appendPost(response, typePost) {
