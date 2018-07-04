@@ -3,12 +3,13 @@ $( document ).ready(function() {
   if (accessToken) {
     $('.links .login').hide();
     $('.links .register').hide();
-    $('.cart_navigation .please-login').hide();
+    $('.please-login').hide();
   } else {
     $('.links .myaccount').hide();
     $('.links .logout').hide();
     $('.links .history-order').hide();
     $('.cart_navigation .checkout-btn').hide();
+    $('.actions .btn-checkout').hide();
     window.location.host;
   }
   
