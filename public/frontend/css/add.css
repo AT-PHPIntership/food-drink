@@ -77,3 +77,15 @@
   float: right;
   margin-right: 20px;
 }
+.pagination-area a {
+  border: rgb(214, 153, 153);
+  background: #4caf50;
+  padding: 5px 10px;
+  color: #fff;
+}
+.pagination-area a:first-child {
+  float: left;
+}
+.pagination-area a:last-child {
+  float: right;
+}

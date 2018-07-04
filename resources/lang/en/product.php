@@ -66,6 +66,8 @@
         'user' => [
             'add_to_cart' => 'Add to Cart',
             'money' => '$',
+            'next' => 'Next',
+            'prev' => 'Prev',
             'filter' => [
                 'title' => 'Show All Product',
                 'list_product' => 'List Product',
