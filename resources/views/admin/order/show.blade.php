@@ -57,7 +57,6 @@
                   <th>{{__('order.admin.show.quantity')}}</th>
                   <th>{{__('order.admin.show.total')}}</th>
                   <th>{{__('order.admin.show.image')}}</th>
-                  <th>{{__('order.admin.show.preview')}}</th>
                   <th>{{__('order.admin.show.date')}}</th>
                 </tr>
                   @foreach ($order->orderDetails as $orderDetail)
@@ -66,7 +65,6 @@
                     <td>{{ $orderDetail->quantity }}</td>
                     <td>{{ $orderDetail->price }} &dollar;</td>
                     <td><img src="{{ $orderDetail->image_url }}" alt="{{ $orderDetail->name_product }}" style="width:100px"></td>
-                    <td>{{ $orderDetail->preview }}</td>
                     <td>{{ $orderDetail->updated_at }}</td>
                   </tr>
                   @endforeach
