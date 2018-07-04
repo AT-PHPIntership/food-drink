@@ -29,7 +29,7 @@ Route::group(['namespace' => 'Api'], function () {
         Route::get('profile', 'ProfileController@show');
         Route::post('logout', 'LoginController@logout');
         Route::apiResource('orders', 'OrderController')->only([
-            'index', 'show','store'
+            'index', 'show', 'update', 'store'
         ]);
         Route::apiResource('posts', 'PostController')->only([
             'destroy'
