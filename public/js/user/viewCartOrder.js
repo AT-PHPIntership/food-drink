@@ -23,7 +23,7 @@ function itemCart(cartProduct) {
     html += '<tr>\
       <td class="cart_product"><img src="'+value.img_url+'" alt="Product"></td>\
       <td class="cart_description">'+value.name+'</td>\
-      <td class="price" value="22">'+ Lang.get('product.user.money') +''+value.price+'</td>\
+      <td class="price">'+ Lang.get('product.user.money') +''+value.price+'</td>\
       <td class="qty">'+value.count+'</td>\
       <td class="total" value="'+total+'">'+ Lang.get('product.user.money') +''+total+'</td>\
     </tr>';
