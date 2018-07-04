@@ -45,7 +45,7 @@ function appendOrder(response) {
   $.each(response.data.data, function (index, order) {
     var content = '';
     var number = limit * (response.data.current_page - 1);
-    no = '<td class="cart_product">'+ (index + number + 1) +'</td>';
+    no = '<td class="cart_product">'+ (parseInt(index) + number + 1) +'</td>';
     time = '<td class="cart_description">'+ order.created_at +'</td>';
     total = '<td class="price">'+ Lang.get('product.user.money') + order.total +'</td>';
     if (order.note) {
