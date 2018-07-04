@@ -50,8 +50,20 @@ function appendHtml(response) {
           });
     $('#products').html(html);
 }
-function processAjax(){
+function processAjax(url){
   $.get(url, function(response) {
+    if (response.data['next_page_url'] != null) {
+      $('#next').show();
+      $('#next').attr('href', response.data['next_page_url']);
+    } else {
+      $('#next').hide();
+    }
+    if (response.data['prev_page_url'] != null) {
+      $('#prev').show();
+      $('#prev').attr('href', response.data['prev_page_url']);
+    } else {
+      $('#prev').hide();
+    }
     appendHtml(response);
   })
   .fail(function(response) {
@@ -63,8 +75,8 @@ function processAjax(){
     }
   })
 }
+
 $(document).ready(function () {
-  processAjax();
   $(".filter-price").on("click", function () {
     from = $('#from').val();  
     to = $('#to').val();
@@ -74,7 +86,7 @@ $(document).ready(function () {
     } else {
       url += '?'+ url_price;
     }    
-    processAjax();
+    processAjax(url);
   });
   $(".filter-rate").on("click", function (){
     rate = $(this).val();
@@ -84,7 +96,7 @@ $(document).ready(function () {
     } else {
       url += '?'+ url_rate;
     }
-    processAjax(); 
+    processAjax(url); 
   });
   // filter by category
   $(document).on('click', '.filter-category', function() {
@@ -94,10 +106,34 @@ $(document).ready(function () {
     } else {
       url += '?category='+ id;
     }
-    processAjax();
+    processAjax(url);
+  });
+  // filter name product
+  $('#filter-name').submit(function () {
+    event.preventDefault();
+    name = $('#name').val();
+    if(url.indexOf('?') > 0) {
+      url += '&name='+ name;
+    } else {
+      url += '?name='+ name;
+    }
+    processAjax(url);
   });
   //refresh filter
   $('.block-subtitle').on('click', function() {
     location.reload();
+  });
+  processAjax(url);
+  //next
+  $('#next').click(function (event) {
+    event.preventDefault();
+    url_next = $('#next').attr('href');
+    processAjax(url_next);
+  });
+  //prev
+  $('#prev').click(function (event) {
+    event.preventDefault();
+    url_prev = $('#prev').attr('href');
+    processAjax(url_prev);
   });
 });

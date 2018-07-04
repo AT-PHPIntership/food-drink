@@ -59,5 +59,37 @@
                 'date' => 'Date',
                 'list_product' => 'List Product'
             ],
-        ]
+        ],
+        'user' => [
+            'index' => [
+                'title' => 'List Order',
+                'show_order' => 'Show list orders',
+                'no' => 'No.',
+                'date' => 'Ordered date',
+                'total_price' => 'Total Price',
+                'note' => 'Note',
+                'status' => 'Status',
+                'function' => 'Function',
+                'address' => 'Address',
+                'detail' => 'Detail',
+                'cancel' => 'Cancel',
+                'edit' => 'Edit',
+            ],
+            'create' => [
+                'title' => 'Create Order',
+                'checkout' => 'Checkout',
+                'your_name' => 'Your Name: ',
+                'your_email' => 'Your Email: ',
+                'your_phone' => 'Your Phone: ',
+                'your_address' => 'Your Address: ',
+                'complete' => 'Complete',
+                'your_checkout' => 'Your checkout',
+                'checkout' => 'Checkout',
+            ],
+            'show' => [
+                'title' => 'Show Order Detail',
+                'order_detail' => 'Order Detail',
+                'description' => 'Description',
+            ]
+        ],
     ];

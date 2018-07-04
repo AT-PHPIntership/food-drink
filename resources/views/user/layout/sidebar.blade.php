@@ -72,47 +72,16 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="block sidebar-cart">
-    <div class="sidebar-bar-title">
-      <h3>{{__('sidebar.my_cart')}}</h3>
-    </div>
-    <div class="block-content">
-      <p class="amount">{{__('sidebar.there_are')}} <a href="shopping_cart.html">2 {{__('sidebar.items')}}</a> {{__('sidebar.in_your_cart')}}</p>
-      <ul>
-        <li class="item"> 
-          <a href="shopping_cart.html" title="Sample Product" class="product-image">
-            <img src="{{ asset('images/products/default-product.jpg')}}" alt="Sample Product ">
-          </a>
-          <div class="product-details">
-            <div class="access"> 
-              <a href="#" title="Remove This Item" class="remove-cart">
-                <i class="icon-close"></i>
-              </a>
-            </div>
-            <p class="product-name"> <a href="shopping_cart.html">Lorem ipsum dolor sit amet Consectetur</a> </p>
-            <strong>1</strong> x <span class="price">{{__('sidebar.money')}}19.99</span> </div>
-        </li>
-        <li class="item"> 
-          <a href="shopping_cart.html" title="Sample Product" class="product-image">
-            <img src="{{ asset('images/products/default-product.jpg')}}" alt="Sample Product ">
-          </a>
-          <div class="product-details">
-            <div class="access"> 
-              <a href="#" title="Remove This Item" class="remove-cart">
-                <i class="icon-close"></i>
-              </a>
-            </div>
-            <p class="product-name"> <a href="shopping_cart.html">Lorem ipsum dolor sit amet Consectetur</a> </p>
-            <strong>1</strong> x <span class="price">{{__('sidebar.money')}}19.99</span> </div>
-        </li>
-      </ul>
-      <div class="summary">
-        <p class="subtotal"> <span class="label">{{__('sidebar.cart_sub')}}</span> <span class="price">{{__('sidebar.money')}}27.99</span> </p>
-      </div>
-      <div class="cart-checkout">
-        <button class="button button-checkout" title="Submit" type="submit"><i class="fa fa-check"></i> <span>{{__('sidebar.checkout')}}</span></button>
+      <div class="size-area">
+        <h2 class="saider-bar-title">{{__('sidebar.name_product')}}</h2>
+        <div class="cart-plus-minus">
+          <div class="numbers-row">
+            <form method="post" id="filter-name">
+              <input type="text" id="name" class="form-control" placeholder="{{ __('sidebar.name_product') }}" name="search">
+              <button class="btn-search submit-filter" type="submit"><i class="fa fa-search"></i></button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </div>

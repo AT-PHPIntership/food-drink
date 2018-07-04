@@ -16,14 +16,35 @@ class Order extends Model
     public $sortable = [
         'id',
         'total',
-        'updated_at'
+        'updated_at',
+        'created_at'
     ];
     
     protected $fillable=[
         'user_id',
         'total',
         'status',
+        'address',
     ];
+
+    protected $statusOrder = [
+        self::PENDING => 'pending',
+        self::ACCEPTED =>'accepted',
+        self::REJECTED =>'rejected',
+        self::RECEIVED => 'received',
+    ];
+
+    /**
+     * Get the order's status.
+     *
+     * @param string $status order's status
+     *
+     * @return string
+     */
+    public function getStatusAttribute($status)
+    {
+        return $this->statusOrder[$status];
+    }
 
     /**
      * Order Belong To User
@@ -43,5 +64,15 @@ class Order extends Model
     public function orderDetails()
     {
         return $this->hasMany('App\OrderDetail');
+    }
+
+    /**
+     * Order Belong To Note
+     *
+     * @return mixed
+     */
+    public function note()
+    {
+        return $this->hasOne('App\Note');
     }
 }

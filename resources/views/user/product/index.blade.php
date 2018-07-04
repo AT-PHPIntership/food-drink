@@ -16,6 +16,8 @@
               </ul>
             </div>
             <div class="pagination-area">
+              <a id="next"><span>{{ __('product.user.next') }} <i class="fa fa-forward"></i></span></a>
+              <a id="prev"><span> <i class="fa fa-backward"></i> {{ __('product.user.prev') }}</span></a>
             </div>
           </div>
         </div>
@@ -23,4 +25,7 @@
       </div>
     </div>
   </div>
+@endsection
+@section('scripts')
+  <script src="{{ asset('js/user/showListProducts.js') }}"></script>
 @endsection

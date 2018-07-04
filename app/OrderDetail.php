@@ -9,14 +9,19 @@ class OrderDetail extends Model
     protected $fillable=[
         'order_id',
         'product_id',
-        'quantily',
+        'quantity',
         'price',
         'name_product',
         'image',
-        'preview',
-        'address',
     ];
-    
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['image_url'];
+
     /**
      * Order Belong To OrderDetail
      *
@@ -35,5 +40,15 @@ class OrderDetail extends Model
     public function product()
     {
         return $this->belongsTo('App\Product', 'product_id', 'id');
+    }
+
+    /**
+    * Get the product's image.
+    *
+    * @return string
+    */
+    public function getImageUrlAttribute()
+    {
+        return asset(config('define.images_path_products') . $this->image);
     }
 }

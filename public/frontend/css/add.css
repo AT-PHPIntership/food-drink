@@ -60,3 +60,32 @@
 .layered-Category {
   margin-top: 15px;
 }
+.submit-filter {
+  position: relative;
+  top: -33px;
+  line-height: 28px;
+  padding: 2px 13px 1px 12px;
+  float: right;
+  display: inline-block;
+  background: #fafafa;
+  border: none;
+  color: #39342e;
+  border-left: 1px #e8e6e2 solid;
+  border-right: 1px #e8e6e2 solid;
+}
+.fa.fa-trash {
+  float: right;
+  margin-right: 20px;
+}
+.pagination-area a {
+  border: rgb(214, 153, 153);
+  background: #4caf50;
+  padding: 5px 10px;
+  color: #fff;
+}
+.pagination-area a:first-child {
+  float: left;
+}
+.pagination-area a:last-child {
+  float: right;
+}

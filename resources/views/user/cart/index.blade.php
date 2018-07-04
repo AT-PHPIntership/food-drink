@@ -23,18 +23,7 @@
                   </tr>
                 </thead>
                 <tbody id="show-cart">
-                  <tr style="display:none">
-                    <td class="cart_product"><a href=""><img src="" alt="Product"></a></td>
-                    <td class="cart_description"><p class="product-name"><a href=""> </a></p>
-                    <td class="availability">
-                      <span class="label"></span>
-                      <p class="current">(Number of products currently in stock: <span class="current-product"></span>)</p>
-                    </td>
-                    <td class="price"><span>{{ __('product.user.money')}}<span class="price-product"></span></span></td>
-                    <td class="qty"><input class="form-control input-sm" type="number" min="1" onchange="changeQuantity()"></td>
-                    <td class="price"><span>{{ __('product.user.money')}}<span class="total-product"></span></span></td>
-                    <td class="action del-item-cart"><i class="fa fa-times-circle"></i></td>
-                  </tr>
+                  
                 </tbody>
                 <tfoot>
                   <tr>
@@ -47,7 +36,9 @@
             </div>
             <div class="cart_navigation"> 
               <a class="continue-btn" onclick="window.history.go(-1);"><i class="fa fa-arrow-left"> </i>&nbsp; {{ __('cart.continue') }}</a> 
-              <a class="checkout-btn" href="#"><i class="fa fa-check"></i> {{ __('cart.checkout') }}</a> </div>
+              <a class="checkout-btn" href="{{ route('orders.create') }}"><i class="fa fa-check"></i> {{ __('cart.checkout') }}</a> 
+              <a class="please-login" href="{{ route('user.login') }}"><i class="fa fa-sign-in"></i> <span>{{ __('cart.please_login') }}</span></a>
+            </div>
           </div>
         </div>
       </div>

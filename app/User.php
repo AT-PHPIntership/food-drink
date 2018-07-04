@@ -76,6 +76,16 @@ class User extends Authenticatable
     }
 
     /**
+     * User Has Many Notes
+     *
+     * @return mixed
+     */
+    public function notes()
+    {
+        return $this->hasMany('App\Note');
+    }
+
+    /**
      * The attributes that should be hidden for arrays.
      *
      * @var array

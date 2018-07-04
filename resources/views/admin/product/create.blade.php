@@ -78,7 +78,7 @@
                 </div>
 								<div class="form-group">
                   <label>{{__('product.admin.create.description')}}</label>
-                  <textarea class="form-control" name="description" rows="3" placeholder="{{__('product.admin.create.description')}}"></textarea>
+                  <textarea class="form-control ckeditor" name="description" rows="3" placeholder="{{__('product.admin.create.description')}}"></textarea>
                   @if($errors->first('description')) 
                     <span class="help-block">
                       <strong class="text-danger">{{ $errors->first('description') }}</strong>

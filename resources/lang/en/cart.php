@@ -15,4 +15,6 @@
         'quantity_greater' => 'Quantity must be greater than zero.',
         'not_exceed' => 'Do not exceed product quantity in stock (',
         'close' => ').',
+        'number_product' => '(Number of products currently in stock: ',
+        'please_login' => 'Please login to checkout',
     ];

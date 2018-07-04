@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Artisan;
 abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
-    public $user;
+    protected $user;
     protected $token;
     /**
      * Set up TestCase
@@ -20,6 +20,7 @@ abstract class TestCase extends BaseTestCase
         parent::setUp();
         Artisan::call('passport:install');
         $this->user = factory('App\User')->create();
+        $this->token = $this->user->createToken('token')->accessToken;
         factory('App\UserInfo')->create([
             'user_id' => $this->user->id,
         ]);
