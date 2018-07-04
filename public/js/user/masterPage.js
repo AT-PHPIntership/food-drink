@@ -9,7 +9,6 @@ $( document ).ready(function() {
     $('.links .logout').hide();
     $('.links .history-order').hide();
     $('.cart_navigation .checkout-btn').hide();
-    $('.actions .btn-checkout').hide();
     window.location.host;
   }
   
@@ -25,6 +24,7 @@ $( document ).ready(function() {
         type: 'POST',
         success: function (response) {
           localStorage.removeItem('access_token');
+          localStorage.removeItem('data');
           window.location.href = 'http://' + window.location.hostname + '/';
         }
       });

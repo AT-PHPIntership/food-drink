@@ -6,7 +6,6 @@ var data_user = JSON.parse(localStorage.getItem('data'));
 var url_delete = '/api/posts/';
 
 $(document).ready(function () {
-  const ENABLE = 1;
   // show review
   getData('/api' + path + '/posts?type='+ TYPE_REVIEW +'&status=' + ENABLE +'&sort=updated_at&order=desc', TYPE_REVIEW);
   // show comment
@@ -37,8 +36,10 @@ function getData(url, typePost) {
           }
         }
         var showAction = '';
-        if(data_user.id == post.user_id){
-          showAction =  '<a  class="delete-post" id="'+post.id+'"><i class="fa fa-trash"></i></a>'
+        if (localStorage.getItem('access_token')) {
+          if(data_user.id == post.user_id){
+            showAction =  '<a  class="delete-post" id="'+post.id+'"><i class="fa fa-trash"></i></a>'
+          }
         }
         html+='<div class="review-ratting" id="post-'+post.id+'">\
                 <img class="avatar-user-post" src="'+ post.user.user_info.avatar_url +'" >\
