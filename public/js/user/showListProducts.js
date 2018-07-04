@@ -55,15 +55,13 @@ function processAjax(url){
     if (response.data['next_page_url'] != null) {
       $('#next').show();
       $('#next').attr('href', response.data['next_page_url']);
+    } else {
+      $('#next').hide();
     }
     if (response.data['prev_page_url'] != null) {
       $('#prev').show();
       $('#prev').attr('href', response.data['prev_page_url']);
-    } 
-    if (response.data['next_page_url'] == null) {
-      $('#next').hide();
-    }
-    if (response.data['prev_page_url'] == null) {
+    } else {
       $('#prev').hide();
     }
     appendHtml(response);
