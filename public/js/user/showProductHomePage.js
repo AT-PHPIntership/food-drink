@@ -55,8 +55,10 @@ function appendHtml(id, response) {
   var html = '';
   response.data.data.forEach(element => {
     var stars = '';
+    img = 'default_product.jpg';
     img_url = 'https://image.ibb.co/dqd4QJ/default_product.jpg';
     if (typeof element.images[0] !== 'undefined') {
+      img = element.images[0].image;
       img_url = element.images[0].image_url;
     }
     rate = Math.round(element.avg_rate);
@@ -74,7 +76,7 @@ function appendHtml(id, response) {
                     <div class="pr-img-area"> <a title="'+ element.name +'" href="/products/'+ element.id +'">\
                       <figure> <img class="first-img" src="'+ img_url +'" alt=""> <img class="hover-img" src="'+ img_url +'" alt=""></figure>\
                       </a>\
-                      <button type="button" class="add-to-cart-mt"  onclick="addCart('+ element.id +', \''+element.name +'\', \''+element.price +'\', '+element.quantity +', \''+ img_url +'\')"> <i class="fa fa-shopping-cart"></i><span>'+ Lang.get('home.user.main.add_to_cart') +'</span> </button>\
+                      <button type="button" class="add-to-cart-mt"  onclick="addCart('+ element.id +', \''+element.name +'\', \''+element.price +'\', '+element.quantity +', \''+ img_url +'\',\''+ img +'\')"> <i class="fa fa-shopping-cart"></i><span>'+ Lang.get('home.user.main.add_to_cart') +'</span> </button>\
                     </div>\
                   </div>\
                   <div class="item-info">\
