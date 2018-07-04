@@ -38,7 +38,6 @@ class ProfileController extends ApiController
         try {
             $user->update([
                 'name'=>$request->name,
-                'email'=>$request->email,
             ]);
             if ($request->hasFile('avatar')) {
                 $image = $request->file('avatar');
