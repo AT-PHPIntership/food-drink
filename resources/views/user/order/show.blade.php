@@ -18,29 +18,11 @@
                     <th>{{ __('cart.name') }}</th>
                     <th>{{ __('cart.price') }}</th>
                     <th>{{ __('cart.qty') }}</th>
-                    <th>{{ __('cart.total') }}</th>
                     <th>{{ __('order.user.show.description') }}</th>
                   </tr>
                 </thead>
-                <tbody id="show-cart">
-                  <tr>
-                    <td class="qty">1</td>
-                    <td class="cart_product"><img src="{{ asset('images/products/default-product.jpg') }}" alt="Product"></td>
-                    <td class="cart_description">Ezra Heidenreich</td>
-                    <td class="price">{{ __('product.user.money') }}51.00</td>
-                    <td class="qty">10</td>
-                    <td class="price">{{ __('product.user.money') }}510.00</td>
-                    <td class="cart_description">Ezra Heidenreich</td>
-                  </tr>
-                  <tr>
-                    <td class="qty">2</td>
-                    <td class="cart_product"><img src="{{ asset('images/products/default-product.jpg') }}" alt="Product"></td>
-                    <td class="cart_description">Ezra Heidenreich</td>
-                    <td class="price">{{ __('product.user.money') }}51.00</td>
-                    <td class="qty">10</td>
-                    <td class="price">{{ __('product.user.money') }}510.00</td>
-                    <td class="cart_description">Ezra Heidenreich</td>
-                  </tr>
+                <tbody id="show-order-detail">
+                  
                 </tbody>
               </table>
             </div>
@@ -50,4 +32,7 @@
     </div>
   </div>
 </section>
+@endsection
+@section('scripts')
+  <script src="{{ asset('js/user/showOrderDetails.js') }}"></script>
 @endsection

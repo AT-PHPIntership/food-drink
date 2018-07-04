@@ -29,7 +29,6 @@ $factory->define(App\OrderDetail::class, function (Faker $faker) {
         'product_id' => $faker->randomElement(App\Product::pluck('id')->toArray()),
         'quantity' => $faker->numberBetween(1, 5),
         'price' => $faker->numberBetween(10, 200),
-        'preview' => $faker->randomElement(App\Product::pluck('preview')->toArray()),
         'name_product' => $faker->randomElement(App\Product::pluck('name')->toArray()),
         'image' => config('image.images_product'),
         'created_at' => $faker->dateTime,

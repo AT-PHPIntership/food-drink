@@ -11,15 +11,8 @@
           </div>
           <div class="box-border">
             <div class="row">
-              <div class="col-sm-12">
-                <p><i class="fa fa-check-circle text-primary"></i> {{ __('order.user.create.your_name') }} <span>Mrs. Wava Gulgowski</span></p>
-                <p><i class="fa fa-check-circle text-primary"></i> {{ __('order.user.create.your_email') }} <span>jennings.rippin@wiegand.biz</span></p>
-                <p><i class="fa fa-check-circle text-primary"></i> {{ __('order.user.create.your_phone') }} <span>0123467995</span></p>
-                <form action="">
-                  <label>{{ __('order.user.create.address') }}</label>
-                  <input type="text" class="form-control input">
-                  <button class="button"><i class="fa fa-angle-double-right"></i>&nbsp; <span>{{ __('order.user.create.complete') }}</span></button>
-                </form>
+              <div class="col-sm-12 user-profile">
+              
               </div>
             </div>
           </div>
@@ -43,26 +36,12 @@
                 </tr>
               </thead>
               <tbody id="show-cart">
-                <tr>
-                  <td class="cart_product"><img src="{{ asset('images/products/default-product.jpg') }}" alt="Product"></td>
-                  <td class="cart_description">Ezra Heidenreich</td>
-                  <td class="price">{{ __('product.user.money') }}51.00</td>
-                  <td class="qty">10</td>
-                  <td class="price">{{ __('product.user.money') }}510.00</td>
-                </tr>
-                <tr>
-                  <td class="cart_product"><img src="{{ asset('images/products/default-product.jpg') }}" alt="Product"></td>
-                  <td class="cart_description">Ezra Heidenreich</td>
-                  <td class="price">{{ __('product.user.money') }}51.00</td>
-                  <td class="qty">10</td>
-                  <td class="price">{{ __('product.user.money') }}510.00</td>
-                </tr>
               </tbody>
               <tfoot>
                 <tr>
                   <td colspan="2" rowspan="1"></td>
                   <td colspan="2">{{ __('cart.sub_total') }}</td>
-                  <td colspan="2">{{ __('product.user.money') }}<span class="sub-total">1020.00</span> </td>
+                  <td colspan="2">{{ __('product.user.money') }}<span class="sub-total">0</span> </td>
                 </tr>
               </tfoot>
             </table>
@@ -73,4 +52,7 @@
     </div>
   </div>
 </section>
+@endsection
+@section('scripts')
+<script type="text/javascript" src="{{ asset('js/user/viewCartOrder.js') }}"></script>
 @endsection

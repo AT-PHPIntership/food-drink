@@ -25,12 +25,12 @@ function getListOrder(response) {
     address = '<td>'+ order.address +'</td>'
     if (order.status == "pending") {
       action = '<td class="qty function">\
-                  <a href="/orderUser/'+ order.id +'">'+ Lang.get('order.user.index.detail') +'</a>\
+                  <a href="/orders/'+ order.id +'">'+ Lang.get('order.user.index.detail') +'</a>\
                   <a href="">'+ Lang.get('order.user.index.edit') +'</a>\
                   <a href="">'+ Lang.get('order.user.index.cancel') +'</a>\
                 </td>';
     } else {
-      action = '<td class="qty function"><a href="/orderUser/'+ order.id +'">'+ Lang.get('order.user.index.detail') +'</a></td>';
+      action = '<td class="qty function"><a href="/orders/'+ order.id +'">'+ Lang.get('order.user.index.detail') +'</a></td>';
     }
     html += '<tr>'+ no + time + total + note + status + address + action +'</tr>';
   });
