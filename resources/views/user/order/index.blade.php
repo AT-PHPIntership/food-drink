@@ -16,9 +16,9 @@
                     <th class="cart_product">{{ __('order.user.index.no') }}</th>
                     <th>{{ __('order.user.index.date') }}</th>
                     <th>{{ __('order.user.index.total_price') }}</th>
-                    <th>{{ __('order.user.index.note') }}</th>
                     <th>{{ __('order.user.index.status') }}</th>
                     <th>{{ __('order.user.index.address') }}</th>
+                    <th>{{ __('order.user.index.note') }}</th>
                     <th>{{ __('order.user.index.function') }}</th>
                   </tr>
                 </thead>
