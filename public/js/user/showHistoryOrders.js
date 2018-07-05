@@ -48,11 +48,10 @@ function cancelOrder(orderId) {
     },
     success: function(response) {
       getListOrder(url)
-      alert(Lang.get('order.user.cancel.successfully'));
+      $('.table-responsive .alert-info').show();
     },
     error: function(response) {
-      alert(Lang.get('order.user.cancel.not_successfully'));
-      errorMessage = response.responseJSON.message +'<br/>';
+      errorMessage = Lang.get('order.user.cancel.not_successfully') +'<br/>'+ response.responseJSON.message +'<br/>';
       if (response.responseJSON.errors) {
         errors = Object.keys(response.responseJSON.errors);
         errors.forEach(error => {

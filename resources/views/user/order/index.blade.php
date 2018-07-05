@@ -10,6 +10,7 @@
         </div>
           <div class="order-detail-content">
             <div class="table-responsive">
+              <p class="alert-info" hidden>{{ __('order.user.cancel.successfully') }}</p>
               <table class="table table-bordered cart_summary">
                 <thead>
                   <tr>
