@@ -277,8 +277,16 @@ Update Order
 |Accept|application\json|
 |Authorization|{token_type} {access_token}|
 
-#### Query Param
-| Param | Type | Description |
+#### Sample Request
+```json
+{
+	"quantity": 3,
+	"total": 6,
+	"address": "70813 Upton Rue\nWillytown",
+}
+```
+#### Request Body
+| Key | Type | Description |
 |---|---|---|
 | quantity | number | Numbers Of Product |
 | total | number | Total Order |
