@@ -18,31 +18,16 @@
                     <th>{{ __('cart.name') }}</th>
                     <th>{{ __('cart.price') }}</th>
                     <th>{{ __('cart.qty') }}</th>
-                    <th>{{ __('cart.total') }}</th>
-                    <th>{{ __('order.user.show.description') }}</th>
                   </tr>
                 </thead>
-                <tbody id="show-cart">
-                  <tr>
-                    <td class="qty">1</td>
-                    <td class="cart_product"><img src="{{ asset('images/products/default-product.jpg') }}" alt="Product"></td>
-                    <td class="cart_description">Ezra Heidenreich</td>
-                    <td class="price">{{ __('product.user.money') }}51.00</td>
-                    <td class="qty">10</td>
-                    <td class="price">{{ __('product.user.money') }}510.00</td>
-                    <td class="cart_description">Ezra Heidenreich</td>
-                  </tr>
-                  <tr>
-                    <td class="qty">2</td>
-                    <td class="cart_product"><img src="{{ asset('images/products/default-product.jpg') }}" alt="Product"></td>
-                    <td class="cart_description">Ezra Heidenreich</td>
-                    <td class="price">{{ __('product.user.money') }}51.00</td>
-                    <td class="qty">10</td>
-                    <td class="price">{{ __('product.user.money') }}510.00</td>
-                    <td class="cart_description">Ezra Heidenreich</td>
-                  </tr>
+                <tbody id="show-order-detail">
+                  
                 </tbody>
               </table>
+              <div class="pagination-area">
+                <a id="next-order-detail"><span>{{ __('product.user.next') }} <i class="fa fa-forward"></i></span></a>
+                <a id="prev-order-detail"><span> <i class="fa fa-backward"></i> {{ __('product.user.prev') }}</span></a>
+              </div>
             </div>
           </div>
         </div>
@@ -50,4 +35,8 @@
     </div>
   </div>
 </section>
+@endsection
+@section('scripts')
+  <script src="{{ asset('js/user/showOrderDetails.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/user/showProfileUser.js') }}"></script>
 @endsection

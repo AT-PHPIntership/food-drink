@@ -17,7 +17,11 @@
                 'pending' => 'Pending',
                 'accepted' => 'Accepted',
                 'rejected' => 'Rejected',
-                'money' => '$'
+                'money' => '$',
+                'write_reason' => 'Please write your reason!',
+                'submit' => 'Submit',
+                'successfully' => 'Change status not successfully',
+                'not_successfully' => 'Change status successfully',
             ],
             'show' => [
                 'title' => 'Show detail order',
@@ -81,7 +85,7 @@
                 'your_name' => 'Your Name: ',
                 'your_email' => 'Your Email: ',
                 'your_phone' => 'Your Phone: ',
-                'address' => 'Shipping Address',
+                'your_address' => 'Your Address: ',
                 'complete' => 'Complete',
                 'your_checkout' => 'Your checkout',
                 'checkout' => 'Checkout',

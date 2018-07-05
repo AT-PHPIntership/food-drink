@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Order;
 
 class CreateNoteRequest extends FormRequest
 {
@@ -15,7 +16,6 @@ class CreateNoteRequest extends FormRequest
     {
         return true;
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,7 +24,7 @@ class CreateNoteRequest extends FormRequest
     public function rules()
     {
         return [
-            'content' => 'required|string'
+            'content' => 'required|string',
         ];
     }
 }

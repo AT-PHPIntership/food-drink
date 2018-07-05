@@ -39,7 +39,6 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin','middleware' => 'admin'],fu
         'index', 'show'
     ]);
     Route::put('order/{order}/updateStatus', 'OrdersController@updateStatus');
-    Route::post('order/{order}/addNote', 'OrdersController@addNote');
 });
 Route::group(['prefix' => 'admin'],function (){
     Route::get('login', [
@@ -78,6 +77,7 @@ Route::group(['namespace'=>'User','prefix'=>'/'],function () {
     Route::resource('profile', 'UserController')->only([
         'index'
     ]);
+    Route::get('profile/edit', 'UserController@edit')->name('profile.edit');
     Route::resource('products', 'ProductController')->only([
         'index', 'show'
     ]);

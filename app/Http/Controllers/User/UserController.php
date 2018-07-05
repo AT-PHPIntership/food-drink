@@ -16,4 +16,14 @@ class UserController extends Controller
     {
         return view('user.profile.userProfile');
     }
+
+    /**
+    * Edit a user.
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function edit()
+    {
+        return view('user.profile.update');
+    }
 }

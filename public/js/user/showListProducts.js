@@ -4,8 +4,10 @@ function appendHtml(response) {
   response.data.data.forEach(element => {
     var stars = '';
     var rate = 0;
-    img_url = 'https://image.ibb.co/dqd4QJ/default_product.jpg';    
+    img_url = 'https://image.ibb.co/dqd4QJ/default_product.jpg';
+    img = 'default_product.jpg'; 
     if (typeof element.images[0] !== 'undefined') {
+      img = element.images[0].image;
       img_url = element.images[0].image_url;
     }
     rate = Math.round(element.avg_rate);
@@ -27,7 +29,7 @@ function appendHtml(response) {
                         <img class="hover-img" src="'+ img_url +'" alt="">\
                       </figure>\
                     </a>\
-                    <button type="button" class="add-to-cart-mt" onclick="addCart('+ element.id +', \''+element.name +'\', \''+element.price +'\', '+element.quantity +', \''+ img_url +'\')">\
+                    <button type="button" class="add-to-cart-mt" onclick="addCart('+ element.id +', \''+element.name +'\', \''+element.price +'\', '+element.quantity +', \''+ img_url +'\',\''+ img +'\')">\
                       <i class="fa fa-shopping-cart"></i>\
                       <span>'+Lang.get('home.user.main.add_to_cart')+'</span>\
                     </button>\
@@ -50,8 +52,20 @@ function appendHtml(response) {
           });
     $('#products').html(html);
 }
-function processAjax(){
+function processAjax(url){
   $.get(url, function(response) {
+    if (response.data['next_page_url'] != null) {
+      $('#next').show();
+      $('#next').attr('href', response.data['next_page_url']);
+    } else {
+      $('#next').hide();
+    }
+    if (response.data['prev_page_url'] != null) {
+      $('#prev').show();
+      $('#prev').attr('href', response.data['prev_page_url']);
+    } else {
+      $('#prev').hide();
+    }
     appendHtml(response);
   })
   .fail(function(response) {
@@ -63,8 +77,8 @@ function processAjax(){
     }
   })
 }
+
 $(document).ready(function () {
-  processAjax();
   $(".filter-price").on("click", function () {
     from = $('#from').val();  
     to = $('#to').val();
@@ -74,7 +88,7 @@ $(document).ready(function () {
     } else {
       url += '?'+ url_price;
     }    
-    processAjax();
+    processAjax(url);
   });
   $(".filter-rate").on("click", function (){
     rate = $(this).val();
@@ -84,7 +98,7 @@ $(document).ready(function () {
     } else {
       url += '?'+ url_rate;
     }
-    processAjax(); 
+    processAjax(url); 
   });
   // filter by category
   $(document).on('click', '.filter-category', function() {
@@ -94,7 +108,7 @@ $(document).ready(function () {
     } else {
       url += '?category='+ id;
     }
-    processAjax();
+    processAjax(url);
   });
   // filter name product
   $('#filter-name').submit(function () {
@@ -105,10 +119,23 @@ $(document).ready(function () {
     } else {
       url += '?name='+ name;
     }
-    processAjax();
+    processAjax(url);
   });
   //refresh filter
   $('.block-subtitle').on('click', function() {
     location.reload();
+  });
+  processAjax(url);
+  //next
+  $('#next').click(function (event) {
+    event.preventDefault();
+    url_next = $('#next').attr('href');
+    processAjax(url_next);
+  });
+  //prev
+  $('#prev').click(function (event) {
+    event.preventDefault();
+    url_prev = $('#prev').attr('href');
+    processAjax(url_prev);
   });
 });

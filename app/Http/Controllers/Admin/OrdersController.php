@@ -4,12 +4,13 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ChangeStatusRequest;
-use App\Http\Requests\CreateNoteRequest;
 use Symfony\Component\HttpFoundation\Response;
 use App\Order;
 use App\OrderDetail;
 use App\Note;
 use App\Mail\ChangeStatusOrderMail;
+use Auth;
+
 
 class OrdersController extends Controller
 {
@@ -61,6 +62,11 @@ class OrdersController extends Controller
         try {
             $order['status'] = $request->status;
             $order->save();
+            $note = Note::create([
+                'user_id' => Auth::id(),
+                'order_id' => $order->id,
+                'content' => $request->content,
+            ]);
             $data = ['name' => $order->user->name,
                 'status' => $request->status,
                 'pending' => $order::PENDING,
@@ -69,28 +75,6 @@ class OrdersController extends Controller
             ];
             \Mail::to($order->user->email)->send(new ChangeStatusOrderMail($data));
             return response()->json($order);
-        } catch (Exception $e) {
-            return response(trans('message.post.fail_delete'), Response::HTTP_BAD_REQUEST);
-        }
-    }
-
-    /**
-     * Add note of order when change status to rejected
-     *
-     * @param \Illuminate\Http\Request $request request
-     * @param \App\Models\order        $order   order
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function addNote(CreateNoteRequest $request, Order $order)
-    {
-        try {
-            $note = Note::create([
-                'user_id' => $order->user_id,
-                'order_id' => $order->id,
-                'content' => $request->content,
-            ]);
-            return response()->json($note);
         } catch (Exception $e) {
             return response(trans('message.post.fail_delete'), Response::HTTP_BAD_REQUEST);
         }

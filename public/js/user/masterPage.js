@@ -3,7 +3,7 @@ $( document ).ready(function() {
   if (accessToken) {
     $('.links .login').hide();
     $('.links .register').hide();
-    $('.cart_navigation .please-login').hide();
+    $('.please-login').hide();
   } else {
     $('.links .myaccount').hide();
     $('.links .logout').hide();
@@ -24,6 +24,7 @@ $( document ).ready(function() {
         type: 'POST',
         success: function (response) {
           localStorage.removeItem('access_token');
+          localStorage.removeItem('data');
           window.location.href = 'http://' + window.location.hostname + '/';
         }
       });
