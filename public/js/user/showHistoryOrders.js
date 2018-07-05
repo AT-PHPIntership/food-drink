@@ -63,7 +63,7 @@ function appendOrder(response) {
     } else {
       action = '<td class="qty function"><a href="/orders/'+ order.id +'">'+ Lang.get('order.user.index.detail') +'</a></td>';
     }
-    html += '<tr>'+ no + time + total + note + status + address + action +'</tr>';
+    html += '<tr>'+ no + time + total + status + address + note + action +'</tr>';
   });
   $('#show-orders').html(html);
 }

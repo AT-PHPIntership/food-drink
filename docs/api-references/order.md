@@ -265,3 +265,74 @@ Delete order
         "code": 200
     },
 ```
+### `PUT` Update Order And Order_Detail
+```
+/api/orders/{order}
+```
+Update Order
+
+#### Request Headers
+| Key | Value |
+|---|---|
+|Accept|application\json|
+|Authorization|{token_type} {access_token}|
+
+#### Query Param
+| Param | Type | Description |
+|---|---|---|
+| quantity | number | Numbers Of Product |
+| total | number | Total Order |
+| address | string | address user |
+
+#### Response - Success
+```json
+{
+    "meta": {
+        "status": "Successfully",
+        "code": 200
+    },
+    "data": {
+        "id": 26,        
+        "user_id": 1,
+        "total": 6,
+        "status": "pending",
+        "address": "70813 Upton Rue\nWillytown, KS 95823-6140",
+        "order_details": [
+            {
+                "id": 18,
+                "product_id": 1,
+                "order_id": 26,
+                "quantity": 3,
+                "price": 2,
+                "preview": "Quam fugit ratione ut ullam autem doloribus. Quis inventore saepe aut aut porro corrupti quam.",
+                "name_product": "Loy Kris",
+                "image": "default-product.jpg",
+                "image_product_url": "http://192.168.33.10/images/products/default-product.jpg"
+            },
+            {
+                "id": 19,
+                "product_id": 1,
+                "order_id": 26,
+                "quantity": 3,
+                "price": 2,
+                "preview": "Quam fugit ratione ut ullam autem doloribus. Quis inventore saepe aut aut porro corrupti quam.",
+                "name_product": "Loy Kris",
+                "image": "default-product.jpg",
+                "image_product_url": "http://192.168.33.10/images/products/default-product.jpg"
+            }
+        ]
+    }
+}
+```
+
+#### Response - Fail
+```json
+{
+    "error": {
+        "title": [
+            "The name field is required."
+        ]
+    },
+    "code": 422
+}
+```
