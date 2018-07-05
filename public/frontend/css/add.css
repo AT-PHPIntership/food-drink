@@ -89,3 +89,6 @@
 .pagination-area a:last-child {
   float: right;
 }
+.cancel-order {
+  cursor: pointer;
+}

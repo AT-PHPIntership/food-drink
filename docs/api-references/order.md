@@ -242,11 +242,11 @@ Create new order
 }
 ```
 
-### `DELETE` Orders
+### `PUT` Orders
 ```
-/api/orders/{order}
+/api/orders/{order}/cancel
 ```
-Delete order
+Update order
 #### Request Headers
 | Key | Value |
 |---|---|
@@ -264,6 +264,24 @@ Delete order
         "status": "Successfully",
         "code": 200
     },
+    "data": {
+        "id": 4,
+        "user_id": 1,
+        "total": 1000,
+        "status": "rejected",
+        "address": "2251 Dahlia Keys Apt. 706\nPort Kearamouth, MN 82585",
+        "created_at": "1992-03-14 05:50:32",
+        "updated_at": "1997-02-01 12:35:02",
+        "deleted_at": null,
+        "note": {
+            "id": 6,
+            "user_id": 1,
+            "order_id": 4,
+            "content": "asaasdasdasdasd",
+            "created_at": "2018-07-05 02:30:45",
+            "updated_at": "2018-07-05 02:30:45"
+        }
+    }
 ```
 ### `PUT` Update Order And Order_Detail
 ```
