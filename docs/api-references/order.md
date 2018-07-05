@@ -282,7 +282,7 @@ Update Order
 |---|---|---|
 | quantity | number | Numbers Of Product |
 | total | number | Total Order |
-| address | string | address user |
+| address | string | Receiver's Address |
 
 #### Response - Success
 ```json
@@ -295,7 +295,8 @@ Update Order
         "id": 26,        
         "user_id": 1,
         "total": 6,
-        "status": "pending",
+        "status": 1,
+        "status_order": "pending",
         "address": "70813 Upton Rue\nWillytown, KS 95823-6140",
         "order_details": [
             {
@@ -304,10 +305,9 @@ Update Order
                 "order_id": 26,
                 "quantity": 3,
                 "price": 2,
-                "preview": "Quam fugit ratione ut ullam autem doloribus. Quis inventore saepe aut aut porro corrupti quam.",
                 "name_product": "Loy Kris",
                 "image": "default-product.jpg",
-                "image_product_url": "http://192.168.33.10/images/products/default-product.jpg"
+                "image_url": "http://192.168.33.10/images/products/default-product.jpg"
             },
             {
                 "id": 19,
@@ -315,10 +315,9 @@ Update Order
                 "order_id": 26,
                 "quantity": 3,
                 "price": 2,
-                "preview": "Quam fugit ratione ut ullam autem doloribus. Quis inventore saepe aut aut porro corrupti quam.",
                 "name_product": "Loy Kris",
                 "image": "default-product.jpg",
-                "image_product_url": "http://192.168.33.10/images/products/default-product.jpg"
+                "image_url": "http://192.168.33.10/images/products/default-product.jpg"
             }
         ]
     }
