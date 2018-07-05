@@ -40,4 +40,5 @@
 @endsection
 @section('scripts')
   <script src="{{ asset('js/user/showHistoryOrders.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/user/showProfileUser.js') }}"></script>
 @endsection

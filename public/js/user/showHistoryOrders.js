@@ -2,9 +2,6 @@ const PENDING = 1;
 const limit = 5;
 var url = '/api/orders?limit=' + limit;
 $(document).ready(function () {
-  if (!localStorage.getItem('access_token')) {
-    window.location.href = '/';
-  }
   getListOrder(url);
   //next
   $('#next-order').click(function (event) {
