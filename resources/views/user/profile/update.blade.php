@@ -41,5 +41,6 @@
   </section>
 @endsection
 @section('scripts')
-<script src="{{ asset('js/user/editUser.js') }}"></script>
+  <script src="{{ asset('js/user/editUser.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/user/showProfileUser.js') }}"></script>
 @endsection

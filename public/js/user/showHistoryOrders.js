@@ -45,16 +45,16 @@ function appendOrder(response) {
   $.each(response.data.data, function (index, order) {
     var content = '';
     var number = limit * (response.data.current_page - 1);
-    no = '<td class="cart_product">'+ (index + number + 1) +'</td>';
+    no = '<td class="cart_product">'+ (parseInt(index) + number + 1) +'</td>';
     time = '<td class="cart_description">'+ order.created_at +'</td>';
     total = '<td class="price">'+ Lang.get('product.user.money') + order.total +'</td>';
     if (order.note) {
       content = order.note.content;
     }
     note = '<td class=cart_description">'+ content +'</td>';
-    status = '<td class="qty">'+ order.status +'</td>';
+    status = '<td class="qty">'+ order.status_order +'</td>';
     address = '<td>'+ order.address +'</td>'
-    if (order.status == "pending") {
+    if (order.status_order == "pending") {
       action = '<td class="qty function">\
                   <a href="/orders/'+ order.id +'">'+ Lang.get('order.user.index.detail') +'</a>\
                   <a href="">'+ Lang.get('order.user.index.edit') +'</a>\
@@ -63,7 +63,7 @@ function appendOrder(response) {
     } else {
       action = '<td class="qty function"><a href="/orders/'+ order.id +'">'+ Lang.get('order.user.index.detail') +'</a></td>';
     }
-    html += '<tr>'+ no + time + total + note + status + address + action +'</tr>';
+    html += '<tr>'+ no + time + total + status + address + note + action +'</tr>';
   });
   $('#show-orders').html(html);
 }

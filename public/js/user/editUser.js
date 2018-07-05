@@ -1,10 +1,6 @@
-if(!localStorage.getItem('data')) {
-    window.location.href = '/';
-}
 var data_user = JSON.parse(localStorage.getItem('data'));
 function infoUser() {
     $('#name').val(data_user.name);
-    $('#email').val(data_user.email);
     $('#address').val(data_user.user_info.address);
     $('#phone').val(data_user.user_info.phone);
     $('.avatar-edit').attr('src',data_user.user_info.avatar_url);
