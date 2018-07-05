@@ -26,12 +26,37 @@
                   
                 </tbody>
               </table>
+              <div class="alert-danger" hidden></div>
               <div class="pagination-area">
                 <a id="next-order"><span>{{ __('product.user.next') }} <i class="fa fa-forward"></i></span></a>
                 <a id="prev-order"><span> <i class="fa fa-backward"></i> {{ __('product.user.prev') }}</span></a>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="note-cancel-order" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" hidden>
+    <div class="modal-dialog note-cancel-order" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <h4>{{ __('order.user.cancel.write_reason') }}</h4>
+        </div>
+        <div class="modal-body">
+          <form id="demo-form2" class="form-horizontal form-label-left">
+            <div class="form-group">
+              <div class="col-md-12 col-sm-6 col-xs-12">
+                <textarea rows="5" name="note" class="form-control col-md-7 col-xs-12"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-5">
+                <button type="submit" id="note-cancel-order-submit" class="btn btn-success">{{ __('order.user.cancel.send') }}</button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>

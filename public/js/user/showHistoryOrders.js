@@ -15,7 +15,55 @@ $(document).ready(function () {
     url_prev = $('#prev-order').attr('href');
     getListOrder(url_prev);
   });
+  $(document).on('click', '#show-orders tr a[orderId]' ,function (event){ 
+    event.preventDefault();
+    if (confirm(Lang.get('order.user.cancel.are_your_sure'))) {
+      $('#note-cancel-order-submit').attr('order-id', $(this).attr('orderId'));
+      $('#note-cancel-order .modal-body .form-group textarea').attr('id', 'note'+ $(this).attr('orderId'));
+      $('#note-cancel-order').modal('show');
+    }
+  });
+
+  $(document).on('click', '#note-cancel-order .modal-body button[id="note-cancel-order-submit"][order-id]', function(event) {
+    event.preventDefault();
+    cancelOrder($(this).attr('order-id'));
+    $('#note-cancel-order').modal('hide');
+  });
 });
+
+function cancelOrder(orderId) {
+  var note = '';
+  if ($('#note'+ orderId).val()) {
+    note = $('#note'+ orderId).val();
+  }
+  $.ajax({
+    url: '/api/orders/'+ orderId +'/cancel',
+    type: "put",
+    headers: {
+      'Accept': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+    },
+    data: {
+      content: note,
+    },
+    success: function(response) {
+      getListOrder(url)
+      alert(Lang.get('order.user.cancel.successfully'));
+    },
+    error: function(response) {
+      alert(Lang.get('order.user.cancel.not_successfully'));
+      errorMessage = response.responseJSON.message +'<br/>';
+      if (response.responseJSON.errors) {
+        errors = Object.keys(response.responseJSON.errors);
+        errors.forEach(error => {
+          errorMessage += response.responseJSON.errors[error] + '<br/>';
+        });
+      }
+      $('.order-detail-content .alert-danger').html(errorMessage);
+      $('.order-detail-content .alert-danger').show();
+    }
+  });
+}
 
 function getListOrder(url) {
   $.ajax({
@@ -58,7 +106,7 @@ function appendOrder(response) {
       action = '<td class="qty function">\
                   <a href="/orders/'+ order.id +'">'+ Lang.get('order.user.index.detail') +'</a>\
                   <a href="">'+ Lang.get('order.user.index.edit') +'</a>\
-                  <a href="">'+ Lang.get('order.user.index.cancel') +'</a>\
+                  <a orderId="'+ order.id +'" class="cancel-order">'+ Lang.get('order.user.index.cancel') +'</a>\
                 </td>';
     } else {
       action = '<td class="qty function"><a href="/orders/'+ order.id +'">'+ Lang.get('order.user.index.detail') +'</a></td>';
