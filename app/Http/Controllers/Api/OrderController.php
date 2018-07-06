@@ -137,7 +137,9 @@ class OrderController extends ApiController
                 }
                 OrderDetail::where('order_id', $order->id)->whereNotIn('product_id', array_pluck($request->product, 'id'))->delete();
             } else {
-                OrderDetail::where('order_id', $order->id)->delete();
+                $order->update([
+                    "status" => Order::REJECTED,
+                ]);
             }
             $order->update([
                 "address" => $request->address,
