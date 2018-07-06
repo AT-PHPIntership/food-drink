@@ -109,4 +109,36 @@ class OrderController extends ApiController
         }
         return $this->showOne($order->load('orderDetails'), Response::HTTP_OK);
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \App\Order                          $order   order
+     * @param App\Http\Requests\CreateNoteRequest $request request
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function update(Order $order, CreateOrderRequest $request)
+    {
+        try {
+            DB::beginTransaction();
+            $order->update([
+                "total" => $request->total,
+                "address" => $request->address,
+            ]);
+            foreach ($request->product as $product) {
+                $orderDetail = OrderDetail::where('order_id', $order->id)->where('product_id', $product['id'])->first();
+                if ($orderDetail) {
+                    $orderDetail->update([
+                        'quantity' => $product['quantity'],
+                    ]);
+                }
+            }
+            DB::commit();
+            return $this->showOne($order->load('orderDetails'), Response::HTTP_OK);
+        } catch (Exception $e) {
+            DB::rollBack();
+            return $this->errorResponse(trans('errors.update_fail'), Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+    }
 }
