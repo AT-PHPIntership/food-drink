@@ -130,4 +130,18 @@ class CategoriesController extends Controller
         }
         return redirect()->route('category.index');
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Category $category category object
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function show(Category $category)
+    {
+        $children = $category->children()->with('children')->get();
+        $parentCategories = $category->parentCategories()->with('parentCategories')->get();
+        return view('admin.category.show', compact('children', 'category', 'parentCategories'));
+    }
 }

@@ -12,6 +12,7 @@
                 'name' => 'Name',
                 'parent' => 'Parent',
                 'action' => 'Action',
+                'children' => 'Children',
             ],
             'create' => [
                 'title' => 'Create Category',
@@ -39,6 +40,9 @@
                 'name' => 'Name Category',
                 'parent' => 'Name Parent',
                 'submit' => 'Submit'
+            ],
+            'show' => [
+                'info' => 'Category Info',
             ],
         ],
     ];
