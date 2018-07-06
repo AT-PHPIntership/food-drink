@@ -4,6 +4,7 @@ $(document).ready(function(){
     url: "/api/categories",
     type: "GET",
     success: function(response) {
+      console.log(response);
       buildNav(response.data.data, $jsBuildCategory);
       toggle();
     }

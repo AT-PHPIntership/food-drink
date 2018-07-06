@@ -20,17 +20,26 @@
           <li>
             <input type="radio" name="rate" class="filter-rate change-type" value="1">
             <i class="fa fa-star"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>           
           </li>
           <li>
             <input type="radio" name="rate" class="filter-rate change-type" value="2">
             <i class="fa fa-star"></i>
             <i class="fa fa-star"></i>
+            <i class="fa fa-star-o"></i>           
+            <i class="fa fa-star-o"></i>           
+            <i class="fa fa-star-o"></i>                     
           </li>
           <li>
             <input type="radio" name="rate" class="filter-rate change-type" value="3">
             <i class="fa fa-star blue-star"></i>
             <i class="fa fa-star blue-star"></i>
             <i class="fa fa-star blue-star"></i>
+            <i class="fa fa-star-o"></i>           
+            <i class="fa fa-star-o"></i>                     
           </li>
           <li>
             <input type="radio" name="rate" class="filter-rate change-type" value="4">
@@ -38,6 +47,7 @@
             <i class="fa fa-star blue-star"></i>
             <i class="fa fa-star blue-star"></i>
             <i class="fa fa-star blue-star"></i>
+            <i class="fa fa-star-o"></i>                     
           </li>
           <li>
             <input type="radio" name="rate" class="filter-rate change-type" value="5">

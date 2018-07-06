@@ -52,6 +52,8 @@ class CategoriesController extends Controller
     public function store(CategoryRequests $request)
     {
         try {
+            $parentLevel = Category::find($request->parent_id)->level;
+            $request['level'] = ++$parentLevel;
             Category::create($request->all());
             flash(trans('category.admin.message.success_create'))->success();
         } catch (Exception $e) {
