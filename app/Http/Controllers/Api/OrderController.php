@@ -29,7 +29,7 @@ class OrderController extends ApiController
     public function index(SortOrderRequest $request)
     {
         $user = Auth::user();
-        $orders = Order::with('note')->where('user_id', $user->id)->sortable()->paginate($request->limit);
+        $orders = Order::with('notes')->where('user_id', $user->id)->sortable()->paginate($request->limit);
         $orders->appends(request()->query());
         return $this->successResponse($orders, Response::HTTP_OK);
     }
