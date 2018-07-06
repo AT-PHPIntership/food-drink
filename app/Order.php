@@ -76,8 +76,8 @@ class Order extends Model
      *
      * @return mixed
      */
-    public function note()
+    public function notes()
     {
-        return $this->hasOne('App\Note');
+        return $this->hasMany('App\Note');
     }
 }

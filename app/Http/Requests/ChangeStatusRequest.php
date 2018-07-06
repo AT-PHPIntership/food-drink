@@ -25,7 +25,8 @@ class ChangeStatusRequest extends FormRequest
     public function rules()
     {
         return [
-            'status' => 'required|integer|in:'.implode(',', [Order::PENDING, Order::ACCEPTED, Order::REJECTED])
+            'status' => 'required|integer|in:' . Order::PENDING . ',' . Order::ACCEPTED . ',' . Order::REJECTED,
+            'content' => 'required|string',
         ];
     }
 }

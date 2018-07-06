@@ -7,7 +7,9 @@ use App\Http\Requests\ChangeStatusRequest;
 use Symfony\Component\HttpFoundation\Response;
 use App\Order;
 use App\OrderDetail;
+use App\Note;
 use App\Mail\ChangeStatusOrderMail;
+use Auth;
 
 class OrdersController extends Controller
 {
@@ -59,6 +61,10 @@ class OrdersController extends Controller
         try {
             $order['status'] = $request->status;
             $order->save();
+            $order->notes()->create([
+                'user_id' => Auth::id(),
+                'content' => $request->content,
+            ]);
             $data = ['name' => $order->user->name,
                 'status' => $request->status,
                 'pending' => $order::PENDING,
@@ -66,7 +72,7 @@ class OrdersController extends Controller
                 'rejected' => $order::REJECTED,
             ];
             \Mail::to($order->user->email)->send(new ChangeStatusOrderMail($data));
-            return response()->json($order);
+            return response()->json($order->load('notes'));
         } catch (Exception $e) {
             return response(trans('message.post.fail_delete'), Response::HTTP_BAD_REQUEST);
         }
