@@ -26,18 +26,17 @@
                   <th>{{ __('category.admin.index.parent') }}</th>
                 </tr>
                 <tr>
-                    <td>{{ $category->name }}</td>
-                    <td>
-                        @foreach($children as $child)
-                            {{ $child->name }} </br>
-                        @endforeach
-                    </td>
-                    <td>
-                        @foreach($parentCategories as $parentCategory)
-                            {{ $parentCategory->name }} </br>
-                        @endforeach
-                    </td>
-                  
+                  <td>{{ $category->name }}</td>
+                  <td>
+                    @foreach($children as $child)
+                        {{ $child->name }} </br>
+                    @endforeach
+                  </td>
+                  <td>
+                    @foreach($parentCategories as $parentCategory)
+                        {{ $parentCategory->name }} </br>
+                    @endforeach
+                  </td>
                 </tr>
                 <table>
             </div>
