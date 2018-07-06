@@ -32,7 +32,8 @@ $(document).ready(function () {
   });
   $(document).on('click', '#note-change-order-submit', function(event) {
     event.preventDefault();
-    var content = $('#note-change-order .modal-body #note').val();
+    var content = $('#note').val();
+    $('.content .alert-danger').html('');
     $.ajax({
       url: 'order/'+id+'/updateStatus',
       type: 'PUT',
@@ -42,11 +43,7 @@ $(document).ready(function () {
         "status": status,
         "content": content,
       },
-      success: function(response) {
-        $('.content .alert-info').show();
-      },
       error: function(response) {
-        console.log(response.responseJSON);
         errorMessage = Lang.get('order.admin.index.not_successfully') +'<br/>'+ response.responseJSON.message +'<br/>';
         if (response.responseJSON.errors) {
           errors = Object.keys(response.responseJSON.errors);

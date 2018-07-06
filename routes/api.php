@@ -29,13 +29,14 @@ Route::group(['namespace' => 'Api'], function () {
         Route::get('profile', 'ProfileController@show');
         Route::post('logout', 'LoginController@logout');
         Route::apiResource('orders', 'OrderController')->only([
-            'index', 'show', 'update', 'store'
+            'index', 'show', 'store'
         ]);
         Route::apiResource('posts', 'PostController')->only([
             'destroy'
         ]);
         Route::post('products/{product}/posts', 'PostController@store');
         Route::put('profile', 'ProfileController@update');
+        Route::put('orders/{order}/cancel', 'OrderController@cancel');
     });
     Route::get('products/{product}/posts', 'ProductController@getPosts');
     Route::post('register', 'RegisterController@register');    

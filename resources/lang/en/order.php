@@ -20,8 +20,7 @@
                 'money' => '$',
                 'write_reason' => 'Please write your reason!',
                 'submit' => 'Submit',
-                'successfully' => 'Change status not successfully',
-                'not_successfully' => 'Change status successfully',
+                'not_successfully' => 'Change status not successfully',
             ],
             'show' => [
                 'title' => 'Show detail order',
@@ -94,6 +93,13 @@
                 'title' => 'Show Order Detail',
                 'order_detail' => 'Order Detail',
                 'description' => 'Description',
+            ],
+            'cancel' => [
+                'are_your_sure' => 'Are you cancel this order?',
+                'successfully' => 'Canceled order successfully!!!',
+                'not_successfully' => 'Cancel order not successfully!!!',
+                'write_reason' => 'Please write your reason(*)',
+                'send' => 'Send',
             ]
         ],
     ];

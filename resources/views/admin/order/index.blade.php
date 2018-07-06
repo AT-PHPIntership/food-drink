@@ -14,7 +14,6 @@
     @include('admin.layout.message')
     <!-- Main content -->
     <section class="content">
-      <p class="alert-info" hidden>{{ __('order.admin.index.successfully') }}</p>
       <div class="alert-danger" hidden></div>
       <div class="row">
         <div class="col-xs-12">
