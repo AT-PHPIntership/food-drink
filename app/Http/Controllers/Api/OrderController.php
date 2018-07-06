@@ -121,19 +121,28 @@ class OrderController extends ApiController
     public function update(Order $order, CreateOrderRequest $request)
     {
         try {
+            $total = 0;
+            $products = [];
             DB::beginTransaction();
-            $order->update([
-                "total" => $request->total,
-                "address" => $request->address,
-            ]);
-            foreach ($request->product as $product) {
-                $orderDetail = OrderDetail::where('order_id', $order->id)->where('product_id', $product['id'])->first();
-                if ($orderDetail) {
-                    $orderDetail->update([
-                        'quantity' => $product['quantity'],
-                    ]);
+            if ($request->product) {
+                foreach ($request->product as $product) {
+                    $orderDetail = OrderDetail::where('order_id', $order->id)->where('product_id', $product['id'])->first();
+                    if ($orderDetail) {
+                        $orderDetail->update([
+                            'quantity' => $product['quantity'],
+                        ]);
+                        $total += $product['quantity'] * $orderDetail->price;
+                        array_push($products, $product);
+                    }
                 }
+                OrderDetail::where('order_id', $order->id)->whereNotIn('product_id', array_pluck($request->product, 'id'))->delete();
+            } else {
+                OrderDetail::where('order_id', $order->id)->delete();
             }
+            $order->update([
+                "address" => $request->address,
+                "total" => $total,
+            ]);
             DB::commit();
             return $this->showOne($order->load('orderDetails'), Response::HTTP_OK);
         } catch (Exception $e) {
