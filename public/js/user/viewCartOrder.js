@@ -1,15 +1,26 @@
 cartProduct = JSON.parse(localStorage.carts);
 var products = JSON.parse(localStorage.getItem('carts'));
-  var order = [];
-  products.forEach(function (product) {
-    product_data = {};
-    product_data.id = product.id;
-    product_data.name_product = product.name;
-    product_data.image = product.image;
-    product_data.quantity = product.count;
-    product_data.price = product.price;
-    order.push(product_data);
+var order = [];
+products.forEach(function (product) {
+  product_data = {};
+  product_data.id = product.id;
+  product_data.name_product = product.name;
+  product_data.image = product.image;
+  product_data.quantity = product.count;
+  product_data.price = product.price;
+  order.push(product_data);
+});
+function validation(cartProduct) {
+  var count = 0;
+  let show = '';
+  $.each(cartProduct, function(index, value) {
+    show += '<span id="'+count+'_error" class="help-block" hidden>\
+    <strong class="text-danger"></strong>\
+    </span>';
+  count++;
   });
+  $('#form-validation').append(show);
+}
 function itemCart(cartProduct) {
   var total = 0;
   var subTotal = 0;
@@ -39,6 +50,9 @@ function itemCart(cartProduct) {
     <form>\
     <label>'+Lang.get('order.user.create.your_address')+'</label>\
     <input type="text" class="form-control input" id="address">\
+    <span id="address_error" class="help-block" hidden>\
+      <strong class="text-danger"></strong>\
+    </span>\
     <button class="button" id="add-order"><i class="fa fa-angle-double-right"></i>&nbsp; <span>'+Lang.get('order.user.create.complete')+'</span></button>\
   </form>  </div>';
   $('.user-profile').html(htmlUser);
@@ -63,13 +77,24 @@ function addOrder() {
         localStorage.removeItem('count');
         window.location.href='/';
       },
-      error: function(data) {
-        alert(data.responseJSON.message);
-      }
+      error: function (response) {
+        errors = Object.keys(response.responseJSON.errors);
+        errors.forEach(error => {
+            errorCheck = error.split('.');
+            if (errorCheck[0] == 'product') {
+              $('#'+ errorCheck[1] + '_error strong').html(response.responseJSON.errors[error]) ;
+              $('#'+ errorCheck[1] + '_error' ).show();  
+            } else {
+              $('#'+ error + '_error strong').html(response.responseJSON.errors[error]) ;
+              $('#'+ error + '_error' ).show();
+            }
+        });
+    }
     })
   })
 }
 $(document).ready(function() {
   itemCart(cartProduct);
   addOrder();
+  validation(cartProduct);
 })
