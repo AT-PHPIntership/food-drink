@@ -10,9 +10,9 @@
           <p class="before-login-text">{{__('forgot-password.recover_account_for')}}</p>
           <form class="login-form" accept-charset="UTF-8">
             <label for="password">{{__('forgot-password.new_password')}}</label>
-            <input class="form-control" type="password" name="" id="password" />
+            <input class="form-control" type="password" name="password" id="password" />
             <label for="confirm_password">{{__('forgot-password.confirm_password')}}</label>
-            <input class="form-control" type="password" name="" id="confirm_password" />
+            <input class="form-control" type="password" name="password_confirmation" id="confirm_password" />
             <span class="help-block">
               <strong class="text-danger"></strong>
             </span>
