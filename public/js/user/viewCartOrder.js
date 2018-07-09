@@ -48,7 +48,7 @@ function itemCart(cartProduct) {
     <p><i class="fa fa-check-circle text-primary"></i>'+Lang.get('order.user.create.your_address')+'<span>'+data_user.user_info.address+'</span></p>\
     <p><i class="fa fa-check-circle text-primary"></i>'+Lang.get('order.user.create.your_phone')+'<span>'+data_user.user_info.phone+'</span></p>\
     <form>\
-    <label>'+Lang.get('order.user.create.your_address')+'</label>\
+    <label>'+Lang.get('order.user.create.place_delivery')+'</label>\
     <input type="text" class="form-control input" id="address">\
     <span id="address_error" class="help-block" hidden>\
       <strong class="text-danger"></strong>\
