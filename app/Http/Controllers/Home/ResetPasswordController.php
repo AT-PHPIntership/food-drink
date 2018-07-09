@@ -12,12 +12,15 @@ class ResetPasswordController extends Controller
     *
     * If no token is present, display the link request form.
     *
-    * @param string null $token reset token
+    * @param \Illuminate\Http\Request $request request
+    * @param string              null $token   reset token
     *
     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     */
-    public function index($token = null)
+    public function index(Request $request, $token = null)
     {
-        return view('public.pages.new-password', ['token' => $token]);
+        return view('public.pages.new-password')->with(
+            ['token' => $token, 'email' => $request->email]
+        );
     }
 }
