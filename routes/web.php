@@ -40,6 +40,16 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin','middleware' => 'admin'],fu
     ]);
     Route::put('order/{order}/updateStatus', 'OrdersController@updateStatus');
 });
+Route::group(['namespace' => 'Home', 'prefix' => 'password'], function () {
+    Route::get('reset', [
+        'uses' => 'ForgotPasswordController@index',
+        'as' => 'password.forgot'
+    ]);
+    Route::get('reset/{token}', [
+        'uses' => 'ResetPasswordController@index',
+        'as' => 'password.reset'
+    ]);
+});
 Route::group(['prefix' => 'admin'],function (){
     Route::get('login', [
         'uses' => 'Auth\LoginController@showLoginForm',
