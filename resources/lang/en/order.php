@@ -104,6 +104,7 @@
             ],
             'edit' => [
                 'title' => 'Edit Order',
+                'cancel_edit' => 'Cancel Edit Order',
             ]
         ],
     ];

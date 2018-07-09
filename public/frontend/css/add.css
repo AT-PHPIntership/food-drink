@@ -92,3 +92,29 @@
 .cancel-order {
   cursor: pointer;
 }
+a.cancel-edit-order {
+  font-weight: bold;
+  text-transform: uppercase;
+  display: inline-block;
+  cursor: pointer;
+  background: #4caf50;
+  padding: 6px 10px;
+  font-size: 12px;
+  border: 2px solid #4caf50;
+  text-align: center;
+  white-space: nowrap;
+  color: #fff;
+  -moz-transition: all 0.3s linear;
+  -webkit-transition: all 0.3s linear;
+  font-family: "Roboto", sans-serif;
+}
+a.cancel-edit-order:hover {
+  background: #39342e;
+  border: 2px solid #39342e;
+  -moz-transition: all 0.3s linear;
+  -webkit-transition: all 0.3s linear;
+  color: #fff;
+}
+.complete {
+  float: right;
+}

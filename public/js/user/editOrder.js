@@ -19,6 +19,9 @@ function getListOrderDetail() {
     success: function (response){
       var html;
       getOrder = response.data.data;
+      if (getOrder.order_details.status_order != 'pending') {
+        window.location.href = 'http://' + window.location.hostname + '/';
+      }
       localStorage.setItem('orderDetails', JSON.stringify(getOrder));
       orderDetails = JSON.parse(localStorage.orderDetails);
       $.each(orderDetails, function (index, orderDetail) {
@@ -34,24 +37,24 @@ function getListOrderDetail() {
                 </tr>';
       });
       $('#order-detail').html(html);
-      $.each(orderDetails, function (index, orderDetail) {
-        changeQuantity(orderDetail.id, index);
-      });
       $('.sub-total').html(subTotal);
+      $.each(orderDetails, function (index, orderDetail) {
+        changeQuantity(orderDetail.id, orderDetail.price);
+      });
     },
   });
 }
 
-function changeQuantity(id,) {
+function changeQuantity(id, price) {
+  var totalOld = $('#total-item'+ id).text();
+  var subTotalOld = $('#subTotal').text();
+  var subTotalNew = subTotalOld - totalOld;
   $(document).on('change', '#quantity'+id, function() {
     var qty = $('#quantity'+id).val();
-    console.log(qty);
-    
-    // if (qty > 0) {
-    //   orderDetails[index]['quantity'] = parseInt(orderDetails);
-    //   localStorage.setItem('orderDetails', JSON.stringify(orderDetails));
-    //   getListOrderDetail();
-    // }
+    var totalNew = parseInt(qty) * price;
+    $('#total-item'+ id).text(totalNew)
+    subTotalNew = subTotalNew + totalNew;
+    $('#subTotal').text(subTotalNew);
   });
 }
 

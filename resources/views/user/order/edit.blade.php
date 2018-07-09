@@ -13,15 +13,15 @@
             <div class="row">
               <div class="col-sm-12 user-profile">
                 <div class="col-sm-12">
-                  <p><i class="fa fa-check-circle text-primary"></i>{{ __('order.user.create.your_name') }}<span id="name-user">Prof. Ulices Ryan II</span></p>
-                  <p><i class="fa fa-check-circle text-primary"></i>{{ __('order.user.create.your_email') }}<span id="email-user">muller.adelia@west.com</span></p>
-                  <p><i class="fa fa-check-circle text-primary"></i>{{ __('order.user.create.your_address') }}<span id="address-user">1929 McKenzie Corners Suite 909
-Leuschkemouth, WV 81943-9640</span></p>
-                  <p><i class="fa fa-check-circle text-primary"></i>{{ __('order.user.create.your_phone') }}<span id="phone-user">328-307-1501 x51435</span></p>
+                  <p><i class="fa fa-check-circle text-primary"></i>{{ __('order.user.create.your_name') }}<span id="name-user"></span></p>
+                  <p><i class="fa fa-check-circle text-primary"></i>{{ __('order.user.create.your_email') }}<span id="email-user"></span></p>
+                  <p><i class="fa fa-check-circle text-primary"></i>{{ __('order.user.create.your_address') }}<span id="address-user"></span></p>
+                  <p><i class="fa fa-check-circle text-primary"></i>{{ __('order.user.create.your_phone') }}<span id="phone-user"></span></p>
                   <form>
                     <label>{{ __('order.user.create.place_delivery') }}</label>
                     <input type="text" class="form-control input" id="address">
-                    <button class="button" id="edit-order"><i class="fa fa-angle-double-right"></i>&nbsp; <span>{{ __('order.user.create.complete') }}</span></button>
+                    <a class="button cancel-edit-order" onclick="window.history.go(-1);"><i class="fa fa-arrow-left"> </i> &nbsp; {{ __('order.user.edit.cancel_edit') }}</a>
+                    <button class="button complete" id="edit-order"><i class="fa fa-angle-double-right"></i>&nbsp; <span>{{ __('order.user.create.complete') }}</span></button>
                   </form>  
                 </div>
               </div>
