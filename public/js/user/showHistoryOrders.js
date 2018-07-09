@@ -104,7 +104,7 @@ function appendOrder(response) {
     if (order.status_order == "pending") {
       action = '<td class="qty function">\
                   <a href="/orders/'+ order.id +'">'+ Lang.get('order.user.index.detail') +'</a>\
-                  <a href="">'+ Lang.get('order.user.index.edit') +'</a>\
+                  <a href="/orders/'+ order.id +'/edit">'+ Lang.get('order.user.index.edit') +'</a>\
                   <a orderId="'+ order.id +'" class="cancel-order">'+ Lang.get('order.user.index.cancel') +'</a>\
                 </td>';
     } else {

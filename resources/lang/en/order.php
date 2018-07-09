@@ -88,6 +88,7 @@
                 'complete' => 'Complete',
                 'your_checkout' => 'Your checkout',
                 'checkout' => 'Checkout',
+                'place_delivery' => 'Place of delivery',
             ],
             'show' => [
                 'title' => 'Show Order Detail',
@@ -100,6 +101,9 @@
                 'not_successfully' => 'Cancel order not successfully!!!',
                 'write_reason' => 'Please write your reason(*)',
                 'send' => 'Send',
+            ],
+            'edit' => [
+                'title' => 'Edit Order',
             ]
         ],
     ];
