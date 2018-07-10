@@ -21,6 +21,9 @@ function viewCart() {
       var subTotal = 0;
       var total = 0;
       $.each(cartProduct, function(index, value) {
+        if (cartProduct[index]['count'] > cartProduct[index]['quantity']) {
+          $('.top-cart-content .quantity-stock').show();
+        }
         total = value.count*value.price;
         subTotal = subTotal + total;
         html += '<li class="item">\

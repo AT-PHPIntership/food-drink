@@ -13,11 +13,32 @@
           <!-- top links -->
           <div class="headerlinkmenu col-lg-8 col-md-7 col-sm-8 col-xs-12">
             <div class="links">
-              <div class="myaccount"><a title="My Account" href="{{ route('profile.index') }}"><i class="fa fa-user"></i><span class="hidden-xs">{{ __('home.user.header.my_account' ) }}</span></a></div>
-              <div class="history-order"><a href="{{ route('orders.index') }}"><i class="fa fa-history"></i><span class="hidden-xs">{{ __('home.user.header.history_order' ) }}</span></a></div>
-              <div class="login"><a href="{{ route('user.login') }}"><i class="fa fa-unlock-alt"></i><span class="hidden-xs">{{ __('home.user.header.log_in' ) }}</span></a></div>
-              <div class="register"><a href="{{ route('register.index') }}"><i class="fa fa-user-plus"></i><span class="hidden-xs">{{ __('home.user.header.register' ) }}</span></a></div>              
-              <div id="logout" class="logout"><a href=""><i class="fa fa-sign-out"></i><span class="hidden-xs">{{ __('home.user.header.log_out' ) }}</span></a></div>
+              <div class="login"><a href="{{ route('user.login') }}"><i class="fa fa-unlock-alt"></i><span class="hidden-xs">{{ __('home.user.header.log_in') }}</span></a></div>
+              <div class="register"><a href="{{ route('register.index') }}"><i class="fa fa-user-plus"></i><span class="hidden-xs">{{ __('home.user.header.register') }}</span></a></div>
+            </div>
+            <div class="language-currency-wrapper">
+              <div class="inner-cl">
+                <div class="block block-language form-language">
+                  <div class="myaccount">
+                    <a title="{{ __('home.user.header.my_account') }}" href="{{ route('profile.index') }}"><i class="fa fa-user"></i><span class="hidden-xs">&nbsp; {{ __('home.user.header.my_account') }}</span></a>
+                  </div>
+                  <ul>
+                    <li class="history-order">
+                      <a href="{{ route('orders.index') }}"><i class="fa fa-history"></i><span class="hidden-xs">&nbsp; {{ __('home.user.header.history_order') }}</span></a>
+                    </li>
+                    <li id="logout" class="logout">
+                      <a href=""><i class="fa fa-sign-out"></i><span class="hidden-xs">&nbsp; {{ __('home.user.header.log_out') }}</span></a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="block block-language form-language">
+                  <div class="lg-cur"> <span> <i class="fa fa-language"></i><span class="lg-fr">&nbsp; {{ __('home.user.header.language') }}</span> <i class="fa fa-angle-down"></i> </span> </div>
+                  <ul>
+                    <li> <a href="#"> <img src="{{ asset('frontend/images/flag-english.jpg') }}" alt="flag"> <span>{{ __('home.user.header.english') }}</span> </a> </li>
+                    <li> <a class="selected" href="#"> <img src="{{ asset('frontend/images/flag-vietnam.png') }}" alt="flag"> <span>{{ __('home.user.header.vietnam') }}</span> </a> </li>
+                  </ul>
+                </div>
+              </div> 
             </div>
           </div>
         </div>
@@ -66,9 +87,12 @@
                     <ul id="cart-sidebar" class="mini-products-list">
                       
                     </ul>
+                  <p class="alert-danger quantity-stock" hidden>{{ __('cart.quantity_stock') }}</p>
                   <div class="top-subtotal">{{ __('home.user.header.subtotal') }}<span class="price">{{ __('product.user.money') }}<span class="sub-total">0</span></span></div>
                   <div class="actions">
                     <a href="{{ route('cart.index') }}" class="view-cart"><i class="fa fa-shopping-cart"></i> <span>{{ __('home.user.header.view_cart') }}</span></a>
+                    <a href="{{ route('orders.create') }}" class="btn-checkout add-order" ><i class="fa fa-check"></i><span>{{ __('home.user.header.checkout') }}</span></a>
+                    <a class="btn-checkout login" href="{{ route('user.login') }}"><i class="fa fa-sign-in"></i> <span>{{ __('cart.login') }}</span></a>
                   </div>
                 </div>
               </div>

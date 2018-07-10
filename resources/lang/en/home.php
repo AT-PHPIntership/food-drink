@@ -30,6 +30,9 @@
                 'register' => 'Register',
                 'log_out' => 'Log Out',
                 'history_order' => 'History orders',
+                'language' => 'Language',
+                'english' => 'English',
+                'vietnam' => 'Vietnamese',
             ],
             'nav' => [
                 'shop_food_drink' => 'Shop Foods and Drinks',
