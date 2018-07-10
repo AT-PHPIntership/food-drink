@@ -6,10 +6,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Http\Response;
-use App\User;
-use App\UserInfo;
 
 class EditUserTest extends TestCase
 {
@@ -23,9 +20,6 @@ class EditUserTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        factory(User::class)->create();
-        factory(UserInfo::class)->create();
-        Artisan::call('passport:install');
     }
 
     /**
@@ -58,11 +52,11 @@ class EditUserTest extends TestCase
 
 
     /**
-     * Receive status code 200 when get product success.
+     * Receive status code 200 when edit user success.
      *
      * @return void
      */
-    public function testJsonRegister()
+    public function testJsonEditProfile()
     {
         $update = [
             'name' => 'test name',
