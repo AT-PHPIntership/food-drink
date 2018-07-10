@@ -19,7 +19,7 @@
       <div class="col-sm-6 col-sms-12">
         <a href="#">
           <div class="banner-box banner-box1"> 
-            <img src="/frontend/images/banner_drink.jpg" alt="">
+            <img src="/frontend/images/drink.jpg" alt="">
             <div class="box-hover">
               <div class="banner-title">{{ __('home.user.main.drink') }}</div>
             </div>

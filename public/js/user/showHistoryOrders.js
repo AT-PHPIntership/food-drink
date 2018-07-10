@@ -95,8 +95,9 @@ function appendOrder(response) {
     no = '<td class="cart_product">'+ (parseInt(index) + number + 1) +'</td>';
     time = '<td class="cart_description">'+ order.created_at +'</td>';
     total = '<td class="price">'+ Lang.get('product.user.money') + order.total +'</td>';
-    if (order.note) {
-      content = order.note.content;
+    if (order.notes.length  > 0) {
+      var key = order.notes.length;
+      content = order.notes[key-1].content;
     }
     note = '<td class=cart_description">'+ content +'</td>';
     status = '<td class="qty">'+ order.status_order +'</td>';

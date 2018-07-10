@@ -3,28 +3,34 @@ var getOrder;
 var arrPathName = location.pathname.split("/");
 var id = arrPathName[2];
 function getUser() {
+  var html = '';
   $('#name-user').text(dataUser.name);
   $('#email-user').text(dataUser.email);
   $('#address-user').text(dataUser.user_info.address);
   $('#phone-user').text(dataUser.user_info.phone);
+  //show validation address
+  html = '<span id="address_error" class="help-block" hidden>\
+            <strong class="text-danger"></strong>\
+          </span>';
+  $('#validation-address').html(html);
 }
 
 function getListOrderDetail() {
   var total = 0;
   var subTotal = 0;
+  var show = '';
   $.ajax({
     type: 'GET',
     url: '/api/orders/'+ id,
     headers: { 'Authorization': 'Bearer '+ localStorage.getItem('access_token') },
     success: function (response){
       var html;
-      getOrder = response.data.data;
-      if (getOrder.order_details.status_order != 'pending') {
-        window.location.href = 'http://' + window.location.hostname + '/';
+      getOrder = response.data.order_details.data;
+      if (response.data.order.status_order != 'pending') {
+        window.location.href = '/';
       }
-      localStorage.setItem('orderDetails', JSON.stringify(getOrder));
-      orderDetails = JSON.parse(localStorage.orderDetails);
-      $.each(orderDetails, function (index, orderDetail) {
+      $('#address').val(response.data.order.address);
+      $.each(getOrder, function (index, orderDetail) {
         total = orderDetail.price * orderDetail.quantity;
         subTotal = subTotal + total;
         html += '<tr id="del-item'+ orderDetail.id +'">\
@@ -38,19 +44,25 @@ function getListOrderDetail() {
       });
       $('#order-detail').html(html);
       $('.sub-total').html(subTotal);
-      $.each(orderDetails, function (index, orderDetail) {
+      $.each(getOrder, function (index, orderDetail) {
         changeQuantity(orderDetail.id, orderDetail.price);
+        //show validation product
+        show += '<span id="'+ index +'_error" class="help-block" hidden>\
+                  <strong class="text-danger"></strong>\
+                </span>';
+        index++;
+        $('#form-validation').append(show);
       });
     },
   });
 }
 
 function changeQuantity(id, price) {
-  var totalOld = $('#total-item'+ id).text();
-  var subTotalOld = $('#subTotal').text();
-  var subTotalNew = subTotalOld - totalOld;
-  $(document).on('change', '#quantity'+id, function() {
-    var qty = $('#quantity'+id).val();
+  $(document).on('change', '#quantity'+ id, function() {
+    var totalOld = $('#total-item'+ id).text();
+    var subTotalOld = $('#subTotal').text();
+    var subTotalNew = subTotalOld - totalOld;
+    var qty = $('#quantity'+ id).val();
     var totalNew = parseInt(qty) * price;
     $('#total-item'+ id).text(totalNew)
     subTotalNew = subTotalNew + totalNew;
@@ -74,28 +86,42 @@ $(document).ready(function() {
     event.preventDefault();
     var data = [];
     var orderDetailData;
-    orderDetails.forEach(order => {
+    getOrder.forEach(order => {
       orderDetailData = {};
       var quantity = $('#quantity'+ order.id).val();
-      if (quantity) {
-        orderDetailData.id = order.id;
+      if (quantity > 0) {
+        orderDetailData.id = order.product_id;
         orderDetailData.quantity = parseInt(quantity);
         data.push(orderDetailData);
       }
     });
-
-    // console.log(data);
-    // $.ajax({
-    //   type: 'PUT',
-    //   url: '/api/orders/'+ id,
-    //   headers: { 'authorization': 'Bearer '+ localStorage.getItem('access_token') },
-    //   data: {
-    //     address:  $('#address').val(),
-    //     product: data
-    //   },
-    //   success: function (response){
-        
-    //   }
-    // });
+    $.ajax({
+      type: 'PUT',
+      url: '/api/orders/'+ id,
+      headers: {
+        Accept: 'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem('access_token')
+      },
+      data: {
+        address: $('#address').val(),
+        product: data
+      },
+      success: function (response){
+        window.location.href = '/';
+      },
+      error: function (response) {
+        errors = Object.keys(response.responseJSON.errors);
+        errors.forEach(error => {
+          errorCheck = error.split('.');
+          if (errorCheck[0] == 'product') {
+            $('#'+ errorCheck[1] + '_error strong').html(response.responseJSON.errors[error]) ;
+            $('#'+ errorCheck[1] + '_error' ).show();  
+          } else {
+            $('#'+ error + '_error strong').html(response.responseJSON.errors[error]) ;
+            $('#'+ error + '_error' ).show();
+          }
+        });
+      }
+    });
   });
 });

@@ -32,7 +32,7 @@
         </div>
         <div class="col-xs-9 col-sm-6 col-md-7"> 
           <!-- Search -->
-          @if (!request()->is('user/login'))
+          @if ((!request()->is('user/login')) && (!request()->is('password/reset')))
           <div class="top-search">
             <div id="search">
               <form>

@@ -20,6 +20,9 @@
                   <form>
                     <label>{{ __('order.user.create.place_delivery') }}</label>
                     <input type="text" class="form-control input" id="address">
+                    <div id="validation-address">
+
+                    </div>
                     <a class="button cancel-edit-order" onclick="window.history.go(-1);"><i class="fa fa-arrow-left"> </i> &nbsp; {{ __('order.user.edit.cancel_edit') }}</a>
                     <button class="button complete" id="edit-order"><i class="fa fa-angle-double-right"></i>&nbsp; <span>{{ __('order.user.create.complete') }}</span></button>
                   </form>  
@@ -58,6 +61,9 @@
                 </tr>
               </tfoot>
             </table>
+            <div id="form-validation">
+
+            </div>
           </div>
         </div>
         </div>
