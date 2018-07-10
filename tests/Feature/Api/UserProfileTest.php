@@ -5,10 +5,10 @@ namespace Tests\Feature\Api;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Http\Response;
 use App\User;
-use App\UserInfo;
 
 class UserProfileTest extends TestCase
 {
@@ -22,9 +22,6 @@ class UserProfileTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        factory(User::class)->create();
-        factory(UserInfo::class)->create();
-        Artisan::call('passport:install');
     }
 
     /**
@@ -40,23 +37,25 @@ class UserProfileTest extends TestCase
                 'code'
             ],
             'data' => [
-                'id',
-                'name',
-                'email',
-                'role',
-                'created_at',
-                'updated_at',
-                'deleted_at',
-                'user_info' => [
+                'user' => [
                     'id',
-                    'user_id',
-                    'address',
-                    'phone',
-                    'avatar',
+                    'name',
+                    'email',
+                    'role',
                     'created_at',
                     'updated_at',
                     'deleted_at',
-                    'avartar_url',
+                    'user_info' => [
+                        'id',
+                        'user_id',
+                        'address',
+                        'phone',
+                        'avatar',
+                        'created_at',
+                        'updated_at',
+                        'deleted_at',
+                        'avatar_url',
+                    ]
                 ]
             ]
         ];
@@ -82,13 +81,13 @@ class UserProfileTest extends TestCase
     public function testReturnJson()
     {
         $response = $this->jsonUser('GET', '/api/profile');
+        $data = json_decode($response->getContent());
         $response->assertJsonFragment([
-            'id' => $user->id,
-            'name' => $user->name,
-            'email' => $user->email,
-            'address' => $user->user_info->address,
-            'phone' => $user->user_info->phone,
-            'avatar' => $user->user_info->avatar_url
+            'name' => $data->data->user->name,
+            'email' => $data->data->user->email,
+            'address' => $data->data->user->user_info->address,
+            'phone' => $data->data->user->user_info->phone,
+            'avatar' => $data->data->user->user_info->avatar
         ]);
     }
 }

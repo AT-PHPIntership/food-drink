@@ -15,6 +15,7 @@
         'user' => [
             'title' => 'Food & Drink',
             'title_edit_user' => 'Edit User',
+            'title_forgot' => 'Forgot Password',
             'header' => [
                 'welcome' => 'Welcome to Food & drink!',
                 'call_us' => 'Call Us: +123.456.789',

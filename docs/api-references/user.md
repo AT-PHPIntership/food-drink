@@ -19,27 +19,29 @@ Get user's infomation
 ```json
 {
     "meta": {
-        "status": "successfuly",
+        "status": "Successfully",
         "code": 200
     },
     "data": {
-        "id": 8,
-        "name": "Prof. Nestor Reinger III",
-        "email": "verna53@hessel.com",
-        "role": 0,
-        "created_at": "2018-06-14 01:02:45",
-        "updated_at": "2018-06-14 01:02:45",
-        "deleted_at": null,
-        "user_info": {
-            "id": 8,
-            "user_id": 8,
-            "address": "67100 Pierre Islands\nMedhurstbury, NJ 05891",
-            "phone": "241-312-4635",
-            "avatar": "default-user-avatar.png",
-            "created_at": "2018-06-14 01:02:47",
-            "updated_at": "2018-06-14 01:02:47",
+        "user": {
+            "id": 1,
+            "name": "admin",
+            "email": "admin@test.com",
+            "role": 1,
+            "created_at": "2018-07-10 09:31:11",
+            "updated_at": "2018-07-10 09:31:11",
             "deleted_at": null,
-            "avatar_url": "http://192.168.33.10/images/users/default-user-avatar.png"
+            "user_info": {
+                "id": 1,
+                "user_id": 1,
+                "address": "11461 Alphonso Cove Apt. 141\nNorth Albina, MD 04362-1860",
+                "phone": "(217) 660-3037 x6147",
+                "avatar": "default-user-avatar.png",
+                "created_at": "2018-07-10 09:31:13",
+                "updated_at": "2018-07-10 09:31:13",
+                "deleted_at": null,
+                "avatar_url": "http://192.168.33.10/images/users/default-user-avatar.png"
+            }
         }
     }
 }
