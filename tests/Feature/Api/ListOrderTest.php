@@ -5,15 +5,16 @@ namespace Tests\Feature\Api;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Http\Response;
 use App\Category;
 use App\Product;
-use App\User;
 use App\Order;
 
 class ListOrderTest extends TestCase
 {
     use DatabaseMigrations;
-    const NUMBER_RECORD_CREATE = 25;
+    const NUMBER_RECORD_CREATE = 8;
 
     /**
     * Override function setUp() for make product
@@ -24,9 +25,7 @@ class ListOrderTest extends TestCase
     {
         parent::setUp();
         factory(Category::class, 'parent')->create();
-        factory(Category::class, self::NUMBER_RECORD_CREATE)->create();
         factory(Product::class, self::NUMBER_RECORD_CREATE)->create();
-        factory(User::class)->create();
         factory(Order::class, self::NUMBER_RECORD_CREATE)->create();
     }
 
@@ -37,7 +36,7 @@ class ListOrderTest extends TestCase
      */
     public function testStatusCodeSuccess()
     {
-        $response = $this->json('GET','/api/orders');
+        $response = $this->jsonUser('GET','/api/orders');
         $response->assertStatus(Response::HTTP_OK);
     }
 
@@ -82,14 +81,13 @@ class ListOrderTest extends TestCase
     }
 
     /**
-     * Test status code
+     * Test structure code
      *
      * @return void
      */
     public function testGetOrders()
     {
         $this->jsonUser('GET', 'api/orders')
-            ->assertStatus(200)
             ->assertJsonStructure($this->jsonStructureShowOrders());
     }
 
@@ -100,9 +98,9 @@ class ListOrderTest extends TestCase
      */
     public function testJsonPaginate()
     {
-        $response = $this->json('GET', '/api/orders?limit=2');
+        $response = $this->jsonUser('GET', '/api/orders?limit=5&page=2');
         $data = json_decode($response->getContent());
         $this->assertEquals($data->data->current_page, 2);
-        $this->assertEquals($data->data->per_page, 2);
+        $this->assertEquals($data->data->per_page, 5);
     }
 }
