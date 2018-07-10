@@ -103,3 +103,12 @@ $factory->defineAs(App\Category::class, 'parent', function (Faker $faker) {
         'parent_id' => 0,
     ]);
 });
+$factory->define(App\Note::class, function (Faker $faker) {
+    return [
+        'order_id' => $faker->randomElement(App\Order::pluck('id')->toArray()),
+        'user_id' => 1,
+        'content' => $faker->text,
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+    ];
+});

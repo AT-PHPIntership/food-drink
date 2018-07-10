@@ -57,7 +57,6 @@
                     <td>{{ $order->updated_at }}</td>
                     <td>
                       <a href="{{ route('order.show', ['order' => $order->id] )}}"><i class="fa fa-info"></i></a>
-                      <a href=""><i class="fa fa-sticky-note"></i></a>
                     </td>
                   </tr>
                   @endforeach

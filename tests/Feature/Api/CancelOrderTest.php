@@ -6,6 +6,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Http\Response;
 use App\User;
 use App\Order;
 
@@ -20,9 +21,8 @@ class CancelOrderTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        factory(User::class)->create();
         factory(Order::class)->create([
-            'status' => 1,
+            'status' => Order::PENDING,
         ]);
     }
 
@@ -39,7 +39,7 @@ class CancelOrderTest extends TestCase
                 'code'
             ],
             'data' => [
-                'id',   
+                'id',
                 'user_id',
                 'total',
                 'status',
@@ -47,25 +47,31 @@ class CancelOrderTest extends TestCase
                 'updated_at',
                 'deleted_at',
                 'status_order',
-                'note' => [
-                    'user_id',
-                    'order_id',
-                    'content',
-                    'created_at',
-                    'updated_at'
+                'notes' => [
+                    [
+                        'id',
+                        'user_id',
+                        'order_id',
+                        'content',
+                        'created_at',
+                        'updated_at'
+                    ]
                 ]
             ]
         ];
     }
 
-         /**
+     /**
      * Test structure of json response.
      *
      * @return void
      */
     public function testJsonStructure()
     {
-        $response = $this->jsonUser('PUT', '/api/orders/1/cancel');
+        $cancel = [
+            'content' => 'test'
+        ];
+        $response = $this->jsonUser('PUT', '/api/orders/1/cancel', $cancel);
         $response->assertJsonStructure($this->jsonStructureCancelOrder());
         $response->assertStatus(Response::HTTP_OK);
     }
@@ -81,17 +87,17 @@ class CancelOrderTest extends TestCase
             'content' => 'test'
         ];
         $response = $this->jsonUser('PUT', 'api/orders/1/cancel', $cancel);
-        $data = json_decode($response->getContent())->result;
+        $data = json_decode($response->getContent());
         $arrayOrder = [
-            'id' => $data->id,
-            'user_id' => $data->user_id,
-            'status' => 3,
+            'id' => $data->data->id,
+            'user_id' => $data->data->user_id,
+            'status' => $data->data->status,
         ];
         $this->assertDatabaseHas('orders', $arrayOrder);
         $arrayNote = [
-            'order_id' => $data->order_id,
-            'user_id' => $data->user_id,
-            'content' => 'test',
+            'user_id' => $data->data->notes[0]->user_id,
+            'order_id' => $data->data->notes[0]->order_id,
+            'content' => $data->data->notes[0]->content,
         ];
         $this->assertDatabaseHas('notes', $arrayNote);
     }
