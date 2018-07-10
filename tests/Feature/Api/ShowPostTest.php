@@ -36,7 +36,9 @@ class ShowPostTest extends TestCase
         factory(Post::class, 6)->create([
             'type' => Post::REVIEW,
         ]);
-        factory(Post::class, self::NUMBER_RECORD_CREATE)->create();
+        factory(Post::class, 5)->create([
+            'type' => Post::COMMENT,
+        ]);
     }
 
     /**
@@ -118,30 +120,6 @@ class ShowPostTest extends TestCase
     }
 
     /**
-     * Test type comment
-     *
-     * @return void
-     */
-    public function testJsonComment()
-    {
-        $response = $this->json('GET', '/api/products/1/posts?type=' . POST::COMMENT . '');
-        $data = json_decode($response->getContent());
-        $this->assertEquals($data->data->data[0]->type, 1);
-    }
-
-    /**
-     * Test type review
-     *
-     * @return void
-     */
-    public function testJsonReview()
-    {
-        $response = $this->json('GET', '/api/products/1/posts?type=' . POST::REVIEW . '');
-        $data = json_decode($response->getContent());
-        $this->assertEquals($data->data->data[1]->type, 2);
-    }
-
-    /**
      * Test select all post
      *
      * @return void
@@ -150,19 +128,47 @@ class ShowPostTest extends TestCase
     {
         $response = $this->json('GET', '/api/products/1/posts');
         $data = json_decode($response->getContent());
-        $this->assertEquals($data->data->total, 27);
+        $this->assertEquals($data->data->total, 12);
+    }
+
+    public function getPostDataProvider() {
+        return [
+            [POST::COMMENT, 0],
+            [POST::REVIEW, 1],
+        ];
+    }
+
+    /**
+     * Test type comment
+     * @dataProvider getPostDataProvider
+     * 
+     * @return void
+     */
+    public function testJsonPost($type, $key)
+    {
+        $response = $this->json('GET', '/api/products/1/posts?type=' . $type . '');
+        $data = json_decode($response->getContent());
+        $this->assertEquals($data->data->data[$key]->type, $type);
+    }
+
+    public function getPaginateDataProvider() {
+        return [
+            [POST::COMMENT, 5],
+            [POST::REVIEW, 5],
+        ];
     }
 
     /**
      * Test paginate review
+     * @dataProvider getPaginateDataProvider
      *
      * @return void
      */
-    public function testJsonPaginateTypeReview()
+    public function testJsonPaginateTypeReview($typePost, $perPage)
     {
-        $response = $this->json('GET', '/api/products/1/posts?type=' . POST::REVIEW . '&page=2');
+        $response = $this->json('GET', '/api/products/1/posts?type=' . $typePost . '&page=2');
         $data = json_decode($response->getContent());
-        $this->assertEquals($data->data->prev_page_url, $data->data->path . '?type=' . POST::REVIEW . '&page=1');
-        $this->assertEquals($data->data->per_page, 5);
+        $this->assertEquals($data->data->prev_page_url, $data->data->path . '?type=' . $typePost . '&page=1');
+        $this->assertEquals($data->data->per_page, $perPage);
     }
 }
