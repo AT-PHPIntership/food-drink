@@ -29,7 +29,7 @@ class OrderController extends ApiController
     public function index(SortOrderRequest $request)
     {
         $user = Auth::user();
-        $orders = Order::with('note')->where('user_id', $user->id)->sortable()->paginate($request->limit);
+        $orders = Order::with('notes')->where('user_id', $user->id)->sortable()->paginate($request->limit);
         $orders->appends(request()->query());
         return $this->successResponse($orders, Response::HTTP_OK);
     }
@@ -37,19 +37,20 @@ class OrderController extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param Order $order order object
+     * @param Order                    $order   order object
+     * @param \Illuminate\Http\Request $request request
      *
      * @return \Illuminate\Http\Response
     */
-    public function show(Order $order)
+    public function show(Order $order, SortOrderRequest $request)
     {
         $user = Auth::user();
-        $order = $order->load('orderDetails');
         $orderDetails = [];
         if ($order->user_id == $user->id) {
-            $orderDetails = $order->orderDetails;
+            $orderDetails = $order->orderDetails()->paginate($request->limit);
+            $orderDetails->appends(request()->query());
         }
-        return $this->showAll($orderDetails, Response::HTTP_OK);
+        return $this->successResponse(['order_details' => $orderDetails, 'order' => $order], Response::HTTP_OK);
     }
 
     /**
