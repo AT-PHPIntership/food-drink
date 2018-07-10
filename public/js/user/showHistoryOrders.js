@@ -95,8 +95,9 @@ function appendOrder(response) {
     no = '<td class="cart_product">'+ (parseInt(index) + number + 1) +'</td>';
     time = '<td class="cart_description">'+ order.created_at +'</td>';
     total = '<td class="price">'+ Lang.get('product.user.money') + order.total +'</td>';
-    if (order.note) {
-      content = order.note.content;
+    if (order.notes) {
+      var key = order.notes.length;
+      content = order.notes[key-1].content;
     }
     note = '<td class=cart_description">'+ content +'</td>';
     status = '<td class="qty">'+ order.status_order +'</td>';
@@ -104,7 +105,7 @@ function appendOrder(response) {
     if (order.status_order == "pending") {
       action = '<td class="qty function">\
                   <a href="/orders/'+ order.id +'">'+ Lang.get('order.user.index.detail') +'</a>\
-                  <a href="">'+ Lang.get('order.user.index.edit') +'</a>\
+                  <a href="/orders/'+ order.id +'/edit">'+ Lang.get('order.user.index.edit') +'</a>\
                   <a orderId="'+ order.id +'" class="cancel-order">'+ Lang.get('order.user.index.cancel') +'</a>\
                 </td>';
     } else {

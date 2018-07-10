@@ -39,4 +39,16 @@ class OrderController extends Controller
     {
         return view('user.order.show', $order);
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \App\Order $order object
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function edit(Order $order)
+    {
+        return view('user.order.edit', $order);
+    }
 }

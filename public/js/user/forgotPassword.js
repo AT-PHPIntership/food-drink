@@ -1,5 +1,5 @@
 function sendMail() {
-    $('.login-form').submit(function(event) {
+    $('.send-email-form').submit(function(event) {
         alert(Lang.get('forgot-password.please_wait'));
         $('.button').attr('disabled', true);
         $('#mail').attr('disabled', true);
@@ -44,8 +44,42 @@ function sendMail() {
     });
 }
 function resetMail() {
-    
+    $('.recover-form').submit(function(event) {
+        event.preventDefault();
+        url = '/api/password/reset';
+        $.ajax({
+            url: url,
+            type: 'POST',
+            headers: {
+                'Accept': 'application/json',
+            },
+            data: {
+                email: $('#email').val(),
+                password: $('#password').val(),
+                password_confirmation: $('#confirm-password').val(),
+                token: $('#reset_token').attr('value'),
+            },
+            success: function(response) {
+                alert(response.data.message);
+                window.location.pathname = '/';
+            },
+            error: function(response) {
+                if (response.responseJSON.error) {
+                    $('#error-token strong').html(response.responseJSON.error.message);
+                    $('#error-token').show();
+                }
+                if (response.responseJSON.errors) {
+                    errors = Object.keys(response.responseJSON.errors);
+                    errors.forEach(error => {
+                        $('#error-'+ error +' strong').html(response.responseJSON.errors[error]);
+                        $('#error'+ error).show();
+                    });
+                }
+            }
+        })
+    });
 }
 $(document).ready(function() {
     sendMail();
+    resetMail();
 })

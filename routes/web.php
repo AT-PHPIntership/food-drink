@@ -18,9 +18,7 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin','middleware' => 'admin'],fu
     ]);
     Route::resource('user', 'UsersController');
     Route::resource('product', 'ProductsController');
-    Route::resource('category', 'CategoriesController')->except([
-        'show'
-    ]);
+    Route::resource('category', 'CategoriesController');
     Route::group(['prefix'=>'post'],function (){
         Route::get('',[
             'uses' => 'PostsController@index',
@@ -95,6 +93,6 @@ Route::group(['namespace'=>'User','prefix'=>'/'],function () {
         'index'
     ]);
     Route::resource('orders', 'OrderController')->only([
-        'index', 'create', 'show'
+        'index', 'create', 'show', 'edit'
     ]);
 });
