@@ -45,6 +45,9 @@
                 </tr>
               </tfoot>
             </table>
+            <div id="form-validation">
+
+            </div>
           </div>
         </div>
         </div>

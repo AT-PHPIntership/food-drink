@@ -46,6 +46,25 @@
                 </div>    
               </div>
             </form>
+            @if (count($order->notes))
+              <div class="box-header with-border list-product">
+                <h3 class="box-title">{{ __('order.admin.show.list_note') }}</h3>
+              </div>
+              <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+                  <tr>
+                    <th>{{ __('order.admin.show.id') }}</th>
+                    <th>{{ __('order.admin.show.content') }}</th>
+                  </tr>
+                    @foreach ($order->notes as $note)
+                    <tr>
+                      <td>{{ $note->id }}</td>
+                      <td>{{ $note->content }}</td>
+                    </tr>
+                    @endforeach
+                </table>
+              </div>
+            @endif
             <!-- form start -->
             <div class="box-header with-border list-product">
               <h3 class="box-title">{{__('order.admin.show.list_product')}}</h3>

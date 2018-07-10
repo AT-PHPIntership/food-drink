@@ -24,13 +24,13 @@ class OrdersController extends Controller
     {
         $search = $request->search;
         if ($search != '') {
-            $orders = Order::with('user')->whereHas('user', function ($query) use ($search) {
+            $orders = Order::with('user', 'notes')->whereHas('user', function ($query) use ($search) {
                 return $query->where('name', 'Like', "%$search%")
                             ->orWhere("email", 'Like', "%$search%");
             });
             $orders = $orders->sortable()->paginate(config('define.number_page_products'))->appends(['search' => $search]);
         } else {
-            $orders = Order::with('user')->sortable()->paginate(config('define.number_page_products'));
+            $orders = Order::with('user', 'notes')->sortable()->paginate(config('define.number_page_products'));
         }
         return view('admin.order.index', compact('orders'));
     }
