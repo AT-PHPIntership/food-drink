@@ -8,6 +8,8 @@
             <!-- Default Welcome Message -->
             <div class="welcome-msg ">{{ __('home.user.header.welcome') }}</div>
             <span class="phone hidden-sm">{{ __('home.user.header.call_us') }}</span>
+            <a class="locale" href="{{ route('locale', ['locale' => 'en']) }}">English</a>
+            <a class="locale" href="{{ route('locale', ['locale' => 'vi']) }}">Tiếng Việt</a>
           </div>
           
           <!-- top links -->

@@ -96,3 +96,7 @@ Route::group(['namespace'=>'User','prefix'=>'/'],function () {
         'index', 'create', 'show', 'edit'
     ]);
 });
+Route::get('/locale/{locale}', function ($locale) {
+    session(['locale' => $locale]);
+    return response()->json(['locale' => session('locale')], 200);
+})->name('locale');

@@ -12,6 +12,23 @@ $( document ).ready(function() {
     window.location.host;
   }
   
+  if (window.sessionStorage.getItem('locale')) {
+    Lang.setLocale(window.sessionStorage.getItem('locale'));
+  }
+
+  $('.locale').on('click', function (event) {
+    event.preventDefault();
+    url = $(this).attr('href');
+    $.ajax({
+      url: url,
+      type: 'GET',
+      success: function(response) {
+        window.sessionStorage.setItem('locale', response.locale);
+        window.location.reload();
+      }
+    });
+  });
+
   $('#logout').on('click', function (event) {
     event.preventDefault();
     if (accessToken) {
