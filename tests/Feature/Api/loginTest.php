@@ -4,8 +4,8 @@ namespace Tests\Feature\Api;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Http\Response;
 use App\User;
@@ -71,7 +71,7 @@ class loginTest extends TestCase
     {
         $body = [
             'email' => $this->user->email,
-            'password' => 'users'
+            'password' => 'hello'
         ];
         $this->jsonUser('POST', '/api/login', $body, ['Accept' => 'application/json'])
             ->assertStatus(200)

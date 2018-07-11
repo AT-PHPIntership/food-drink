@@ -5,8 +5,6 @@ namespace Tests;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Artisan;
-use App\User;
-use App\UserInfo;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -24,9 +22,12 @@ abstract class TestCase extends BaseTestCase
     {
         parent::setUp();
         Artisan::call('passport:install');
-        $this->user = factory(User::class)->create();
+        $this->user = factory('App\User')->create([
+            'email' => 'hello@gmail.com',
+            'password' => bcrypt('hello')
+        ]);
         $this->token =  $this->user->createToken('token')->accessToken;
-        factory(UserInfo::class)->create([
+        factory('App\UserInfo')->create([
             'user_id' => $this->user->id,
         ]);
     }
