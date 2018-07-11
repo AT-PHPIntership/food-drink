@@ -98,3 +98,12 @@
 .quantity-stock {
   float: left;
 }
+.container .row .header-left {
+  width: 40%;
+}
+.container .row .header-right {
+  width: 60%;
+}
+.add-order {
+  padding: 8px 10px !important;
+}

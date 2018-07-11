@@ -6,7 +6,7 @@
             'title_forgot' => 'Quên mật khẩu',
             'header' => [
                 'welcome' => 'Chào mừng tới Food & drink!',
-                'call_us' => 'Gọi cho chúng tôi: +123.456.789',
+                'call_us' => 'Liên hệ với chúng tôi: +123.456.789',
                 'my_account' => 'Tài khoản của tôi',
                 'log_in' => 'Đăng nhập',
                 'search' => 'Tìm kiếm',
@@ -19,9 +19,12 @@
                 'register' => 'Đăng ký',
                 'log_out' => 'Đăng xuất',
                 'history_order' => 'Lịch sử  đơn hàng',
+                'language' => 'Ngôn ngữ',
+                'english' => 'Tiếng Anh',
+                'vietnam' => 'Tiếng Việt',
             ],
             'nav' => [
-                'shop_food_drink' => 'Cửa hàng Đồ ăn và Nước uống',
+                'shop_food_drink' => 'Shop Đồ ăn và Nước uống',
                 'all_product' => 'Tất cả sản phẩm',
             ],
             'footer' => [
@@ -31,7 +34,7 @@
             ],
             'main' => [
                 'new_product' => 'Sản phẩm mới nhất',
-                'rate_product' => 'Sản phẩm được xếp hạng cao nhất',
+                'rate_product' => 'Sản phẩm được đánh giá cao nhất',
                 'food' => 'Đồ ăn',
                 'drink' => 'Nước uống',
                 'add_to_cart' => 'Thêm vào giỏ hàng',

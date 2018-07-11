@@ -6,12 +6,12 @@ $( document ).ready(function() {
     $('.please-login').hide();
     $('.actions .login').hide();
   } else {
-    $('.language-currency-wrapper').hide();
+    $('.language-currency-wrapper .myaccount').hide();
     $('.cart_navigation .checkout-btn').hide();
     $('.actions .add-order').hide();
     window.location.host;
   }
-  
+  //translate
   if (window.sessionStorage.getItem('locale')) {
     Lang.setLocale(window.sessionStorage.getItem('locale'));
   }

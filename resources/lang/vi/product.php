@@ -25,7 +25,7 @@
                 'comment' => [
                     'comments' => 'Bình luận',
                     'comment' => 'Bình luận',
-                    'write_your_comment' => 'Viết bình luận cua bạn',
+                    'write_your_comment' => 'Viết bình luận của bạn',
                     'comment_active' => 'Bình luận của bạn đã được gửi và vui lòng chờ quản trị viên chấp nhận',
                 ],
                 'review' => [
