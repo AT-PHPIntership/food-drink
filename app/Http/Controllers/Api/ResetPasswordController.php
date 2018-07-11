@@ -34,27 +34,6 @@ class ResetPasswordController extends ApiController
     }
 
     /**
-     * Reset the given user's password.
-     *
-     * @param \Illuminate\Contracts\Auth\CanResetPassword $user     user
-     * @param string                                      $password new password
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    protected function resetPassword($user, $password)
-    {
-        $user->password = Hash::make($password);
-
-        $user->setRememberToken(Str::random(60));
-
-        $user->save();
-
-        event(new PasswordReset($user));
-
-        return $this->showOne($user, Response::HTTP_OK);
-    }
-
-    /**
      * Get the response for a successful password reset.
      *
      * @param string $response response lang
