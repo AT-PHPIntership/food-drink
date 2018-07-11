@@ -8,4 +8,7 @@
         'new_password' => 'New Password',
         'confirm_password' => 'Confirm Password',
         'recover_account' => 'Recover Account',
+        'please_wait' => 'Please wait a few seconds!',
+        'please_check_mail' => 'Please check mail!',
+        'forgot_password?' => 'Forgot Password?',
     ];
