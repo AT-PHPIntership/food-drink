@@ -3,13 +3,18 @@
 namespace Tests;
 
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Artisan;
+use App\User;
+use App\UserInfo;
 
 abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
+    use DatabaseMigrations;
     protected $user;
     protected $token;
+
     /**
      * Set up TestCase
      *
@@ -19,12 +24,13 @@ abstract class TestCase extends BaseTestCase
     {
         parent::setUp();
         Artisan::call('passport:install');
-        $this->user = factory('App\User')->create();
-        $this->token = $this->user->createToken('token')->accessToken;
-        factory('App\UserInfo')->create([
+        $this->user = factory(User::class)->create();
+        $this->token =  $this->user->createToken('token')->accessToken;
+        factory(UserInfo::class)->create([
             'user_id' => $this->user->id,
         ]);
     }
+    
     /**
      * Get json response
      *

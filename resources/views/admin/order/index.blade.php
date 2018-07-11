@@ -14,6 +14,7 @@
     @include('admin.layout.message')
     <!-- Main content -->
     <section class="content">
+      <div class="alert-danger" hidden></div>
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
@@ -54,7 +55,9 @@
                       </select>
                     </td>
                     <td>{{ $order->updated_at }}</td>
-                    <td><a href="{{ route('order.show', ['order' => $order->id] )}}"><i class="fa fa-info"></i></a></td>
+                    <td>
+                      <a href="{{ route('order.show', ['order' => $order->id] )}}"><i class="fa fa-info"></i></a>
+                    </td>
                   </tr>
                   @endforeach
               </table>
@@ -63,6 +66,30 @@
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
+        </div>
+      </div>
+      <div class="modal fade" id="note-change-order" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" hidden>
+        <div class="modal-dialog note-cancel-order" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              <h4>{{ __('order.admin.index.write_reason') }}</h4>
+            </div>
+            <div class="modal-body">
+              <form id="demo-form2" class="form-horizontal form-label-left">
+                <div class="form-group">
+                  <div class="col-md-12 col-sm-6 col-xs-12">
+                    <textarea rows="5" id="note" name="note" class="form-control col-md-7 col-xs-12"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-5">
+                    <button type="submit" id="note-change-order-submit" class="btn btn-success">{{ __('order.admin.index.submit') }}</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </section>

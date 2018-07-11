@@ -27,6 +27,13 @@ class Order extends Model
         'address',
     ];
 
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['status_order'];
+
     protected $statusOrder = [
         self::PENDING => 'pending',
         self::ACCEPTED =>'accepted',
@@ -37,13 +44,11 @@ class Order extends Model
     /**
      * Get the order's status.
      *
-     * @param string $status order's status
-     *
      * @return string
      */
-    public function getStatusAttribute($status)
+    public function getStatusOrderAttribute()
     {
-        return $this->statusOrder[$status];
+        return $this->statusOrder[$this->status];
     }
 
     /**
@@ -71,8 +76,8 @@ class Order extends Model
      *
      * @return mixed
      */
-    public function note()
+    public function notes()
     {
-        return $this->hasOne('App\Note');
+        return $this->hasMany('App\Note');
     }
 }

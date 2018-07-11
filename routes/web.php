@@ -18,9 +18,7 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin','middleware' => 'admin'],fu
     ]);
     Route::resource('user', 'UsersController');
     Route::resource('product', 'ProductsController');
-    Route::resource('category', 'CategoriesController')->except([
-        'show'
-    ]);
+    Route::resource('category', 'CategoriesController');
     Route::group(['prefix'=>'post'],function (){
         Route::get('',[
             'uses' => 'PostsController@index',
@@ -39,6 +37,16 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin','middleware' => 'admin'],fu
         'index', 'show'
     ]);
     Route::put('order/{order}/updateStatus', 'OrdersController@updateStatus');
+});
+Route::group(['namespace' => 'Home', 'prefix' => 'password'], function () {
+    Route::get('reset', [
+        'uses' => 'ForgotPasswordController@index',
+        'as' => 'password.forgot'
+    ]);
+    Route::get('reset/{token}', [
+        'uses' => 'ResetPasswordController@index',
+        'as' => 'password.reset'
+    ]);
 });
 Route::group(['prefix' => 'admin'],function (){
     Route::get('login', [
@@ -77,6 +85,7 @@ Route::group(['namespace'=>'User','prefix'=>'/'],function () {
     Route::resource('profile', 'UserController')->only([
         'index'
     ]);
+    Route::get('profile/edit', 'UserController@edit')->name('profile.edit');
     Route::resource('products', 'ProductController')->only([
         'index', 'show'
     ]);
@@ -84,6 +93,6 @@ Route::group(['namespace'=>'User','prefix'=>'/'],function () {
         'index'
     ]);
     Route::resource('orders', 'OrderController')->only([
-        'index', 'create', 'show'
+        'index', 'create', 'show', 'edit'
     ]);
 });

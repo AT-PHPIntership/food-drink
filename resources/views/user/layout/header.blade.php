@@ -32,7 +32,7 @@
         </div>
         <div class="col-xs-9 col-sm-6 col-md-7"> 
           <!-- Search -->
-          @if (!request()->is('user/login'))
+          @if ((!request()->is('user/login')) && (!request()->is('password/reset')))
           <div class="top-search">
             <div id="search">
               <form>
@@ -69,7 +69,6 @@
                   <div class="top-subtotal">{{ __('home.user.header.subtotal') }}<span class="price">{{ __('product.user.money') }}<span class="sub-total">0</span></span></div>
                   <div class="actions">
                     <a href="{{ route('cart.index') }}" class="view-cart"><i class="fa fa-shopping-cart"></i> <span>{{ __('home.user.header.view_cart') }}</span></a>
-                    <a href="{{ route('orders.create') }}" class="btn-checkout" ><i class="fa fa-check"></i><span>{{ __('home.user.header.checkout') }}</span></a>
                   </div>
                 </div>
               </div>

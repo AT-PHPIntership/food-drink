@@ -22,10 +22,6 @@ class loginTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        factory('App\User', 1)->create([
-            'email' => 'admin@test.com',
-            'password' => 'admin'
-        ]);
     }
 
      /**
@@ -82,4 +78,22 @@ class loginTest extends TestCase
             ->assertJsonStructure($this->jsonStructureLoginSuccess());
     }
 
+    /**
+     * Test structure of json response.
+     *
+     * @return void
+     */
+    public function testJsonLoginFail()
+    {
+        $body = [
+            'email' => $this->user->email,
+            'password' => 'wrong password'
+        ];
+        $this->jsonUser('POST', '/api/login', $body, ['Accept' => 'application/json'])
+            ->assertStatus(401)
+            ->assertJsonStructure([
+              'error',
+              'code'
+          ]);
+    }
 }

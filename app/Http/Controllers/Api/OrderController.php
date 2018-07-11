@@ -29,7 +29,7 @@ class OrderController extends ApiController
     public function index(SortOrderRequest $request)
     {
         $user = Auth::user();
-        $orders = Order::with('note')->where('user_id', $user->id)->sortable()->paginate($request->limit);
+        $orders = Order::with('notes')->where('user_id', $user->id)->sortable()->paginate($request->limit);
         $orders->appends(request()->query());
         return $this->successResponse($orders, Response::HTTP_OK);
     }
@@ -37,19 +37,20 @@ class OrderController extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param Order $order order object
+     * @param Order                    $order   order object
+     * @param \Illuminate\Http\Request $request request
      *
      * @return \Illuminate\Http\Response
     */
-    public function show(Order $order)
+    public function show(Order $order, SortOrderRequest $request)
     {
         $user = Auth::user();
-        $order = $order->load('orderDetails');
         $orderDetails = [];
         if ($order->user_id == $user->id) {
-            $orderDetails = $order->orderDetails;
+            $orderDetails = $order->orderDetails()->paginate($request->limit);
+            $orderDetails->appends(request()->query());
         }
-        return $this->showAll($orderDetails, Response::HTTP_OK);
+        return $this->successResponse(['order_details' => $orderDetails, 'order' => $order], Response::HTTP_OK);
     }
 
     /**
@@ -60,11 +61,11 @@ class OrderController extends ApiController
      *
      * @return \Illuminate\Http\Response
     */
-    public function update(Order $order, CreateNoteRequest $request)
+    public function cancel(Order $order, CreateNoteRequest $request)
     {
+        DB::beginTransaction();
         $userId = Auth::id();
         if ($order->user_id == $userId) {
-            DB::beginTransaction();
             try {
                 $order->update([
                     'status' => Order::REJECTED,
@@ -74,8 +75,8 @@ class OrderController extends ApiController
                 $input['content'] = $request->content;
                 Note::create($input);
                 $order->load('note');
-                return $this->successResponse($order, Response::HTTP_OK);
                 DB::commit();
+                return $this->successResponse($order, Response::HTTP_OK);
             } catch (Exception $e) {
                 DB::rollBack();
                 return $this->errorResponse(trans('errors.update_fail'), Response::HTTP_UNPROCESSABLE_ENTITY);
@@ -108,5 +109,51 @@ class OrderController extends ApiController
             ]);
         }
         return $this->showOne($order->load('orderDetails'), Response::HTTP_OK);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \App\Order                          $order   order
+     * @param App\Http\Requests\CreateNoteRequest $request request
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function update(Order $order, CreateOrderRequest $request)
+    {
+        if ($order->status == Order::PENDING) {
+            try {
+                $total = 0;
+                $products = [];
+                DB::beginTransaction();
+                if ($request->product) {
+                    foreach ($request->product as $product) {
+                        $orderDetail = OrderDetail::where('order_id', $order->id)->where('product_id', $product['id'])->first();
+                        if ($orderDetail) {
+                            $orderDetail->update([
+                                'quantity' => $product['quantity'],
+                            ]);
+                            $total += $product['quantity'] * $orderDetail->price;
+                            array_push($products, $product);
+                        }
+                    }
+                    OrderDetail::where('order_id', $order->id)->whereNotIn('product_id', array_pluck($request->product, 'id'))->delete();
+                } else {
+                    $order->update([
+                        "status" => Order::REJECTED,
+                    ]);
+                }
+                $order->update([
+                    "address" => $request->address,
+                    "total" => $total,
+                ]);
+                DB::commit();
+                return $this->showOne($order->load('orderDetails'), Response::HTTP_OK);
+            } catch (Exception $e) {
+                DB::rollBack();
+                return $this->errorResponse(trans('errors.update_fail'), Response::HTTP_UNPROCESSABLE_ENTITY);
+            }
+        }
+        return $this->errorResponse(trans('errors.update_fail'), Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 }

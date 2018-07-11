@@ -17,7 +17,10 @@
                 'pending' => 'Pending',
                 'accepted' => 'Accepted',
                 'rejected' => 'Rejected',
-                'money' => '$'
+                'money' => '$',
+                'write_reason' => 'Please write your reason!',
+                'submit' => 'Submit',
+                'not_successfully' => 'Change status not successfully',
             ],
             'show' => [
                 'title' => 'Show detail order',
@@ -37,27 +40,10 @@
                 'image' => 'Image',
                 'preview' => 'Preview',
                 'date' => 'Date',
-                'list_product' => 'List Product'
-            ],
-            'show' => [
-                'title' => 'Show detail order',
-                'form_title' => 'Show detail',
-                'order' => 'Order',
-                'back' => 'Back',
-                'user_info' => 'User Infomation',
-                'name' => 'Name',
-                'email' => 'Email',
-                'password' => 'Password',
-                'address' => 'Address',
-                'phone' => 'Phone',
-                'avatar' => 'Avatar',
-                'name_product' => 'Name Product',
-                'quantity' => 'Quantity',
-                'total' => 'Total',
-                'image' => 'Image',
-                'preview' => 'Preview',
-                'date' => 'Date',
-                'list_product' => 'List Product'
+                'list_product' => 'List Products',
+                'list_note' => 'List notes',
+                'id' => 'ID',
+                'content' => 'Content',
             ],
         ],
         'user' => [
@@ -85,11 +71,22 @@
                 'complete' => 'Complete',
                 'your_checkout' => 'Your checkout',
                 'checkout' => 'Checkout',
+                'place_delivery' => 'Place of delivery',
             ],
             'show' => [
                 'title' => 'Show Order Detail',
                 'order_detail' => 'Order Detail',
                 'description' => 'Description',
+            ],
+            'cancel' => [
+                'are_your_sure' => 'Are you cancel this order?',
+                'successfully' => 'Canceled order successfully!!!',
+                'not_successfully' => 'Cancel order not successfully!!!',
+                'write_reason' => 'Please write your reason(*)',
+                'send' => 'Send',
+            ],
+            'edit' => [
+                'title' => 'Edit Order',
             ]
         ],
     ];

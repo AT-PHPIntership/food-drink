@@ -52,6 +52,8 @@ class CategoriesController extends Controller
     public function store(CategoryRequests $request)
     {
         try {
+            $parentLevel = Category::find($request->parent_id)->level;
+            $request['level'] = ++$parentLevel;
             Category::create($request->all());
             flash(trans('category.admin.message.success_create'))->success();
         } catch (Exception $e) {
@@ -129,5 +131,19 @@ class CategoriesController extends Controller
             flash(trans('category.admin.message.fail_delete'))->error();
         }
         return redirect()->route('category.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Category $category category object
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function show(Category $category)
+    {
+        $children = $category->children()->with('children')->get();
+        $parentCategories = $category->parentCategories()->with('parentCategories')->get();
+        return view('admin.category.show', compact('children', 'category', 'parentCategories'));
     }
 }

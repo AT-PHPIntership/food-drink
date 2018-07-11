@@ -20,7 +20,7 @@
               <i class="glyphicon glyphicon-lock"></i>*******
               <br />
             <div class="btn-group">
-              <p class="btn btn-primary">User</p>
+              <a href="{{ route('profile.edit') }}" class="btn btn-primary" >{{ __('profile.user.update.edit') }}</a>
             </div>
           </div>
         </div>

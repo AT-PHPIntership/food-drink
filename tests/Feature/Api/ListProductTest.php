@@ -23,20 +23,9 @@ class ListProductTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        factory(Category::class, 'parent', self::NUMBER_RECORD_CREATE)->create();
+        factory(Category::class, 'parent')->create();
         factory(Category::class, self::NUMBER_RECORD_CREATE)->create();
         factory(Product::class, self::NUMBER_RECORD_CREATE)->create();
-    }
-
-    /**
-    * Override function setUp() for make product
-    *
-    * @return void
-    */
-    public function setUpNoData()
-    {
-        parent::setUp();
-        factory(Product::class, 0)->create();
     }
 
     /**
@@ -46,7 +35,6 @@ class ListProductTest extends TestCase
      */
     public function testStatusCodeSuccess()
     {
-        $this->setUp();
         $response = $this->json('GET','/api/products');
         $response->assertStatus(Response::HTTP_OK);
     }
@@ -115,7 +103,6 @@ class ListProductTest extends TestCase
      */
     public function testJsonPaginate()
     {
-        $this->setUp();
         $dataTest = [
             'limit' => 5,
             'page' => 2
@@ -124,19 +111,5 @@ class ListProductTest extends TestCase
         $data = json_decode($response->getContent());
         $this->assertEquals($data->data->current_page, $dataTest['page']);
         $this->assertEquals($data->data->per_page, $dataTest['limit']);
-    }
-
-    /**
-     * Test structure of json when empty products.
-     *
-     * @return void
-     */
-    public function testEmptyProducts()
-    {
-        $this->setUpNoData();
-        $response = $this->json('GET', '/api/products');   
-        $response->assertJson([
-            'data' => []
-        ]);
     }
 }
