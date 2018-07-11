@@ -29,6 +29,9 @@ function itemCart(cartProduct) {
   var htmlUser = '';
   var data_user = JSON.parse(localStorage.getItem('data'));
   $.each(cartProduct, function(index, value) {
+    if (cartProduct[index]['count'] > cartProduct[index]['quantity']) {
+      window.history.go(-1);
+    }
     total = value.count * value.price;
     subTotal += total;
     html += '<tr>\
