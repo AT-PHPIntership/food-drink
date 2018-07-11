@@ -60,7 +60,6 @@ class EditUserTest extends TestCase
     {
         $update = [
             'name' => 'test name',
-            'email' => 'hayes@example.com',
             'password' => '123456',
             'phone' => '02126984'
         ];
@@ -116,7 +115,6 @@ class EditUserTest extends TestCase
     {
         $update = [
             'name' => 'test name',
-            'email' => 'testemail@gmail.com',
             'address' => 'test address',
             'phone' => '0123456789',
             '_method' => 'PUT'

@@ -43,7 +43,7 @@ function sendMail() {
         })
     });
 }
-function resetMail() {
+function resetPassword() {
     $('.recover-form').submit(function(event) {
         event.preventDefault();
         url = '/api/password/reset';
@@ -81,5 +81,5 @@ function resetMail() {
 }
 $(document).ready(function() {
     sendMail();
-    resetMail();
+    resetPassword();
 })
