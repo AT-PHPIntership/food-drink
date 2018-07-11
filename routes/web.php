@@ -85,4 +85,7 @@ Route::group(['namespace'=>'User','prefix'=>'/'],function () {
     Route::resource('orders', 'OrderController')->only([
         'index', 'create', 'show', 'edit'
     ]);
+
+Route::get('redirect/{social}', 'SocialAuthController@redirect')->name('redirect.social');
+Route::get('callback/{social}', 'SocialAuthController@callback')->name('callback.social');
 });
