@@ -23,7 +23,7 @@
                     <div id="validation-address">
 
                     </div>
-                    <a class="button cancel-edit-order" onclick="window.history.go(-1);"><i class="fa fa-arrow-left"> </i> &nbsp; {{ __('order.user.edit.cancel_edit') }}</a>
+                    <a href="{{ route('orders.index') }}" class="button cancel-edit-order"><i class="fa fa-arrow-left"> </i> &nbsp; {{ __('order.user.edit.cancel_edit') }}</a>
                     <button class="button complete" id="edit-order"><i class="fa fa-angle-double-right"></i>&nbsp; <span>{{ __('order.user.create.complete') }}</span></button>
                   </form>  
                 </div>

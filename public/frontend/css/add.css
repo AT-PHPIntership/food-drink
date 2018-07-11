@@ -118,3 +118,9 @@ a.cancel-edit-order:hover {
 .complete {
   float: right;
 }
+.language-currency-wrapper .block-language {
+  padding: 0px 10px !important;
+}
+.quantity-stock {
+  float: left;
+}

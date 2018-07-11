@@ -9,11 +9,12 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Http\Response;
 use App\Category;
 use App\Product;
+use App\Order;
 
-class ListProductTest extends TestCase
+class ListOrderTest extends TestCase
 {
     use DatabaseMigrations;
-    const NUMBER_RECORD_CREATE = 25;
+    const NUMBER_RECORD_CREATE = 8;
 
     /**
     * Override function setUp() for make product
@@ -24,8 +25,8 @@ class ListProductTest extends TestCase
     {
         parent::setUp();
         factory(Category::class, 'parent')->create();
-        factory(Category::class, self::NUMBER_RECORD_CREATE)->create();
         factory(Product::class, self::NUMBER_RECORD_CREATE)->create();
+        factory(Order::class, self::NUMBER_RECORD_CREATE)->create();
     }
 
     /**
@@ -35,7 +36,7 @@ class ListProductTest extends TestCase
      */
     public function testStatusCodeSuccess()
     {
-        $response = $this->json('GET','/api/products');
+        $response = $this->jsonUser('GET','/api/orders');
         $response->assertStatus(Response::HTTP_OK);
     }
 
@@ -44,7 +45,7 @@ class ListProductTest extends TestCase
      *
      * @return array
      */
-    public function jsonStructureShowProduct()
+    public function jsonStructureShowOrders()
     {
         return [
             'meta' => [
@@ -56,30 +57,13 @@ class ListProductTest extends TestCase
                 'data' => [
                     [
                         'id',
-                        'name',
-                        'price',
-                        'quantity',
-                        'category_id',
-                        'preview',
-                        'description',
-                        'avg_rate',
-                        'sum_rate',
-                        'total_rate',
+                        'user_id',
+                        'total',
+                        'total',
+                        'status',
                         'created_at',
                         'updated_at',
-                        'deleted_at',
-                        'category' => [
-                            'id',
-                            'name',
-                            'parent_id',
-                            'created_at',
-                            'updated_at',
-                            'deleted_at',
-                            'level',
-                        ],
-                        'images', [
-                            
-                        ]
+                        'status_order'
                     ],
                 ],
                 'first_page_url',
@@ -97,19 +81,26 @@ class ListProductTest extends TestCase
     }
 
     /**
+     * Test structure code
+     *
+     * @return void
+     */
+    public function testGetOrders()
+    {
+        $this->jsonUser('GET', 'api/orders')
+            ->assertJsonStructure($this->jsonStructureShowOrders());
+    }
+
+    /**
      * Test paginate
      *
      * @return void
      */
     public function testJsonPaginate()
     {
-        $dataTest = [
-            'limit' => 5,
-            'page' => 2
-        ];
-        $response = $this->json('GET', '/api/products?limit=' . $dataTest['limit'] . '&page=' . $dataTest['page'] . '');
+        $response = $this->jsonUser('GET', '/api/orders?limit=5&page=2');
         $data = json_decode($response->getContent());
-        $this->assertEquals($data->data->current_page, $dataTest['page']);
-        $this->assertEquals($data->data->per_page, $dataTest['limit']);
+        $this->assertEquals($data->data->current_page, 2);
+        $this->assertEquals($data->data->per_page, 5);
     }
 }

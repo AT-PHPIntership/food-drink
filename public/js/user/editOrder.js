@@ -1,8 +1,8 @@
 var dataUser = JSON.parse(localStorage.getItem('data'));
-var getOrder;
+var order;
 var arrPathName = location.pathname.split("/");
 var id = arrPathName[2];
-function getUser() {
+function showUser() {
   var html = '';
   $('#name-user').text(dataUser.name);
   $('#email-user').text(dataUser.email);
@@ -15,7 +15,7 @@ function getUser() {
   $('#validation-address').html(html);
 }
 
-function getListOrderDetail() {
+function getDetailOrder() {
   var total = 0;
   var subTotal = 0;
   var show = '';
@@ -25,12 +25,12 @@ function getListOrderDetail() {
     headers: { 'Authorization': 'Bearer '+ localStorage.getItem('access_token') },
     success: function (response){
       var html;
-      getOrder = response.data.order_details.data;
+      order = response.data.order_details.data;
       if (response.data.order.status_order != 'pending') {
         window.location.href = '/';
       }
       $('#address').val(response.data.order.address);
-      $.each(getOrder, function (index, orderDetail) {
+      $.each(order, function (index, orderDetail) {
         total = orderDetail.price * orderDetail.quantity;
         subTotal = subTotal + total;
         html += '<tr id="del-item'+ orderDetail.id +'">\
@@ -44,7 +44,7 @@ function getListOrderDetail() {
       });
       $('#order-detail').html(html);
       $('.sub-total').html(subTotal);
-      $.each(getOrder, function (index, orderDetail) {
+      $.each(order, function (index, orderDetail) {
         changeQuantity(orderDetail.id, orderDetail.price);
         //show validation product
         show += '<span id="'+ index +'_error" class="help-block" hidden>\
@@ -71,8 +71,8 @@ function changeQuantity(id, price) {
 }
 
 $(document).ready(function() {
-  getUser();
-  getListOrderDetail();
+  showUser();
+  getDetailOrder();
   $(document).on('click', '.del-item-cart', function(event) {
     event.preventDefault();
     var id = $(this).data("id");
@@ -86,7 +86,7 @@ $(document).ready(function() {
     event.preventDefault();
     var data = [];
     var orderDetailData;
-    getOrder.forEach(order => {
+    order.forEach(order => {
       orderDetailData = {};
       var quantity = $('#quantity'+ order.id).val();
       if (quantity > 0) {
