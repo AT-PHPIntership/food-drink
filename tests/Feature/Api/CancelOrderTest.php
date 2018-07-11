@@ -13,6 +13,9 @@ use App\Order;
 class CancelOrderTest extends TestCase
 {
     use DatabaseMigrations;
+
+    protected $order;
+
     /**
      * Set up order
      *
@@ -21,7 +24,7 @@ class CancelOrderTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        factory(Order::class)->create([
+        $this->order = factory(Order::class)->create([
             'status' => Order::PENDING,
         ]);
     }
@@ -71,7 +74,7 @@ class CancelOrderTest extends TestCase
         $cancel = [
             'content' => 'test'
         ];
-        $response = $this->jsonUser('PUT', '/api/orders/1/cancel', $cancel);
+        $response = $this->jsonUser('PUT', '/api/orders/'. $this->order->id .'/cancel', $cancel);
         $response->assertJsonStructure($this->jsonStructureCancelOrder());
         $response->assertStatus(Response::HTTP_OK);
     }
@@ -86,7 +89,7 @@ class CancelOrderTest extends TestCase
         $cancel = [
             'content' => 'test'
         ];
-        $response = $this->jsonUser('PUT', 'api/orders/1/cancel', $cancel);
+        $response = $this->jsonUser('PUT', 'api/orders/'. $this->order->id .'/cancel', $cancel);
         $data = json_decode($response->getContent());
         $arrayOrder = [
             'id' => $data->data->id,
