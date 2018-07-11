@@ -4,11 +4,11 @@ $( document ).ready(function() {
     $('.links .login').hide();
     $('.links .register').hide();
     $('.please-login').hide();
+    $('.actions .login').hide();
   } else {
-    $('.links .myaccount').hide();
-    $('.links .logout').hide();
-    $('.links .history-order').hide();
+    $('.language-currency-wrapper').hide();
     $('.cart_navigation .checkout-btn').hide();
+    $('.actions .add-order').hide();
     window.location.host;
   }
   

@@ -17,4 +17,6 @@
         'close' => ').',
         'number_product' => '(Number of products currently in stock: ',
         'please_login' => 'Please login to checkout',
+        'quantity_stock' => 'Your cart has exceeded the quantity in stock',
+        'login' => 'Login'
     ];
