@@ -8,4 +8,7 @@
         'new_password' => 'Mật khẩu mới',
         'confirm_password' => 'Xác nhận mật khẩu',
         'recover_account' => 'Phục hồi tài khoản',
+        'please_wait' => 'Vui lòng đợi vài giây!',
+        'please_check_mail' => 'Vui lòng kiểm tra mail!',
+        'forgot_password?' => 'Quên mật khẩu?',
     ];

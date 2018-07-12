@@ -17,10 +17,9 @@
               <strong class="text-danger" id="login-error"></strong>
             </span>
             <label class=" inline" for="session_remember_me">
-              <input name="" type="hidden" value="0" /><input type="checkbox" value="1" name="" id="session_remember_me" />
-              <span>{{__('login.user.remember_me')}}</span>
+              <a href="{{route('password.forgot')}}"><span>{{__('forgot-password.forgot_password?')}}</span></a>
             </label>
-            <input type="submit" name="commit" value="Log in" class="button" data-disable-with="Log in" />
+            <input type="submit" name="commit" value="{{ __('login.user.login') }}" class="button" data-disable-with="Log in" />
             <p class="forgot-pass">
               <a href="#">{{__('login.user.register')}}</a>
             </p>

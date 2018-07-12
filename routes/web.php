@@ -38,16 +38,6 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin','middleware' => 'admin'],fu
     ]);
     Route::put('order/{order}/updateStatus', 'OrdersController@updateStatus');
 });
-Route::group(['namespace' => 'Home', 'prefix' => 'password'], function () {
-    Route::get('reset', [
-        'uses' => 'ForgotPasswordController@index',
-        'as' => 'password.forgot'
-    ]);
-    Route::get('reset/{token}', [
-        'uses' => 'ResetPasswordController@index',
-        'as' => 'password.reset'
-    ]);
-});
 Route::group(['prefix' => 'admin'],function (){
     Route::get('login', [
         'uses' => 'Auth\LoginController@showLoginForm',
@@ -67,36 +57,50 @@ Route::get('/api-docs', function () {
 Route::get('/api-doc-builders', function () {
     return view('api-docs-builders.index');
 });
-Route::group(['namespace' => 'Home','prefix' => 'user'], function (){
-    Route::get('login', [
-        'uses' => 'LoginController@index',
-        'as' => 'user.login'
-    ]);
-    Route::resource('register', 'RegisterController')->only([
-        'index'
-    ]);
+Route::middleware('locale')->group(function (){
+    //forget password
+    Route::group(['namespace' => 'Home', 'prefix' => 'password'], function () {
+        Route::get('reset', [
+            'uses' => 'ForgotPasswordController@index',
+            'as' => 'password.forgot'
+        ]);
+        Route::get('reset/{token}', [
+            'uses' => 'ResetPasswordController@index',
+            'as' => 'password.reset'
+        ]);
+    });
+    //login user
+    Route::group(['namespace' => 'Home','prefix' => 'user'], function (){
+        Route::get('login', [
+            'uses' => 'LoginController@index',
+            'as' => 'user.login'
+        ]);
+        Route::resource('register', 'RegisterController')->only([
+            'index'
+        ]);
+    });
+    //frontend
+    Route::group(['namespace'=>'User','prefix'=>'/'],function () {
+        Route::get('',[
+            'uses'=>'HomeController@index',
+            'as'=>'user'
+        ]);
+        Route::resource('profile', 'UserController')->only([
+            'index'
+        ]);
+        Route::get('profile/edit', 'UserController@edit')->name('profile.edit');
+        Route::resource('products', 'ProductController')->only([
+            'index', 'show'
+        ]);
+        Route::resource('cart', 'CartController')->only([
+            'index'
+        ]);
+        Route::resource('orders', 'OrderController')->only([
+            'index', 'create', 'show', 'edit'
+        ]);
+        Route::get('/locale/{locale}', function ($locale) {
+            session(['locale' => $locale]);
+            return response()->json(['locale' => session('locale')], 200);
+        })->name('locale');
+    });
 });
-//frontend
-Route::group(['namespace'=>'User','prefix'=>'/'],function () {
-    Route::get('',[
-        'uses'=>'HomeController@index',
-        'as'=>'user'
-    ]);
-    Route::resource('profile', 'UserController')->only([
-        'index'
-    ]);
-    Route::get('profile/edit', 'UserController@edit')->name('profile.edit');
-    Route::resource('products', 'ProductController')->only([
-        'index', 'show'
-    ]);
-    Route::resource('cart', 'CartController')->only([
-        'index'
-    ]);
-    Route::resource('orders', 'OrderController')->only([
-        'index', 'create', 'show', 'edit'
-    ]);
-});
-Route::get('/locale/{locale}', function ($locale) {
-    session(['locale' => $locale]);
-    return response()->json(['locale' => session('locale')], 200);
-})->name('locale');
