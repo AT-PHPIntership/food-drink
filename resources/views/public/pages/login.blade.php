@@ -19,7 +19,7 @@
             <label class=" inline" for="session_remember_me">
               <a href="{{route('password.forgot')}}"><span>{{__('forgot-password.forgot_password?')}}</span></a>
             </label>
-            <input type="submit" name="commit" value="Log in" class="button" data-disable-with="Log in" />
+            <input type="submit" name="commit" value="{{ __('login.user.login') }}" class="button" data-disable-with="Log in" />
             <p class="forgot-pass">
               <a href="#">{{__('login.user.register')}}</a>
             </p>

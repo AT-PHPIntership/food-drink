@@ -4,14 +4,14 @@
     <div class="header-top">
       <div class="container">
         <div class="row">
-          <div class="col-lg-4 col-sm-4 col-md-5 hidden-xs"> 
+          <div class="col-lg-4 col-sm-4 col-md-5 hidden-xs header-left"> 
             <!-- Default Welcome Message -->
             <div class="welcome-msg ">{{ __('home.user.header.welcome') }}</div>
             <span class="phone hidden-sm">{{ __('home.user.header.call_us') }}</span>
           </div>
           
           <!-- top links -->
-          <div class="headerlinkmenu col-lg-8 col-md-7 col-sm-8 col-xs-12">
+          <div class="headerlinkmenu col-lg-8 col-md-7 col-sm-8 col-xs-12 header-right">
             <div class="links">
               <div class="login"><a href="{{ route('user.login') }}"><i class="fa fa-unlock-alt"></i><span class="hidden-xs">{{ __('home.user.header.log_in') }}</span></a></div>
               <div class="register"><a href="{{ route('register.index') }}"><i class="fa fa-user-plus"></i><span class="hidden-xs">{{ __('home.user.header.register') }}</span></a></div>
@@ -34,8 +34,8 @@
                 <div class="block block-language form-language">
                   <div class="lg-cur"> <span> <i class="fa fa-language"></i><span class="lg-fr">&nbsp; {{ __('home.user.header.language') }}</span> <i class="fa fa-angle-down"></i> </span> </div>
                   <ul>
-                    <li> <a href="#"> <img src="{{ asset('frontend/images/flag-english.jpg') }}" alt="flag"> <span>{{ __('home.user.header.english') }}</span> </a> </li>
-                    <li> <a class="selected" href="#"> <img src="{{ asset('frontend/images/flag-vietnam.png') }}" alt="flag"> <span>{{ __('home.user.header.vietnam') }}</span> </a> </li>
+                    <li> <a href="{{ route('locale', ['locale' => 'en']) }}" class="locale"> <img src="{{ asset('frontend/images/flag-english.jpg') }}" alt="flag"> <span>{{ __('home.user.header.english') }}</span> </a> </li>
+                    <li> <a href="{{ route('locale', ['locale' => 'vi']) }}" class="locale"> <img src="{{ asset('frontend/images/flag-vietnam.png') }}" alt="flag"> <span>{{ __('home.user.header.vietnam') }}</span> </a> </li>
                   </ul>
                 </div>
               </div> 
@@ -76,8 +76,7 @@
                 <div class="cart-icon"><i class="fa fa-shopping-cart"></i></div>
                 <div class="shoppingcart-inner hidden-xs">
                   <span class="cart-title">{{ __('home.user.header.cart') }}</span>
-                  <span id="number-item">0</span>
-                  <span class="cart-total">{{ __('home.user.header.items') }}</span>
+                  (<span id="number-item">0</span>)
                 </div>
                 </a>
               </div>
