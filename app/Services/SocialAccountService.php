@@ -27,14 +27,14 @@ class SocialAccountService
                 'name' => $providerUser->name,
                 'email' => $providerUser->email,
                 'provider_user_id' => $providerUser->id,
-                'provider' => $social,         
+                'provider' => $social,
             ]);
             UserInfo::create([
                 'user_id' =>$user->id,
-                'avatar' => UserInfo::avatarDefault,       
+                'avatar' => UserInfo::avatarDefault,
             ]);
             $data['token'] = $user->createToken('token')->accessToken;
-            $data['user'] = $user->load('userInfo');            
+            $data['user'] = $user->load('userInfo');
         }
         return $data;
     }

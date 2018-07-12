@@ -9,7 +9,7 @@ class UserInfo extends Model
 {
     use SoftDeletes;
 
-    const avatarDefault = 'default-user-avatar.png';
+    const AVATAR_DEFAULT = 'default-user-avatar.png';
     
     protected $fillable = [
         'user_id',

@@ -21,7 +21,7 @@
               <span>{{__('login.user.remember_me')}}</span>
             </label>
             <input type="submit" name="commit" value="Log in" class="button" data-disable-with="Log in" />
-            <a href="{{ route('redirect.social', ['social' => 'facebook']) }}">FB Login</a>
+            <a href="{{ route('redirect.social', ['social' => 'facebook']) }}">{{ __('login.user.login_fb') }}</a>
             <p class="forgot-pass">
               <a href="#">{{__('login.user.register')}}</a>
             </p>
