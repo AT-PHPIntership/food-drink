@@ -92,3 +92,9 @@
 .cancel-order {
   cursor: pointer;
 }
+.language-currency-wrapper .block.block-language {
+  padding: 0px 10px !important;
+}
+.quantity-stock {
+  float: left;
+}

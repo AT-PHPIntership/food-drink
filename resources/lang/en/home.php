@@ -15,6 +15,7 @@
         'user' => [
             'title' => 'Food & Drink',
             'title_edit_user' => 'Edit User',
+            'title_forgot' => 'Forgot Password',
             'header' => [
                 'welcome' => 'Welcome to Food & drink!',
                 'call_us' => 'Call Us: +123.456.789',
@@ -30,6 +31,9 @@
                 'register' => 'Register',
                 'log_out' => 'Log Out',
                 'history_order' => 'History orders',
+                'language' => 'Language',
+                'english' => 'English',
+                'vietnam' => 'Vietnamese',
             ],
             'nav' => [
                 'shop_food_drink' => 'Shop Foods and Drinks',
