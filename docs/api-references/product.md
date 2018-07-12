@@ -468,3 +468,77 @@ Get product
     }
 }
 ```
+### `GET` Recommend Products
+```
+/api/products/recommend
+```
+Get list recommend products
+
+#### Request Headers
+| Key | Value |
+|---|---|
+|Accept|application/json
+
+#### Query Param
+| Key | Value | Description |
+|---|---|---|
+| product_id | int | Get list recommend Products (require) |
+| category_id | int | id of category |
+| price | int | price recommend product |
+
+##### Example
+| URL | Description |
+|---|---|
+| /api/products/recommend?product_id=1 | Get list recommend Products with product id 1 |
+| /api/products/recommend?price=1000&category_id=1 | Get list recommend Products in price >= 1000 with Id 1 |
+
+####  Response Filter Product By Name
+```json
+{
+    "meta": {
+        "status": "Successfully",
+        "code": 200
+    },
+    "data": {
+        "current_page": 1,
+        "data": [
+            {
+                "id": 1,
+                "name": "Dr. Jared Kris",
+                "price": "92.00",
+                "quantity": 3,
+                "category_id": 7,
+                "preview": "Quidem in quis sequi. Aut ut quis in reprehenderit. Quis repellat deserunt officiis aliquam voluptas non et.",
+                "description": "Voluptas in natus maxime aut qui. Dolore doloribus fuga ea voluptatem pariatur.",
+                "avg_rate": 4,
+                "sum_rate": 17,
+                "total_rate": 19,
+                "category": {
+                    "id": 7,
+                    "name": "Beer",
+                    "parent_id": 2,
+                    "level": 1
+                },
+                "images": [
+                    {
+                        "id": 6,
+                        "image": "default-product.jpg",
+                        "product_id": 1,
+                        "image_url": "http://192.168.33.10/images/products/default-product.jpg"
+                    }
+                ]
+            }
+        ],
+        "first_page_url": "http://192.168.33.10/api/products?page=1",
+        "from": 1,
+        "last_page": 1,
+        "last_page_url": "http://192.168.33.10/api/products?page=1",
+        "next_page_url": null,
+        "path": "http://192.168.33.10/api/products",
+        "per_page": 15,
+        "prev_page_url": null,
+        "to": 1,
+        "total": 1
+    }
+}
+``` 
