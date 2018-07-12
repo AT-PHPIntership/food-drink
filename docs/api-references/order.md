@@ -279,14 +279,24 @@ Update order
         "updated_at": "1997-02-01 12:35:02",
         "deleted_at": null,
         "status": "rejected",
-        "note": {
-            "id": 6,
-            "user_id": 1,
-            "order_id": 4,
-            "content": "asaasdasdasdasd",
-            "created_at": "2018-07-05 02:30:45",
-            "updated_at": "2018-07-05 02:30:45"
-        }
+        "notes": [
+            {
+                "id": 6,
+                "user_id": 1,
+                "order_id": 4,
+                "content": "asaasdasdasdasd",
+                "created_at": "2018-07-05 02:30:45",
+                "updated_at": "2018-07-05 02:30:45"
+            },
+            {
+                "id": 6,
+                "user_id": 1,
+                "order_id": 4,
+                "content": "asaasdasdasdasd",
+                "created_at": "2018-07-05 02:30:45",
+                "updated_at": "2018-07-05 02:30:45"
+            },
+        ]
     }
 ```
 ### `PUT` Update Order And Order_Detail
