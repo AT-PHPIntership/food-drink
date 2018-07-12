@@ -85,6 +85,17 @@ class User extends Authenticatable
         return $this->hasMany('App\Note');
     }
 
+
+    /**
+     * User Has Many Shippings
+     *
+     * @return mixed
+     */
+    public function shippings()
+    {
+        return $this->hasMany('App\Shipping');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

@@ -112,3 +112,12 @@ $factory->define(App\Note::class, function (Faker $faker) {
         'updated_at' => $faker->dateTime,
     ];
 });
+$factory->define(App\Shipping::class, function (Faker $faker) {
+    return [
+        'user_id' => $faker->randomElement(App\User::pluck('id')->toArray()),
+        'address_default' => $faker->text,
+        'default' => 0,
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+    ];
+});
