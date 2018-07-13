@@ -505,7 +505,6 @@ Get list recommend products
         "status": "Successfully",
         "code": 200
     },
-    "current_page": 1,
     "data": [
         {
             "id": 1,
@@ -534,7 +533,8 @@ Get list recommend products
             ],
         }
     ],
-    "first_page_url": "https://food-drink.com/api/recommendations?limit=3&page=1",
+    "paginate": {
+        "first_page_url": "https://food-drink.com/api/recommendations?limit=3&page=1",
         "from": 1,
         "last_page": 7,
         "last_page_url": "https://food-drink.com/api/recommendations?limit=3&page=7",
@@ -543,6 +543,8 @@ Get list recommend products
         "per_page": "3",
         "prev_page_url": null,
         "to": 3,
-        "total": 20
+        "total": 20,
+        "current_page": 1,
+    }
 }
 ``` 
