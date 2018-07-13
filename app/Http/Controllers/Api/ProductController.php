@@ -10,9 +10,12 @@ use App\Http\Requests\Api\SortApiProductRequest;
 use App\Http\Requests\Api\SortApiPostRequest;
 use Symfony\Component\HttpFoundation\Response;
 use App\Post;
+use App\Category;
+use App\Traits\FillterTrait;
 
 class ProductController extends ApiController
 {
+    use FillterTrait;
     /**
      * Display a doc of the resource.
      *
@@ -22,6 +25,7 @@ class ProductController extends ApiController
      */
     public function index(SortApiProductRequest $request)
     {
+        $categories_id = $this->ArryCategory($request);
         $products = Product::with('category', 'images')
                     ->when(isset($request->min_price) && isset($request->max_price), function ($query) use ($request) {
                         $query->where('price', '>=', $request->min_price);
@@ -33,9 +37,9 @@ class ProductController extends ApiController
                     ->when(isset($request->name), function ($query) use ($request) {
                         return $query->where('name', 'like', '%'.$request->name.'%');
                     })
-                    ->when(isset($request->category), function ($query) use ($request) {
-                        return $query->whereHas('category', function ($query) use ($request) {
-                            $query->where('id', $request->category);
+                    ->when(isset($request->category), function ($query) use ($request,  $categories_id) {
+                        return $query->whereHas('category', function ($query) use ($request, $categories_id) {
+                            $query->whereIn('id', $categories_id);
                         });
                     })->sortable()->paginate($request->limit);
         $products->appends(request()->query());
