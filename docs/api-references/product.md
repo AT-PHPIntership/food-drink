@@ -470,7 +470,7 @@ Get product
 ```
 ### `GET` Recommend Products
 ```
-/api/products/recommend
+/api/recommendations
 ```
 Get list recommend products
 
@@ -485,14 +485,17 @@ Get list recommend products
 | product_id | int | Get list recommend Products (require) |
 | category_id | int | id of category |
 | price | int | price recommend product |
+| rate | int | rate recommend product |
+| limit | int | limit recommend product |
+
 
 ##### Example
 | URL | Description |
 |---|---|
-| /api/products/recommend?product_id=1 | Get list recommend Products with product id 1 |
-| /api/products/recommend?price=1000&category_id=1 | Get list recommend Products in price >= 1000 with Id 1 |
-| /api/products/recommend?rate=5| Get List Rate = 5 |
-| /api/products/recommend?limit=5| Get List limit 5 products |
+| /api/recommendations?product_id=1 | Get list recommend Products with product id 1 |
+| /api/recommendations?price=1000&category_id=1 | Get list recommend Products in price >= 1000 with Id 1 |
+| /api/recommendations?rate=5| Get List Rate = 5 |
+| /api/recommendations?limit=5| Get List limit 5 products |
 
 
 ####  Response Filter Product By Name
@@ -502,6 +505,7 @@ Get list recommend products
         "status": "Successfully",
         "code": 200
     },
+    "current_page": 1,
     "data": [
         {
             "id": 1,
@@ -529,6 +533,16 @@ Get list recommend products
                 }
             ],
         }
-    ]
+    ],
+    "first_page_url": "https://food-drink.com/api/recommendations?limit=3&page=1",
+        "from": 1,
+        "last_page": 7,
+        "last_page_url": "https://food-drink.com/api/recommendations?limit=3&page=7",
+        "next_page_url": "https://food-drink.com/api/recommendations?limit=3&page=2",
+        "path": "https://food-drink.com/api/recommendations",
+        "per_page": "3",
+        "prev_page_url": null,
+        "to": 3,
+        "total": 20
 }
 ``` 
