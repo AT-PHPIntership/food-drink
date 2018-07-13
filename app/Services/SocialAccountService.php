@@ -18,24 +18,21 @@ class SocialAccountService
      */
     public static function createOrGetUser(ProviderUser $providerUser, $social)
     {
-        $userGet = User::where('provider_user_id', $providerUser->id)->first();
-        if ($userGet) {
-            $data['token'] = $userGet->createToken('token')->accessToken;
-            $data['user'] = $userGet->load('userInfo');
-        } else {
+        $user = User::where('provider_user_id', $providerUser->id)->first();
+        if (!$user) {
             $user = User::create([
                 'name' => $providerUser->name,
                 'email' => $providerUser->email,
                 'provider_user_id' => $providerUser->id,
                 'provider' => $social,
             ]);
-            UserInfo::create([
+            $user->userInfo()->create([
                 'user_id' =>$user->id,
-                'avatar' => UserInfo::avatarDefault,
+                'avatar' => UserInfo::AVATAR_DEFAULT,
             ]);
-            $data['token'] = $user->createToken('token')->accessToken;
-            $data['user'] = $user->load('userInfo');
         }
+        $data['token'] = $user->createToken('token')->accessToken;
+        $data['user'] = $user->load('userInfo');
         return $data;
     }
 }
