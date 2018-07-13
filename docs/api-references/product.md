@@ -491,6 +491,9 @@ Get list recommend products
 |---|---|
 | /api/products/recommend?product_id=1 | Get list recommend Products with product id 1 |
 | /api/products/recommend?price=1000&category_id=1 | Get list recommend Products in price >= 1000 with Id 1 |
+| /api/products/recommend?rate=5| Get List Rate = 5 |
+| /api/products/recommend?limit=5| Get List limit 5 products |
+
 
 ####  Response Filter Product By Name
 ```json
@@ -499,35 +502,33 @@ Get list recommend products
         "status": "Successfully",
         "code": 200
     },
-    "data": {
-        "data": [
-            {
-                "id": 1,
-                "name": "Dr. Jared Kris",
-                "price": "92.00",
-                "quantity": 3,
-                "category_id": 7,
-                "preview": "Quidem in quis sequi. Aut ut quis in reprehenderit. Quis repellat deserunt officiis aliquam voluptas non et.",
-                "description": "Voluptas in natus maxime aut qui. Dolore doloribus fuga ea voluptatem pariatur.",
-                "avg_rate": 4,
-                "sum_rate": 17,
-                "total_rate": 19,
-                "category": {
-                    "id": 7,
-                    "name": "Beer",
-                    "parent_id": 2,
-                    "level": 1
-                },
-                "images": [
-                    {
-                        "id": 6,
-                        "image": "default-product.jpg",
-                        "product_id": 1,
-                        "image_url": "http://192.168.33.10/images/products/default-product.jpg"
-                    }
-                ]
-            }
-        ],
-    }
+    "data": [
+        {
+            "id": 1,
+            "name": "Dr. Jared Kris",
+            "price": "92.00",
+            "quantity": 3,
+            "category_id": 7,
+            "preview": "Quidem in quis sequi. Aut ut quis in reprehenderit. Quis repellat deserunt officiis aliquam voluptas non et.",
+            "description": "Voluptas in natus maxime aut qui. Dolore doloribus fuga ea voluptatem pariatur.",
+            "avg_rate": 4,
+            "sum_rate": 17,
+            "total_rate": 19,
+            "category": {
+                "id": 7,
+                "name": "Beer",
+                "parent_id": 2,
+                "level": 1
+            },
+            "images": [
+                {
+                    "id": 6,
+                    "image": "default-product.jpg",
+                    "product_id": 1,
+                    "image_url": "http://192.168.33.10/images/products/default-product.jpg"
+                }
+            ],
+        }
+    ]
 }
 ``` 
