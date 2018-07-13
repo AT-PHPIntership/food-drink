@@ -11,8 +11,7 @@ class Shipping extends Model
 
     protected $fillable = [
         'user_id',
-        'address_shipping',
-        'default'
+        'address',
     ];
 
     /**
@@ -22,6 +21,6 @@ class Shipping extends Model
      */
     public function users()
     {
-        return $this->hasMany('App\User');
+        return $this->belongsTo('App\User');
     }
 }

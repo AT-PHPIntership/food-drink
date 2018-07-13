@@ -19,8 +19,7 @@ class CreateShippingsTable extends Migration
             $table->foreign('user_id')
                     ->references('id')->on('users')
                     ->onDelete('cascade');
-            $table->string('address_shipping');
-            $table->tinyInteger('default');
+            $table->string('address');
             $table->timestamps();
             $table->softDeletes();
         });
