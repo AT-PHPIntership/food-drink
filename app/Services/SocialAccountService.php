@@ -27,7 +27,6 @@ class SocialAccountService
                 'provider' => $social,
             ]);
             $user->userInfo()->create([
-                'user_id' =>$user->id,
                 'avatar' => UserInfo::AVATAR_DEFAULT,
             ]);
         }
