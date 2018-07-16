@@ -32,6 +32,20 @@ class UsersController extends Controller
         $users = $users->sortable()->paginate(config('define.number_pages'));
         return view('admin.user.index', compact('users'));
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param User $user User object
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function show(User $user)
+    {
+        $user->load('userInfo', 'shippings');
+        return view('admin.user.show', compact('user'));
+    }
+
     /**
      * Show the form for creating a new data.
      *
