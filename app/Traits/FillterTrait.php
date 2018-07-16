@@ -22,7 +22,7 @@ trait FillterTrait
         foreach ($categoryRelation as $key => $value) {
             array_push($categoriesId, $value->id);
             foreach ($value->children as $key => $value) {
-                    array_push($categoriesId, $value->id);
+                array_push($categoriesId, $value->id);
             }
         }
         return $categoriesId;
