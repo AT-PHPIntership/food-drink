@@ -8,7 +8,7 @@ use Kyslik\ColumnSortable\Sortable;
 class Order extends Model
 {
     use Sortable;
-    const ACCEPTED = 2;
+    const ACCEPTED = 2, RECEIVED = 5;
     const PENDING = 1;
     const REJECTED = 3;
     const LATEST_ORDERS = 7;
@@ -16,14 +16,40 @@ class Order extends Model
     public $sortable = [
         'id',
         'total',
-        'updated_at'
+        'updated_at',
+        'created_at'
     ];
     
     protected $fillable=[
         'user_id',
         'total',
         'status',
+        'address',
     ];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['status_order'];
+
+    protected $statusOrder = [
+        self::PENDING => 'pending',
+        self::ACCEPTED =>'accepted',
+        self::REJECTED =>'rejected',
+        self::RECEIVED => 'received',
+    ];
+
+    /**
+     * Get the order's status.
+     *
+     * @return string
+     */
+    public function getStatusOrderAttribute()
+    {
+        return $this->statusOrder[$this->status];
+    }
 
     /**
      * Order Belong To User
@@ -43,5 +69,15 @@ class Order extends Model
     public function orderDetails()
     {
         return $this->hasMany('App\OrderDetail');
+    }
+
+    /**
+     * Order Belong To Note
+     *
+     * @return mixed
+     */
+    public function notes()
+    {
+        return $this->hasMany('App\Note');
     }
 }

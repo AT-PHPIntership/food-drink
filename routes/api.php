@@ -28,9 +28,20 @@ Route::group(['namespace' => 'Api'], function () {
     Route::group(['middleware'=>'auth:api'], function () {
         Route::get('profile', 'ProfileController@show');
         Route::post('logout', 'LoginController@logout');
+        Route::apiResource('orders', 'OrderController')->only([
+            'index', 'show', 'store', 'update'
+        ]);
         Route::apiResource('posts', 'PostController')->only([
             'destroy'
         ]);
+        Route::post('products/{product}/posts', 'PostController@store');
+        Route::put('profile', 'ProfileController@update');
+        Route::put('orders/{order}/cancel', 'OrderController@cancel');
     });
     Route::get('products/{product}/posts', 'ProductController@getPosts');
+    Route::post('register', 'RegisterController@register');    
+    Route::group(['prefix' => 'password'], function() {
+        Route::post('email', 'ForgotPasswordController@sendResetLinkEmail');
+        Route::post('reset', 'ResetPasswordController@reset');
+    });
 });

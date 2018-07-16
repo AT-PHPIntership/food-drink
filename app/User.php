@@ -42,7 +42,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'prodvider',
         'deleted_at',
+        'provider_user_id',
     ];
 
     /**
@@ -73,6 +75,27 @@ class User extends Authenticatable
     public function orders()
     {
         return $this->hasMany('App\Order');
+    }
+
+    /**
+     * User Has Many Notes
+     *
+     * @return mixed
+     */
+    public function notes()
+    {
+        return $this->hasMany('App\Note');
+    }
+
+
+    /**
+     * User Has Many Shippings
+     *
+     * @return mixed
+     */
+    public function shippings()
+    {
+        return $this->hasMany('App\Shipping');
     }
 
     /**

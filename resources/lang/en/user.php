@@ -48,7 +48,8 @@
                 'enter_password' => 'Enter Password',
                 'enter_address' => 'Enter Address',
                 'enter_phone' => 'Enter Phone',
-                'enter_avatar' => 'Enter Avatar'
+                'enter_avatar' => 'Enter Avatar',
+                'create_user' => 'Create User',
             ],
             'message' => [
                 'success' => 'Successfully deleted the user!',
@@ -56,5 +57,22 @@
                 'success_update' => 'Successfully updated the user!',
                 'cancel' => 'can not delete admin',
             ],
+            'register' => [
+                'register' => 'Register',
+                'label_register' => 'Create your very own account',
+                'ship' => 'Can Be Overlooked',
+            ],
+        ],
+        'user' => [
+            'profile' => [
+                'title' => 'Your Profile',
+                'profile' => 'Your profile',
+                'name' => 'Name:',
+                'email' => 'Email:',
+                'phone' => 'Phone:',
+                'home_address' => 'Home address:',
+                'shipping_address' => 'Shipping address:',
+
+            ]
         ]
     ];

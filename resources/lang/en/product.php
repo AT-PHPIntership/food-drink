@@ -66,9 +66,39 @@
         'user' => [
             'add_to_cart' => 'Add to Cart',
             'money' => '$',
+            'next' => 'Next',
+            'prev' => 'Prev',
             'filter' => [
-                'title' => 'Filter Product',
+                'title' => 'Show All Product',
                 'list_product' => 'List Product',
+            ],
+            'product' => [
+                'list_product' => 'List Product',
+                'product_detail' => 'Product Detail',
+                'rate' => 'Rate',
+                'quick_view' => 'QUICK OVERVIEW',
+                'quantity' => 'Quantity',
+            ],
+            'detail' => [
+                'description' => 'Description',
+                'error_message' => [
+                    401 => 'You need login to continue',
+                    405 => 'You need to purchase to review',
+                ],
+                'comment' => [
+                    'comments' => 'Comments',
+                    'comment' => 'Comment',
+                    'write_your_comment' => 'Write Your Own Comment',
+                    'comment_active' => 'Your comment sended and please admin active',
+                ],
+                'review' => [
+                    'reviews' => 'Reviews',
+                    'review' => 'Review',
+                    'write_your_review' => 'Write Your Own Review',
+                    'star' => 'star',
+                    'stars' => 'stars',
+                    'review_active' => 'Your review sended and please admin active',
+                ]
             ]
         ]
     ];

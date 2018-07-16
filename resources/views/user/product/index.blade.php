@@ -1,5 +1,5 @@
 @extends('user.layout.master')
-@section('title', __('product.user.filter.title'))
+@section('title', __('product.user.product.list_product'))
 @section('content')
   <!-- Main Container -->
   <div class="main-container col2-left-layout">
@@ -15,13 +15,9 @@
    
               </ul>
             </div>
-            <div class="pagination-area ">
-              <ul>
-                <li><a class="active" href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-              </ul>
+            <div class="pagination-area">
+              <a id="next"><span>{{ __('product.user.next') }} <i class="fa fa-forward"></i></span></a>
+              <a id="prev"><span> <i class="fa fa-backward"></i> {{ __('product.user.prev') }}</span></a>
             </div>
           </div>
         </div>
@@ -31,5 +27,5 @@
   </div>
 @endsection
 @section('scripts')
-<script src="{{ asset('js/showListProducts.js') }}"></script>
+  <script src="{{ asset('js/user/showListProducts.js') }}"></script>
 @endsection

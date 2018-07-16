@@ -38,7 +38,7 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputRole">{{__('order.admin.show.address')}}</label>
-                  <input type="text" class="form-control" disabled name="address" value="{{ $order->orderDetails->first()->address }}">
+                  <input type="text" class="form-control" disabled name="address" value="{{ $order->address }}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputRole">{{__('order.admin.show.phone')}}</label>
@@ -46,6 +46,25 @@
                 </div>    
               </div>
             </form>
+            @if (count($order->notes))
+              <div class="box-header with-border list-product">
+                <h3 class="box-title">{{ __('order.admin.show.list_note') }}</h3>
+              </div>
+              <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+                  <tr>
+                    <th>{{ __('order.admin.show.id') }}</th>
+                    <th>{{ __('order.admin.show.content') }}</th>
+                  </tr>
+                    @foreach ($order->notes as $note)
+                    <tr>
+                      <td>{{ $note->id }}</td>
+                      <td>{{ $note->content }}</td>
+                    </tr>
+                    @endforeach
+                </table>
+              </div>
+            @endif
             <!-- form start -->
             <div class="box-header with-border list-product">
               <h3 class="box-title">{{__('order.admin.show.list_product')}}</h3>
@@ -57,7 +76,6 @@
                   <th>{{__('order.admin.show.quantity')}}</th>
                   <th>{{__('order.admin.show.total')}}</th>
                   <th>{{__('order.admin.show.image')}}</th>
-                  <th>{{__('order.admin.show.preview')}}</th>
                   <th>{{__('order.admin.show.date')}}</th>
                 </tr>
                   @foreach ($order->orderDetails as $orderDetail)
@@ -65,8 +83,7 @@
                     <td>{{ $orderDetail->name_product }}</td>
                     <td>{{ $orderDetail->quantity }}</td>
                     <td>{{ $orderDetail->price }} &dollar;</td>
-                    <td><img src="{{ $orderDetail->image_url }}" alt="{{ $orderDetail->name_product }}"></td>
-                    <td>{{ $orderDetail->preview }}</td>
+                    <td><img src="{{ $orderDetail->image_url }}" alt="{{ $orderDetail->name_product }}" style="width:100px"></td>
                     <td>{{ $orderDetail->updated_at }}</td>
                   </tr>
                   @endforeach

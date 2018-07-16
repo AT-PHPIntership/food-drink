@@ -23,20 +23,39 @@ $('.delete').click(function() {
 
 //change status order
 $(document).ready(function () {
-  $('.status').click(function () {
-    var status = $(this).val();
-    var id = $(this).data("id");
-    msg = Lang.get('order.admin.index.confirm_status');
-    if (confirm(msg)){
-      $.ajax({
-        url: 'order/'+id+'/updateStatus',
-        type: 'PUT',
-        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-        dataType: 'json',
-        data: {
-          "status": status
+  var status = '';
+  var id = '';
+  $(document).on('change', '.status', function () {
+    status = $(this).val();
+    id = $(this).data("id");
+    $('#note-change-order').modal('show');
+  });
+  $(document).on('click', '#note-change-order-submit', function(event) {
+    event.preventDefault();
+    var content = $('#note').val();
+    $('.content .alert-danger').html('');
+    $.ajax({
+      url: 'order/'+id+'/updateStatus',
+      type: 'PUT',
+      headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+      dataType: 'json',
+      data: {
+        "status": status,
+        "content": content,
+      },
+      error: function(response) {
+        errorMessage = Lang.get('order.admin.index.not_successfully') +'<br/>'+ response.responseJSON.message +'<br/>';
+        if (response.responseJSON.errors) {
+          errors = Object.keys(response.responseJSON.errors);
+          errors.forEach(error => {
+            errorMessage += response.responseJSON.errors[error] + '<br/>';
+          });
         }
-      });
-    }
-  })
+        $('.content .alert-danger').html(errorMessage);
+        $('.content .alert-danger').show();
+      }
+    });
+    $('#note-change-order .modal-body #note').val('');
+    $('#note-change-order').modal('hide');
+  });
 })

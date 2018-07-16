@@ -1,7 +1,6 @@
 <?php
     return [
         'shop_by' => 'Shop By',
-        'shop_option' => 'Shopping Options',
         'categories' => 'Categories',
         'rate' => 'Rate',
         'price' => 'Price',
@@ -15,4 +14,6 @@
         'search' => 'Search',
         'min_price' => 'Min price',
         'max_price' => 'Max price',
+        'refresh_filter' => 'Refresh filter',
+        'name_product' => 'Name product'
     ];

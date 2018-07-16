@@ -14,6 +14,8 @@
         'latest_order' => 'Latest Orders',
         'user' => [
             'title' => 'Food & Drink',
+            'title_edit_user' => 'Edit User',
+            'title_forgot' => 'Forgot Password',
             'header' => [
                 'welcome' => 'Welcome to Food & drink!',
                 'call_us' => 'Call Us: +123.456.789',
@@ -26,10 +28,16 @@
                 'subtotal' => 'Subtotal: ',
                 'checkout' => 'Checkout',
                 'view_cart' => 'View Cart',
+                'register' => 'Register',
+                'log_out' => 'Log Out',
+                'history_order' => 'History orders',
+                'language' => 'Language',
+                'english' => 'English',
+                'vietnam' => 'Vietnamese',
             ],
             'nav' => [
                 'shop_food_drink' => 'Shop Foods and Drinks',
-                'search' => 'Search',
+                'all_product' => 'All Products',
             ],
             'footer' => [
                 'copyright' => 'Copyright © 2018',
@@ -43,6 +51,8 @@
                 'drink' => 'Drink',
                 'add_to_cart' => 'Add to Cart',
                 'money' => '$',
+                'view_more_food' => 'Get more products by categoty Food',
+                'view_more_drink' => 'Get more products by categoty Drink',
             ],
         ]
     ];

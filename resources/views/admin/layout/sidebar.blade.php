@@ -4,7 +4,7 @@
   <section class="sidebar">
     <!-- /.search form -->
     <!-- sidebar menu: : style can be found in sidebar.less -->
-    <ul class="sidebar-menu" data-widget="tree">
+    <ul class="sidebar-menu nav nav-pills nav-stacked" data-widget="tree">
       <li>
         <a href="{{route('admin')}}">
           <i class="fa fa-dashboard"></i> <span>{{__('admin.dashboard')}}</span>

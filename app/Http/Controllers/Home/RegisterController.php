@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ProductsController extends Controller
+class RegisterController extends Controller
 {
     /**
-    * Display a listing of the resource.
+    * Display a user info .
     *
     * @return \Illuminate\Http\Response
     */
     public function index()
     {
-            return view('user.product.index');
+        return view('user.register.register');
     }
 }

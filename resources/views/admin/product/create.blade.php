@@ -9,8 +9,8 @@
         <small>{{__('product.admin.create.product')}}</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i>{{__('admin.dashboard')}}</a></li>
-        <li><a href="#">{{__('product.admin.create.manage_product')}}</a></li>
+        <li><a href="{{ route('admin') }}"><i class="fa fa-dashboard"></i>{{__('admin.dashboard')}}</a></li>
+        <li><a href="{{ route('product.index') }}">{{__('product.admin.create.manage_product')}}</a></li>
         <li class="active">{{__('product.admin.create.form_title')}}</li>
       </ol>
     </section>
@@ -78,7 +78,7 @@
                 </div>
 								<div class="form-group">
                   <label>{{__('product.admin.create.description')}}</label>
-                  <textarea class="form-control" name="description" rows="3" placeholder="{{__('product.admin.create.description')}}"></textarea>
+                  <textarea class="form-control ckeditor" name="description" rows="3" placeholder="{{__('product.admin.create.description')}}"></textarea>
                   @if($errors->first('description')) 
                     <span class="help-block">
                       <strong class="text-danger">{{ $errors->first('description') }}</strong>

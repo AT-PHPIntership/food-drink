@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
 Route::group(['namespace'=>'Admin','prefix'=>'admin','middleware' => 'admin'],function () {
     Route::get('',[
         'uses'=>'HomeController@index',
@@ -21,9 +18,7 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin','middleware' => 'admin'],fu
     ]);
     Route::resource('user', 'UsersController');
     Route::resource('product', 'ProductsController');
-    Route::resource('category', 'CategoriesController')->except([
-        'show'
-    ]);
+    Route::resource('category', 'CategoriesController');
     Route::group(['prefix'=>'post'],function (){
         Route::get('',[
             'uses' => 'PostsController@index',
@@ -62,23 +57,52 @@ Route::get('/api-docs', function () {
 Route::get('/api-doc-builders', function () {
     return view('api-docs-builders.index');
 });
-Route::group(['namespace' => 'Home','prefix' => 'user'], function (){
-    Route::get('login', [
-        'uses' => 'LoginController@index',
-        'as' => 'user.login'
-    ]);
-});
-//frontend
-Route::group(['namespace'=>'User','prefix'=>'/'],function () {
-    Route::get('',[
-        'uses'=>'HomeController@index',
-        'as'=>'user'
-    ]);
-    Route::resource('profile', 'UserController')->only([
-        'index'
-    ]);
-    Route::get('product', 'ProductsController@index');
-    Route::resource('cart', 'CartController')->only([
-        'index'
-    ]);
+Route::middleware('locale')->group(function (){
+    //forget password
+    Route::group(['namespace' => 'Home', 'prefix' => 'password'], function () {
+        Route::get('reset', [
+            'uses' => 'ForgotPasswordController@index',
+            'as' => 'password.forgot'
+        ]);
+        Route::get('reset/{token}', [
+            'uses' => 'ResetPasswordController@index',
+            'as' => 'password.reset'
+        ]);
+    });
+    //login user
+    Route::group(['namespace' => 'Home','prefix' => 'user'], function (){
+        Route::get('login', [
+            'uses' => 'LoginController@index',
+            'as' => 'user.login'
+        ]);
+        Route::resource('register', 'RegisterController')->only([
+            'index'
+        ]);
+    });
+    //frontend
+    Route::group(['namespace'=>'User','prefix'=>'/'],function () {
+        Route::get('',[
+            'uses'=>'HomeController@index',
+            'as'=>'user'
+        ]);
+        Route::resource('profile', 'UserController')->only([
+            'index'
+        ]);
+        Route::get('profile/edit', 'UserController@edit')->name('profile.edit');
+        Route::resource('products', 'ProductController')->only([
+            'index', 'show'
+        ]);
+        Route::resource('cart', 'CartController')->only([
+            'index'
+        ]);
+        Route::resource('orders', 'OrderController')->only([
+            'index', 'create', 'show', 'edit'
+        ]);
+        Route::get('/locale/{locale}', function ($locale) {
+            session(['locale' => $locale]);
+            return response()->json(['locale' => session('locale')], 200);
+        })->name('locale');
+        Route::get('redirect/{social}', 'SocialAuthController@redirect')->name('redirect.social');
+        Route::get('callback/{social}', 'SocialAuthController@callback')->name('callback.social');
+    });
 });

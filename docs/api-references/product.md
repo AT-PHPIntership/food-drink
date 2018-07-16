@@ -18,17 +18,20 @@ Get product
 | limit | number | Top Product |
 | category | int | Get Product By Category |
 | name | string | Get Product By Name Product |
-| price | int | Get Product By Price |
+| min_price | int | Get Product By Min Price |
+| max_price | int | Get Product By Max Price |
+| rate | int | Get Product By Rate |
 
 
-##### Example
+##### Example   
 | URL | Description |
 |---|---|
 | /api/products?sort=created_at&limit=10 | Get Top 10 New product |
 | /api/products?sort=avg_rate&limit=10 | Get Top 10 Rate product |
 | /api/products?category=1 | Get Product By Category Food |
 | /api/products?name=Dr. Jared Kris | Get Product By Name Product |
-| /api/products?price=120 | Get Product By Price Upwards |
+| /api/products?min_price=120&max_price=200 | Get Product By Min, Max Price Upwards |
+| /api/products?rate=4| Get Product By Rate Around 3.5 - 4.4 |
 
 
 #### Response
@@ -465,3 +468,83 @@ Get product
     }
 }
 ```
+### `GET` Recommend Products
+```
+/api/recommendations
+```
+Get list recommend products
+
+#### Request Headers
+| Key | Value |
+|---|---|
+|Accept|application/json
+
+#### Query Param
+| Key | Value | Description |
+|---|---|---|
+| product_id | int | Get list recommend Products (require) |
+| category_id | int | id of category |
+| price | int | price recommend product |
+| rate | int | rate recommend product |
+| limit | int | limit recommend product |
+
+
+##### Example
+| URL | Description |
+|---|---|
+| /api/recommendations?product_id=1 | Get list recommend Products with product id 1 |
+| /api/recommendations?price=1000&category_id=1 | Get list recommend Products in price >= 1000 with Id 1 |
+| /api/recommendations?rate=5| Get List Rate = 5 |
+| /api/recommendations?limit=5| Get List limit 5 products |
+
+
+####  Response Filter Product By Name
+```json
+{
+    "meta": {
+        "status": "Successfully",
+        "code": 200
+    },
+    "data": [
+        {
+            "id": 1,
+            "name": "Dr. Jared Kris",
+            "price": "92.00",
+            "quantity": 3,
+            "category_id": 7,
+            "preview": "Quidem in quis sequi. Aut ut quis in reprehenderit. Quis repellat deserunt officiis aliquam voluptas non et.",
+            "description": "Voluptas in natus maxime aut qui. Dolore doloribus fuga ea voluptatem pariatur.",
+            "avg_rate": 4,
+            "sum_rate": 17,
+            "total_rate": 19,
+            "category": {
+                "id": 7,
+                "name": "Beer",
+                "parent_id": 2,
+                "level": 1
+            },
+            "images": [
+                {
+                    "id": 6,
+                    "image": "default-product.jpg",
+                    "product_id": 1,
+                    "image_url": "http://192.168.33.10/images/products/default-product.jpg"
+                }
+            ],
+        }
+    ],
+    "paginate": {
+        "first_page_url": "https://food-drink.com/api/recommendations?limit=3&page=1",
+        "from": 1,
+        "last_page": 7,
+        "last_page_url": "https://food-drink.com/api/recommendations?limit=3&page=7",
+        "next_page_url": "https://food-drink.com/api/recommendations?limit=3&page=2",
+        "path": "https://food-drink.com/api/recommendations",
+        "per_page": "3",
+        "prev_page_url": null,
+        "to": 3,
+        "total": 20,
+        "current_page": 1,
+    }
+}
+``` 

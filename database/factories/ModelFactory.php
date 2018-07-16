@@ -29,8 +29,6 @@ $factory->define(App\OrderDetail::class, function (Faker $faker) {
         'product_id' => $faker->randomElement(App\Product::pluck('id')->toArray()),
         'quantity' => $faker->numberBetween(1, 5),
         'price' => $faker->numberBetween(10, 200),
-        'preview' => $faker->randomElement(App\Product::pluck('preview')->toArray()),
-        'address' => $faker->address,
         'name_product' => $faker->randomElement(App\Product::pluck('name')->toArray()),
         'image' => config('image.images_product'),
         'created_at' => $faker->dateTime,
@@ -54,6 +52,7 @@ $factory->define(App\Order::class, function (Faker $faker) {
         'user_id' => $faker->randomElement(App\User::pluck('id')->toArray()),
         'total' => 1000,
         'status' => random_int(1, 3),
+        'address' => $faker->address,
         'created_at' => $faker->dateTime,
         'updated_at' => $faker->dateTime,
     ];
@@ -103,4 +102,21 @@ $factory->defineAs(App\Category::class, 'parent', function (Faker $faker) {
         'name' => $faker->name,
         'parent_id' => 0,
     ]);
+});
+$factory->define(App\Note::class, function (Faker $faker) {
+    return [
+        'order_id' => $faker->randomElement(App\Order::pluck('id')->toArray()),
+        'user_id' => 1,
+        'content' => $faker->text,
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+    ];
+});
+$factory->define(App\Shipping::class, function (Faker $faker) {
+    return [
+        'user_id' => $faker->unique()->randomElement(App\User::pluck('id')->toArray()),
+        'address' => $faker->text,
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+    ];
 });
