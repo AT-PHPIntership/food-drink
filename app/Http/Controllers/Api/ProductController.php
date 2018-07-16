@@ -11,11 +11,11 @@ use App\Http\Requests\Api\SortApiPostRequest;
 use Symfony\Component\HttpFoundation\Response;
 use App\Post;
 use App\Category;
-use App\Traits\FillterTrait;
+use App\Traits\FilterTrait;
 
 class ProductController extends ApiController
 {
-    use FillterTrait;
+    use FilterTrait;
     /**
      * Display a doc of the resource.
      *

@@ -4,7 +4,7 @@ namespace App\Traits;
 
 use App\Category;
 
-trait FillterTrait
+trait FilterTrait
 {
     /**
      * Make to array category id
@@ -15,11 +15,11 @@ trait FillterTrait
      */
     public function arrayCategoryId($id)
     {
-        $categoryAll = Category::where('id', $id)->first();
-        $categoryRelation = $categoryAll->children()->with('children')->get();
+        $category = Category::where('id', $id)->first();
+        $categoryAll = $category->children()->with('children')->get();
         $categoriesId = array();
         array_push($categoriesId, $id);
-        foreach ($categoryRelation as $key => $value) {
+        foreach ($categoryAll as $key => $value) {
             array_push($categoriesId, $value->id);
             foreach ($value->children as $key => $value) {
                 array_push($categoriesId, $value->id);
