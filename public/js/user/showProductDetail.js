@@ -1,9 +1,15 @@
 var url = '/api'+ window.location.pathname;
-var item = [];
 var cartProduct = [];
 var n = 0;
+var recommend = [];
 
 function appendHtml(response) {
+  item = {
+    category: response.data.category_id,
+    rate: response.data.avg_rate,
+  };
+  recommend.push(item);
+  localStorage.setItem('recommend', JSON.stringify(recommend));
   var rateStar = '';
   img_url = '../images/products/default-product.jpg';
   if (typeof response.data.images[0] !== 'undefined') {

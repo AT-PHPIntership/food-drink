@@ -99,6 +99,9 @@
                     'stars' => 'stars',
                     'review_active' => 'Your review sended and please admin active',
                 ]
+            ],
+            'recommend' => [
+                'related_products' => 'Related Products',
             ]
         ]
     ];

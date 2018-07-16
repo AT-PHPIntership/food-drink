@@ -76,20 +76,4 @@ class ProductController extends ApiController
         $posts->appends(request()->query());
         return $this->successResponse($posts, Response::HTTP_OK);
     }
-
-    /**
-    * Display a listing of the resource.
-    *
-    * @param \Illuminate\Http\Request $request request
-    *
-    * @return \Illuminate\Http\Response
-    */
-    public function recommend(Request $request, Product $product)
-    {
-        $products = Product::with('category', 'images')
-            ->when(isset($request->category_id), function($query) use ($request, $product){
-                $query->where('category_id', $request->category_id);
-            })->paginate($request->limit);
-        return $this->successResponse($products, Response::HTTP_OK);
-    }
 }
