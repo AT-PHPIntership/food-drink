@@ -82,7 +82,6 @@ class ShowPostTest extends TestCase
                             'name',
                             'email',
                             'role',
-                            'parent_id',
                             'created_at',
                             'updated_at',
                             'deleted_at',
@@ -105,6 +104,17 @@ class ShowPostTest extends TestCase
             ]
         ];
     }
+
+    /**
+    * Test structure code
+    *
+    * @return void
+    */
+    public function testJsonStructureShowPosts()
+    {
+        $this->json('GET', '/api/products/1/posts')
+            ->assertJsonStructure($this->jsonStructureShowPost());
+    }    
 
     /**
      * Test paginate
@@ -153,8 +163,8 @@ class ShowPostTest extends TestCase
 
     public function getPaginateDataProvider() {
         return [
-            [POST::COMMENT, 5],
-            [POST::REVIEW, 5],
+            [POST::COMMENT],
+            [POST::REVIEW],
         ];
     }
 
@@ -164,11 +174,11 @@ class ShowPostTest extends TestCase
      *
      * @return void
      */
-    public function testJsonPaginateTypeReview($typePost, $perPage)
+    public function testJsonPaginateTypeReview($typePost)
     {
         $response = $this->json('GET', '/api/products/1/posts?type=' . $typePost . '&page=2');
         $data = json_decode($response->getContent());
         $this->assertEquals($data->data->prev_page_url, $data->data->path . '?type=' . $typePost . '&page=1');
-        $this->assertEquals($data->data->per_page, $perPage);
+        $this->assertEquals($data->data->per_page, 5);
     }
 }
