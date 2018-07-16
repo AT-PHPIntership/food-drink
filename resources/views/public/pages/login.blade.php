@@ -20,6 +20,7 @@
               <a href="{{route('password.forgot')}}"><span>{{__('forgot-password.forgot_password?')}}</span></a>
             </label>
             <input type="submit" name="commit" value="{{ __('login.user.login') }}" class="button" data-disable-with="Log in" />
+            <a href="{{ route('redirect.social', ['social' => 'facebook']) }}">{{ __('login.user.login_fb') }}</a>
             <p class="forgot-pass">
               <a href="#">{{__('login.user.register')}}</a>
             </p>

@@ -42,7 +42,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'prodvider',
         'deleted_at',
+        'provider_user_id',
     ];
 
     /**
