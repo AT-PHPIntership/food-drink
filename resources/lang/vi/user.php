@@ -27,5 +27,17 @@
                 'label_register' => 'Tạo tài khoản cho bạn',
                 'ship' => 'Có thể bỏ qua',
             ],
+        ],
+        'user' => [
+            'profile' => [
+                'title' => 'Thông Tin Cá Nhân',
+                'profile' => 'Thông tin cá nhân',
+                'name' => 'Tên:',
+                'email' => 'Email:',
+                'phone' => 'Số điện thoại:',
+                'home_address' => 'Địa chỉ nhà:',
+                'shipping_address' => 'Địa chỉ giao hàng:',
+
+            ]
         ]
     ];
