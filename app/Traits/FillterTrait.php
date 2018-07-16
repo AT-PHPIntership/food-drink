@@ -16,12 +16,14 @@ Trait FillterTrait
     public function ArryCategory($request)
     {
         $category_all = Category::where('id', $request->category)->first();
-        $category_relation = $category_all->children()->with('children')->first();
+        $category_relation = $category_all->children()->with('children')->get();
         $categories_id = array();
         array_push($categories_id, $request->category);
-        array_push($categories_id, $category_relation->id);
-        foreach ($category_relation->children as $key => $value) {
-                array_push($categories_id, $value->id);
+        foreach ($category_relation as $key => $value) {
+            array_push($categories_id, $value->id);
+            foreach ($value->children as $key => $value) {
+                    array_push($categories_id, $value->id);
+            }
         }
         return $categories_id;
     }
