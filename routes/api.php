@@ -40,4 +40,8 @@ Route::group(['namespace' => 'Api'], function () {
     });
     Route::get('products/{product}/posts', 'ProductController@getPosts');
     Route::post('register', 'RegisterController@register');    
+    Route::group(['prefix' => 'password'], function() {
+        Route::post('email', 'ForgotPasswordController@sendResetLinkEmail');
+        Route::post('reset', 'ResetPasswordController@reset');
+    });
 });

@@ -21,7 +21,9 @@
                     <label>{{ __('order.user.create.place_delivery') }}</label>
                     <input type="text" class="form-control input" id="address">
                     <div id="validation-address">
-
+                      <span id="address_error" class="help-block" hidden>
+                        <strong class="text-danger"></strong>
+                      </span>
                     </div>
                     <a href="{{ route('orders.index') }}" class="button cancel-edit-order"><i class="fa fa-arrow-left"> </i> &nbsp; {{ __('order.user.edit.cancel_edit') }}</a>
                     <button class="button complete" id="edit-order"><i class="fa fa-angle-double-right"></i>&nbsp; <span>{{ __('order.user.create.complete') }}</span></button>
@@ -62,7 +64,7 @@
               </tfoot>
             </table>
             <div id="form-validation">
-
+              
             </div>
           </div>
         </div>

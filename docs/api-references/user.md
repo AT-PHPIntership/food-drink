@@ -19,27 +19,47 @@ Get user's infomation
 ```json
 {
     "meta": {
-        "status": "successfuly",
+        "status": "Successfully",
         "code": 200
     },
     "data": {
-        "id": 8,
-        "name": "Prof. Nestor Reinger III",
-        "email": "verna53@hessel.com",
-        "role": 0,
-        "created_at": "2018-06-14 01:02:45",
-        "updated_at": "2018-06-14 01:02:45",
-        "deleted_at": null,
-        "user_info": {
-            "id": 8,
-            "user_id": 8,
-            "address": "67100 Pierre Islands\nMedhurstbury, NJ 05891",
-            "phone": "241-312-4635",
-            "avatar": "default-user-avatar.png",
-            "created_at": "2018-06-14 01:02:47",
-            "updated_at": "2018-06-14 01:02:47",
+        "user": {
+            "id": 2,
+            "name": "Ms. Heaven Jacobs",
+            "email": "stark.emmie@yahoo.com",
+            "role": 0,
+            "created_at": "2018-07-16 04:35:50",
+            "updated_at": "2018-07-16 04:35:50",
             "deleted_at": null,
-            "avatar_url": "http://192.168.33.10/images/users/default-user-avatar.png"
+            "user_info": {
+                "id": 2,
+                "user_id": 2,
+                "address": "43671 Hildegard Turnpike\nWest Tessieshire, NM 76347-0095",
+                "phone": "+1.359.643.7535",
+                "avatar": "default-user-avatar.png",
+                "created_at": "2018-07-16 04:35:53",
+                "updated_at": "2018-07-16 04:35:53",
+                "deleted_at": null,
+                "avatar_url": "https://food-drink.com/images/users/default-user-avatar.png"
+            },
+            "shippings": [
+                {
+                    "id": 1,
+                    "user_id": 2,
+                    "address": "Quam necessitatibus qui qui temporibus accusantium. Possimus quas quia consequatur. Voluptatibus dignissimos enim et.",
+                    "created_at": "1992-03-01 10:03:55",
+                    "updated_at": "2008-12-16 17:23:08",
+                    "deleted_at": null
+                },
+                {
+                    "id": 25,
+                    "user_id": 2,
+                    "address": "Quaerat perferendis libero minima et ea quia et. Veritatis quis omnis rerum dolor aut voluptatem reprehenderit. A et labore ea vero similique.",
+                    "created_at": "1984-12-27 06:50:17",
+                    "updated_at": "1977-01-17 21:05:51",
+                    "deleted_at": null
+                }
+            ]
         }
     }
 }

@@ -74,7 +74,7 @@ class OrderController extends ApiController
                 $input['order_id'] = $order->id;
                 $input['content'] = $request->content;
                 Note::create($input);
-                $order->load('note');
+                $order->load('notes');
                 DB::commit();
                 return $this->successResponse($order, Response::HTTP_OK);
             } catch (Exception $e) {

@@ -60,10 +60,10 @@
         </ul>
       </div>
       <div class="size-area">
-        <h2 class="saider-bar-title">{{__('sidebar.price')}} ({{__('sidebar.money')}})</h2>
+        <h2 class="saider-bar-title">{{ __('sidebar.price') }} ({{ __('sidebar.money') }})</h2>
         <div class="cart-plus-minus">
           <div class="numbers-row">
-              <span class="value-price">Min Price</span>
+              <span class="value-price">{{ __('sidebar.min_price') }}</span>
               <select id="from" class="form-control filter-price">
                 <option value="1">1</option>
                 <option value="20">20</option>
@@ -71,7 +71,7 @@
                 <option value="60">60</option>
                 <option value="80">80</option>
               </select>
-              <span class="value-price">Max Price</span>
+              <span class="value-price">{{ __('sidebar.max_price') }}</span>
               <select id="to" class="form-control filter-price">
                 <option value="100">100</option>
                 <option value="120">120</option>

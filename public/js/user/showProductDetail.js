@@ -36,7 +36,7 @@ function appendHtml(response) {
                     <p class="rating-links"> <span class="separator">'+ Lang.get('product.user.product.rate') +'</span> </p>\
                   </div>\
                   <div class="short-description">\
-                    <h2>Quick Overview</h2>\
+                    <h2>'+ Lang.get('product.user.product.quick_view') +'</h2>\
                     <p>'+response.data.preview+'</p>\
                   </div>\
                   <div class="product-variation">\
@@ -47,7 +47,7 @@ function appendHtml(response) {
                         <input type="number" class="qty" title="Qty" value="1" id="qty" name="qty" min="1" max="'+response.data.quantity+'">\
                       </div>\
                       <button class="button pro-add-to-cart" onclick="addCart('+ response.data.id +', \''+response.data.name +'\', \''+response.data.price +'\', '+response.data.quantity +', \''+ img_url +'\')" type="button">\
-                        <span><i class="fa fa-shopping-cart"></i> Add to Cart</span>\
+                        <span><i class="fa fa-shopping-cart"></i> '+ Lang.get('product.user.add_to_cart') +'</span>\
                       </button>\
                     </form>\
                   </div>\

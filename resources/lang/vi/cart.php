@@ -1,0 +1,20 @@
+<?php
+    return [
+        'title' => 'Giỏ hàng của bạn',
+        'shopping_cart' => 'Giỏ hàng',
+        'product' => 'Sản phẩm',
+        'name' => 'Tên',
+        'avail' => 'Tình trạng',
+        'price' => 'Giá',
+        'qty' => 'Số lượng',
+        'total' => 'Tổng cộng',
+        'sub_total' => 'Thành tiền:',
+        'continue' => 'Tiếp tục mua hàng',
+        'checkout' => 'Tiến hành thanh toán',
+        'are_you_sure' => 'Bạn có chắc chắn loại bỏ sản phẩm này khỏi giỏ hàng?',
+        'quantity_greater' => 'Số lượng phải lớn hơn 0.',
+        'not_exceed' => 'Không vượt quá số lượng trong kho (',
+        'close' => ').',
+        'number_product' => '(Số lượng sản phẩm còn lại trong kho: ',
+        'please_login' => 'Vui lòng đăng nhập để thanh toán',
+    ];
