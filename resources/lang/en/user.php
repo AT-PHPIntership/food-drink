@@ -62,5 +62,17 @@
                 'label_register' => 'Create your very own account',
                 'ship' => 'Can Be Overlooked',
             ],
+        ],
+        'user' => [
+            'profile' => [
+                'title' => 'Your Profile',
+                'profile' => 'Your profile',
+                'name' => 'Name:',
+                'email' => 'Email:',
+                'phone' => 'Phone:',
+                'home_address' => 'Home address:',
+                'shipping_address' => 'Shipping address:',
+
+            ]
         ]
     ];

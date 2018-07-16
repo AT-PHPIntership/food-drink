@@ -8,13 +8,17 @@ $( document ).ready(function() {
     url: '/api/profile',
     headers: { 'authorization': 'Bearer '+ localStorage.getItem('access_token') },
     success: function (response){
-      console.log(response);
-      
+      var shippings = response.data.user.shippings;
+      var html = '';
       $("#user-avatar").attr('src', response.data.user.user_info.avatar_url);
       $("#user-name").html(response.data.user.name);
       $("#user-address").html(response.data.user.user_info.address);
       $("#user-phone").html(response.data.user.user_info.phone);
       $("#user-email").html(response.data.user.email);
+      shippings.forEach(shipping => {
+        html += '<p>'+ shipping.address +'</p> <hr>'
+      });
+      $('#user-address-shipping').html(html);
     }
   });
 });
