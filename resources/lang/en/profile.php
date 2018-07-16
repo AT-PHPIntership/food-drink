@@ -10,7 +10,8 @@
                 'address' => 'Address',
                 'phone' => 'Phone',
                 'avatar' => 'Avatar',
-                'submit' => 'Submit'
+                'submit' => 'Submit',
+                'address_shipping' => 'Address shipping (set default address)',
             ]
         ]
     ];

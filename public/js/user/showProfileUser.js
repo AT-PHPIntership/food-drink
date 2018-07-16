@@ -16,7 +16,10 @@ $( document ).ready(function() {
       $("#user-phone").html(response.data.user.user_info.phone);
       $("#user-email").html(response.data.user.email);
       shippings.forEach(shipping => {
-        html += '<p>'+ shipping.address +'</p> <hr>'
+        html += '<p>'+ shipping.address +'</p>\
+                <button class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></button>\
+                <button class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></button>\
+                <hr>'
       });
       $('#user-address-shipping').html(html);
     }
