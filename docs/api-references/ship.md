@@ -48,7 +48,7 @@
                     "id": 2,
                     "user_id": 1,
                     "address": "21 Thanh Sơn Đà Nẵng",
-                    "status": 2
+                    "status": 0
                 }
             ]
         }
