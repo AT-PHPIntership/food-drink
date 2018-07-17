@@ -100,5 +100,6 @@
                     'review_active' => 'Your review sended and please admin active',
                 ]
             ]
-        ]
+        ],
+        'image_product_default' => 'default-product.jpg',
     ];

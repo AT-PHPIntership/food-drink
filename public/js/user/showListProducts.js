@@ -5,7 +5,7 @@ function appendHtml(response) {
     var stars = '';
     var rate = 0;
     img_url = 'https://image.ibb.co/dqd4QJ/default_product.jpg';
-    img = 'default-product.jpg'; 
+    img = Lang.get('product.image_product_default');
     if (typeof element.images[0] !== 'undefined') {
       img = element.images[0].image;
       img_url = element.images[0].image_url;

@@ -37,5 +37,6 @@
                     'review_active' => 'Nhận xét của bạn đã được gửi và vui lòng chờ quản trị viên chấp nhận',
                 ]
             ]
-        ]
+        ],
+        'image_product_default' => 'default-product.jpg',
     ];
