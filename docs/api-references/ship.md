@@ -37,14 +37,6 @@
             "role": 1,
             "provider_user_id": null,
             "provider": null,
-            "user_info": {
-                "id": 1,
-                "user_id": 1,
-                "address": "773 Lucious Lakes\nAllyfort, UT 18232",
-                "phone": "251.639.0934 x858",
-                "avatar": "default-user-avatar.png",
-                "avatar_url": "https://food-drink.com/images/users/default-user-avatar.png"
-            },
             "shippings": [
                 {
                     "id": 1,
