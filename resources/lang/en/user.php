@@ -62,6 +62,12 @@
                 'label_register' => 'Create your very own account',
                 'ship' => 'Can Be Overlooked',
             ],
+            'show' => [
+                'title' => 'Show User Info',
+                'form_title' => 'Show User',
+                'edit_user' => 'Edit User',
+                'address_shipping' => 'Address shippings',
+            ]
         ],
         'user' => [
             'profile' => [

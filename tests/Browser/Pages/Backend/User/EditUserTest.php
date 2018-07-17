@@ -94,7 +94,7 @@ class EditUserTest extends DuskTestCase
                     ->visit('/admin/user')
                     ->assertSee('List Users');
             $user->delete();
-            $browser->press('tbody tr:nth-child(6) td:nth-child(7) a');
+            $browser->press('tbody tr:nth-child(6) td:nth-child(6) a:first-child');
             $browser->assertSee('Can not find user with corresponding id.');
         });
     }
@@ -111,7 +111,7 @@ class EditUserTest extends DuskTestCase
             $browser->loginAs(User::find(1))
                     ->visit('/admin/user')
                     ->assertSee('List User')
-                    ->press('tbody tr:nth-child(6) td:nth-child(7) a')
+                    ->press('tbody tr:nth-child(6) td:nth-child(6) a:first-child')
                     ->assertPathIs('/admin/user/'.$user->id.'/edit')
                     ->assertSee('Edit Form User')
                     ->type('name','aaaaa');

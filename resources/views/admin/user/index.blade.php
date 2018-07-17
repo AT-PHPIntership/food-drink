@@ -34,7 +34,6 @@
                   <th>@sortablelink('id', __('user.admin.index.id'))</th>
                   <th>@sortablelink('name', __('user.admin.index.name'))</th>
                   <th>@sortablelink('email', __('user.admin.index.email'))</th>
-                  <th>{{__('user.admin.index.address')}}</th>
                   <th>{{__('user.admin.index.phone')}}</th>
                   <th>{{__('user.admin.index.avatar')}}</th>
                   <th>Action</th>
@@ -44,11 +43,11 @@
                   <td>{{ $user->id }}</td>
                   <td>{{ $user->name }}</td>
                   <td>{{ $user->email }}</td>
-                  <td>{{ $user->userInfo->address }}</td>
                   <td>{{ $user->userInfo->phone }}</td>
                   <td><img src="{{ asset('images/users/'.$user->userInfo->avatar) }}" alt="{{ $user->userInfo->avatar }}" class="avatar"></td>
                   <td>
-                    <a href="{{route('user.edit', $user->id)}}"><i class="fa fa-edit"></i></a>
+                    <a href="{{route('user.edit', $user->id)}}"><i class="fa fa-edit"></i></a> |
+                    <a href="{{ route('user.show', ['user' => $user->id]) }}"><i class="fa fa-info"></i></i></a>
                     @if($user->id !== App\User::ROLE_ADMIN)
                     <form method="POST" action="{!! route('user.destroy', ['user' => $user->id]) !!}" class="form-trash" onsubmit="return confirmDelete()">
                       @csrf
