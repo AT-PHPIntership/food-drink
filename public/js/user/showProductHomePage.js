@@ -55,7 +55,7 @@ function appendHtml(id, response) {
   var html = '';
   response.data.data.forEach(element => {
     var stars = '';
-    img = 'default_product.jpg';
+    img = 'default-product.jpg';
     img_url = 'https://image.ibb.co/dqd4QJ/default_product.jpg';
     if (typeof element.images[0] !== 'undefined') {
       img = element.images[0].image;
