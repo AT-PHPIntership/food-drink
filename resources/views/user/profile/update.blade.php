@@ -21,6 +21,13 @@
             <span id="address_error" class="help-block" hidden>
               <strong class="text-danger"></strong>
             </span>
+            <label for="address">{{ __('profile.user.update.address_shipping') }}</label>
+              <select id="address-shipping" class="form-control" id="sel1">
+                
+              </select>
+            <span id="address_shipping_error" class="help-block" hidden>
+              <strong class="text-danger"></strong>
+            </span>
             <label for="phone">{{ __('profile.user.update.phone') }}</label>
             <input id="phone" type="text" name="phone" class="form-control">
             <span id="phone_error" class="help-block" hidden>
