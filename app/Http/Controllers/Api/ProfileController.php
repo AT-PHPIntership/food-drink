@@ -36,8 +36,14 @@ class ProfileController extends ApiController
     {
         $user = Auth::user();
         try {
+            $password = $user->password;
+            $pass = trim($request->password);
+            if ($pass) {
+                $password = bcrypt($pass);
+            }
             $user->update([
                 'name'=>$request->name,
+                'password' => $password
             ]);
             if ($request->hasFile('avatar')) {
                 $image = $request->file('avatar');
