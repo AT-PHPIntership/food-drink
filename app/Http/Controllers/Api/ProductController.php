@@ -10,9 +10,12 @@ use App\Http\Requests\Api\SortApiProductRequest;
 use App\Http\Requests\Api\SortApiPostRequest;
 use Symfony\Component\HttpFoundation\Response;
 use App\Post;
+use App\Category;
+use App\Traits\FilterTrait;
 
 class ProductController extends ApiController
 {
+    use FilterTrait;
     /**
      * Display a doc of the resource.
      *
@@ -35,7 +38,7 @@ class ProductController extends ApiController
                     })
                     ->when(isset($request->category), function ($query) use ($request) {
                         return $query->whereHas('category', function ($query) use ($request) {
-                            $query->where('id', $request->category);
+                            $query->whereIn('id', $this->arrayCategoryId($request->category));
                         });
                     })->sortable()->paginate($request->limit);
         $products->appends(request()->query());
