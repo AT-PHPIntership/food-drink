@@ -2,11 +2,24 @@ var dataUser = JSON.parse(localStorage.getItem('data'));
 var order;
 var arrPathName = location.pathname.split("/");
 var id = arrPathName[2];
+var html = '';
+
 function showUser() {
   $('#name-user').text(dataUser.name);
   $('#email-user').text(dataUser.email);
   $('#address-user').text(dataUser.user_info.address);
   $('#phone-user').text(dataUser.user_info.phone);
+}
+
+function appendOrderDetail(orderDetail, total) {
+  html += '<tr id="del-item'+ orderDetail.id +'">\
+            <td class="cart_product"><img src="'+ orderDetail.image_url +'" alt="Product"></td>\
+            <td class="qty">'+ orderDetail.name_product +'</td>\
+            <td class="price">'+ Lang.get('product.user.money')+ orderDetail.price +'</td>\
+            <td class="qty"><input id="quantity'+ orderDetail.id +'" class="form-control input-sm" type="number" min="1" value="'+ orderDetail.quantity +'" onchange="changeQuantity()"></td>\
+            <td class="total">'+ Lang.get('product.user.money')+'<span id="total-item'+ orderDetail.id +'">'+ total +'</span></td>\
+            <td class="action del-item-cart" data-id="'+ orderDetail.id +'"><i class="fa fa-times-circle"></i></td>\
+          </tr>';
 }
 
 function getDetailOrder() {
@@ -23,7 +36,12 @@ function getDetailOrder() {
         window.location.href = '/';
       }
       $('#address').val(response.data.order.address);
-      appendOrderDetail(order);
+      $.each(order, function (index, orderDetail) {
+        total = orderDetail.price * orderDetail.quantity;
+        subTotal = subTotal + total;
+        appendOrderDetail(orderDetail, total);
+      });
+      $('#order-detail').html(html);
       $('.sub-total').html(subTotal);
       $.each(order, function (index, orderDetail) {
         changeQuantity(orderDetail.id, orderDetail.price);
@@ -35,23 +53,6 @@ function getDetailOrder() {
       });
     },
   });
-}
-
-function appendOrderDetail(order) {
-  var html = '';
-  $.each(order, function (index, orderDetail) {
-    total = orderDetail.price * orderDetail.quantity;
-    subTotal = subTotal + total;
-    html += '<tr id="del-item'+ orderDetail.id +'">\
-              <td class="cart_product"><img src="'+ orderDetail.image_url +'" alt="Product"></td>\
-              <td class="qty">'+ orderDetail.name_product +'</td>\
-              <td class="price">'+ Lang.get('product.user.money')+ orderDetail.price +'</td>\
-              <td class="qty"><input id="quantity'+ orderDetail.id +'" class="form-control input-sm" type="number" min="1" value="'+ orderDetail.quantity +'" onchange="changeQuantity()"></td>\
-              <td class="total">'+ Lang.get('product.user.money')+'<span id="total-item'+ orderDetail.id +'">'+ total +'</span></td>\
-              <td class="action del-item-cart" data-id="'+ orderDetail.id +'"><i class="fa fa-times-circle"></i></td>\
-            </tr>';
-  });
-  $('#order-detail').html(html);
 }
 
 function changeQuantity(id, price) {
