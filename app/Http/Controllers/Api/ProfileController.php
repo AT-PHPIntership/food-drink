@@ -10,6 +10,7 @@ use App\Http\Requests\Api\UpdateProfileRequest;
 use App\User;
 use App\UserInfo;
 use Illuminate\Support\Facades\Auth;
+use App\Shipping;
 
 class ProfileController extends ApiController
 {
@@ -37,7 +38,8 @@ class ProfileController extends ApiController
         $user = Auth::user();
         try {
             $user->update([
-                'name'=>$request->name,
+                'name' => $request->name,
+                'password' => bcrypt($request->password)
             ]);
             if ($request->hasFile('avatar')) {
                 $image = $request->file('avatar');
@@ -56,7 +58,7 @@ class ProfileController extends ApiController
                         'phone' => $request->phone,
                     ]);
             }
-            $data = $user->load('userInfo');
+            $data = $user->load('userInfo', 'shippings');
             return $this->successResponse($data, Response::HTTP_OK);
         } catch (Exception $e) {
             return $this->errorResponse(__('api.update.error.update'), Response::HTTP_UNPROCESSABLE_ENTITY);
