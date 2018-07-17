@@ -115,13 +115,3 @@
   display: block;
   overflow: hidden;
 }
-.acc-login {
-  margin: 20px auto;
-  width: 80%;
-}
-.box-auth {
-  width: auto;
-}
-.acc-login .box-authentication input {
-  width: 100%;
-}

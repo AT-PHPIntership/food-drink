@@ -11,9 +11,6 @@ function infoUser() {
       $('#address').val(response.data.user.user_info.address);
       $('#phone').val(response.data.user.user_info.phone);
       $('.avatar-edit').attr('src',response.data.user.user_info.avatar_url);
-      shippings.forEach(shipping => {
-        html += '<option>'+ shipping.address +'</option>'
-      });
       $('#address-shipping').html(html);
     }
   });
