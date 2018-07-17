@@ -45,6 +45,9 @@
                     'stars' => 'sao',
                     'review_active' => 'Nhận xét của bạn đã được gửi và vui lòng chờ quản trị viên chấp nhận',
                 ]
+            ],
+            'recommend' => [
+                'related_products' => 'Sản phẩm liên quan',
             ]
         ]
     ];

@@ -105,6 +105,18 @@
               </div>
             </div>
           </div>
+          
+          <div class="shop-inner">
+            <div class="page-title">
+              <h2>{{ __('product.user.recommend.related_products') }}</h2>
+            </div>
+            <div class="product-grid-area">
+              <ul id="list-recommend" class="products-grid">
+                
+              </ul>
+            </div>
+            <div class="home-inline"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -115,4 +127,5 @@
   <script src="{{ asset('js/user/showProductDetail.js') }}"></script>
   <script src="{{ asset('js/user/showPostOfProduct.js') }}"></script>
   <script src="{{ asset('js/user/addPost.js') }}"></script>
+  <script src="{{ asset('js/user/recommendProduct.js') }}"></script>
 @endsection

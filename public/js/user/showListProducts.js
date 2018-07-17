@@ -1,4 +1,5 @@
 var url = '/api/products';
+
 function appendHtml(response) {
   let html = '';
   response.data.data.forEach(element => {
