@@ -81,6 +81,7 @@ Route::middleware('locale')->group(function (){
     });
     //frontend
     Route::group(['namespace'=>'User','prefix'=>'/'],function () {
+        Route::get('products/compare', 'ProductController@compare')->name('product.compare');        
         Route::get('',[
             'uses'=>'HomeController@index',
             'as'=>'user'

@@ -29,4 +29,14 @@ class ProductController extends Controller
     {
         return view('user.product.show', $product);
     }
+
+    /**
+     * Go to view compare product
+     *
+     * @return view
+     */
+    public function compare()
+    {
+        return view('user.product.compare');
+    }
 }
