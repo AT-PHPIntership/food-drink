@@ -24,24 +24,42 @@ Get user's infomation
     },
     "data": {
         "user": {
-            "id": 1,
-            "name": "admin",
-            "email": "admin@test.com",
-            "role": 1,
-            "created_at": "2018-07-10 09:31:11",
-            "updated_at": "2018-07-10 09:31:11",
+            "id": 2,
+            "name": "Ms. Heaven Jacobs",
+            "email": "stark.emmie@yahoo.com",
+            "role": 0,
+            "created_at": "2018-07-16 04:35:50",
+            "updated_at": "2018-07-16 04:35:50",
             "deleted_at": null,
             "user_info": {
-                "id": 1,
-                "user_id": 1,
-                "address": "11461 Alphonso Cove Apt. 141\nNorth Albina, MD 04362-1860",
-                "phone": "(217) 660-3037 x6147",
+                "id": 2,
+                "user_id": 2,
+                "address": "43671 Hildegard Turnpike\nWest Tessieshire, NM 76347-0095",
+                "phone": "+1.359.643.7535",
                 "avatar": "default-user-avatar.png",
-                "created_at": "2018-07-10 09:31:13",
-                "updated_at": "2018-07-10 09:31:13",
+                "created_at": "2018-07-16 04:35:53",
+                "updated_at": "2018-07-16 04:35:53",
                 "deleted_at": null,
-                "avatar_url": "http://192.168.33.10/images/users/default-user-avatar.png"
-            }
+                "avatar_url": "https://food-drink.com/images/users/default-user-avatar.png"
+            },
+            "shippings": [
+                {
+                    "id": 1,
+                    "user_id": 2,
+                    "address": "Quam necessitatibus qui qui temporibus accusantium. Possimus quas quia consequatur. Voluptatibus dignissimos enim et.",
+                    "created_at": "1992-03-01 10:03:55",
+                    "updated_at": "2008-12-16 17:23:08",
+                    "deleted_at": null
+                },
+                {
+                    "id": 25,
+                    "user_id": 2,
+                    "address": "Quaerat perferendis libero minima et ea quia et. Veritatis quis omnis rerum dolor aut voluptatem reprehenderit. A et labore ea vero similique.",
+                    "created_at": "1984-12-27 06:50:17",
+                    "updated_at": "1977-01-17 21:05:51",
+                    "deleted_at": null
+                }
+            ]
         }
     }
 }

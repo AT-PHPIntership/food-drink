@@ -102,5 +102,7 @@ Route::middleware('locale')->group(function (){
             session(['locale' => $locale]);
             return response()->json(['locale' => session('locale')], 200);
         })->name('locale');
+        Route::get('redirect/{social}', 'SocialAuthController@redirect')->name('redirect.social');
+        Route::get('callback/{social}', 'SocialAuthController@callback')->name('callback.social');
     });
 });

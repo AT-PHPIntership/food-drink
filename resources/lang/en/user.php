@@ -66,7 +66,19 @@
                 'title' => 'Show User Info',
                 'form_title' => 'Show User',
                 'edit_user' => 'Edit User',
-                'address_shipping' => 'Address shippings'
+                'address_shipping' => 'Address shippings',
+            ]
+        ],
+        'user' => [
+            'profile' => [
+                'title' => 'Your Profile',
+                'profile' => 'Your profile',
+                'name' => 'Name:',
+                'email' => 'Email:',
+                'phone' => 'Phone:',
+                'home_address' => 'Home address:',
+                'shipping_address' => 'Shipping address:',
+
             ]
         ]
     ];
