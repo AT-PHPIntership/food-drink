@@ -11,9 +11,9 @@ $(document).ready(function() {
           localStorage.setItem('carts', JSON.stringify(cartProduct));
           n = cartProduct.length;
           localStorage.setItem('count', n);
+          document.getElementById('number-item').innerHTML = localStorage.count;
         }
         itemCart(cartProduct);
-        location.reload();
       }); 
     }
   }

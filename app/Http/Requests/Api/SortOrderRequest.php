@@ -24,7 +24,7 @@ class SortOrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'limit' => 'integer|min:'
+            'limit' => 'integer|min:1'
         ];
     }
 }

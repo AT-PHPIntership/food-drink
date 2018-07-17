@@ -13,15 +13,20 @@
             <div class="row">
               <div class="col-sm-12 user-profile">
                 <div class="col-sm-12">
-                  <p><i class="fa fa-check-circle text-primary"></i>{{ __('order.user.create.your_name') }}<span>Prof. Ulices Ryan II</span></p>
-                  <p><i class="fa fa-check-circle text-primary"></i>{{ __('order.user.create.your_email') }}<span>muller.adelia@west.com</span></p>
-                  <p><i class="fa fa-check-circle text-primary"></i>{{ __('order.user.create.your_address') }}<span>1929 McKenzie Corners Suite 909
-Leuschkemouth, WV 81943-9640</span></p>
-                  <p><i class="fa fa-check-circle text-primary"></i>{{ __('order.user.create.your_phone') }}<span>328-307-1501 x51435</span></p>
+                  <p><i class="fa fa-check-circle text-primary"></i>{{ __('order.user.create.your_name') }}<span id="name-user"></span></p>
+                  <p><i class="fa fa-check-circle text-primary"></i>{{ __('order.user.create.your_email') }}<span id="email-user"></span></p>
+                  <p><i class="fa fa-check-circle text-primary"></i>{{ __('order.user.create.your_address') }}<span id="address-user"></span></p>
+                  <p><i class="fa fa-check-circle text-primary"></i>{{ __('order.user.create.your_phone') }}<span id="phone-user"></span></p>
                   <form>
                     <label>{{ __('order.user.create.place_delivery') }}</label>
                     <input type="text" class="form-control input" id="address">
-                    <button class="button" id="add-order"><i class="fa fa-angle-double-right"></i>&nbsp; <span>{{ __('order.user.create.complete') }}</span></button>
+                    <div id="validation-address">
+                      <span id="address_error" class="help-block" hidden>
+                        <strong class="text-danger"></strong>
+                      </span>
+                    </div>
+                    <a href="{{ route('orders.index') }}" class="button cancel-edit-order"><i class="fa fa-arrow-left"> </i> &nbsp; {{ __('order.user.edit.cancel_edit') }}</a>
+                    <button class="button complete" id="edit-order"><i class="fa fa-angle-double-right"></i>&nbsp; <span>{{ __('order.user.create.complete') }}</span></button>
                   </form>  
                 </div>
               </div>
@@ -47,24 +52,20 @@ Leuschkemouth, WV 81943-9640</span></p>
                   <th class="action"><i class="fa fa-trash-o"></i></th>
                 </tr>
               </thead>
-              <tbody id="show-cart">
-                <tr>
-                  <td class="cart_product"><img src="{{ asset('images/products/default-product.jpg') }}" alt="Product"></td>
-                  <td class="qty">Cletus Rogahn</td>
-                  <td class="price">{{ __('product.user.money') }}25.05</td>
-                  <td class="qty"><input class="form-control input-sm" type="number" min="1" max="" value="2"></td>
-                  <td class="total">{{ __('product.user.money') }}51.00</td>
-                  <td class="action del-item-cart" data-index=""><i class="fa fa-times-circle"></i></td>
-                </tr>
+              <tbody id="order-detail">
+              
               </tbody>
               <tfoot>
                 <tr>
                   <td colspan="2" rowspan="1"></td>
                   <td colspan="2">{{ __('cart.sub_total') }}</td>
-                  <td colspan="2">{{ __('product.user.money') }}<span class="sub-total">105.00</span> </td>
+                  <td colspan="2">{{ __('product.user.money') }}<span id="subTotal" class="sub-total"></span> </td>
                 </tr>
               </tfoot>
             </table>
+            <div id="form-validation">
+              
+            </div>
           </div>
         </div>
         </div>
@@ -74,5 +75,6 @@ Leuschkemouth, WV 81943-9640</span></p>
 </section>
 @endsection
 @section('scripts')
+  <script type="text/javascript" src="{{ asset('js/user/editOrder.js') }}"></script>
   <script type="text/javascript" src="{{ asset('js/user/showProfileUser.js') }}"></script>
 @endsection
