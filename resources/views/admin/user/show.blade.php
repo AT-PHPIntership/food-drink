@@ -23,7 +23,7 @@
           <div class="box box-primary">
             <!-- /.box-header -->
             <!-- form start -->
-            <form method="POST" action="" enctype="multipart/form-data">
+            <form method="" action="">
               <div class="box-body">
                 <div class="form-group">
                   <label for="exampleInputName">{{ __('user.admin.edit.name') }}</label>
@@ -39,11 +39,9 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputRole">{{ __('user.admin.show.address_shipping') }}</label>
-                  @if (count($user->shippings))
-                    @foreach ($user->shippings as $shipping)
-                      <input type="text" class="form-control" disabled name="address" value="{{ $shipping->address }}">
-                    @endforeach
-                  @endif
+                  @foreach ($user->shippings as $shipping)
+                    <input type="text" class="form-control" disabled name="address" value="{{ $shipping->address }}">
+                  @endforeach
                 </div>
                 <div class="form-group">
                   <label for="exampleInputRole">{{ __('user.admin.edit.phone') }}</label>
