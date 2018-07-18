@@ -243,13 +243,13 @@ Create new order
                     "id": 11,
                     "user_id": 2,
                     "address": "Nisi aut unde error. Cum modi eligendi aspernatur ullam. Est quisquam itaque rerum nesciunt. Deserunt quaerat vel commodi voluptatibus minima et.",
-                    "status": 0,
+                    "status": 0
                 },
                 {
                     "id": 32,
                     "user_id": 2,
                     "address": "43048 Duane Village Suite 319\\nWatsicaville, ME 70645-8172",
-                    "status": 0,
+                    "status": 0
                 }
             ]
         }
