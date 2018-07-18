@@ -22,6 +22,7 @@
                 'language' => 'Ngôn ngữ',
                 'english' => 'Tiếng Anh',
                 'vietnam' => 'Tiếng Việt',
+                'edit_profile' => 'Chỉnh Sửa hồ sơ',
             ],
             'nav' => [
                 'shop_food_drink' => 'Shop Đồ ăn và Nước uống',
