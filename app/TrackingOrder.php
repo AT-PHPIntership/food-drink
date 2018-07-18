@@ -3,23 +3,22 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Shipping extends Model
+class TrackingOrder extends Model
 {
-    use SoftDeletes;
-
     protected $fillable = [
         'user_id',
-        'address',
+        'old_status',
+        'new_status',
+        'date_changed'
     ];
 
     /**
-     * Shipping Belong To To Users
+     * Shipping Belong To Orders
      *
      * @return mixed
      */
-    public function user()
+    public function order()
     {
         return $this->belongsTo('App\User');
     }
