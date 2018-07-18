@@ -112,5 +112,6 @@
             'recommend' => [
                 'related_products' => 'Related Products',
             ]
-        ]
+        ],
+        'image_product_default' => 'default-product.jpg',
     ];
