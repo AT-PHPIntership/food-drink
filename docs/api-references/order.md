@@ -213,36 +213,46 @@ Create new order
         "code": 201
     },
     "data": {
-        "id": 26,        
-        "user_id": 1,
-        "total": 6,
-        "status": 1,
-        "address": "70813 Upton Rue\nWillytown, KS 95823-6140",
-        "status_order": "pending",
-        "order_details": [
-            {
-                "id": 18,
-                "product_id": 1,
-                "order_id": 26,
-                "quantity": 3,
-                "price": 2,
-                "preview": "Quam fugit ratione ut ullam autem doloribus. Quis inventore saepe aut aut porro corrupti quam.",
-                "name_product": "Loy Kris",
-                "image": "default-product.jpg",
-                "image_product_url": "http://192.168.33.10/images/products/default-product.jpg"
-            },
-            {
-                "id": 19,
-                "product_id": 1,
-                "order_id": 26,
-                "quantity": 3,
-                "price": 2,
-                "preview": "Quam fugit ratione ut ullam autem doloribus. Quis inventore saepe aut aut porro corrupti quam.",
-                "name_product": "Loy Kris",
-                "image": "default-product.jpg",
-                "image_product_url": "http://192.168.33.10/images/products/default-product.jpg"
-            }
-        ]
+        "order": {
+            "total": "2000",
+            "address": "43048 Duane Village Suite 319\\nWatsicaville, ME 70645-8172",
+            "status": 1,
+            "user_id": 2,
+            "id": 37,
+            "status_order": "pending",
+            "order_details": [
+                {
+                    "id": 37,
+                    "order_id": 37,
+                    "product_id": 16,
+                    "quantity": 1,
+                    "price": "200.00",
+                    "name_product": "e3232",
+                    "image": "default-product.jpg",
+                    "image_url": "http://192.168.33.10/images/products/default-product.jpg"
+                }
+            ]
+        },
+        "user": {
+            "id": 2,
+            "name": "Prof. Loyce Padberg",
+            "email": "luna28@yahoo.com",
+            "role": 0,
+            "shippings": [
+                {
+                    "id": 11,
+                    "user_id": 2,
+                    "address": "Nisi aut unde error. Cum modi eligendi aspernatur ullam. Est quisquam itaque rerum nesciunt. Deserunt quaerat vel commodi voluptatibus minima et.",
+                    "status": 0,
+                },
+                {
+                    "id": 32,
+                    "user_id": 2,
+                    "address": "43048 Duane Village Suite 319\\nWatsicaville, ME 70645-8172",
+                    "status": 0,
+                }
+            ]
+        }
     }
 }
 ```
