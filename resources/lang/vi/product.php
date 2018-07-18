@@ -49,5 +49,6 @@
             'recommend' => [
                 'related_products' => 'Sản phẩm liên quan',
             ]
-        ]
+        ],
+        'image_product_default' => 'default-product.jpg',
     ];

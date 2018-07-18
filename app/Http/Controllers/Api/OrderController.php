@@ -95,24 +95,30 @@ class OrderController extends ApiController
     */
     public function store(CreateOrderRequest $request)
     {
+        $total = 0;
         $user = Auth::user();
-        $input = $request->all();
         if ($request->shipping_id == null) {
             $user->shippings()->create([
                 'user_id' => $user->id,
                 'address' => $request->address,
-                'status' => Shipping::ADDRESS_DEFAULT,
+                'status' => Shipping::ADDRESS,
             ]);
         } else {
             foreach ($user->shippings as $shipping) {
                 if ($shipping->id == $request->shipping_id) {
-                    $input['address'] = $shipping->address;
+                    $request->address = $shipping->address;
                 }
             }
         }
-        $input['status'] = Order::PENDING;
-        $input['user_id'] = $user->id;
-        $order = Order::create($input);
+        foreach ($request->product as $product) {
+            $total += $product['quantity'] * $product['price'];
+        }
+        $order = Order::create([
+            'user_id' => $user->id,
+            'total' => $total,
+            'status' => Order::PENDING,
+            'address' => $request->address,
+        ]);
         foreach ($request->product as $product) {
             OrderDetail::create([
                 'order_id' => $order->id,

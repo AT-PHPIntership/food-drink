@@ -24,7 +24,8 @@ class UpdateProfileRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:50',
-            'address'        => 'string|max:255',
+            'password' => 'min:6|max:50',
+            'address' => 'string|max:255',
             'phone' => 'required|min:10|numeric',
             'avatar' => 'image|mimes:png,jpg,jpeg',
         ];
