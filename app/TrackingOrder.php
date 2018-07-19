@@ -14,12 +14,12 @@ class TrackingOrder extends Model
     ];
 
     /**
-     * Shipping Belong To Orders
+     * Shipping Belong To Order
      *
      * @return mixed
      */
     public function order()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Order');
     }
 }
