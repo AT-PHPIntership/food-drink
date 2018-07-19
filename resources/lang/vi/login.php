@@ -7,6 +7,7 @@
             'password' => 'Nhật khẩu',
             'remember_me' => 'Nhớ mật khẩu',
             'register' => 'Tạo tài khoản cho bạn!!!',
-            'unauthorised' => 'Không được phép'
+            'unauthorised' => 'Không được phép',
+            'login_fb' => 'Đăng nhập Facebook',
         ]
     ];
