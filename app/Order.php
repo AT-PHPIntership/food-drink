@@ -62,7 +62,7 @@ class Order extends Model
     }
     
     /**
-     * Order Belong To OrderDetail
+     * Order Has Many OrderDetail
      *
      * @return mixed
      */
@@ -72,12 +72,22 @@ class Order extends Model
     }
 
     /**
-     * Order Belong To Note
+     * Order Has Many Note
      *
      * @return mixed
      */
     public function notes()
     {
         return $this->hasMany('App\Note');
+    }
+
+    /**
+     * Order Has Many TrackingOrder
+     *
+     * @return mixed
+     */
+    public function trackingOrders()
+    {
+        return $this->hasMany('App\TrackingOrder');
     }
 }

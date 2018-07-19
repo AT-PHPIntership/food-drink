@@ -15,11 +15,11 @@ class Shipping extends Model
     ];
 
     /**
-     * Shipping Has Many To Users
+     * Shipping Belong To To Users
      *
      * @return mixed
      */
-    public function users()
+    public function user()
     {
         return $this->belongsTo('App\User');
     }
