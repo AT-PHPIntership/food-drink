@@ -10,6 +10,7 @@ use App\Http\Requests\Api\UpdateProfileRequest;
 use App\User;
 use App\UserInfo;
 use Illuminate\Support\Facades\Auth;
+use App\Shipping;
 
 class ProfileController extends ApiController
 {
@@ -57,7 +58,17 @@ class ProfileController extends ApiController
                         'phone' => $request->phone,
                     ]);
             }
-            $data = $user->load('userInfo');
+            foreach ($user->shippings as $shipping) {
+                if ($shipping->status == Shipping::ADDRESS_DEFAULT) {
+                    $user->shippings()->update([
+                        'status' => Shipping::ADDRESS,
+                    ]);
+                }
+            }
+            $user->shippings()->where('id', $request->shipping_id)->update([
+                'status' => Shipping::ADDRESS_DEFAULT,
+            ]);
+            $data = $user->load('userInfo', 'shippings');
             return $this->successResponse($data, Response::HTTP_OK);
         } catch (Exception $e) {
             return $this->errorResponse(__('api.update.error.update'), Response::HTTP_UNPROCESSABLE_ENTITY);

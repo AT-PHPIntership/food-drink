@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Http\Response;
+use App\Shipping;
 
 class EditUserTest extends TestCase
 {
@@ -20,6 +21,7 @@ class EditUserTest extends TestCase
     public function setUp()
     {
         parent::setUp();
+        factory(Shipping::class)->create();
     }
 
     /**
@@ -38,6 +40,15 @@ class EditUserTest extends TestCase
                 'id',
                 'name',
                 'email',
+                'role',
+                'shippings' => [
+                    [
+                        'id',
+                        'user_id',
+                        'address',
+                        'status'
+                    ]
+                ],
                 'user_info' => [
                     'id',
                     'user_id',
@@ -60,8 +71,9 @@ class EditUserTest extends TestCase
     {
         $update = [
             'name' => 'test name',
-            'password' => '123456',
-            'phone' => '02126984'
+            'address' => 'test address',
+            'phone' => '02126984',
+            'shipping_id' => '1',
         ];
         $this->jsonUser('PUT', 'api/profile', $update)
             ->assertJsonStructure($this->jsonStructureEditProfile());
@@ -80,7 +92,8 @@ class EditUserTest extends TestCase
             'errors' => [
                 'name'=> [],
                 'phone' => [],
-                'avatar' => []
+                'avatar' => [],
+                'shipping_id' => [],
             ],
             'code',
             'request' => []
@@ -96,7 +109,6 @@ class EditUserTest extends TestCase
     {
         $update = [
             'name' => '',
-            'password' => '',
             'phone' => '',
             'address' => 'address',
             'avatar' => '',
@@ -117,6 +129,7 @@ class EditUserTest extends TestCase
             'name' => 'test name',
             'address' => 'test address',
             'phone' => '0123456789',
+            'shipping_id' => '1',
             '_method' => 'PUT'
         ];
         $responseProfie = $this->jsonUser('PUT', 'api/profile', $update);
@@ -124,15 +137,22 @@ class EditUserTest extends TestCase
         $arrayUser = [
             'id' => $data->id,
             'name' => $data->name,
-            'email' => $data->email
+            'email' => $data->email,
         ];
         $this->assertDatabaseHas('users', $arrayUser);
         $arrayUserInfo = [
             'id' => $data->user_info->id,
             'user_id' => $data->user_info->user_id,
             'address' => $data->user_info->address,
-            'phone' => $data->user_info->phone
+            'phone' => $data->user_info->phone,
         ];
         $this->assertDatabaseHas('user_infos', $arrayUserInfo);
+        $arrayShipping = [
+            'id' => $data->shippings[0]->id,
+            'user_id' => $data->shippings[0]->user_id,
+            'address' => $data->shippings[0]->address,
+            'status' => $data->shippings[0]->status,
+        ];
+        $this->assertDatabaseHas('shippings', $arrayShipping);
     }
 }

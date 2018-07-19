@@ -114,7 +114,7 @@ $factory->define(App\Note::class, function (Faker $faker) {
 });
 $factory->define(App\Shipping::class, function (Faker $faker) {
     return [
-        'user_id' => $faker->unique()->randomElement(App\User::pluck('id')->toArray()),
+        'user_id' => $faker->randomElement(App\User::pluck('id')->toArray()),
         'address' => $faker->text,
         'status' => 0,
         'created_at' => $faker->dateTime,
