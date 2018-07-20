@@ -67,6 +67,12 @@ class OrderController extends ApiController
         $userId = Auth::id();
         if ($order->user_id == $userId) {
             try {
+                $order->trackingOrders()->create([
+                    'order_id' => $order->id,
+                    'old_status' => $order->status,
+                    'new_status' => Order::REJECTED,
+                    'date_changed' => date("Y-m-d H:i:s"),
+                ]);
                 $order->update([
                     'status' => Order::REJECTED,
                 ]);
@@ -74,7 +80,7 @@ class OrderController extends ApiController
                 $input['order_id'] = $order->id;
                 $input['content'] = $request->content;
                 Note::create($input);
-                $order->load('notes');
+                $order->load('notes', 'trackingOrders');
                 DB::commit();
                 return $this->successResponse($order, Response::HTTP_OK);
             } catch (Exception $e) {
