@@ -8,14 +8,14 @@ $( document ).ready(function() {
     url: '/api/profile',
     headers: { 'authorization': 'Bearer '+ localStorage.getItem('access_token') },
     success: function (response){
-      var shippings = response.data.user.shippings;
+      var shippingAddresses = response.data.user.shipping_addresses;
       var html = '';
       $("#user-avatar").attr('src', response.data.user.user_info.avatar_url);
       $("#user-name").html(response.data.user.name);
       $("#user-address").html(response.data.user.user_info.address);
       $("#user-phone").html(response.data.user.user_info.phone);
       $("#user-email").html(response.data.user.email);
-      shippings.forEach(shipping => {
+      shippingAddresses.forEach(shipping => {
         html += '<p>'+ shipping.address +'</p>\
                 <button class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></button>\
                 <button class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></button>\
