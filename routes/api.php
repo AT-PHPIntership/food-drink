@@ -44,4 +44,5 @@ Route::group(['namespace' => 'Api'], function () {
         Route::post('email', 'ForgotPasswordController@sendResetLinkEmail');
         Route::post('reset', 'ResetPasswordController@reset');
     });
+    Route::get('recommendations', 'ProductController@recommend');
 });
