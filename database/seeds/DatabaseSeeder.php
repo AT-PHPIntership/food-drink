@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ImagesTableSeeder::class);
         $this->call(OrderDetailsTableSeeder::class);
         $this->call(NotesTableSeeder::class);
-        App\Shipping::truncate();
-        factory(App\Shipping::class, 31)->create();
+        App\ShippingAddress::truncate();
+        factory(App\ShippingAddress::class, 31)->create();
     }
 }
