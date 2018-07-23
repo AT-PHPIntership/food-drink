@@ -16,6 +16,11 @@
             <span id="name_error" class="help-block" hidden>
               <strong class="text-danger"></strong>
             </span>
+            <label for="password">{{ __('profile.user.update.password') }}</label>
+            <input id="password" type="password" name="password" class="form-control">
+            <span id="password_error" class="help-block" hidden>
+              <strong class="text-danger"></strong>
+            </span>
             <label for="address">{{ __('profile.user.update.address') }}</label>
             <input id="address" type="text" name="address" class="form-control">
             <span id="address_error" class="help-block" hidden>

@@ -6,6 +6,7 @@
                 'update_user' => 'Cập nhật người dùng',
                 'please_fill' => 'Vui lòng điền vào biễu mẫu dưới để cập nhật người dùng.',
                 'name' => 'Tên',
+                'password' => 'Mật khẩu',
                 'email' => 'Email',
                 'address' => 'Địa chỉ',
                 'phone' => 'Điện thoại',

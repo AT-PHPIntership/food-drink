@@ -34,6 +34,7 @@
                 'language' => 'Language',
                 'english' => 'English',
                 'vietnam' => 'Vietnamese',
+                'edit_profile' => 'Edit profile',
             ],
             'nav' => [
                 'shop_food_drink' => 'Shop Foods and Drinks',
