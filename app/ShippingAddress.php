@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Shipping extends Model
+class ShippingAddress extends Model
 {
     use SoftDeletes;
     const ADDRESS = 0;
@@ -17,11 +17,11 @@ class Shipping extends Model
     ];
 
     /**
-     * Shipping Has Many To Users
+     * Shipping Belong To To User
      *
      * @return mixed
      */
-    public function users()
+    public function user()
     {
         return $this->belongsTo('App\User');
     }
