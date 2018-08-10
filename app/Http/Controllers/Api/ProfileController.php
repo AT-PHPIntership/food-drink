@@ -21,7 +21,7 @@ class ProfileController extends ApiController
     public function show()
     {
         $user = Auth::user();
-        $data['user'] = $user->load('userInfo', 'shippings');
+        $data['user'] = $user->load('userInfo', 'shippingAddresses');
         return $this->successResponse($data, Response::HTTP_OK);
     }
 

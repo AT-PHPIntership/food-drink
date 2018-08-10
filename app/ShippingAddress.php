@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Shipping extends Model
+class ShippingAddress extends Model
 {
     use SoftDeletes;
 
@@ -15,7 +15,7 @@ class Shipping extends Model
     ];
 
     /**
-     * Shipping Belong To To Users
+     * Shipping Belong To To User
      *
      * @return mixed
      */
