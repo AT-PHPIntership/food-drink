@@ -14,11 +14,7 @@ use DB;
 
 class LoginController extends ApiController
 {
-    /**
-     * Login as user
-     *
-     * @return json authentication code
-     */
+   
     public function login()
     {
         if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
