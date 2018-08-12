@@ -16,16 +16,11 @@ use App\Http\Requests\Api\CreateNoteRequest;
 use App\Note;
 use DB;
 use App\Http\Requests\Api\CreateOrderRequest;
+use App\Shipping;
 
 class OrderController extends ApiController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @param \Illuminate\Http\Request $request request
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index(SortOrderRequest $request)
     {
         $user = Auth::user();
@@ -100,10 +95,30 @@ class OrderController extends ApiController
     */
     public function store(CreateOrderRequest $request)
     {
-        $input = $request->all();
-        $input['status'] = Order::PENDING;
-        $input['user_id'] = Auth::user()->id;
-        $order = Order::create($input);
+        $total = 0;
+        $user = Auth::user();
+        if ($request->shipping_id == null) {
+            $user->shippings()->create([
+                'user_id' => $user->id,
+                'address' => $request->address,
+                'status' => Shipping::ADDRESS,
+            ]);
+        } else {
+            foreach ($user->shippings as $shipping) {
+                if ($shipping->id == $request->shipping_id) {
+                    $request->address = $shipping->address;
+                }
+            }
+        }
+        foreach ($request->product as $product) {
+            $total += $product['quantity'] * $product['price'];
+        }
+        $order = Order::create([
+            'user_id' => $user->id,
+            'total' => $total,
+            'status' => Order::PENDING,
+            'address' => $request->address,
+        ]);
         foreach ($request->product as $product) {
             OrderDetail::create([
                 'order_id' => $order->id,
@@ -114,7 +129,7 @@ class OrderController extends ApiController
                 'image' => $product['image']
             ]);
         }
-        return $this->showOne($order->load('orderDetails'), Response::HTTP_OK);
+        return $this->successResponse(['order' => $order->load('orderDetails'), 'user' => $user->load('shippings')], Response::HTTP_CREATED);
     }
 
     /**
