@@ -20,13 +20,7 @@ use App\Shipping;
 
 class OrderController extends ApiController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @param \Illuminate\Http\Request $request request
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index(SortOrderRequest $request)
     {
         $user = Auth::user();
