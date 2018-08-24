@@ -16,7 +16,7 @@ use App\Http\Requests\Api\CreateNoteRequest;
 use App\Note;
 use DB;
 use App\Http\Requests\Api\CreateOrderRequest;
-use App\Shipping;
+use App\ShippingAddress;
 
 class OrderController extends ApiController
 {
@@ -104,20 +104,21 @@ class OrderController extends ApiController
         $total = 0;
         $user = Auth::user();
         if ($request->shipping_id == null) {
-            $user->shippings()->create([
+            $user->shippingAddresses()->create([
                 'user_id' => $user->id,
                 'address' => $request->address,
-                'status' => Shipping::ADDRESS,
+                'is_default' => ShippingAddress::ADDRESS,
             ]);
         } else {
-            foreach ($user->shippings as $shipping) {
+            foreach ($user->shippingAddresses as $shipping) {
                 if ($shipping->id == $request->shipping_id) {
                     $request->address = $shipping->address;
                 }
             }
         }
         foreach ($request->product as $product) {
-            $total += $product['quantity'] * $product['price'];
+            $product = Product::find($product['id']);
+            $total += $product['quantity'] * $product->price;
         }
         $order = Order::create([
             'user_id' => $user->id,
@@ -126,16 +127,21 @@ class OrderController extends ApiController
             'address' => $request->address,
         ]);
         foreach ($request->product as $product) {
+            $product = Product::find($product['id']);
+            $image = 'default-product.jpg';
+            if ($product->images->first()) {
+                $image = $product->images->first()->image;
+            }
             OrderDetail::create([
                 'order_id' => $order->id,
-                'product_id' => $product['id'],
-                'quantity' => $product['quantity'],
-                'price' => $product['price'],
-                'name_product' => $product['name_product'],
-                'image' => $product['image']
+                'product_id' => $product->id,
+                'quantity' => $product->quantity,
+                'price' => $product->price,
+                'name_product' => $product->name,
+                'image' => $image
             ]);
         }
-        return $this->successResponse(['order' => $order->load('orderDetails'), 'user' => $user->load('shippings')], Response::HTTP_CREATED);
+        return $this->successResponse(['order' => $order->load('orderDetails'), 'user' => $user->load('shippingAddresses')], Response::HTTP_CREATED);
     }
 
     /**

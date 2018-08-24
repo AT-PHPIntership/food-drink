@@ -29,7 +29,7 @@ class CreateOrderRequest extends FormRequest
         $user = Auth::user();
         $shippingId = 0;
         $arrayIdShipping = [];
-        foreach ($user->shippings as $shipping) {
+        foreach ($user->shippingAddresses as $shipping) {
             $shippingId = $shipping->id;
             array_push($arrayIdShipping, $shippingId);
         }
