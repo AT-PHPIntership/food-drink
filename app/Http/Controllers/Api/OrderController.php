@@ -16,6 +16,7 @@ use App\Http\Requests\Api\CreateNoteRequest;
 use App\Note;
 use DB;
 use App\Http\Requests\Api\CreateOrderRequest;
+use App\ShippingAddress;
 
 class OrderController extends ApiController
 {
@@ -67,6 +68,12 @@ class OrderController extends ApiController
         $userId = Auth::id();
         if ($order->user_id == $userId) {
             try {
+                $order->trackingOrders()->create([
+                    'order_id' => $order->id,
+                    'old_status' => $order->status,
+                    'new_status' => Order::REJECTED,
+                    'date_changed' => date("Y-m-d H:i:s"),
+                ]);
                 $order->update([
                     'status' => Order::REJECTED,
                 ]);
@@ -74,7 +81,7 @@ class OrderController extends ApiController
                 $input['order_id'] = $order->id;
                 $input['content'] = $request->content;
                 Note::create($input);
-                $order->load('notes');
+                $order->load('notes', 'trackingOrders');
                 DB::commit();
                 return $this->successResponse($order, Response::HTTP_OK);
             } catch (Exception $e) {
@@ -94,21 +101,47 @@ class OrderController extends ApiController
     */
     public function store(CreateOrderRequest $request)
     {
-        $input = $request->all();
-        $input['status'] = Order::PENDING;
-        $input['user_id'] = Auth::user()->id;
-        $order = Order::create($input);
+        $total = 0;
+        $user = Auth::user();
+        if ($request->shipping_id == null) {
+            $user->shippingAddresses()->create([
+                'user_id' => $user->id,
+                'address' => $request->address,
+                'is_default' => ShippingAddress::ADDRESS,
+            ]);
+        } else {
+            foreach ($user->shippingAddresses as $shipping) {
+                if ($shipping->id == $request->shipping_id) {
+                    $request->address = $shipping->address;
+                }
+            }
+        }
         foreach ($request->product as $product) {
+            $product = Product::find($product['id']);
+            $total += $product['quantity'] * $product->price;
+        }
+        $order = Order::create([
+            'user_id' => $user->id,
+            'total' => $total,
+            'status' => Order::PENDING,
+            'address' => $request->address,
+        ]);
+        foreach ($request->product as $product) {
+            $product = Product::find($product['id']);
+            $image = 'default-product.jpg';
+            if ($product->images->first()) {
+                $image = $product->images->first()->image;
+            }
             OrderDetail::create([
                 'order_id' => $order->id,
-                'product_id' => $product['id'],
-                'quantity' => $product['quantity'],
-                'price' => $product['price'],
-                'name_product' => $product['name_product'],
-                'image' => $product['image']
+                'product_id' => $product->id,
+                'quantity' => $product->quantity,
+                'price' => $product->price,
+                'name_product' => $product->name,
+                'image' => $image
             ]);
         }
-        return $this->showOne($order->load('orderDetails'), Response::HTTP_OK);
+        return $this->successResponse(['order' => $order->load('orderDetails'), 'user' => $user->load('shippingAddresses')], Response::HTTP_CREATED);
     }
 
     /**

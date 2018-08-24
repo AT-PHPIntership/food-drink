@@ -5,13 +5,13 @@ function infoUser() {
     url: '/api/profile',
     headers: { 'authorization': 'Bearer '+ localStorage.getItem('access_token') },
     success: function (response) {
-      var shippings = response.data.user.shippings;
+      var shippingAddresses = response.data.user.shipping_addresses;
       var html = '';
       $('#name').val(response.data.user.name);
       $('#address').val(response.data.user.user_info.address);
       $('#phone').val(response.data.user.user_info.phone);
       $('.avatar-edit').attr('src',response.data.user.user_info.avatar_url);
-      shippings.forEach(shipping => {
+      shippingAddresses.forEach(shipping => {
         html += '<option>'+ shipping.address +'</option>'
       });
       $('#address-shipping').html(html);
@@ -22,7 +22,10 @@ function editUser() {
   $('#form-update-user').submit(function(event) {
     event.preventDefault();
     formData = new FormData($('#form-update-user')[0]);
-    formData.append('_method', 'put')
+    if ($('#password').val() == ''){
+      formData.delete('password');
+    }
+    formData.append('_method', 'put');
     $.ajax({
       type: 'post',
       url: '/api/profile',

@@ -26,7 +26,7 @@ class UpdateProfileRequest extends FormRequest
         $user = Auth::user();
         $shippingId = 0;
         $arrayIdShipping = [];
-        foreach ($user->shippings as $shipping) {
+        foreach ($user->shippingAddresses as $shipping) {
             $shippingId = $shipping->id;
             array_push($arrayIdShipping, $shippingId);
         }
@@ -36,7 +36,7 @@ class UpdateProfileRequest extends FormRequest
             'address' => 'string|max:255',
             'phone' => 'required|min:10|numeric',
             'avatar' => 'image|mimes:png,jpg,jpeg',
-            'shipping_id' => 'required|in:'. implode(',', $arrayIdShipping),
+            'shipping_id' => ($this->shipping_id == null) ? '' : 'in:'. implode(',', $arrayIdShipping),
         ];
     }
 }

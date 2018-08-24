@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Http\Response;
-use App\Shipping;
+use App\ShippingAddress;
 
 class EditUserTest extends TestCase
 {
@@ -21,7 +21,7 @@ class EditUserTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        factory(Shipping::class)->create();
+        factory(ShippingAddress::class)->create();
     }
 
     /**
@@ -41,12 +41,12 @@ class EditUserTest extends TestCase
                 'name',
                 'email',
                 'role',
-                'shippings' => [
+                'shipping_addresses' => [
                     [
                         'id',
                         'user_id',
                         'address',
-                        'status'
+                        'is_default'
                     ]
                 ],
                 'user_info' => [
@@ -148,11 +148,11 @@ class EditUserTest extends TestCase
         ];
         $this->assertDatabaseHas('user_infos', $arrayUserInfo);
         $arrayShipping = [
-            'id' => $data->shippings[0]->id,
-            'user_id' => $data->shippings[0]->user_id,
-            'address' => $data->shippings[0]->address,
-            'status' => $data->shippings[0]->status,
+            'id' => $data->shippingAddresses[0]->id,
+            'user_id' => $data->shippingAddresses[0]->user_id,
+            'address' => $data->shippingAddresses[0]->address,
+            'is_default' => $data->shippingAddresses[0]->status,
         ];
-        $this->assertDatabaseHas('shippings', $arrayShipping);
+        $this->assertDatabaseHas('shippingAddresses', $arrayShipping);
     }
 }

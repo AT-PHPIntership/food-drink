@@ -89,13 +89,13 @@ class User extends Authenticatable
 
 
     /**
-     * User Has Many Shippings
+     * User Has Many ShippingAddresses
      *
      * @return mixed
      */
-    public function shippings()
+    public function shippingAddresses()
     {
-        return $this->hasMany('App\Shipping');
+        return $this->hasMany('App\ShippingAddress');
     }
 
     /**

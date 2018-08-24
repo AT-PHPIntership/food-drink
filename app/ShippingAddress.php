@@ -5,23 +5,24 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Shipping extends Model
+class ShippingAddress extends Model
 {
     use SoftDeletes;
-    const ADDRESS = 0, ADDRESS_DEFAULT = 1;
+    const ADDRESS = 0;
+    const ADDRESS_DEFAULT = 1;
 
     protected $fillable = [
         'user_id',
         'address',
-        'status',
+        'is_default',
     ];
 
     /**
-     * Shipping Has Many To Users
+     * Shipping Belong To To User
      *
      * @return mixed
      */
-    public function users()
+    public function user()
     {
         return $this->belongsTo('App\User');
     }

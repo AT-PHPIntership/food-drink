@@ -22,7 +22,7 @@ class ForgotPasswordController extends ApiController
     |
      */
 
-     use SendsPasswordResetEmails;
+    use SendsPasswordResetEmails;
 
      /**
      * Create a new controller instance.

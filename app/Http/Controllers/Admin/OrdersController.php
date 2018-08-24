@@ -58,12 +58,19 @@ class OrdersController extends Controller
      */
     public function updateStatus(ChangeStatusRequest $request, Order $order)
     {
+        DB::beginTransaction();
         try {
             $order['status'] = $request->status;
             $order->save();
             $order->notes()->create([
                 'user_id' => Auth::id(),
                 'content' => $request->content,
+            ]);
+            $order->trackingOrders()->create([
+                'order_id' => $order->id,
+                'old_status' => $order->status,
+                'new_status' => $request->status,
+                'date_changed' => date("Y-m-d H:i:s"),
             ]);
             $data = ['name' => $order->user->name,
                 'status' => $request->status,
@@ -72,8 +79,10 @@ class OrdersController extends Controller
                 'rejected' => $order::REJECTED,
             ];
             \Mail::to($order->user->email)->send(new ChangeStatusOrderMail($data));
-            return response()->json($order->load('notes'));
+            DB::commit();
+            return response()->json($order->load('notes', 'trackingOrders'));
         } catch (Exception $e) {
+            DB::rollBack();
             return response(trans('message.post.fail_delete'), Response::HTTP_BAD_REQUEST);
         }
     }

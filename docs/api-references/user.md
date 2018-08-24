@@ -202,7 +202,7 @@ Register user
 }
 ```
 
- ### `PUT` Edit Profile
+### `PUT` Edit Profile
 ```
 /api/profile
 ```
@@ -232,15 +232,29 @@ Edit profile
         "code": 200
     },
     "data": {
-        "id": 1,
-        "name": "abcxyz",
-        "email": "abcxyz@gmail.com",
+        "id": 2,
+        "name": "ahihi",
+        "email": "frami.karina@treutel.com",
+        "role": 0,
+        "shippings": [
+            {
+                "id": 2,
+                "user_id": 2,
+                "address": "Consequatur voluptatem aut maxime non illum. Minima iure ratione nihil est. Voluptatem aliquam provident voluptatem aliquid hic nisi recusandae. Magnam eos impedit beatae ut unde assumenda.",
+                "status": 0
+            },
+            {
+                "id": 33,
+                "user_id": 2,
+                "address": "43048 Duane Village Suite 319\\nWatsicaville, ME 70645-8172",
+                "status": 1
+            }
+        ],
         "user_info": {
-            "id": 1,
-            "user_id": 1,
-            "address": "12 DN",
-            "phone": "0913",
-            "avatar": "default-user-avatar.png",
+            "id": 2,
+            "user_id": 2,
+            "address": "2dasdasd",
+            "phone": "216486",
             "avatar_url": "http://192.168.33.10/images/users/default-user-avatar.png"
         }
     }
