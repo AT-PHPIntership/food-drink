@@ -22,7 +22,10 @@ function editUser() {
   $('#form-update-user').submit(function(event) {
     event.preventDefault();
     formData = new FormData($('#form-update-user')[0]);
-    formData.append('_method', 'put')
+    if ($('#password').val() == ''){
+      formData.delete('password');
+    }
+    formData.append('_method', 'put');
     $.ajax({
       type: 'post',
       url: '/api/profile',
