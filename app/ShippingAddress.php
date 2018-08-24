@@ -8,10 +8,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class ShippingAddress extends Model
 {
     use SoftDeletes;
+    const ADDRESS = 0;
 
     protected $fillable = [
         'user_id',
         'address',
+        'is_default',
     ];
 
     /**
