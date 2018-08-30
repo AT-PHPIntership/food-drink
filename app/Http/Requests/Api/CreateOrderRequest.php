@@ -4,6 +4,7 @@ namespace App\Http\Requests\Api;
 
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 use App\Product;
 
 class CreateOrderRequest extends FormRequest
@@ -25,6 +26,13 @@ class CreateOrderRequest extends FormRequest
      */
     public function rules()
     {
+        $user = Auth::user();
+        $shippingId = 0;
+        $arrayIdShipping = [];
+        foreach ($user->shippingAddresses as $shipping) {
+            $shippingId = $shipping->id;
+            array_push($arrayIdShipping, $shippingId);
+        }
         $index = 0;
         $rules = [];
         foreach (request('product') as $input) {
@@ -33,6 +41,7 @@ class CreateOrderRequest extends FormRequest
             $index++;
         }
         $rules['address'] = 'required';
+        $rules['shipping_id'] = ($this->shipping_id == null) ? '' : 'in:'. implode(',', $arrayIdShipping);
         return $rules;
     }
 

@@ -42,7 +42,7 @@ class UsersController extends Controller
     */
     public function show(User $user)
     {
-        $user->load('userInfo', 'shippings');
+        $user->load('userInfo', 'shippingAddresses');
         return view('admin.user.show', compact('user'));
     }
 

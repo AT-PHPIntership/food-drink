@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('recommend-product:user')
-            ->everyMinute()
+            ->weekly()
             ->timezone('Asia/Ho_Chi_Minh');
     }
 

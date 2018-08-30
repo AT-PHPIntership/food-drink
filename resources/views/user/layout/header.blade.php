@@ -26,6 +26,9 @@
                     <li class="history-order">
                       <a href="{{ route('orders.index') }}"><i class="fa fa-history"></i><span class="hidden-xs">&nbsp; {{ __('home.user.header.history_order') }}</span></a>
                     </li>
+                    <li>
+                      <a href="{{ route('profile.edit') }}"><i class="fa fa-edit"></i><span class="hidden-xs">&nbsp; {{ __('home.user.header.edit_profile') }}</span></a>
+                    </li>
                     <li id="logout" class="logout">
                       <a href=""><i class="fa fa-sign-out"></i><span class="hidden-xs">&nbsp; {{ __('home.user.header.log_out') }}</span></a>
                     </li>
